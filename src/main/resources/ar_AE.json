@@ -1,0 +1,4406 @@
+{
+    "candidates": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "هوية المرشح"
+        },
+        "candidatename": {
+            "label": "الاسم",
+            "longlabel": "اسم المرشح"
+        },
+        "firstname": {
+            "label": "الاسم الأول",
+            "longlabel": "الاسم الأول للمرشح"
+        },
+        "lastname": {
+            "label": "الاسم العائلي",
+            "longlabel": "الاسم العائلي للمرشح"
+        },
+        "emailid": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "genderid": {
+            "label": "الجنس",
+            "longlabel": "الجنس"
+        },
+        "contactnumber": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "candidatedob": {
+            "label": "تاريخ الميلاد",
+            "longlabel": "تاريخ الميلاد"
+        },
+        "age": {
+            "label": "العمر",
+            "longlabel": "عمر المرشح"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص التعليمي"
+        },
+        "workexpyr": {
+            "label": "إجمالي الخبرة",
+            "longlabel": "إجمالي الخبرة"
+        },
+        "relevantexperience": {
+            "label": "الخبرة ذات الصلة",
+            "longlabel": "الخبرة ذات الصلة"
+        },
+        "resumetext": {
+            "label": "نص السيرة الذاتية",
+            "longlabel": "نص السيرة الذاتية"
+        },
+        "currentsalary": {
+            "label": "الراتب الحالي",
+            "longlabel": "الراتب الحالي"
+        },
+        "resume": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumefilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "lastorganisation": {
+            "label": "المنظمة الحالية",
+            "longlabel": "المنظمة الحالية"
+        },
+        "skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "willingtorelocate": {
+            "label": "الاستعداد للانتقال إلى مكان آخر",
+            "longlabel": "الاستعداد للانتقال إلى مكان آخر"
+        },
+        "salaryexpectation": {
+            "label": "الراتب المتوقع",
+            "longlabel": "الراتب المتوقع"
+        },
+        "position": {
+            "label": "العنوان",
+            "longlabel": "المسمى الوظيفي/المنصب"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "currencyid": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "currencycountry": {
+            "label": "بلد العملة",
+            "longlabel": "بلد العملة"
+        },
+        "symbol": {
+            "label": "الرمز",
+            "longlabel": "الرمز"
+        },
+        "accountid": {
+            "label": "معرّف الحساب",
+            "longlabel": "معرّف الحساب"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownerslug": {
+            "label": "المالك سبيكة",
+            "longlabel": "المالك سبيكة"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "canaccess": {
+            "label": "إمكانية الوصول",
+            "longlabel": "إمكانية الوصول"
+        },
+        "profilepic": {
+            "label": "صورة الملف الشخصي",
+            "longlabel": "صورة الملف الشخصي"
+        },
+        "deleted": {
+            "label": "محذوف",
+            "longlabel": "محذوف"
+        },
+        "authid": {
+            "label": "معرّف المصادقة",
+            "longlabel": "معرّف المصادقة"
+        },
+        "resumeupdatedon": {
+            "label": "تم تحديث الملف الشخصي من قبل المرشح على",
+            "longlabel": "تم تحديث الملف الشخصي من قبل المرشح على"
+        },
+        "resumeupdaterequestedon": {
+            "label": "طلب الملف الشخصي المرسل على",
+            "longlabel": "طلب الملف الشخصي المرسل على"
+        },
+        "requestresumelinkstatus": {
+            "label": "طلب استئناف استئناف حالة الارتباط",
+            "longlabel": "طلب استئناف استئناف حالة الارتباط"
+        },
+        "resumeaddedon": {
+            "label": "استئناف المضافة على",
+            "longlabel": "استئناف المضافة على"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "الملف الشخصي على فيسبوك"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "الملف الشخصي على تويتر"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "الملف الشخصي على لينكد إن"
+        },
+        "profilegithub": {
+            "label": "ملف تعريف Github الشخصي",
+            "longlabel": "ملف تعريف Github الشخصي"
+        },
+        "source": {
+            "label": "المصدر",
+            "longlabel": "المصدر"
+        },
+        "createdbyname": {
+            "label": "تم الإنشاء بالاسم",
+            "longlabel": "تم الإنشاء بالاسم"
+        },
+        "qualification": {
+            "label": "ملصق المؤهلات",
+            "longlabel": "ملصق المؤهلات"
+        },
+        "currentstatus": {
+            "label": "حالة التوظيف",
+            "longlabel": "حالة التوظيف الحالية"
+        },
+        "noticeperiod": {
+            "label": "فترة الإشعار",
+            "longlabel": "فترة الإشعار (بالأيام)"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "availablefrom": {
+            "label": "متاح من",
+            "longlabel": "متاح من"
+        },
+        "salarytype": {
+            "label": "نوع الراتب",
+            "longlabel": "نوع الراتب"
+        },
+        "languageskills": {
+            "label": "اللغة",
+            "longlabel": "المهارات اللغوية"
+        },
+        "accountlogo": {
+            "label": "شعار الحساب",
+            "longlabel": "شعار الحساب"
+        },
+        "accounttitle": {
+            "label": "عنوان الحساب",
+            "longlabel": "عنوان الحساب"
+        },
+        "candidateterms": {
+            "label": "شروط الترشيح",
+            "longlabel": "شروط الترشيح"
+        },
+        "jobapplicationsettings": {
+            "label": "إعدادات طلبات التوظيف",
+            "longlabel": "إعدادات طلبات التوظيف"
+        },
+        "eeocompliance": {
+            "label": "امتثال تكافؤ فرص العمل",
+            "longlabel": "امتثال تكافؤ فرص العمل"
+        },
+        "gdprcompliance": {
+            "label": "الامتثال للائحة العامة لحماية البيانات العامة",
+            "longlabel": "الامتثال للائحة العامة لحماية البيانات العامة"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "profilexing": {
+            "label": "الملف الشخصي لـ Xing",
+            "longlabel": "الملف الشخصي لـ Xing"
+        },
+        "email_opt_out": {
+            "label": "إلغاء الاشتراك",
+            "longlabel": "إلغاء الاشتراك"
+        },
+        "proficiency_level": {
+            "label": "مستوى الكفاءة",
+            "longlabel": "مستوى الكفاءة"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "work_history": {
+            "label": "تاريخ العمل",
+            "longlabel": "تاريخ العمل"
+        },
+        "title": {
+            "label": "منصب العمل",
+            "longlabel": "منصب العمل"
+        },
+        "work_company_name": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "employment_type": {
+            "label": "نوع الوظيفة",
+            "longlabel": "نوع الوظيفة"
+        },
+        "industry_id": {
+            "label": "نوع الصناعة",
+            "longlabel": "نوع الصناعة"
+        },
+        "work_location": {
+            "label": "موقع العمل",
+            "longlabel": "موقع العمل"
+        },
+        "salary": {
+            "label": "الراتب",
+            "longlabel": "الراتب"
+        },
+        "is_currently_working": {
+            "label": "تعمل حالياً",
+            "longlabel": "تعمل حالياً"
+        },
+        "work_start_date": {
+            "label": "تاريخ بدء العمل",
+            "longlabel": "تاريخ بدء العمل"
+        },
+        "work_end_date": {
+            "label": "تاريخ انتهاء العمل",
+            "longlabel": "تاريخ انتهاء العمل"
+        },
+        "work_description": {
+            "label": "وصف العمل",
+            "longlabel": "وصف العمل"
+        },
+        "education_history": {
+            "label": "تاريخ التعليم",
+            "longlabel": "تاريخ التعليم"
+        },
+        "institute_name": {
+            "label": "اسم المدرسة/الكلية",
+            "longlabel": "اسم المدرسة/الكلية"
+        },
+        "educational_qualification": {
+            "label": "المؤهلات العلمية",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "educational_specialization": {
+            "label": "التخصص التعليمي",
+            "longlabel": "التخصص التعليمي"
+        },
+        "grade": {
+            "label": "الصف",
+            "longlabel": "الصف"
+        },
+        "education_location": {
+            "label": "موقع التعليم",
+            "longlabel": "موقع التعليم"
+        },
+        "education_start_date": {
+            "label": "تاريخ بدء التعليم",
+            "longlabel": "تاريخ بدء التعليم"
+        },
+        "education_end_date": {
+            "label": "تاريخ انتهاء التعليم",
+            "longlabel": "تاريخ انتهاء التعليم"
+        },
+        "education_description": {
+            "label": "وصف التعليم",
+            "longlabel": "وصف التعليم"
+        },
+        "summary": {
+            "label": "الملخص",
+            "longlabel": "الملخص"
+        },
+        "unavailable": {
+            "label": "التوفر",
+            "longlabel": "التوفر"
+        },
+        "off_limit_status": {
+            "label": "الحالة خارج الحدود",
+            "longlabel": "الحالة خارج الحدود"
+        },
+        "sms_opt_out": {
+            "label": "إلغاء الاشتراك في الرسائل النصية القصيرة",
+            "longlabel": "إلغاء الاشتراك في الرسائل النصية القصيرة"
+        },
+        "last_calllog_created_on": {
+            "label": "تمت إضافة سجل المكالمات الأخيرة",
+            "longlabel": "تمت إضافة سجل المكالمات الأخيرة"
+        },
+        "last_sms_sent_on": {
+            "label": "آخر رسالة نصية قصيرة تم إرسالها على",
+            "longlabel": "آخر رسالة نصية قصيرة تم إرسالها على"
+        },
+        "last_email_sent_on": {
+            "label": "آخر بريد إلكتروني تم إرساله على",
+            "longlabel": "آخر بريد إلكتروني تم إرساله على"
+        },
+        "last_communication_timestamp": {
+            "label": "آخر اتصال",
+            "longlabel": "آخر اتصال"
+        },
+        "last_communication_method": {
+            "label": "نوع الاتصال الأخير",
+            "longlabel": "نوع الاتصال الأخير"
+        },
+        "contact_linked": {
+            "label": "جهة الاتصال المرتبطة",
+            "longlabel": "جهة الاتصال المرتبطة"
+        },
+        "last_meeting_created_on": {
+            "label": "تمت إضافة الاجتماع الأخير",
+            "longlabel": "تمت إضافة الاجتماع الأخير"
+        },
+        "last_message_sent_on": {
+            "label": "آخر رسالة تم إرسالها على LinkedIn",
+            "longlabel": "آخر رسالة تم إرسالها على LinkedIn"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        }
+    },
+    "assigned_candidates": {
+        "jobslug": {
+            "label": "الوظيفة",
+            "longlabel": "سبيكة الوظيفة"
+        },
+        "jobid": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "jobname": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "candidateid": {
+            "label": "المرشح",
+            "longlabel": "المرشح"
+        },
+        "candidatename": {
+            "label": "المرشح",
+            "longlabel": "المرشح"
+        },
+        "firstname": {
+            "label": "الاسم الأول",
+            "longlabel": "الاسم الأول"
+        },
+        "lastname": {
+            "label": "الاسم العائلي",
+            "longlabel": "الاسم العائلي"
+        },
+        "lastorganisation": {
+            "label": "المنظمة الحالية",
+            "longlabel": "المنظمة الحالية"
+        },
+        "resumetext": {
+            "label": "نص السيرة الذاتية",
+            "longlabel": "نص السيرة الذاتية"
+        },
+        "resume": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumefilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "candidatestatusid": {
+            "label": "مرحلة التوظيف",
+            "longlabel": "يمكنك تغيير مرحلة التوظيف للمرشح وإرسال الملاحظات من خلال النقر على مرحلة التوظيف الحالية للمرشح"
+        },
+        "candidatestatus": {
+            "label": "مرحلة التوظيف",
+            "longlabel": "يمكنك تغيير مرحلة التوظيف للمرشح وإرسال الملاحظات من خلال النقر على مرحلة التوظيف الحالية للمرشح"
+        },
+        "remark": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "emailid": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "contactnumber": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "currentsalary": {
+            "label": "الراتب الحالي",
+            "longlabel": "الراتب الحالي"
+        },
+        "salaryexpectation": {
+            "label": "الراتب المتوقع",
+            "longlabel": "الراتب المتوقع"
+        },
+        "noticeperiod": {
+            "label": "فترة الإشعار",
+            "longlabel": "فترة الإشعار (بالأيام)"
+        },
+        "candidatedob": {
+            "label": "تاريخ الميلاد",
+            "longlabel": "تاريخ ميلاد المرشح"
+        },
+        "genderid": {
+            "label": "الجنس",
+            "longlabel": "الجنس"
+        },
+        "age": {
+            "label": "العمر",
+            "longlabel": "عمر المرشح"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص"
+        },
+        "workexpyr": {
+            "label": "إجمالي الخبرة",
+            "longlabel": "إجمالي الخبرة"
+        },
+        "relevantexperience": {
+            "label": "الخبرة ذات الصلة",
+            "longlabel": "الخبرة ذات الصلة"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "availablefrom": {
+            "label": "متاح من",
+            "longlabel": "متاح من"
+        },
+        "position": {
+            "label": "العنوان",
+            "longlabel": "المسمى الوظيفي/المنصب"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "الملف الشخصي على فيسبوك"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "الملف الشخصي على تويتر"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "الملف الشخصي على لينكد إن"
+        },
+        "profilegithub": {
+            "label": "ملف تعريف Github الشخصي",
+            "longlabel": "ملف تعريف Github الشخصي"
+        },
+        "share": {
+            "label": "الرؤية",
+            "longlabel": "الرؤية"
+        },
+        "id": {
+            "label": "أسئلة المرشحين",
+            "longlabel": "أسئلة المرشحين"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "source": {
+            "label": "المصدر",
+            "longlabel": "المصدر"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "profilexing": {
+            "label": "الملف الشخصي لـ Xing",
+            "longlabel": "الملف الشخصي لـ Xing"
+        },
+        "email_opt_out": {
+            "label": "إلغاء الاشتراك",
+            "longlabel": "إلغاء الاشتراك"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "unavailable": {
+            "label": "التوفر",
+            "longlabel": "التوفر"
+        },
+        "summary": {
+            "label": "الملخص",
+            "longlabel": "الملخص"
+        },
+        "jobstatus": {
+            "label": "الحالة الوظيفية",
+            "longlabel": "الحالة الوظيفية"
+        },
+        "resumeupdaterequestedon": {
+            "label": "طلب الملف الشخصي المرسل على",
+            "longlabel": "طلب الملف الشخصي المرسل على"
+        },
+        "willingtorelocate": {
+            "label": "الاستعداد للانتقال إلى مكان آخر",
+            "longlabel": "الاستعداد للانتقال إلى مكان آخر"
+        },
+        "currentstatus": {
+            "label": "حالة التوظيف",
+            "longlabel": "حالة التوظيف"
+        },
+        "languageskills": {
+            "label": "اللغة",
+            "longlabel": "اللغة"
+        },
+        "skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "السيرة الذاتية لطلب الوظيفة",
+            "longlabel": "السيرة الذاتية لطلب الوظيفة"
+        },
+        "assigned_job_coverletter": {
+            "label": "خطاب تغطية طلب التقديم للوظيفة",
+            "longlabel": "خطاب تغطية طلب التقديم للوظيفة"
+        },
+        "assigned_job_portfolio": {
+            "label": "حافظة طلبات التوظيف",
+            "longlabel": "حافظة طلبات التوظيف"
+        },
+        "assigned_job_other_file_1": {
+            "label": "ملف طلب التوظيف 1",
+            "longlabel": "ملف طلب التوظيف 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "ملف طلب التوظيف 2",
+            "longlabel": "ملف طلب التوظيف 2"
+        },
+        "work_history": {
+            "label": "تاريخ العمل",
+            "longlabel": "تاريخ العمل"
+        },
+        "education_history": {
+            "label": "تاريخ التعليم",
+            "longlabel": "تاريخ التعليم"
+        },
+        "companyname": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "job_type": {
+            "label": "نوع الوظيفة",
+            "longlabel": "نوع الوظيفة"
+        },
+        "job_category": {
+            "label": "فئة الوظيفة",
+            "longlabel": "فئة الوظيفة"
+        },
+        "resumeupdatedon": {
+            "label": "تم تحديث الملف الشخصي من قبل المرشح على",
+            "longlabel": "تم تحديث الملف الشخصي من قبل المرشح على"
+        },
+        "requestresumelinkstatus": {
+            "label": "طلب استئناف استئناف حالة الارتباط",
+            "longlabel": "طلب استئناف استئناف حالة الارتباط"
+        },
+        "resumeaddedon": {
+            "label": "استئناف المضافة على",
+            "longlabel": "استئناف المضافة على"
+        },
+        "off_limit_status": {
+            "label": "الحالة خارج الحدود",
+            "longlabel": "الحالة خارج الحدود"
+        },
+        "sms_opt_out": {
+            "label": "إلغاء الاشتراك في الرسائل النصية القصيرة",
+            "longlabel": "إلغاء الاشتراك في الرسائل النصية القصيرة"
+        },
+        "last_calllog_created_on": {
+            "label": "تمت إضافة سجل المكالمات الأخيرة",
+            "longlabel": "تمت إضافة سجل المكالمات الأخيرة"
+        },
+        "last_sms_sent_on": {
+            "label": "آخر رسالة نصية قصيرة تم إرسالها على",
+            "longlabel": "آخر رسالة نصية قصيرة تم إرسالها على"
+        },
+        "last_email_sent_on": {
+            "label": "آخر بريد إلكتروني تم إرساله على",
+            "longlabel": "آخر بريد إلكتروني تم إرساله على"
+        },
+        "last_communication_timestamp": {
+            "label": "آخر اتصال",
+            "longlabel": "آخر اتصال"
+        },
+        "last_communication_method": {
+            "label": "نوع الاتصال الأخير",
+            "longlabel": "نوع الاتصال الأخير"
+        },
+        "remote": {
+            "label": "نوع موقع الوظيفة",
+            "longlabel": "نوع موقع الوظيفة"
+        },
+        "last_meeting_created_on": {
+            "label": "تمت إضافة الاجتماع الأخير",
+            "longlabel": "تمت إضافة الاجتماع الأخير"
+        },
+        "last_message_sent_on": {
+            "label": "آخر رسالة تم إرسالها على LinkedIn",
+            "longlabel": "آخر رسالة تم إرسالها على LinkedIn"
+        },
+        "timesheet_setting": {
+            "label": "الجدول الزمني",
+            "longlabel": "الجدول الزمني"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "هوية المرشح"
+        },
+        "updatedby": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "job_function": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "job_industry": {
+            "label": "مجال العمل",
+            "longlabel": "مجال العمل"
+        },
+        "placement_id": {
+            "label": "التنسيب",
+            "longlabel": "التنسيب"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        }
+    },
+    "companies": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "معرّف الشركة"
+        },
+        "companyname": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل للشركة"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "مدينة الشركة"
+        },
+        "industryid": {
+            "label": "الصناعة",
+            "longlabel": "صناعة الشركات"
+        },
+        "industry": {
+            "label": "الصناعة",
+            "longlabel": "صناعة الشركات"
+        },
+        "website": {
+            "label": "الموقع الإلكتروني",
+            "longlabel": "الموقع الإلكتروني"
+        },
+        "totalopenjob": {
+            "label": "الوظائف الشاغرة",
+            "longlabel": "إجمالي الوظائف الشاغرة"
+        },
+        "totalclosedjob": {
+            "label": "الوظائف المغلقة",
+            "longlabel": "إجمالي الوظائف المغلقة"
+        },
+        "totalonholdjob": {
+            "label": "الوظائف المعلقة",
+            "longlabel": "الوظائف المعلقة"
+        },
+        "totalcanceledjob": {
+            "label": "الوظائف الملغاة",
+            "longlabel": "الوظائف الملغاة"
+        },
+        "logo": {
+            "label": "الشعار",
+            "longlabel": "شعار الشركة"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "اسم المالك"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "الملف التعريفي للشركة على فيسبوك"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "الملف التعريفي للشركة على تويتر"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "الملف الشخصي للشركة على لينكد إن"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "creatorname": {
+            "label": "اسم المنشئ",
+            "longlabel": "اسم المنشئ"
+        },
+        "accountid": {
+            "label": "معرّف الحساب",
+            "longlabel": "معرّف الحساب"
+        },
+        "deleted": {
+            "label": "محذوف",
+            "longlabel": "محذوف"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "updatedby": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "مذكرة الشركة"
+        },
+        "aboutcompany": {
+            "label": "نبذة عن الشركة",
+            "longlabel": "نبذة عن الشركة"
+        },
+        "parentcompanyname": {
+            "label": "الشركة الأم",
+            "longlabel": "اسم الشركة الأم"
+        },
+        "off_limit_status": {
+            "label": "الحالة خارج الحدود",
+            "longlabel": "الحالة خارج الحدود"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "موقع الشركة"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "حالة الشركة"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "بلد الشركة"
+        },
+        "postal_code": {
+            "label": "الرمز البريدي",
+            "longlabel": "الرمز البريدي للشركة"
+        },
+        "last_meeting_created_on": {
+            "label": "تمت إضافة الاجتماع الأخير",
+            "longlabel": "تمت إضافة الاجتماع الأخير"
+        },
+        "linkedin_id": {
+            "label": "معرّف الشركة على LinkedIn",
+            "longlabel": "معرّف الشركة على LinkedIn"
+        },
+        "monster_board_company_name": {
+            "label": "شركة ألواح الوحش",
+            "longlabel": "شركة ألواح الوحش"
+        },
+        "indeed_opted_out": {
+            "label": "انسحبت بالفعل",
+            "longlabel": "انسحبت بالفعل"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        }
+    },
+    "contacts": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "معرّف جهة الاتصال"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "معرّف جهة الاتصال"
+        },
+        "name": {
+            "label": "الاسم",
+            "longlabel": "اسم جهة الاتصال"
+        },
+        "firstname": {
+            "label": "الاسم الأول",
+            "longlabel": "اسم جهة الاتصال الاسم الأول"
+        },
+        "lastname": {
+            "label": "الاسم العائلي",
+            "longlabel": "اسم العائلة"
+        },
+        "stageid": {
+            "label": "المرحلة",
+            "longlabel": "مرحلة الاتصال"
+        },
+        "stage": {
+            "label": "المرحلة",
+            "longlabel": "مرحلة الاتصال"
+        },
+        "companyid": {
+            "label": "الشركة",
+            "longlabel": "الشركة"
+        },
+        "companyslug": {
+            "label": "كوماباني سبيكة",
+            "longlabel": "شركة سبيكة سبيكة"
+        },
+        "companyname": {
+            "label": "الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "email": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "عنوان البريد الإلكتروني للاتصال بنا"
+        },
+        "contactnumber": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل للاتصال بنا"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "تواصل مع المدينة"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownerslug": {
+            "label": "المالك سبيكة",
+            "longlabel": "المالك سبيكة"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "عنوان URL للملف الشخصي على فيسبوك"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "عنوان الملف الشخصي على تويتر"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "عنوان الملف الشخصي في لينكد إن"
+        },
+        "designation": {
+            "label": "العنوان",
+            "longlabel": "العنوان"
+        },
+        "accountid": {
+            "label": "معرّف الحساب",
+            "longlabel": "معرّف الحساب"
+        },
+        "canaccess": {
+            "label": "إمكانية الوصول",
+            "longlabel": "إمكانية الوصول"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdbyname": {
+            "label": "تم الإنشاء بالاسم",
+            "longlabel": "تم الإنشاء بالاسم"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "deleted": {
+            "label": "محذوف",
+            "longlabel": "محذوف"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "مذكرة اتصال"
+        },
+        "photo": {
+            "label": "صورة الملف الشخصي",
+            "longlabel": "صورة الملف الشخصي"
+        },
+        "company_accountid": {
+            "label": "الشركة - معرّف الحساب",
+            "longlabel": "الشركة - معرّف الحساب"
+        },
+        "company_address": {
+            "label": "الشركة - العنوان الكامل",
+            "longlabel": "الشركة - العنوان الكامل"
+        },
+        "company_city": {
+            "label": "الشركة - المدينة",
+            "longlabel": "الشركة - المدينة"
+        },
+        "company_companyname": {
+            "label": "الشركة - الاسم",
+            "longlabel": "الشركة - الاسم"
+        },
+        "company_parentcompanyname": {
+            "label": "الشركة - الشركة الأم",
+            "longlabel": "الشركة - اسم الشركة الأم"
+        },
+        "company_createdby": {
+            "label": "الشركة - تم إنشاؤها بواسطة",
+            "longlabel": "الشركة - تم إنشاؤها بواسطة"
+        },
+        "company_createdon": {
+            "label": "الشركة - تمت الإضافة",
+            "longlabel": "الشركة - تمت الإضافة"
+        },
+        "company_creatorname": {
+            "label": "الشركة - اسم المنشئ",
+            "longlabel": "الشركة - اسم المنشئ"
+        },
+        "company_deleted": {
+            "label": "الشركة - محذوف",
+            "longlabel": "الشركة - محذوف"
+        },
+        "company_id": {
+            "label": "الشركة - الهوية",
+            "longlabel": "الشركة - الهوية"
+        },
+        "company_industry": {
+            "label": "الشركة - الصناعة",
+            "longlabel": "الشركة - الصناعة"
+        },
+        "company_industryid": {
+            "label": "الشركة - الصناعة",
+            "longlabel": "الشركة - الصناعة"
+        },
+        "company_logo": {
+            "label": "الشركة - الشعار",
+            "longlabel": "الشركة - الشعار"
+        },
+        "company_note": {
+            "label": "الشركة - ملاحظة",
+            "longlabel": "الشركة - ملاحظة"
+        },
+        "company_ownerid": {
+            "label": "الشركة - المالك",
+            "longlabel": "الشركة - اسم المالك"
+        },
+        "company_ownername": {
+            "label": "الشركة - اسم المالك",
+            "longlabel": "الشركة - اسم المالك"
+        },
+        "company_profilefacebook": {
+            "label": "الشركة - الملف الشخصي على فيسبوك",
+            "longlabel": "الشركة - الملف الشخصي على فيسبوك"
+        },
+        "company_profilelinkedin": {
+            "label": "الشركة - الملف الشخصي على لينكد إن",
+            "longlabel": "الشركة - الملف الشخصي على لينكد إن"
+        },
+        "company_profiletwitter": {
+            "label": "الشركة - الملف الشخصي على تويتر",
+            "longlabel": "الشركة - الملف الشخصي على تويتر"
+        },
+        "company_slug": {
+            "label": "الشركة - الإجراءات",
+            "longlabel": "الشركة - الإجراءات"
+        },
+        "company_srno": {
+            "label": "الشركة - الهوية",
+            "longlabel": "الشركة - الهوية"
+        },
+        "company_totalcanceledjob": {
+            "label": "الشركة - الوظائف الملغاة",
+            "longlabel": "الشركة - الوظائف الملغاة"
+        },
+        "company_totalclosedjob": {
+            "label": "الشركة - الوظائف المغلقة",
+            "longlabel": "الشركة - إجمالي الوظائف المغلقة"
+        },
+        "company_totalonholdjob": {
+            "label": "الشركة - الوظائف المعلقة",
+            "longlabel": "الشركة - الوظائف المعلقة"
+        },
+        "company_totalopenjob": {
+            "label": "الشركة - الوظائف الشاغرة",
+            "longlabel": "الشركة - إجمالي الوظائف الشاغرة"
+        },
+        "company_updatedby": {
+            "label": "الشركة - تم التحديث بواسطة",
+            "longlabel": "الشركة - تم التحديث بواسطة"
+        },
+        "company_updatedon": {
+            "label": "الشركة - تم التحديث على",
+            "longlabel": "الشركة - تم التحديث على"
+        },
+        "company_website": {
+            "label": "الشركة - الموقع الإلكتروني",
+            "longlabel": "الشركة - الموقع الإلكتروني"
+        },
+        "parentcompanyname": {
+            "label": "الشركة - الشركة الأم",
+            "longlabel": "الشركة - اسم الشركة الأم"
+        },
+        "profilexing": {
+            "label": "الملف الشخصي لـ Xing",
+            "longlabel": "عنوان URL للملف الشخصي لجهة الاتصال ب Xing"
+        },
+        "off_limit_status": {
+            "label": "الحالة خارج الحدود",
+            "longlabel": "الحالة خارج الحدود"
+        },
+        "sms_opt_out": {
+            "label": "إلغاء الاشتراك في الرسائل النصية القصيرة",
+            "longlabel": "إلغاء الاشتراك في الرسائل النصية القصيرة"
+        },
+        "last_calllog_created_on": {
+            "label": "تمت إضافة سجل المكالمات الأخيرة",
+            "longlabel": "تمت إضافة سجل المكالمات الأخيرة"
+        },
+        "last_sms_sent_on": {
+            "label": "آخر رسالة نصية قصيرة تم إرسالها على",
+            "longlabel": "آخر رسالة نصية قصيرة تم إرسالها على"
+        },
+        "last_email_sent_on": {
+            "label": "آخر بريد إلكتروني تم إرساله على",
+            "longlabel": "آخر بريد إلكتروني تم إرساله على"
+        },
+        "last_communication_timestamp": {
+            "label": "آخر اتصال",
+            "longlabel": "آخر اتصال"
+        },
+        "last_communication_method": {
+            "label": "نوع الاتصال الأخير",
+            "longlabel": "نوع الاتصال الأخير"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الاتصال بالدولة"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "اتصل بالدولة"
+        },
+        "postal_code": {
+            "label": "الرمز البريدي",
+            "longlabel": "رمز الاتصال بالرمز البريدي"
+        },
+        "company_locality": {
+            "label": "الشركة - المحلية",
+            "longlabel": "الشركة - المحلية"
+        },
+        "company_state": {
+            "label": "الشركة - الدولة",
+            "longlabel": "الشركة - الدولة"
+        },
+        "company_country": {
+            "label": "الشركة - البلد",
+            "longlabel": "الشركة - البلد"
+        },
+        "company_postal_code": {
+            "label": "الشركة - الرمز البريدي",
+            "longlabel": "الشركة - الرمز البريدي"
+        },
+        "last_meeting_created_on": {
+            "label": "تمت إضافة الاجتماع الأخير",
+            "longlabel": "تمت إضافة الاجتماع الأخير"
+        },
+        "last_message_sent_on": {
+            "label": "آخر رسالة تم إرسالها على LinkedIn",
+            "longlabel": "آخر رسالة تم إرسالها على LinkedIn"
+        },
+        "company_linkedin_id": {
+            "label": "الشركة - معرف LinkedIn",
+            "longlabel": "الشركة - معرف LinkedIn"
+        },
+        "company_monster_board_company_name": {
+            "label": "الشركة - شركة مونستر بورد مونستر بورد",
+            "longlabel": "الشركة - شركة مونستر بورد مونستر بورد"
+        },
+        "company_indeed_opted_out": {
+            "label": "الشركة - انسحبت بالفعل",
+            "longlabel": "الشركة - انسحبت بالفعل"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        }
+    },
+    "jobs": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "معرّف الوظيفة"
+        },
+        "name": {
+            "label": "الاسم",
+            "longlabel": "المسمى الوظيفي"
+        },
+        "jobstatus": {
+            "label": "الحالة",
+            "longlabel": "الحالة الوظيفية"
+        },
+        "jobstatuslabel": {
+            "label": "الحالة",
+            "longlabel": "الحالة الوظيفية"
+        },
+        "companyid": {
+            "label": "الشركة",
+            "longlabel": "الشركة"
+        },
+        "companyname": {
+            "label": "الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "contactid": {
+            "label": "جهات الاتصال",
+            "longlabel": "جهات الاتصال"
+        },
+        "salarytype": {
+            "label": "نوع الراتب",
+            "longlabel": "نوع الراتب"
+        },
+        "currencyid": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "collaborator": {
+            "label": "متعاون",
+            "longlabel": "متعاون"
+        },
+        "jobquestions": {
+            "label": "أسئلة نموذج طلب الالتحاق بالوظيفة",
+            "longlabel": "أسئلة نموذج طلب الالتحاق بالوظيفة"
+        },
+        "allowapply": {
+            "label": "تمكين نموذج طلب الالتحاق بالوظيفة",
+            "longlabel": "تمكين نموذج طلب الالتحاق بالوظيفة"
+        },
+        "description": {
+            "label": "ملاحظة للمرشحين",
+            "longlabel": "ملاحظة للمرشحين"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "qualification": {
+            "label": "ملصق المؤهلات",
+            "longlabel": "ملصق المؤهلات"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص التعليمي"
+        },
+        "detailfilename": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "jdtext": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "jdtextdetails": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "minexperienceinyears": {
+            "label": "الحد الأدنى للخبرة (بالسنوات)",
+            "longlabel": "الحد الأدنى للخبرة (بالسنوات)"
+        },
+        "maxexperienceinyears": {
+            "label": "الحد الأقصى للخبرة (بالسنوات)",
+            "longlabel": "الحد الأقصى للخبرة (بالسنوات)"
+        },
+        "annualsalarymin": {
+            "label": "الحد الأدنى. الراتب",
+            "longlabel": "الحد الأدنى للراتب"
+        },
+        "annualsalarymax": {
+            "label": "الحد الأقصى. الراتب",
+            "longlabel": "الحد الأقصى للراتب"
+        },
+        "noofopenings": {
+            "label": "الوظائف الشاغرة",
+            "longlabel": "عدد الوظائف الشاغرة"
+        },
+        "contactname": {
+            "label": "اسم جهة الاتصال",
+            "longlabel": "اسم جهة الاتصال"
+        },
+        "contactemail": {
+            "label": "البريد الإلكتروني للاتصال",
+            "longlabel": "البريد الإلكتروني للاتصال"
+        },
+        "contactnumber": {
+            "label": "رقم الاتصال",
+            "longlabel": "رقم الاتصال"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "creatorname": {
+            "label": "المبدع",
+            "longlabel": "اسم المنشئ"
+        },
+        "createdon": {
+            "label": "تاريخ الإضافة",
+            "longlabel": "تاريخ الإضافة"
+        },
+        "updatedon": {
+            "label": "تاريخ التحديث",
+            "longlabel": "تاريخ التحديث"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "jobpostingstatus": {
+            "label": "الإجراءات",
+            "longlabel": "حالة الإعلان عن الوظيفة"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "contactslug": {
+            "label": "سبيكة",
+            "longlabel": "سبيكة"
+        },
+        "companyslug": {
+            "label": "سبيكة",
+            "longlabel": "سبيكة"
+        },
+        "hiring_pipeline_id": {
+            "label": "خط أنابيب التوظيف",
+            "longlabel": "خط أنابيب التوظيف"
+        },
+        "job_skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "job_type": {
+            "label": "نوع الوظيفة",
+            "longlabel": "نوع الوظيفة"
+        },
+        "job_category": {
+            "label": "فئة الوظيفة",
+            "longlabel": "فئة الوظيفة"
+        },
+        "secondarycontactid": {
+            "label": "جهات الاتصال الثانوية",
+            "longlabel": "جهات الاتصال الثانوية"
+        },
+        "targetcompanies": {
+            "label": "الشركات المستهدفة",
+            "longlabel": "الشركات المستهدفة"
+        },
+        "remote": {
+            "label": "نوع موقع الوظيفة",
+            "longlabel": "نوع موقع الوظيفة"
+        },
+        "rate_type": {
+            "label": "نوع السعر",
+            "longlabel": "نوع السعر"
+        },
+        "pay_rate": {
+            "label": "معدل الأجور",
+            "longlabel": "معدل الأجور"
+        },
+        "bill_rate": {
+            "label": "معدل الفاتورة",
+            "longlabel": "معدل الفاتورة"
+        },
+        "job_function": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "job_industry": {
+            "label": "مجال العمل",
+            "longlabel": "مجال العمل"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        },
+        "salaryrange": {
+            "label": "نطاق الراتب",
+            "longlabel": "نطاق الراتب"
+        }
+    },
+    "deals": {
+        "id": {
+            "label": "بطاقة الهوية",
+            "longlabel": "بطاقة الهوية"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "معرّف الصفقة"
+        },
+        "name": {
+            "label": "الاسم",
+            "longlabel": "اسم الصفقة"
+        },
+        "dealstage": {
+            "label": "المرحلة",
+            "longlabel": "المرحلة"
+        },
+        "dealstagelabel": {
+            "label": "المرحلة",
+            "longlabel": "المرحلة"
+        },
+        "percentage": {
+            "label": "وزن المرحلة",
+            "longlabel": "وزن المرحلة"
+        },
+        "dealvalue": {
+            "label": "مبلغ الصفقة",
+            "longlabel": "مبلغ الصفقة"
+        },
+        "dealpercentagevalue": {
+            "label": "مبلغ الصفقة المرجح",
+            "longlabel": "مبلغ الصفقة المرجح"
+        },
+        "dealtype": {
+            "label": "نوع الصفقة",
+            "longlabel": "نوع الصفقة"
+        },
+        "archived": {
+            "label": "مُقَيَّد",
+            "longlabel": "مُقَيَّد"
+        },
+        "dealtypelabel": {
+            "label": "نوع الصفقة",
+            "longlabel": "نوع الصفقة"
+        },
+        "closedate": {
+            "label": "تاريخ الإغلاق",
+            "longlabel": "تاريخ الإغلاق"
+        },
+        "relatedcompany": {
+            "label": "الشركة",
+            "longlabel": "الشركة"
+        },
+        "relatedcontact": {
+            "label": "اتصل بنا",
+            "longlabel": "اتصل بنا"
+        },
+        "companyname": {
+            "label": "الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "website": {
+            "label": "الموقع الإلكتروني",
+            "longlabel": "الموقع الإلكتروني"
+        },
+        "relatedjob": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "jobname": {
+            "label": "الوظيفة",
+            "longlabel": "الاسم الوظيفي"
+        },
+        "jobcity": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "relatedcandidate": {
+            "label": "المرشح",
+            "longlabel": "المرشح"
+        },
+        "candidatename": {
+            "label": "اسم المرشح",
+            "longlabel": "اسم المرشح"
+        },
+        "candidatetitle": {
+            "label": "العنوان",
+            "longlabel": "المسمى الوظيفي/المنصب"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "ownerslug": {
+            "label": "المالك سبيكة",
+            "longlabel": "المالك سبيكة"
+        },
+        "accountid": {
+            "label": "معرّف الحساب",
+            "longlabel": "معرّف الحساب"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "updatedby": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "createdbyname": {
+            "label": "تم الإنشاء بالاسم",
+            "longlabel": "تم الإنشاء بالاسم"
+        },
+        "updatedbyname": {
+            "label": "محدث بالاسم",
+            "longlabel": "محدث بالاسم"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "companyslug": {
+            "label": "سبيكة",
+            "longlabel": "سبيكة"
+        },
+        "jobslug": {
+            "label": "سبيكة",
+            "longlabel": "سبيكة"
+        },
+        "candidateslug": {
+            "label": "سبيكة",
+            "longlabel": "سبيكة"
+        },
+        "collaborator": {
+            "label": "متعاون",
+            "longlabel": "متعاون"
+        },
+        "splitdealvalue": {
+            "label": "مبلغ الصفقة المقسومة",
+            "longlabel": "مبلغ الصفقة المقسومة"
+        },
+        "weightedsplitdealvalue": {
+            "label": "مبلغ الصفقة المقسمة المرجحة",
+            "longlabel": "مبلغ الصفقة المقسمة المرجحة"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        }
+    },
+    "reports_assigned_candidates": {
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "age": {
+            "label": "العمر",
+            "longlabel": "عمر المرشح"
+        },
+        "availablefrom": {
+            "label": "متاح من",
+            "longlabel": "متاح من"
+        },
+        "candidatedob": {
+            "label": "تاريخ الميلاد",
+            "longlabel": "تاريخ ميلاد المرشح"
+        },
+        "candidateid": {
+            "label": "المرشح",
+            "longlabel": "المرشح"
+        },
+        "candidatename": {
+            "label": "المرشح",
+            "longlabel": "المرشح"
+        },
+        "candidatestatus": {
+            "label": "مرحلة التوظيف",
+            "longlabel": "يمكنك تغيير مرحلة التوظيف للمرشح وإرسال الملاحظات من خلال النقر على مرحلة التوظيف الحالية للمرشح"
+        },
+        "candidatestatusid": {
+            "label": "مرحلة التوظيف",
+            "longlabel": "يمكنك تغيير مرحلة التوظيف للمرشح وإرسال الملاحظات من خلال النقر على مرحلة التوظيف الحالية للمرشح"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "contactnumber": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "currentsalary": {
+            "label": "الراتب الحالي",
+            "longlabel": "الراتب الحالي"
+        },
+        "emailid": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "firstname": {
+            "label": "الاسم الأول",
+            "longlabel": "الاسم الأول"
+        },
+        "genderid": {
+            "label": "الجنس",
+            "longlabel": "الجنس"
+        },
+        "id": {
+            "label": "أسئلة المرشحين",
+            "longlabel": "أسئلة المرشحين"
+        },
+        "jobid": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "jobname": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "jobslug": {
+            "label": "الوظيفة",
+            "longlabel": "سبيكة الوظيفة"
+        },
+        "lastname": {
+            "label": "الاسم العائلي",
+            "longlabel": "الاسم العائلي"
+        },
+        "lastorganisation": {
+            "label": "المنظمة الحالية",
+            "longlabel": "المنظمة الحالية"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "noticeperiod": {
+            "label": "فترة الإشعار",
+            "longlabel": "فترة الإشعار (بالأيام)"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "position": {
+            "label": "العنوان",
+            "longlabel": "المسمى الوظيفي/المنصب"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "الملف الشخصي على فيسبوك"
+        },
+        "profilegithub": {
+            "label": "ملف تعريف Github الشخصي",
+            "longlabel": "ملف تعريف Github الشخصي"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "الملف الشخصي على لينكد إن"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "الملف الشخصي على تويتر"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات"
+        },
+        "relevantexperience": {
+            "label": "الخبرة ذات الصلة",
+            "longlabel": "الخبرة ذات الصلة"
+        },
+        "remark": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "resume": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumefilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumetext": {
+            "label": "نص السيرة الذاتية",
+            "longlabel": "نص السيرة الذاتية"
+        },
+        "salaryexpectation": {
+            "label": "الراتب المتوقع",
+            "longlabel": "الراتب المتوقع"
+        },
+        "share": {
+            "label": "الرؤية",
+            "longlabel": "الرؤية"
+        },
+        "source": {
+            "label": "المصدر",
+            "longlabel": "المصدر"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "workexpyr": {
+            "label": "إجمالي الخبرة",
+            "longlabel": "إجمالي الخبرة"
+        },
+        "currenthiringstage": {
+            "label": "مرحلة التوظيف الحالية",
+            "longlabel": "مرحلة التوظيف الحالية"
+        },
+        "assignedby": {
+            "label": "تم التعيين من قبل",
+            "longlabel": "تم التعيين من قبل"
+        },
+        "stagedate": {
+            "label": "تاريخ المرحلة",
+            "longlabel": "تاريخ المرحلة"
+        },
+        "companyname": {
+            "label": "الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "companycontactname": {
+            "label": "اسم جهة الاتصال بالوظيفة",
+            "longlabel": "اسم جهة الاتصال بالوظيفة"
+        },
+        "jobownername": {
+            "label": "اسم صاحب العمل",
+            "longlabel": "اسم صاحب الوظيفة"
+        },
+        "profilexing": {
+            "label": "الملف الشخصي لـ Xing",
+            "longlabel": "الملف الشخصي لـ Xing"
+        },
+        "email_opt_out": {
+            "label": "إلغاء الاشتراك",
+            "longlabel": "إلغاء الاشتراك"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "job_srno": {
+            "label": "معرّف الوظيفة",
+            "longlabel": "معرّف الوظيفة"
+        },
+        "jobstatus": {
+            "label": "الحالة الوظيفية",
+            "longlabel": "الحالة الوظيفية"
+        },
+        "unavailable": {
+            "label": "غير متاح",
+            "longlabel": "غير متاح"
+        },
+        "summary": {
+            "label": "الملخص",
+            "longlabel": "الملخص"
+        },
+        "skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "work_history": {
+            "label": "تاريخ العمل",
+            "longlabel": "تاريخ العمل"
+        },
+        "education_history": {
+            "label": "تاريخ التعليم",
+            "longlabel": "تاريخ التعليم"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "السيرة الذاتية لطلب الوظيفة",
+            "longlabel": "السيرة الذاتية لطلب الوظيفة"
+        },
+        "hotlist": {
+            "label": "القائمة الساخنة",
+            "longlabel": "القائمة الساخنة"
+        },
+        "assigned_job_coverletter": {
+            "label": "خطاب تغطية طلب التقديم للوظيفة",
+            "longlabel": "خطاب تغطية طلب التقديم للوظيفة"
+        },
+        "assigned_job_portfolio": {
+            "label": "حافظة طلبات التوظيف",
+            "longlabel": "حافظة طلبات التوظيف"
+        },
+        "assigned_job_other_file_1": {
+            "label": "ملف طلب التوظيف 1",
+            "longlabel": "ملف طلب التوظيف 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "ملف طلب التوظيف 2",
+            "longlabel": "ملف طلب التوظيف 2"
+        },
+        "job_type": {
+            "label": "نوع الوظيفة",
+            "longlabel": "نوع الوظيفة"
+        },
+        "job_category": {
+            "label": "فئة الوظيفة",
+            "longlabel": "فئة الوظيفة"
+        },
+        "resumeupdatedon": {
+            "label": "تم تحديث الملف الشخصي من قبل المرشح على",
+            "longlabel": "تم تحديث الملف الشخصي من قبل المرشح على"
+        },
+        "requestresumelinkstatus": {
+            "label": "طلب استئناف استئناف حالة الارتباط",
+            "longlabel": "طلب استئناف استئناف حالة الارتباط"
+        },
+        "resumeaddedon": {
+            "label": "استئناف المضافة على",
+            "longlabel": "استئناف المضافة على"
+        },
+        "contactemail": {
+            "label": "البريد الإلكتروني للاتصال بالوظيفة",
+            "longlabel": "البريد الإلكتروني للاتصال بالوظيفة"
+        },
+        "off_limit_status": {
+            "label": "الحالة خارج الحدود",
+            "longlabel": "الحالة خارج الحدود"
+        },
+        "sms_opt_out": {
+            "label": "إلغاء الاشتراك في الرسائل النصية القصيرة",
+            "longlabel": "إلغاء الاشتراك في الرسائل النصية القصيرة"
+        },
+        "remote": {
+            "label": "نوع موقع الوظيفة",
+            "longlabel": "نوع موقع الوظيفة"
+        },
+        "last_calllog_created_on": {
+            "label": "تمت إضافة سجل المكالمات الأخيرة",
+            "longlabel": "تمت إضافة سجل المكالمات الأخيرة"
+        },
+        "last_sms_sent_on": {
+            "label": "آخر رسالة نصية قصيرة تم إرسالها على",
+            "longlabel": "آخر رسالة نصية قصيرة تم إرسالها على"
+        },
+        "last_email_sent_on": {
+            "label": "آخر بريد إلكتروني تم إرساله على",
+            "longlabel": "آخر بريد إلكتروني تم إرساله على"
+        },
+        "last_communication_timestamp": {
+            "label": "آخر اتصال",
+            "longlabel": "آخر اتصال"
+        },
+        "last_communication_method": {
+            "label": "نوع الاتصال الأخير",
+            "longlabel": "نوع الاتصال الأخير"
+        },
+        "last_meeting_created_on": {
+            "label": "تمت إضافة الاجتماع الأخير",
+            "longlabel": "تمت إضافة الاجتماع الأخير"
+        },
+        "last_message_sent_on": {
+            "label": "آخر رسالة تم إرسالها على LinkedIn",
+            "longlabel": "آخر رسالة تم إرسالها على LinkedIn"
+        },
+        "job_function": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "job_industry": {
+            "label": "مجال العمل",
+            "longlabel": "مجال العمل"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        }
+    },
+    "reports_pitch_candidates": {
+        "accountid": {
+            "label": "معرّف الحساب",
+            "longlabel": "معرّف الحساب"
+        },
+        "accountlogo": {
+            "label": "شعار الحساب",
+            "longlabel": "شعار الحساب"
+        },
+        "accounttitle": {
+            "label": "عنوان الحساب",
+            "longlabel": "عنوان الحساب"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "age": {
+            "label": "العمر",
+            "longlabel": "عمر المرشح"
+        },
+        "authid": {
+            "label": "معرّف المصادقة",
+            "longlabel": "معرّف المصادقة"
+        },
+        "availablefrom": {
+            "label": "متاح من",
+            "longlabel": "متاح من"
+        },
+        "canaccess": {
+            "label": "إمكانية الوصول",
+            "longlabel": "إمكانية الوصول"
+        },
+        "candidatedob": {
+            "label": "تاريخ الميلاد",
+            "longlabel": "تاريخ الميلاد"
+        },
+        "candidatename": {
+            "label": "الاسم",
+            "longlabel": "اسم المرشح"
+        },
+        "candidateterms": {
+            "label": "شروط الترشيح",
+            "longlabel": "شروط الترشيح"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "contactnumber": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdbyname": {
+            "label": "تم الإنشاء بالاسم",
+            "longlabel": "تم الإنشاء بالاسم"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "currencycountry": {
+            "label": "بلد العملة",
+            "longlabel": "بلد العملة"
+        },
+        "currencyid": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "currentsalary": {
+            "label": "الراتب الحالي",
+            "longlabel": "الراتب الحالي"
+        },
+        "currentstatus": {
+            "label": "حالة التوظيف",
+            "longlabel": "حالة التوظيف الحالية"
+        },
+        "deleted": {
+            "label": "محذوف",
+            "longlabel": "محذوف"
+        },
+        "eeocompliance": {
+            "label": "امتثال تكافؤ فرص العمل",
+            "longlabel": "امتثال تكافؤ فرص العمل"
+        },
+        "emailid": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "firstname": {
+            "label": "الاسم الأول",
+            "longlabel": "الاسم الأول للمرشح"
+        },
+        "gdprcompliance": {
+            "label": "الامتثال للائحة العامة لحماية البيانات العامة",
+            "longlabel": "الامتثال للائحة العامة لحماية البيانات العامة"
+        },
+        "genderid": {
+            "label": "الجنس",
+            "longlabel": "الجنس"
+        },
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "jobapplicationsettings": {
+            "label": "إعدادات طلبات التوظيف",
+            "longlabel": "إعدادات طلبات التوظيف"
+        },
+        "languageskills": {
+            "label": "اللغة",
+            "longlabel": "المهارات اللغوية"
+        },
+        "lastname": {
+            "label": "الاسم العائلي",
+            "longlabel": "الاسم العائلي للمرشح"
+        },
+        "lastorganisation": {
+            "label": "المنظمة الحالية",
+            "longlabel": "المنظمة الحالية"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "noticeperiod": {
+            "label": "فترة الإشعار",
+            "longlabel": "فترة الإشعار (بالأيام)"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "ownerslug": {
+            "label": "المالك سبيكة",
+            "longlabel": "المالك سبيكة"
+        },
+        "position": {
+            "label": "العنوان",
+            "longlabel": "المسمى الوظيفي/المنصب"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "الملف الشخصي على فيسبوك"
+        },
+        "profilegithub": {
+            "label": "ملف تعريف Github الشخصي",
+            "longlabel": "ملف تعريف Github الشخصي"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "الملف الشخصي على لينكد إن"
+        },
+        "profilepic": {
+            "label": "صورة الملف الشخصي",
+            "longlabel": "صورة الملف الشخصي"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "الملف الشخصي على تويتر"
+        },
+        "qualification": {
+            "label": "ملصق المؤهلات",
+            "longlabel": "ملصق المؤهلات"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "relevantexperience": {
+            "label": "الخبرة ذات الصلة",
+            "longlabel": "الخبرة ذات الصلة"
+        },
+        "requestresumelinkstatus": {
+            "label": "طلب استئناف استئناف حالة الارتباط",
+            "longlabel": "طلب استئناف استئناف حالة الارتباط"
+        },
+        "resume": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumeaddedon": {
+            "label": "استئناف المضافة على",
+            "longlabel": "استئناف المضافة على"
+        },
+        "resumefilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumetext": {
+            "label": "نص السيرة الذاتية",
+            "longlabel": "نص السيرة الذاتية"
+        },
+        "resumeupdatedon": {
+            "label": "تم تحديث الملف الشخصي من قبل المرشح على",
+            "longlabel": "تم تحديث الملف الشخصي من قبل المرشح على"
+        },
+        "resumeupdaterequestedon": {
+            "label": "طلب الملف الشخصي المرسل على",
+            "longlabel": "طلب الملف الشخصي المرسل على"
+        },
+        "salaryexpectation": {
+            "label": "الراتب المتوقع",
+            "longlabel": "الراتب المتوقع"
+        },
+        "salarytype": {
+            "label": "نوع الراتب",
+            "longlabel": "نوع الراتب"
+        },
+        "skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "سبيكة"
+        },
+        "source": {
+            "label": "المصدر",
+            "longlabel": "المصدر"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص التعليمي"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "هوية المرشح"
+        },
+        "symbol": {
+            "label": "الرمز",
+            "longlabel": "الرمز"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "willingtorelocate": {
+            "label": "الاستعداد للانتقال إلى مكان آخر",
+            "longlabel": "الاستعداد للانتقال إلى مكان آخر"
+        },
+        "workexpyr": {
+            "label": "إجمالي الخبرة",
+            "longlabel": "إجمالي الخبرة"
+        },
+        "stagedate": {
+            "label": "تاريخ المرحلة",
+            "longlabel": "تاريخ المرحلة"
+        },
+        "pitchedcontactname": {
+            "label": "ضارية لـ",
+            "longlabel": "ضارية لـ"
+        },
+        "profilexing": {
+            "label": "الملف الشخصي لـ Xing",
+            "longlabel": "الملف الشخصي لـ Xing"
+        },
+        "email_opt_out": {
+            "label": "إلغاء الاشتراك",
+            "longlabel": "إلغاء الاشتراك"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "off_limit_status": {
+            "label": "الحالة خارج الحدود",
+            "longlabel": "الحالة خارج الحدود"
+        },
+        "sms_opt_out": {
+            "label": "إلغاء الاشتراك في الرسائل النصية القصيرة",
+            "longlabel": "إلغاء الاشتراك في الرسائل النصية القصيرة"
+        },
+        "last_calllog_created_on": {
+            "label": "تمت إضافة سجل المكالمات الأخيرة",
+            "longlabel": "تمت إضافة سجل المكالمات الأخيرة"
+        },
+        "last_sms_sent_on": {
+            "label": "آخر رسالة نصية قصيرة تم إرسالها على",
+            "longlabel": "آخر رسالة نصية قصيرة تم إرسالها على"
+        },
+        "last_email_sent_on": {
+            "label": "آخر بريد إلكتروني تم إرساله على",
+            "longlabel": "آخر بريد إلكتروني تم إرساله على"
+        },
+        "last_communication_timestamp": {
+            "label": "آخر اتصال",
+            "longlabel": "آخر اتصال"
+        },
+        "last_communication_method": {
+            "label": "نوع الاتصال الأخير",
+            "longlabel": "نوع الاتصال الأخير"
+        },
+        "last_meeting_created_on": {
+            "label": "تمت إضافة الاجتماع الأخير",
+            "longlabel": "تمت إضافة الاجتماع الأخير"
+        },
+        "last_message_sent_on": {
+            "label": "آخر رسالة تم إرسالها على LinkedIn",
+            "longlabel": "آخر رسالة تم إرسالها على LinkedIn"
+        },
+        "last_note_created_on": {
+            "label": "تمت إضافة الملاحظة الأخيرة",
+            "longlabel": "تمت إضافة الملاحظة الأخيرة"
+        }
+    },
+    "company_candidates": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "هوية المرشح"
+        },
+        "candidatename": {
+            "label": "الاسم",
+            "longlabel": "اسم المرشح"
+        },
+        "firstname": {
+            "label": "الاسم الأول",
+            "longlabel": "الاسم الأول للمرشح"
+        },
+        "lastname": {
+            "label": "الاسم العائلي",
+            "longlabel": "الاسم العائلي للمرشح"
+        },
+        "emailid": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "genderid": {
+            "label": "الجنس",
+            "longlabel": "الجنس"
+        },
+        "contactnumber": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "candidatedob": {
+            "label": "تاريخ الميلاد",
+            "longlabel": "تاريخ الميلاد"
+        },
+        "age": {
+            "label": "العمر",
+            "longlabel": "عمر المرشح"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص التعليمي"
+        },
+        "workexpyr": {
+            "label": "إجمالي الخبرة",
+            "longlabel": "إجمالي الخبرة"
+        },
+        "relevantexperience": {
+            "label": "الخبرة ذات الصلة",
+            "longlabel": "الخبرة ذات الصلة"
+        },
+        "resumetext": {
+            "label": "نص السيرة الذاتية",
+            "longlabel": "نص السيرة الذاتية"
+        },
+        "currentsalary": {
+            "label": "الراتب الحالي",
+            "longlabel": "الراتب الحالي"
+        },
+        "resume": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumefilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "lastorganisation": {
+            "label": "المنظمة الحالية",
+            "longlabel": "المنظمة الحالية"
+        },
+        "skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "willingtorelocate": {
+            "label": "الاستعداد للانتقال إلى مكان آخر",
+            "longlabel": "الاستعداد للانتقال إلى مكان آخر"
+        },
+        "salaryexpectation": {
+            "label": "الراتب المتوقع",
+            "longlabel": "الراتب المتوقع"
+        },
+        "position": {
+            "label": "العنوان",
+            "longlabel": "المسمى الوظيفي/المنصب"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "currencyid": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "currencycountry": {
+            "label": "بلد العملة",
+            "longlabel": "بلد العملة"
+        },
+        "symbol": {
+            "label": "الرمز",
+            "longlabel": "الرمز"
+        },
+        "accountid": {
+            "label": "معرّف الحساب",
+            "longlabel": "معرّف الحساب"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownerslug": {
+            "label": "المالك سبيكة",
+            "longlabel": "المالك سبيكة"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "canaccess": {
+            "label": "إمكانية الوصول",
+            "longlabel": "إمكانية الوصول"
+        },
+        "profilepic": {
+            "label": "صورة الملف الشخصي",
+            "longlabel": "صورة الملف الشخصي"
+        },
+        "deleted": {
+            "label": "محذوف",
+            "longlabel": "محذوف"
+        },
+        "authid": {
+            "label": "معرّف المصادقة",
+            "longlabel": "معرّف المصادقة"
+        },
+        "resumeupdatedon": {
+            "label": "تم تحديث الملف الشخصي من قبل المرشح على",
+            "longlabel": "تم تحديث الملف الشخصي من قبل المرشح على"
+        },
+        "resumeupdaterequestedon": {
+            "label": "طلب الملف الشخصي المرسل على",
+            "longlabel": "طلب الملف الشخصي المرسل على"
+        },
+        "requestresumelinkstatus": {
+            "label": "طلب استئناف استئناف حالة الارتباط",
+            "longlabel": "طلب استئناف استئناف حالة الارتباط"
+        },
+        "resumeaddedon": {
+            "label": "استئناف المضافة على",
+            "longlabel": "استئناف المضافة على"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "الملف الشخصي على فيسبوك"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "الملف الشخصي على تويتر"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "الملف الشخصي على لينكد إن"
+        },
+        "profilegithub": {
+            "label": "ملف تعريف Github الشخصي",
+            "longlabel": "ملف تعريف Github الشخصي"
+        },
+        "source": {
+            "label": "المصدر",
+            "longlabel": "المصدر"
+        },
+        "createdbyname": {
+            "label": "تم الإنشاء بالاسم",
+            "longlabel": "تم الإنشاء بالاسم"
+        },
+        "qualification": {
+            "label": "ملصق المؤهلات",
+            "longlabel": "ملصق المؤهلات"
+        },
+        "currentstatus": {
+            "label": "حالة التوظيف",
+            "longlabel": "حالة التوظيف الحالية"
+        },
+        "noticeperiod": {
+            "label": "فترة الإشعار",
+            "longlabel": "فترة الإشعار (بالأيام)"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "availablefrom": {
+            "label": "متاح من",
+            "longlabel": "متاح من"
+        },
+        "salarytype": {
+            "label": "نوع الراتب",
+            "longlabel": "نوع الراتب"
+        },
+        "languageskills": {
+            "label": "اللغة",
+            "longlabel": "المهارات اللغوية"
+        },
+        "accountlogo": {
+            "label": "شعار الحساب",
+            "longlabel": "شعار الحساب"
+        },
+        "accounttitle": {
+            "label": "عنوان الحساب",
+            "longlabel": "عنوان الحساب"
+        },
+        "candidateterms": {
+            "label": "شروط الترشيح",
+            "longlabel": "شروط الترشيح"
+        },
+        "jobapplicationsettings": {
+            "label": "إعدادات طلبات التوظيف",
+            "longlabel": "إعدادات طلبات التوظيف"
+        },
+        "eeocompliance": {
+            "label": "امتثال تكافؤ فرص العمل",
+            "longlabel": "امتثال تكافؤ فرص العمل"
+        },
+        "gdprcompliance": {
+            "label": "الامتثال للائحة العامة لحماية البيانات العامة",
+            "longlabel": "الامتثال للائحة العامة لحماية البيانات العامة"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "profilexing": {
+            "label": "الملف الشخصي لـ Xing",
+            "longlabel": "الملف الشخصي لـ Xing"
+        },
+        "email_opt_out": {
+            "label": "إلغاء الاشتراك",
+            "longlabel": "إلغاء الاشتراك"
+        },
+        "proficiency_level": {
+            "label": "مستوى الكفاءة",
+            "longlabel": "مستوى الكفاءة"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "sms_opt_out": {
+            "label": "إلغاء الاشتراك في الرسائل النصية القصيرة",
+            "longlabel": "إلغاء الاشتراك في الرسائل النصية القصيرة"
+        }
+    },
+    "meetings": {
+        "meeting_date": {
+            "label": "تاريخ الاجتماع",
+            "longlabel": "تاريخ الاجتماع"
+        },
+        "meeting_time": {
+            "label": "وقت الاجتماع",
+            "longlabel": "وقت الاجتماع"
+        },
+        "title": {
+            "label": "العنوان",
+            "longlabel": "عنوان الاجتماع"
+        },
+        "status": {
+            "label": "الحالة",
+            "longlabel": "الحالة"
+        },
+        "relatedto": {
+            "label": "ذات صلة بـ",
+            "longlabel": "ذات صلة بـ"
+        },
+        "attendees": {
+            "label": "الحضور",
+            "longlabel": "الحضور"
+        },
+        "notetype": {
+            "label": "نوع الاجتماع",
+            "longlabel": "نوع الاجتماع"
+        },
+        "address": {
+            "label": "مكان الاجتماع",
+            "longlabel": "مكان الاجتماع"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "enddate": {
+            "label": "تاريخ الاستحقاق",
+            "longlabel": "تاريخ الاستحقاق"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "createdby": {
+            "label": "تمت الإضافة بواسطة",
+            "longlabel": "تمت الإضافة بواسطة "
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "description": {
+            "label": "الوصف",
+            "longlabel": "الوصف"
+        },
+        "collaborator": {
+            "label": "متعاون",
+            "longlabel": "متعاون"
+        },
+        "associations": {
+            "label": "الجمعيات",
+            "longlabel": "الجمعيات"
+        },
+        "id": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        }
+    },
+    "tasks": {
+        "title": {
+            "label": "العنوان",
+            "longlabel": "عنوان المهمة"
+        },
+        "status": {
+            "label": "الحالة",
+            "longlabel": "الحالة"
+        },
+        "relatedto": {
+            "label": "ذات صلة بـ",
+            "longlabel": "ذات صلة بـ"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "enddate": {
+            "label": "تاريخ الاستحقاق",
+            "longlabel": "تاريخ الاستحقاق"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "createdby": {
+            "label": "تمت الإضافة بواسطة",
+            "longlabel": "تمت الإضافة بواسطة "
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "description": {
+            "label": "الوصف",
+            "longlabel": "الوصف"
+        },
+        "collaborator": {
+            "label": "متعاون",
+            "longlabel": "متعاون"
+        },
+        "associations": {
+            "label": "الجمعيات",
+            "longlabel": "الجمعيات"
+        },
+        "id": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "notetype": {
+            "label": "نوع المهمة",
+            "longlabel": "نوع المهمة"
+        }
+    },
+    "target_reports": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "title": {
+            "label": "اسم الهدف",
+            "longlabel": "اسم الهدف"
+        },
+        "status": {
+            "label": "الحالة",
+            "longlabel": "الحالة"
+        },
+        "assignee_id": {
+            "label": "تم التعيين إلى",
+            "longlabel": "تم التعيين إلى"
+        },
+        "frequency": {
+            "label": "التردد",
+            "longlabel": "التردد"
+        },
+        "target_period": {
+            "label": "الفترة المستهدفة",
+            "longlabel": "الفترة المستهدفة"
+        },
+        "startdate": {
+            "label": "تاريخ البدء",
+            "longlabel": "تاريخ البدء"
+        },
+        "enddate": {
+            "label": "تاريخ الانتهاء",
+            "longlabel": "تاريخ الانتهاء"
+        },
+        "created_on": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "created_by": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "updated_on": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "updated_by": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "action": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        }
+    },
+    "invoices": {
+        "invoiceid": {
+            "label": "معرّف الفاتورة",
+            "longlabel": "معرّف الفاتورة"
+        },
+        "description": {
+            "label": "الوصف",
+            "longlabel": "الوصف"
+        },
+        "company": {
+            "label": "الشركة",
+            "longlabel": "الشركة"
+        },
+        "templateused": {
+            "label": "القالب المستخدم",
+            "longlabel": "القالب المستخدم"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdon": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "issuedon": {
+            "label": "تاريخ الإصدار",
+            "longlabel": "تاريخ الإصدار"
+        },
+        "updatedon": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "totalamount": {
+            "label": "المبلغ الإجمالي",
+            "longlabel": "المبلغ الإجمالي"
+        },
+        "duedate": {
+            "label": "تاريخ الاستحقاق",
+            "longlabel": "تاريخ الاستحقاق"
+        },
+        "paidon": {
+            "label": "مدفوع على",
+            "longlabel": "مدفوع على"
+        },
+        "status": {
+            "label": "الحالة",
+            "longlabel": "الحالة"
+        },
+        "currency": {
+            "label": "عملة الفاتورة",
+            "longlabel": "عملة الفاتورة"
+        },
+        "contact": {
+            "label": "اسم جهة الاتصال",
+            "longlabel": "اسم جهة الاتصال"
+        },
+        "phone": {
+            "label": "هاتف الاتصال",
+            "longlabel": "هاتف الاتصال"
+        },
+        "associations": {
+            "label": "الجمعيات",
+            "longlabel": "الجمعيات"
+        },
+        "address": {
+            "label": "عنوان الشركة",
+            "longlabel": "عنوان الشركة"
+        },
+        "email": {
+            "label": "البريد الإلكتروني للاتصال",
+            "longlabel": "البريد الإلكتروني للاتصال"
+        }
+    },
+    "placements": {
+        "placementId": {
+            "label": "معرّف الموضع",
+            "longlabel": "معرّف الموضع"
+        },
+        "currency": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "associations": {
+            "label": "الجمعيات",
+            "longlabel": "الجمعيات"
+        },
+        "createdBy": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "createdOn": {
+            "label": "تم الإنشاء على",
+            "longlabel": "تم الإنشاء على"
+        },
+        "candidateName": {
+            "label": "اسم المرشح",
+            "longlabel": "اسم المرشح"
+        },
+        "contactName": {
+            "label": "اسم جهة الاتصال",
+            "longlabel": "اسم جهة الاتصال"
+        },
+        "dealName": {
+            "label": "اسم الصفقة",
+            "longlabel": "اسم الصفقة"
+        },
+        "jobName": {
+            "label": "الاسم الوظيفي",
+            "longlabel": "الاسم الوظيفي"
+        },
+        "companyName": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "joiningDate": {
+            "label": "تاريخ الانضمام",
+            "longlabel": "تاريخ الانضمام"
+        }
+    },
+    "candidate_assigned_job": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "srno": {
+            "label": "بطاقة الهوية",
+            "longlabel": "معرّف الوظيفة"
+        },
+        "name": {
+            "label": "الاسم",
+            "longlabel": "الاسم الوظيفي"
+        },
+        "candidatestatus": {
+            "label": "مرحلة التوظيف والتاريخ",
+            "longlabel": "مرحلة التوظيف والتاريخ"
+        },
+        "interview": {
+            "label": "مقابلة",
+            "longlabel": "مقابلة"
+        },
+        "share": {
+            "label": "الرؤية",
+            "longlabel": "الرؤية"
+        },
+        "jobstatus": {
+            "label": "الحالة",
+            "longlabel": "الحالة الوظيفية"
+        },
+        "jobstatuslabel": {
+            "label": "الحالة",
+            "longlabel": "الحالة الوظيفية"
+        },
+        "companyid": {
+            "label": "الشركة",
+            "longlabel": "الشركة"
+        },
+        "companyname": {
+            "label": "الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "contactid": {
+            "label": "جهات الاتصال",
+            "longlabel": "جهات الاتصال"
+        },
+        "salarytype": {
+            "label": "نوع الراتب",
+            "longlabel": "نوع الراتب"
+        },
+        "currencyid": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "collaborator": {
+            "label": "متعاون",
+            "longlabel": "متعاون"
+        },
+        "jobquestions": {
+            "label": "أسئلة نموذج طلب الالتحاق بالوظيفة",
+            "longlabel": "أسئلة نموذج طلب الالتحاق بالوظيفة"
+        },
+        "allowapply": {
+            "label": "تمكين نموذج طلب الالتحاق بالوظيفة",
+            "longlabel": "تمكين نموذج طلب الالتحاق بالوظيفة"
+        },
+        "description": {
+            "label": "ملاحظة للمرشحين",
+            "longlabel": "ملاحظة للمرشحين"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "qualification": {
+            "label": "ملصق المؤهلات",
+            "longlabel": "ملصق المؤهلات"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص التعليمي"
+        },
+        "detailfilename": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "jdtext": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "jdtextdetails": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "minexperienceinyears": {
+            "label": "الحد الأدنى للخبرة (بالسنوات)",
+            "longlabel": "الحد الأدنى للخبرة (بالسنوات)"
+        },
+        "maxexperienceinyears": {
+            "label": "الحد الأقصى للخبرة (بالسنوات)",
+            "longlabel": "الحد الأقصى للخبرة (بالسنوات)"
+        },
+        "annualsalarymin": {
+            "label": "الحد الأدنى. الراتب",
+            "longlabel": "الحد الأدنى للراتب"
+        },
+        "annualsalarymax": {
+            "label": "الحد الأقصى. الراتب",
+            "longlabel": "الحد الأقصى للراتب"
+        },
+        "noofopenings": {
+            "label": "الوظائف الشاغرة",
+            "longlabel": "عدد الوظائف الشاغرة"
+        },
+        "contactname": {
+            "label": "اسم جهة الاتصال",
+            "longlabel": "اسم جهة الاتصال"
+        },
+        "contactemail": {
+            "label": "البريد الإلكتروني للاتصال",
+            "longlabel": "البريد الإلكتروني للاتصال"
+        },
+        "contactnumber": {
+            "label": "رقم الاتصال",
+            "longlabel": "رقم الاتصال"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "createdby": {
+            "label": "تم إنشاؤها بواسطة",
+            "longlabel": "تم إنشاؤها بواسطة"
+        },
+        "creatorname": {
+            "label": "المبدع",
+            "longlabel": "اسم المنشئ"
+        },
+        "createdon": {
+            "label": "تاريخ الإضافة",
+            "longlabel": "تاريخ الإضافة"
+        },
+        "updatedon": {
+            "label": "تحديث مرحلة التوظيف على",
+            "longlabel": "تحديث مرحلة التوظيف على"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "jobpostingstatus": {
+            "label": "الإجراءات",
+            "longlabel": "حالة الإعلان عن الوظيفة"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "contactslug": {
+            "label": "سبيكة",
+            "longlabel": "سبيكة"
+        },
+        "companyslug": {
+            "label": "سبيكة",
+            "longlabel": "سبيكة"
+        },
+        "hiring_pipeline_id": {
+            "label": "خط أنابيب التوظيف",
+            "longlabel": "خط أنابيب التوظيف"
+        },
+        "job_skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "job_type": {
+            "label": "نوع الوظيفة",
+            "longlabel": "نوع الوظيفة"
+        },
+        "job_category": {
+            "label": "فئة الوظيفة",
+            "longlabel": "فئة الوظيفة"
+        },
+        "secondarycontactid": {
+            "label": "جهات الاتصال الثانوية",
+            "longlabel": "جهات الاتصال الثانوية"
+        },
+        "targetcompanies": {
+            "label": "الشركات المستهدفة",
+            "longlabel": "الشركات المستهدفة"
+        },
+        "remote": {
+            "label": "نوع موقع الوظيفة",
+            "longlabel": "نوع موقع الوظيفة"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "السيرة الذاتية لطلب الوظيفة",
+            "longlabel": "السيرة الذاتية لطلب الوظيفة"
+        },
+        "assigned_job_coverletter": {
+            "label": "خطاب تغطية طلب التقديم للوظيفة",
+            "longlabel": "خطاب تغطية طلب التقديم للوظيفة"
+        },
+        "assigned_job_portfolio": {
+            "label": "حافظة طلبات التوظيف",
+            "longlabel": "حافظة طلبات التوظيف"
+        },
+        "assigned_job_other_file_1": {
+            "label": "ملف طلب التوظيف 1",
+            "longlabel": "ملف طلب التوظيف 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "ملف طلب التوظيف 2",
+            "longlabel": "ملف طلب التوظيف 2"
+        },
+        "postal_code": {
+            "label": "الرمز البريدي",
+            "longlabel": "الرمز البريدي"
+        },
+        "job_function": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "job_industry": {
+            "label": "مجال العمل",
+            "longlabel": "مجال العمل"
+        },
+        "updatedby": {
+            "label": "مرحلة التوظيف تم تحديثها بواسطة",
+            "longlabel": "مرحلة التوظيف تم تحديثها بواسطة"
+        }
+    },
+    "postal_code": {
+        "label": "الرمز البريدي",
+        "longlabel": "الرمز البريدي"
+    },
+    "timesheet": {
+        "timesheetId": {
+            "label": "معرف الجدول الزمني",
+            "longlabel": "معرف الجدول الزمني"
+        },
+        "timesheetPeriod": {
+            "label": "فترة الجدول الزمني",
+            "longlabel": "فترة الجدول الزمني"
+        },
+        "contractorName": {
+            "label": "اسم المرشح",
+            "longlabel": "اسم المرشح"
+        },
+        "timesheetStatusId": {
+            "label": "حالة الجدول الزمني",
+            "longlabel": "حالة الجدول الزمني"
+        },
+        "timesheetStatus": {
+            "label": "حالة الجدول الزمني",
+            "longlabel": "حالة الجدول الزمني"
+        },
+        "jobName": {
+            "label": "الاسم الوظيفي",
+            "longlabel": "الاسم الوظيفي"
+        },
+        "dealName": {
+            "label": "اسم الصفقة",
+            "longlabel": "اسم الصفقة"
+        },
+        "jobDuration": {
+            "label": "مدة الوظيفة",
+            "longlabel": "مدة الوظيفة"
+        },
+        "totalWorkTime": {
+            "label": "إجمالي ساعات العمل",
+            "longlabel": "إجمالي ساعات العمل"
+        },
+        "totalOvertime": {
+            "label": "إجمالي ساعات العمل الإضافي",
+            "longlabel": "إجمالي ساعات العمل الإضافي"
+        },
+        "totalTime": {
+            "label": "إجمالي الساعات",
+            "longlabel": "إجمالي الساعات"
+        },
+        "billData": {
+            "label": "مبلغ الفاتورة",
+            "longlabel": "مبلغ الفاتورة"
+        },
+        "billAmount": {
+            "label": "مبلغ الفاتورة",
+            "longlabel": "بيانات الفاتورة"
+        },
+        "payData": {
+            "label": "مبلغ الدفع",
+            "longlabel": "مبلغ الدفع"
+        },
+        "payAmount": {
+            "label": "مبلغ الدفع",
+            "longlabel": "بيانات الدفع"
+        },
+        "billRate": {
+            "label": "معدل الفاتورة",
+            "longlabel": "معدل الفاتورة"
+        },
+        "payRate": {
+            "label": "معدل الأجور",
+            "longlabel": "معدل الأجور"
+        },
+        "approvedBy": {
+            "label": "الجدول الزمني المعتمد من قبل",
+            "longlabel": "الجدول الزمني المعتمد من قبل"
+        },
+        "approver": {
+            "label": "الجدول الزمني المعتمد من قبل",
+            "longlabel": "الجدول الزمني المعتمد من قبل"
+        },
+        "approvers": {
+            "label": "معتمدو الجداول الزمنية",
+            "longlabel": "معتمدو الجداول الزمنية"
+        },
+        "billingStatusId": {
+            "label": "حالة الفاتورة",
+            "longlabel": "حالة الفاتورة"
+        },
+        "paymentStatusId": {
+            "label": "حالة الدفع",
+            "longlabel": "حالة الدفع"
+        },
+        "paymentDate": {
+            "label": "تاريخ الدفع",
+            "longlabel": "تاريخ الدفع"
+        },
+        "payoutNumber": {
+            "label": "رقم الدفع",
+            "longlabel": "رقم الدفع"
+        },
+        "billingDate": {
+            "label": "تاريخ الفوترة",
+            "longlabel": "تاريخ الفوترة"
+        },
+        "invoiceNumber": {
+            "label": "رقم الفاتورة",
+            "longlabel": "رقم الفاتورة"
+        },
+        "addedOn": {
+            "label": "تمت الإضافة",
+            "longlabel": "تمت الإضافة"
+        },
+        "addedBy": {
+            "label": "تمت الإضافة بواسطة",
+            "longlabel": "تمت الإضافة بواسطة"
+        },
+        "updatedOn": {
+            "label": "تم التحديث على",
+            "longlabel": "تم التحديث على"
+        },
+        "updatedBy": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "company": {
+            "label": "الشركة",
+            "longlabel": "الشركة"
+        },
+        "frequency": {
+            "label": "التردد",
+            "longlabel": "التردد"
+        },
+        "workDays": {
+            "label": "أيام العمل",
+            "longlabel": "أيام العمل"
+        },
+        "workHours": {
+            "label": "ساعات العمل",
+            "longlabel": "ساعات العمل"
+        },
+        "actions": {
+            "label": "الإجراءات",
+            "longlabel": "الإجراءات"
+        },
+        "action": {
+            "label": "الإجراء",
+            "longlabel": "الإجراء"
+        },
+        "billStatus": {
+            "label": "حالة الفاتورة",
+            "longlabel": "حالة الفاتورة"
+        },
+        "payStatus": {
+            "label": "حالة الدفع",
+            "longlabel": "حالة الدفع"
+        },
+        "invoiceCreatedOn": {
+            "label": "تاريخ إنشاء الفاتورة",
+            "longlabel": "تاريخ إنشاء الفاتورة"
+        },
+        "payoutPaidOn": {
+            "label": "المدفوعات المدفوعة على",
+            "longlabel": "المدفوعات المدفوعة على"
+        },
+        "companyname": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "gender": {
+            "label": "الجنس",
+            "longlabel": "الجنس"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "postalCode": {
+            "label": "الرمز البريدي",
+            "longlabel": "الرمز البريدي"
+        },
+        "locality": {
+            "label": "المنطقة المحلية",
+            "longlabel": "المنطقة المحلية"
+        },
+        "profilefacebook": {
+            "label": "الملف الشخصي على فيسبوك",
+            "longlabel": "الملف الشخصي على فيسبوك"
+        },
+        "title": {
+            "label": "العنوان",
+            "longlabel": "العنوان"
+        },
+        "birthDate": {
+            "label": "تاريخ الميلاد",
+            "longlabel": "تاريخ الميلاد"
+        },
+        "skills": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "profilexing": {
+            "label": "الملف الشخصي لـ Xing",
+            "longlabel": "الملف الشخصي لـ Xing"
+        },
+        "phone": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "name": {
+            "label": "الاسم",
+            "longlabel": "الاسم"
+        },
+        "fullAddress": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "state": {
+            "label": "الولاية",
+            "longlabel": "الولاية"
+        },
+        "currentOrganization": {
+            "label": "المنظمة الحالية",
+            "longlabel": "المنظمة الحالية"
+        },
+        "profiletwitter": {
+            "label": "الملف الشخصي على تويتر",
+            "longlabel": "الملف الشخصي على تويتر"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على لينكد إن",
+            "longlabel": "الملف الشخصي على لينكد إن"
+        },
+        "profilegithub": {
+            "label": "ملف تعريف Github الشخصي",
+            "longlabel": "ملف تعريف Github الشخصي"
+        },
+        "source": {
+            "label": "المصدر",
+            "longlabel": "المصدر"
+        },
+        "id": {
+            "label": "بطاقة الهوية",
+            "longlabel": "بطاقة الهوية"
+        },
+        "email": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "status": {
+            "label": "الحالة",
+            "longlabel": "الحالة"
+        },
+        "companyName": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "timesheetFrequency": {
+            "label": "تواتر الجدول الزمني",
+            "longlabel": "تواتر الجدول الزمني"
+        },
+        "expenseClaim": {
+            "label": "مطالبة النفقات",
+            "longlabel": "مطالبة النفقات"
+        },
+        "payCurrency": {
+            "label": "عملة الدفع",
+            "longlabel": "عملة الدفع"
+        },
+        "billCurrency": {
+            "label": "فاتورة العملة",
+            "longlabel": "فاتورة العملة"
+        },
+        "totalRegularHours": {
+            "label": "إجمالي ساعات العمل العادية",
+            "longlabel": "إجمالي ساعات العمل العادية"
+        }
+    },
+    "jobs_widget": {
+        "name": {
+            "label": "الاسم الوظيفي",
+            "longlabel": "الاسم الوظيفي"
+        },
+        "jobstatuslabel": {
+            "label": "الحالة الوظيفية",
+            "longlabel": "الحالة الوظيفية"
+        },
+        "assignedcandidatestatuscount": {
+            "label": "خط أنابيب المرشح",
+            "longlabel": "خط أنابيب المرشح"
+        },
+        "joinedcandidatestatuscount": {
+            "label": "وضع",
+            "longlabel": "وضع"
+        },
+        "detailfilename": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "contactname": {
+            "label": "اتصل بنا",
+            "longlabel": "اتصل بنا"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "srno": {
+            "label": "رقم التعريف",
+            "longlabel": "رقم الوظيفة"
+        },
+        "archived": {
+            "label": "محفوظ",
+            "longlabel": "محفوظ"
+        },
+        "companyid": {
+            "label": "الشركة",
+            "longlabel": "الشركة"
+        },
+        "contactid": {
+            "label": "جهات الاتصال",
+            "longlabel": "جهات الاتصال"
+        },
+        "secondarycontactid": {
+            "label": "جهات الاتصال الاحتياطية",
+            "longlabel": "جهات الاتصال الاحتياطية"
+        },
+        "salarytype": {
+            "label": "نوع الراتب",
+            "longlabel": "نوع الراتب"
+        },
+        "currencyid": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "salaryrange": {
+            "label": "نطاق الرواتب",
+            "longlabel": "نطاق الرواتب"
+        },
+        "state": {
+            "label": "الدولة",
+            "longlabel": "الدولة"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "collaborator": {
+            "label": "المساهم",
+            "longlabel": "المساهم"
+        },
+        "jobquestions": {
+            "label": "أسئلة نموذج طلب التوظيف",
+            "longlabel": "أسئلة نموذج طلب التوظيف"
+        },
+        "allowapply": {
+            "label": "تمكين نموذج طلب التوظيف",
+            "longlabel": "تمكين نموذج طلب التوظيف"
+        },
+        "description": {
+            "label": "ملاحظة للمرشحين",
+            "longlabel": "ملاحظة للمرشحين"
+        },
+        "job_skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "locality": {
+            "label": "الموقع",
+            "longlabel": "الموقع"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "qualification": {
+            "label": "شهادة الاعتماد",
+            "longlabel": "شهادة الاعتماد"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص التربوي"
+        },
+        "jdtext": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "jdtextdetails": {
+            "label": "الوصف الوظيفي",
+            "longlabel": "الوصف الوظيفي"
+        },
+        "minexperienceinyears": {
+            "label": "الحد الأدنى للخبرة (بالسنوات)",
+            "longlabel": "الحد الأدنى للخبرة (بالسنوات)"
+        },
+        "maxexperienceinyears": {
+            "label": "الخبرة القصوى (بالسنوات)",
+            "longlabel": "الخبرة القصوى (بالسنوات)"
+        },
+        "annualsalarymin": {
+            "label": "الحد الأدنى للأجر",
+            "longlabel": "الحد الأدنى للأجر"
+        },
+        "annualsalarymax": {
+            "label": "الراتب الأقصى",
+            "longlabel": "الراتب الأقصى"
+        },
+        "noofopenings": {
+            "label": "الوظائف الشاغرة",
+            "longlabel": "عدد الوظائف الشاغرة"
+        },
+        "contactslug": {
+            "label": "الرخوة",
+            "longlabel": "الرخوة"
+        },
+        "companyslug": {
+            "label": "الرخوة",
+            "longlabel": "الرخوة"
+        },
+        "contactemail": {
+            "label": "البريد الإلكتروني للاتصال",
+            "longlabel": "البريد الإلكتروني للاتصال"
+        },
+        "contactnumber": {
+            "label": "رقم الاتصال",
+            "longlabel": "رقم الاتصال"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "createdby": {
+            "label": "من إعداد",
+            "longlabel": "من إعداد"
+        },
+        "job_function": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "creatorname": {
+            "label": "المؤلف",
+            "longlabel": "اسم المؤلف"
+        },
+        "createdon": {
+            "label": "تاريخ الإضافة",
+            "longlabel": "تاريخ الإضافة"
+        },
+        "updatedon": {
+            "label": "تاريخ التحديث",
+            "longlabel": "تاريخ التحديث"
+        },
+        "updatedby": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "jobpostingstatus": {
+            "label": "الإجراءات",
+            "longlabel": "حالة الإعلان عن الوظيفة"
+        },
+        "note": {
+            "label": "ملاحظة",
+            "longlabel": "ملاحظة"
+        },
+        "hiring_pipeline_id": {
+            "label": "مسار التوظيف",
+            "longlabel": "مسار التوظيف"
+        },
+        "hiring_pipeline_name": {
+            "label": "مسار التوظيف",
+            "longlabel": "مسار التوظيف"
+        },
+        "job_type": {
+            "label": "نوع الوظيفة",
+            "longlabel": "نوع الوظيفة"
+        },
+        "job_category": {
+            "label": "فئة الوظيفة",
+            "longlabel": "فئة الوظيفة"
+        },
+        "remote": {
+            "label": "نوع موقع العمل",
+            "longlabel": "نوع موقع العمل"
+        },
+        "hotlist": {
+            "label": "قائمة المفضلة",
+            "longlabel": "قائمة المفضلة"
+        },
+        "xml_feeds": {
+            "label": "موجزات XML",
+            "longlabel": "موجزات XML"
+        },
+        "targetcompanies": {
+            "label": "الشركات المستهدفة",
+            "longlabel": "الشركات المستهدفة"
+        },
+        "contactfirstname": {
+            "label": "الاسم الأول",
+            "longlabel": "الاسم الأول"
+        },
+        "contactlastname": {
+            "label": "اللقب",
+            "longlabel": "اللقب"
+        },
+        "postalcode": {
+            "label": "الرمز البريدي",
+            "longlabel": "الرمز البريدي"
+        },
+        "pay_rate": {
+            "label": "معدل الأجر",
+            "longlabel": "معدل الأجر"
+        },
+        "bill_rate": {
+            "label": "سعر الفاتورة",
+            "longlabel": "سعر الفاتورة"
+        },
+        "job_industry": {
+            "label": "مجال العمل",
+            "longlabel": "مجال العمل"
+        }
+    },
+    "list_of_candidates": {
+        "label": "قائمة المرشحين",
+        "longlabel": "قائمة المرشحين"
+    },
+    "job_candidate_pipeline": {
+        "candidatename": {
+            "label": "اسم المرشح",
+            "longlabel": "اسم المرشح"
+        },
+        "detailfilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "hiring_stage_remark": {
+            "label": "مرحلة التوظيف والملاحظة",
+            "longlabel": "مرحلة التوظيف والملاحظات"
+        },
+        "visibility": {
+            "label": "الوضوح",
+            "longlabel": "الوضوح"
+        },
+        "job_specific_details": {
+            "label": "تفاصيل الوظيفة",
+            "longlabel": "تفاصيل الوظيفة"
+        },
+        "interview": {
+            "label": "مقابلة",
+            "longlabel": "مقابلة"
+        },
+        "timesheet": {
+            "label": "جدول الدوام",
+            "longlabel": "جدول الدوام"
+        },
+        "placement": {
+            "label": "التوظيف",
+            "longlabel": "التوظيف"
+        },
+        "phone": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "email": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "accountid": {
+            "label": "رقم الحساب",
+            "longlabel": "رقم الحساب"
+        },
+        "accountlogo": {
+            "label": "شعار الحساب",
+            "longlabel": "شعار الحساب"
+        },
+        "accounttitle": {
+            "label": "اسم الحساب",
+            "longlabel": "اسم الحساب"
+        },
+        "address": {
+            "label": "العنوان الكامل",
+            "longlabel": "العنوان الكامل"
+        },
+        "age": {
+            "label": "العمر",
+            "longlabel": "عمر المرشح"
+        },
+        "authid": {
+            "label": "معرف المصادقة",
+            "longlabel": "معرف المصادقة"
+        },
+        "availablefrom": {
+            "label": "متوفر من",
+            "longlabel": "متوفر من"
+        },
+        "canaccess": {
+            "label": "يمكن الوصول",
+            "longlabel": "يمكن الوصول إليه"
+        },
+        "candidate_company_city": {
+            "label": "المنظمة الحالية - المدينة",
+            "longlabel": "المنظمة الحالية - المدينة"
+        },
+        "candidate_company_logo": {
+            "label": "المنظمة الحالية - الشعار",
+            "longlabel": "المنظمة الحالية - الشعار"
+        },
+        "candidate_company_slug": {
+            "label": "المنظمة الحالية - Slug",
+            "longlabel": "المنظمة الحالية - Slug"
+        },
+        "candidatedob": {
+            "label": "تاريخ الميلاد",
+            "longlabel": "تاريخ الميلاد"
+        },
+        "candidateterms": {
+            "label": "شروط المرشحين",
+            "longlabel": "شروط الترشح"
+        },
+        "city": {
+            "label": "المدينة",
+            "longlabel": "المدينة"
+        },
+        "contactnumber": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "country": {
+            "label": "البلد",
+            "longlabel": "البلد"
+        },
+        "createdby": {
+            "label": "من إعداد",
+            "longlabel": "من إعداد"
+        },
+        "createdbyname": {
+            "label": "تم إنشاؤها حسب الاسم",
+            "longlabel": "تم إنشاؤها حسب الاسم"
+        },
+        "createdon": {
+            "label": "تمت الإضافة في",
+            "longlabel": "تمت الإضافة في"
+        },
+        "currencycountry": {
+            "label": "العملة البلد",
+            "longlabel": "العملة البلد"
+        },
+        "currencyid": {
+            "label": "العملة",
+            "longlabel": "العملة"
+        },
+        "currentsalary": {
+            "label": "الراتب الحالي",
+            "longlabel": "الراتب الحالي"
+        },
+        "currentstatus": {
+            "label": "الحالة الوظيفية",
+            "longlabel": "الحالة الوظيفية الحالية"
+        },
+        "education_description": {
+            "label": "وصف البرنامج التعليمي",
+            "longlabel": "وصف البرنامج التعليمي"
+        },
+        "education_end_date": {
+            "label": "تاريخ انتهاء الدراسة",
+            "longlabel": "تاريخ انتهاء الدراسة"
+        },
+        "education_history": {
+            "label": "الخلفية التعليمية",
+            "longlabel": "الخلفية التعليمية"
+        },
+        "education_location": {
+            "label": "موقع المؤسسة التعليمية",
+            "longlabel": "موقع المؤسسة التعليمية"
+        },
+        "education_start_date": {
+            "label": "تاريخ بدء الدراسة",
+            "longlabel": "تاريخ بدء الدراسة"
+        },
+        "educational_qualification": {
+            "label": "المؤهلات العلمية",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "educational_specialization": {
+            "label": "التخصص التربوي",
+            "longlabel": "التخصص التربوي"
+        },
+        "eeocompliance": {
+            "label": "الالتزام بقوانين تكافؤ فرص العمل",
+            "longlabel": "الالتزام بقوانين تكافؤ فرص العمل"
+        },
+        "email_opt_out": {
+            "label": "إلغاء الاشتراك",
+            "longlabel": "إلغاء الاشتراك"
+        },
+        "emailid": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "employment_type": {
+            "label": "نوع الوظيفة",
+            "longlabel": "نوع الوظيفة"
+        },
+        "firstname": {
+            "label": "الاسم الأول",
+            "longlabel": "الاسم الأول للمرشح"
+        },
+        "gdprcompliance": {
+            "label": "الامتثال للائحة العامة لحماية البيانات (GDPR)",
+            "longlabel": "الامتثال للائحة العامة لحماية البيانات (GDPR)"
+        },
+        "genderid": {
+            "label": "النوع الاجتماعي",
+            "longlabel": "النوع الاجتماعي"
+        },
+        "grade": {
+            "label": "الصف",
+            "longlabel": "الصف"
+        },
+        "hotlist": {
+            "label": "قائمة المفضلة",
+            "longlabel": "قائمة المفضلة"
+        },
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "industry_id": {
+            "label": "نوع الصناعة",
+            "longlabel": "نوع الصناعة"
+        },
+        "institute_name": {
+            "label": "اسم المدرسة/الكلية",
+            "longlabel": "اسم المدرسة/الكلية"
+        },
+        "is_currently_working": {
+            "label": "يعمل حالياً",
+            "longlabel": "يعمل حالياً"
+        },
+        "jobapplicationsettings": {
+            "label": "إعدادات طلبات التوظيف",
+            "longlabel": "إعدادات طلبات التوظيف"
+        },
+        "languageskills": {
+            "label": "اللغة",
+            "longlabel": "المهارات اللغوية"
+        },
+        "last_calllog_created_on": {
+            "label": "تمت إضافة سجل المكالمات الأخيرة",
+            "longlabel": "تمت إضافة سجل المكالمات الأخيرة"
+        },
+        "last_communication_method": {
+            "label": "نوع الاتصال الأخير",
+            "longlabel": "نوع الاتصال الأخير"
+        },
+        "last_communication_timestamp": {
+            "label": "آخر اتصال",
+            "longlabel": "آخر اتصال"
+        },
+        "last_email_sent_on": {
+            "label": "آخر رسالة بريد إلكتروني تم إرسالها في",
+            "longlabel": "آخر رسالة بريد إلكتروني تم إرسالها في"
+        },
+        "last_meeting_created_on": {
+            "label": "آخر اجتماع تمت إضافته",
+            "longlabel": "آخر اجتماع تمت إضافته"
+        },
+        "last_message_sent_on": {
+            "label": "آخر رسالة تم إرسالها على LinkedIn في",
+            "longlabel": "آخر رسالة تم إرسالها على LinkedIn في"
+        },
+        "last_sms_sent_on": {
+            "label": "آخر رسالة نصية قصيرة تم إرسالها في",
+            "longlabel": "آخر رسالة نصية قصيرة تم إرسالها في"
+        },
+        "lastname": {
+            "label": "اللقب",
+            "longlabel": "اللقب"
+        },
+        "lastorganisation": {
+            "label": "المنظمة الحالية",
+            "longlabel": "المنظمة الحالية"
+        },
+        "locality": {
+            "label": "الموقع",
+            "longlabel": "الموقع"
+        },
+        "noticeperiod": {
+            "label": "فترة الإشعار",
+            "longlabel": "فترة الإشعار (بالأيام)"
+        },
+        "off_limit_status": {
+            "label": "حالة \"محظور\"",
+            "longlabel": "حالة \"محظور\""
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "ownerslug": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "position": {
+            "label": "العنوان",
+            "longlabel": "اللقب / المنصب"
+        },
+        "postal_code": {
+            "label": "الرمز البريدي",
+            "longlabel": "الرمز البريدي"
+        },
+        "proficiency_level": {
+            "label": "مستوى الكفاءة",
+            "longlabel": "مستوى الكفاءة"
+        },
+        "profilefacebook": {
+            "label": "ملف تعريف فيسبوك",
+            "longlabel": "ملف تعريف فيسبوك"
+        },
+        "profilegithub": {
+            "label": "ملف تعريف Github",
+            "longlabel": "ملف تعريف Github"
+        },
+        "profilelinkedin": {
+            "label": "الملف الشخصي على LinkedIn",
+            "longlabel": "الملف الشخصي على LinkedIn"
+        },
+        "profilepic": {
+            "label": "صورة الملف الشخصي",
+            "longlabel": "صورة الملف الشخصي"
+        },
+        "profiletwitter": {
+            "label": "ملف تعريف تويتر",
+            "longlabel": "ملف تعريف تويتر"
+        },
+        "profilexing": {
+            "label": "ملف Xing الشخصي",
+            "longlabel": "ملف Xing الشخصي"
+        },
+        "qualification": {
+            "label": "شهادة الاعتماد",
+            "longlabel": "شهادة الاعتماد"
+        },
+        "qualificationid": {
+            "label": "المؤهلات",
+            "longlabel": "المؤهلات العلمية"
+        },
+        "relevantexperience": {
+            "label": "الخبرة ذات الصلة",
+            "longlabel": "الخبرة ذات الصلة"
+        },
+        "requestresumelinkstatus": {
+            "label": "الاستعلام عن حالة رابط السيرة الذاتية",
+            "longlabel": "الاستعلام عن حالة رابط السيرة الذاتية"
+        },
+        "resume": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumeaddedon": {
+            "label": "تمت إضافة السيرة الذاتية في",
+            "longlabel": "تمت إضافة السيرة الذاتية في"
+        },
+        "resumefilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "resumetext": {
+            "label": "نص السيرة الذاتية",
+            "longlabel": "نص السيرة الذاتية"
+        },
+        "resumeupdatedon": {
+            "label": "تم تحديث الملف الشخصي من قِبل المرشح في",
+            "longlabel": "تم تحديث الملف الشخصي من قِبل المرشح في"
+        },
+        "resumeupdaterequestedon": {
+            "label": "تم إرسال طلب الاطلاع على الملف الشخصي في",
+            "longlabel": "تم إرسال طلب الاطلاع على الملف الشخصي في"
+        },
+        "salary": {
+            "label": "الراتب",
+            "longlabel": "الراتب"
+        },
+        "salaryexpectation": {
+            "label": "الراتب المتوقع",
+            "longlabel": "الراتب المتوقع"
+        },
+        "salarytype": {
+            "label": "نوع الراتب",
+            "longlabel": "نوع الراتب"
+        },
+        "skill": {
+            "label": "المهارات",
+            "longlabel": "المهارات"
+        },
+        "slug": {
+            "label": "الرخوة",
+            "longlabel": "الرخوة"
+        },
+        "source": {
+            "label": "المصدر",
+            "longlabel": "المصدر"
+        },
+        "specialization": {
+            "label": "التخصص",
+            "longlabel": "التخصص التربوي"
+        },
+        "srno": {
+            "label": "رقم الهوية",
+            "longlabel": "رقم المرشح"
+        },
+        "state": {
+            "label": "الدولة",
+            "longlabel": "الدولة"
+        },
+        "summary": {
+            "label": "ملخص",
+            "longlabel": "ملخص"
+        },
+        "symbol": {
+            "label": "رمز",
+            "longlabel": "رمز"
+        },
+        "title": {
+            "label": "الوظيفة",
+            "longlabel": "الوظيفة"
+        },
+        "unavailable": {
+            "label": "التوافر",
+            "longlabel": "التوافر"
+        },
+        "updatedon": {
+            "label": "تم التحديث في",
+            "longlabel": "تم التحديث في"
+        },
+        "willingtorelocate": {
+            "label": "مستعد للانتقال",
+            "longlabel": "مستعد للانتقال"
+        },
+        "work_company_name": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "work_description": {
+            "label": "وصف الوظيفة",
+            "longlabel": "وصف الوظيفة"
+        },
+        "work_end_date": {
+            "label": "تاريخ انتهاء العمل",
+            "longlabel": "تاريخ انتهاء العمل"
+        },
+        "work_history": {
+            "label": "الخبرة المهنية",
+            "longlabel": "الخبرة المهنية"
+        },
+        "work_location": {
+            "label": "مكان العمل",
+            "longlabel": "مكان العمل"
+        },
+        "work_start_date": {
+            "label": "تاريخ بدء العمل",
+            "longlabel": "تاريخ بدء العمل"
+        },
+        "workexpyr": {
+            "label": "الخبرة الإجمالية",
+            "longlabel": "الخبرة الإجمالية"
+        }
+    },
+    "entity_related_deals": {
+        "accountid": {
+            "label": "رقم الحساب",
+            "longlabel": "رقم الحساب"
+        },
+        "archived": {
+            "label": "محفوظ",
+            "longlabel": "محفوظ"
+        },
+        "candidatename": {
+            "label": "المرشح",
+            "longlabel": "المرشح"
+        },
+        "candidateslug": {
+            "label": "candidateslug",
+            "longlabel": "candidateslug"
+        },
+        "candidatetitle": {
+            "label": "العنوان",
+            "longlabel": "اللقب / المنصب"
+        },
+        "closedate": {
+            "label": "تاريخ الإغلاق",
+            "longlabel": "تاريخ الإغلاق"
+        },
+        "collaborator": {
+            "label": "المساهم",
+            "longlabel": "المساهم"
+        },
+        "companyname": {
+            "label": "الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "companyslug": {
+            "label": "اسم الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "createdby": {
+            "label": "من إعداد",
+            "longlabel": "من إعداد"
+        },
+        "createdbyname": {
+            "label": "تم إنشاؤها حسب الاسم",
+            "longlabel": "تم إنشاؤها حسب الاسم"
+        },
+        "createdon": {
+            "label": "تمت الإضافة في",
+            "longlabel": "تمت الإضافة في"
+        },
+        "dealpercentagevalue": {
+            "label": "القيمة المرجحة للصفقة",
+            "longlabel": "القيمة المرجحة للصفقة"
+        },
+        "dealstage": {
+            "label": "المرحلة",
+            "longlabel": "المرحلة"
+        },
+        "dealstagelabel": {
+            "label": "المرحلة",
+            "longlabel": "المرحلة"
+        },
+        "dealtype": {
+            "label": "نوع الصفقة",
+            "longlabel": "نوع الصفقة"
+        },
+        "dealtypelabel": {
+            "label": "نوع الصفقة",
+            "longlabel": "نوع الصفقة"
+        },
+        "dealvalue": {
+            "label": "قيمة الصفقة",
+            "longlabel": "قيمة الصفقة"
+        },
+        "id": {
+            "label": "رقم الهوية",
+            "longlabel": "رقم الهوية"
+        },
+        "jobname": {
+            "label": "وظيفة",
+            "longlabel": "اسم الوظيفة"
+        },
+        "jobslug": {
+            "label": "عنوان الوظيفة",
+            "longlabel": "عنوان الوظيفة"
+        },
+        "name": {
+            "label": "الاسم",
+            "longlabel": "اسم الصفقة"
+        },
+        "ownerid": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        },
+        "ownername": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "ownerslug": {
+            "label": "اسم المالك",
+            "longlabel": "اسم المالك"
+        },
+        "percentage": {
+            "label": "وزن المسرح",
+            "longlabel": "وزن المسرح"
+        },
+        "relatedcandidate": {
+            "label": "رقم المرشح",
+            "longlabel": "رقم المرشح"
+        },
+        "relatedcompany": {
+            "label": "رقم الشركة",
+            "longlabel": "رقم الشركة"
+        },
+        "relatedcontact": {
+            "label": "الاتصال",
+            "longlabel": "الاتصال"
+        },
+        "relatedjob": {
+            "label": "رقم الوظيفة",
+            "longlabel": "رقم الوظيفة"
+        },
+        "slug": {
+            "label": "الإجراءات",
+            "longlabel": "الرخوة"
+        },
+        "splitdealvalue": {
+            "label": "تقسيم مبلغ الصفقة",
+            "longlabel": "تقسيم مبلغ الصفقة"
+        },
+        "srno": {
+            "label": "رقم الهوية",
+            "longlabel": "رقم الصفقة"
+        },
+        "updatedby": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "updatedbyname": {
+            "label": "تم التحديث حسب الاسم",
+            "longlabel": "تم التحديث حسب الاسم"
+        },
+        "updatedon": {
+            "label": "تم التحديث في",
+            "longlabel": "تم التحديث في"
+        },
+        "website": {
+            "label": "الموقع الإلكتروني",
+            "longlabel": "الموقع الإلكتروني"
+        },
+        "weightedsplitdealvalue": {
+            "label": "المبلغ المرجح للصفقة المقسمة",
+            "longlabel": "المبلغ المرجح للصفقة المقسمة"
+        }
+    },
+    "hotlist_widget": {
+        "name": {
+            "label": "اسم قائمة المفضلة",
+            "longlabel": "اسم قائمة المفضلة"
+        },
+        "createdOn": {
+            "label": "تاريخ الإنشاء",
+            "longlabel": "تاريخ الإنشاء"
+        },
+        "updatedOn": {
+            "label": "تم التحديث في",
+            "longlabel": "تم التحديث في"
+        },
+        "ownerId": {
+            "label": "المالك",
+            "longlabel": "المالك"
+        }
+    },
+    "executive_search_report": {
+        "report_title": {
+            "label": "اسم التقرير",
+            "longlabel": "اسم التقرير"
+        },
+        "created_by": {
+            "label": "من إعداد",
+            "longlabel": "من إعداد"
+        },
+        "updated_by": {
+            "label": "تم تعديله بواسطة",
+            "longlabel": "تم تعديله بواسطة"
+        },
+        "updated_on": {
+            "label": "تاريخ التعديل",
+            "longlabel": "تاريخ التعديل"
+        }
+    },
+    "pitch_candidate": {
+        "name": {
+            "label": "اسم المرشح",
+            "longlabel": "اسم المرشح"
+        },
+        "pitchStage": {
+            "label": "مرحلة العرض والتعليق",
+            "longlabel": "مرحلة العرض والتعليق"
+        },
+        "phone": {
+            "label": "الهاتف",
+            "longlabel": "الهاتف"
+        },
+        "email": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "البريد الإلكتروني"
+        },
+        "resumefilename": {
+            "label": "السيرة الذاتية",
+            "longlabel": "السيرة الذاتية"
+        },
+        "contactName": {
+            "label": "الاتصال المباشر",
+            "longlabel": "الاتصال المباشر"
+        },
+        "createdByName": {
+            "label": "مقدم من",
+            "longlabel": "مقدم من"
+        },
+        "createdOn": {
+            "label": "تم عرضها",
+            "longlabel": "تم عرضها"
+        },
+        "candidateTitle": {
+            "label": "عنوان المرشح",
+            "longlabel": "اللقب / المنصب المرشح له"
+        },
+        "last_communication_timestamp": {
+            "label": "آخر اتصال مع المرشح",
+            "longlabel": "آخر اتصال مع المرشح"
+        }
+    },
+    "candidate_history": {
+        "id": {
+            "label": "المعرف",
+            "longlabel": "المعرف"
+        },
+        "name": {
+            "label": "الاسم",
+            "longlabel": "الاسم"
+        },
+        "updatedby": {
+            "label": "تم التحديث بواسطة",
+            "longlabel": "تم التحديث بواسطة"
+        },
+        "updatedon": {
+            "label": "تم التحديث في",
+            "longlabel": "تم التحديث في"
+        },
+        "candidatestatus": {
+            "label": "مرحلة التوظيف وتاريخها",
+            "longlabel": "مرحلة التوظيف وتاريخها"
+        },
+        "companycontactname": {
+            "label": "بيانات الاتصال بالشركة",
+            "longlabel": "بيانات الاتصال بالشركة"
+        }
+    },
+    "pitch_contact": {
+        "name": {
+            "label": "اسم الشخص المسؤول",
+            "longlabel": "اسم الشخص المسؤول"
+        },
+        "email": {
+            "label": "البريد الإلكتروني",
+            "longlabel": "عنوان البريد الإلكتروني للاتصال"
+        },
+        "phone": {
+            "label": "الهاتف",
+            "longlabel": "رقم الاتصال"
+        },
+        "pitchStage": {
+            "label": "مرحلة العرض والتعليق",
+            "longlabel": "مرحلة العرض والتعليق"
+        },
+        "companyName": {
+            "label": "الشركة",
+            "longlabel": "اسم الشركة"
+        },
+        "createdByName": {
+            "label": "مقدم من",
+            "longlabel": "مقدم من"
+        },
+        "createdOn": {
+            "label": "تم عرضها",
+            "longlabel": "تم عرضها"
+        },
+        "contactTitle": {
+            "label": "عنوان جهة الاتصال",
+            "longlabel": "عنوان جهة الاتصال"
+        },
+        "last_communication_timestamp": {
+            "label": "الاتصال آخر اتصال",
+            "longlabel": "الاتصال آخر اتصال"
+        }
+    }
+}

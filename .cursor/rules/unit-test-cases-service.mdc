@@ -1,0 +1,672 @@
+---
+description: This rule file must be applied when writing unit test cases for service classes, ensuring strict adherence to method naming conventions, checkstyle validations, and achieving comprehensive coverage for lines, branches, and methods.
+alwaysApply: false
+---
+## Unit Test Cases for Service Layer - Mandatory Rules
+
+### 🚨 CRITICAL CHECKSTYLE COMPLIANCE RULES
+
+#### 1. RegexpSinglelineJava Rule [STRICT ENFORCEMENT]
+**VIOLATION**: `Please use BDD-style (given, when, then) using BDDMockito imports. [RegexpSinglelineJava]`
+
+**❌ CHECKSTYLE VIOLATION:**
+```java
+// Arrange
+RequestDto request = TestDataFactory.createRequest();
+when(repository.findById(1)).thenReturn(Optional.of(entity));
+
+// Act
+ResponseDto result = service.method(request);
+
+// Assert
+assertThat(result).isNotNull();
+verify(repository).findById(1);
+```
+
+**✅ MANDATORY PATTERN:**
+```java
+// Given
+RequestDto request = TestDataFactory.createRequest();
+given(this.repository.findById(1)).willReturn(Optional.of(entity));
+
+// When
+ResponseDto result = this.service.method(request);
+
+// Then
+assertThat(result).isNotNull();
+then(this.repository).should().findById(1);
+```
+
+#### 2. RequireThis Rule [STRICT ENFORCEMENT]
+**VIOLATION**: `Reference to instance variable 'service' needs "this.". [RequireThis]`
+
+**❌ CHECKSTYLE VIOLATION:**
+```java
+@InjectMocks
+private Service service;
+
+@Test
+void testMethod() {
+    service.method();  // ❌ Missing this.
+    verify(repository).findById(1);  // ❌ Missing this.
+}
+```
+
+**✅ MANDATORY PATTERN:**
+```java
+@InjectMocks
+private Service service;
+
+@Test
+void testMethod() {
+    this.service.method();  // ✅ MUST USE this.
+    then(this.repository).should().findById(1);  // ✅ MUST USE this.
+}
+```
+
+#### 3. BDDMockito Import Requirements [STRICT ENFORCEMENT]
+**MANDATORY IMPORTS - NO EXCEPTIONS:**
+```java
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.BDDMockito.willDoNothing;
+// Remove these traditional Mockito imports:
+// import static org.mockito.Mockito.when;     ❌ FORBIDDEN
+// import static org.mockito.Mockito.verify;   ❌ FORBIDDEN
+// import static org.mockito.Mockito.doNothing; ❌ FORBIDDEN
+```
+
+#### 4. MockitoException Prevention [CRITICAL ERROR FIX]
+**VIOLATION**: `Only void methods can doNothing()!`
+
+**❌ COMMON ERROR:**
+```java
+// This will fail if saveBreakIntervals() returns List<TimeLogBreakInterval>
+willDoNothing().given(this.timeLogBreakIntervalRepository).saveBreakIntervals(anyList());
+```
+
+**✅ CORRECT APPROACH:**
+```java
+// Step 1: Check the method signature first
+// If method returns void: use willDoNothing()
+willDoNothing().given(this.repository).deleteById(1);
+
+// If method returns a value: use willReturn() with appropriate return value
+List<TimeLogBreakInterval> breakIntervals = TestDataFactory.createTimeLogBreakIntervalList();
+given(this.timeLogBreakIntervalRepository.saveBreakIntervals(anyList())).willReturn(breakIntervals);
+```
+
+**MANDATORY VERIFICATION PROCESS:**
+1. **Always check method signatures** before writing mocks
+2. **Void methods**: Use `willDoNothing().given(mock).method()`
+3. **Non-void methods**: Use `given(mock.method()).willReturn(value)`
+4. **Create test data** using TestDataFactory for return values
+
+**COMMON MOCKITO ERRORS TO AVOID:**
+- Using `willDoNothing()` on methods that return values
+- Using `willReturn()` on void methods
+- Not checking repository method signatures before mocking
+
+### 🔴 MANDATORY DTO AND ENTITY ANALYSIS [ZERO TOLERANCE]
+
+**CRITICAL REQUIREMENT**: Before writing ANY unit test cases for service classes, you MUST perform a comprehensive analysis of ALL DTOs and entities used by the service.
+
+#### 1. DTO Analysis - MANDATORY STEP
+**STRICT RULE**: Read and understand ALL DTOs used in the service class before writing tests.
+
+**Process**:
+1. **Identify ALL DTOs**: Scan service class imports for all `io.recruitcrm.microservice.timesheet.dto.*` imports
+2. **Read Each DTO**: Open and read EVERY DTO file to understand:
+   - Field names and types
+   - Validation annotations (@NotNull, @Valid, etc.)
+   - Builder patterns and constructors
+   - Nested DTOs and relationships
+3. **Document DTO Usage**: List all DTOs and their purpose in service methods
+4. **Test Data Requirements**: Understand what test data is needed for each DTO
+
+**Example Analysis**:
+```
+Service: TimesheetService
+DTOs Used:
+- CreateTimesheetRequestBodyDto: Input for timesheet creation
+- TimesheetListResponseBodyDto: Response for timesheet listing
+- TimesheetStatusHistoryResponseBodyDto: Response for status history
+- SearchRequestBodyDto: Input for search operations
+Required Test Data: Valid timesheet data, invalid data for validation testing
+```
+
+#### 2. Entity Analysis - MANDATORY STEP
+**STRICT RULE**: Read and understand ALL entities from `@/contract-staffing-entity-models` used in the service class.
+
+**Process**:
+1. **Identify ALL Entity Imports**: Scan service class for all `io.recruitcrm.contract_staffing.entity.model.*` imports
+2. **Read Each Entity**: Open and read EVERY entity file from `@/contract-staffing-entity-models` to understand:
+   - Entity relationships (@OneToMany, @ManyToOne, etc.)
+   - Field mappings and constraints
+   - Enum values and their meanings
+   - Business rules embedded in entities
+3. **Cross-Reference Dependencies**: Understand entity relationships and cascade operations
+4. **Mock Requirements**: Understand what entity mocks are needed for testing
+
+**Example Analysis**:
+```
+Service: TimesheetService
+Entities Used:
+- Timesheet: Main timesheet entity with approval relationships
+- TimesheetApproval: Approval status and workflow
+- TimeLog: Individual time entries
+- TimesheetSetting: Configuration settings
+Entity Dependencies: Timesheet -> TimesheetApproval, Timesheet -> TimeLog
+Mock Strategy: Mock entities with realistic relationships
+```
+
+#### 3. Import Path Requirements - MANDATORY
+**DTOs**: Must be imported from `io.recruitcrm.microservice.timesheet.dto.*`
+**Entities**: Must be imported from `io.recruitcrm.contract_staffing.entity.model.*`
+
+**VIOLATION EXAMPLES**:
+❌ Missing DTO analysis before writing tests
+❌ Using DTOs without understanding their validation rules
+❌ Mocking entities without understanding their relationships
+❌ Writing tests without reading the actual DTO/entity files
+
+#### 4. Enforcement and Penalties - ZERO TOLERANCE
+**CRITICAL**: Failure to complete DTO and Entity analysis will result in:
+- **Immediate test rejection**: Tests must be rewritten from scratch
+- **Build failure**: Tests that don't demonstrate DTO/Entity understanding will fail review
+- **Code review blocking**: Pull requests without proper analysis documentation will be rejected
+
+**PROOF OF ANALYSIS REQUIRED**:
+- Tests must demonstrate understanding of DTO field validation
+- Tests must show proper entity relationship mocking
+- Test data must reflect actual DTO/Entity constraints
+- Comments in tests must reference specific DTO/Entity properties
+
+### 1. Pre-Test Analysis - MANDATORY
+
+**AFTER completing DTO and Entity analysis, MUST analyze:**
+- **Service Interface**: Check `I[Service]` interface to understand method signatures and return types
+- **Business Logic**: Identify core business logic that requires testing
+- **Repository Dependencies**: Understand repository method calls and data flow
+- **Auth Integration**: Check if service uses Auth for account/user validation
+- **Exception Scenarios**: Identify ResourceNotFoundException and validation scenarios
+- **Transaction Boundaries**: Understand `@Transactional` methods
+
+### 2. Service Layer Test Coverage Strategy
+
+**MANDATORY test coverage for each service method:**
+- **One success case** with default test data (happy path)
+- **ResourceNotFoundException scenarios** for each entity validation
+- **Auth validation scenarios** (if applicable)
+- **Edge cases with different business logic** (e.g., empty lists, null values)
+- **Validation error scenarios** (if service performs validation)
+- **Transaction rollback scenarios** (if applicable)
+
+**🚨 CRITICAL: Private Method Coverage [ZERO TOLERANCE]**
+**MANDATORY RULE**: All private methods must achieve 100% line coverage through public method testing.
+
+**Requirements**:
+- **Complete Code Path Coverage**: Every line of code in every private method must be executed by at least one test case
+- **Branch Coverage**: All conditional branches (`if`, `else`, `switch`, `try/catch`) must be tested
+- **Edge Case Coverage**: All edge cases in private methods must be covered (empty collections, null values, boundary conditions)
+- **Exception Path Coverage**: All exception throwing paths in private methods must be tested
+- **Loop Coverage**: All loop variations (empty, single, multiple iterations) must be tested
+- **Enum Coverage**: All enum values and their code paths must be tested
+- **Complex Algorithm Coverage**: For complex algorithms, test all mathematical edge cases and boundary conditions
+
+**DO NOT test:**
+- Repository implementation details
+- Framework functionality (Spring transactions, etc.)
+- External dependencies beyond service scope
+
+### 3. Test File Structure and Naming
+
+- **Test File Location**: Must be in `src/test/java/io/recruitcrm/microservice/timesheet/services/[module]/`
+- **Test Class Name**: Must be `[Service]Tests` (e.g., `TimesheetServiceTests`)
+- **Test Method Naming**: Must be `test[MethodName][Scenario][ExpectedResult]`
+- **Package Structure**: Must match service package structure
+
+### 4. Test Class Annotations and Setup
+
+- **Required Annotations**: `@SpringBootTest(classes = TimesheetApplication.class)`
+- **Service Under Test**: Use `@InjectMocks` for service implementation
+- **Mock Dependencies**: Use `@Mock` for all repository and helper dependencies
+- **Setup Method**: Must initialize common mocks in `@BeforeEach` method
+
+### 🔴 ZERO TOLERANCE CHECKSTYLE VIOLATIONS
+
+#### STRICT RULE ENFORCEMENT - NO EXCEPTIONS:
+
+1. **RegexpSinglelineJava [CRITICAL]**: Must use BDD-style comments (Given, When, Then)
+   - **Error**: `Please use BDD-style (given, when, then) using BDDMockito imports. [RegexpSinglelineJava]`
+   - **Fix**: Use `// Given`, `// When`, `// Then` instead of `// Arrange`, `// Act`, `// Assert`
+
+2. **RequireThis [CRITICAL]**: Must use `this.` prefix for instance variables
+   - **Error**: `Reference to instance variable 'service' needs "this.". [RequireThis]`
+   - **Fix**: Use `this.service` instead of `service`
+
+3. **BDDMockito [CRITICAL]**: Must import and use BDDMockito methods
+   - **Error**: Using traditional Mockito methods instead of BDDMockito
+   - **Fix**: Use `given().willReturn()` and `then().should()` instead of `when().thenReturn()` and `verify()`
+
+### 5. MANDATORY BDD-Style Service Test Structure with CHECKSTYLE COMPLIANCE
+
+```java
+@SpringBootTest(classes = TimesheetApplication.class)
+class [Service]Tests {
+    
+    @InjectMocks
+    private [Service] service;
+    
+    @Mock
+    private [Repository] repository;
+    
+    @Mock
+    private Auth auth;
+    
+    @Mock
+    private [Helper] helper;
+    
+    @BeforeEach
+    void setUp() {
+        // Common setup for auth and default mocks
+        given(this.auth.getAccountId()).willReturn(1);
+    }
+    
+    @Test
+    @DisplayName("Create [entity] should return success response")
+    void testCreate[Entity]ValidRequestReturnsSuccess() {
+        // Given - CHECKSTYLE COMPLIANT COMMENT STYLE
+        RequestDto request = [Module]TestDataFactory.createRequest();
+        Entity entity = [Module]TestDataFactory.createEntity();
+        ResponseDto expectedResponse = [Module]TestDataFactory.createResponse();
+        
+        given(this.repository.findById(anyInt())).willReturn(Optional.of(entity));  // ✅ BDDMockito
+        given(this.repository.save(any())).willReturn(entity);  // ✅ BDDMockito
+        given(this.mapper.toDto(entity)).willReturn(expectedResponse);  // ✅ BDDMockito
+        
+        // When - CHECKSTYLE COMPLIANT COMMENT STYLE
+        ResponseDto result = this.service.create(request);  // ✅ RequireThis
+        
+        // Then - CHECKSTYLE COMPLIANT COMMENT STYLE
+        assertThat(result).isEqualTo(expectedResponse);
+        then(this.repository).should().findById(anyInt());  // ✅ BDDMockito + RequireThis
+        then(this.repository).should().save(any());  // ✅ BDDMockito + RequireThis
+        then(this.mapper).should().toDto(entity);  // ✅ BDDMockito + RequireThis
+    }
+    
+    @Test
+    @DisplayName("Create [entity] should throw ResourceNotFoundException when entity not found")
+    void testCreate[Entity]EntityNotFoundThrowsResourceNotFoundException() {
+        // Given - CHECKSTYLE COMPLIANT COMMENT STYLE
+        RequestDto request = [Module]TestDataFactory.createRequest();
+        
+        given(this.repository.findById(anyInt())).willReturn(Optional.empty());  // ✅ BDDMockito
+        
+        // When & Then - CHECKSTYLE COMPLIANT COMMENT STYLE
+        assertThatThrownBy(() -> this.service.create(request))  // ✅ RequireThis
+            .isInstanceOf(ResourceNotFoundException.class)
+            .hasMessageContaining("[Entity] id 1 not found.");
+        
+        then(this.repository).should().findById(anyInt());  // ✅ BDDMockito + RequireThis
+        then(this.repository).should(never()).save(any());  // ✅ BDDMockito + RequireThis
+    }
+}
+```
+
+### 6. Test Data Factory Integration [STRICT — ZERO TOLERANCE]
+
+- **MANDATORY**: Must use separate TestDataFactory class in `testdata` package
+- **Import**: Must import TestDataFactory from `io.recruitcrm.microservice.timesheet.testdata`
+- **NO Embedded Classes**: Never embed TestDataFactory classes inside test classes
+- **Factory Methods**: Use factory methods for ALL test data creation
+- **NO Private Helpers**: NEVER create private helper methods in test classes for constructing entities or DTOs — these MUST be factory methods in the `[Entity]TestDataFactory`
+- **NO Inline Construction**: NEVER use `new Entity()` followed by setters directly in test methods — always delegate to a factory method
+- **Missing Method?**: If a factory method doesn't exist yet, add it to the factory FIRST, then use it in the test
+- **Reference**: See `[Test Data Factory Rules](mdc:.cursor/rules/test-data-factory.mdc)` for full enforcement details
+
+### 7. Required Test Scenarios (MINIMUM)
+
+**For each service method, write tests for:**
+
+#### 7.1 CRUD Operations
+- **Create**: Success case, entity not found, validation errors
+- **Read**: Success case, entity not found, auth validation
+- **Update**: Success case, entity not found, validation errors
+- **Delete**: Success case, entity not found, auth validation
+
+#### 7.2 Business Logic Methods
+- **Success Path**: Using default TestDataFactory data
+- **Resource Not Found**: For each entity dependency
+- **Auth Validation**: If method uses Auth service
+- **Edge Cases**: Empty lists, null values, boundary conditions
+
+#### 7.3 Common Service Test Patterns
+```java
+// Success case
+@Test
+@DisplayName("Method should return success response")
+void testMethodValidRequestReturnsSuccess() {
+    // Given
+    RequestDto request = TestDataFactory.createRequest();
+    given(this.repository.findById(1)).willReturn(Optional.of(entity));
+    
+    // When
+    ResponseDto result = this.service.method(request);
+    
+    // Then
+    assertThat(result).isNotNull();
+    then(this.repository).should().findById(1);
+}
+
+// Resource not found
+@Test
+@DisplayName("Method should throw ResourceNotFoundException when entity not found")
+void testMethodEntityNotFoundThrowsResourceNotFoundException() {
+    // Given
+    RequestDto request = TestDataFactory.createRequest();
+    given(this.repository.findById(1)).willReturn(Optional.empty());
+    
+    // When & Then
+    assertThatThrownBy(() -> this.service.method(request))
+        .isInstanceOf(ResourceNotFoundException.class)
+        .hasMessageContaining("[Entity] id 1 not found.");
+}
+
+// Auth validation
+@Test
+@DisplayName("Method should throw ResourceNotFoundException when auth validation fails")
+void testMethodAuthValidationFailsThrowsResourceNotFoundException() {
+    // Given
+    RequestDto request = TestDataFactory.createRequest();
+    given(this.auth.getAccountId()).willReturn(1);
+    given(this.repository.existsByIdAndAccountId(1, 1)).willReturn(false);
+    
+    // When & Then
+    assertThatThrownBy(() -> this.service.method(request))
+        .isInstanceOf(ResourceNotFoundException.class)
+        .hasMessageContaining("[Entity] id 1 not found.");
+}
+```
+
+### 8. Mock Verification Patterns
+
+**MANDATORY BDD-style verification:**
+```java
+// ✅ CORRECT - BDDMockito pattern
+then(this.repository).should().findById(1);
+then(this.repository).should().save(any());
+then(this.repository).should(never()).delete(any());
+
+// ❌ FORBIDDEN - Traditional Mockito pattern
+verify(this.repository).findById(1);
+verify(this.repository).save(any());
+verify(this.repository, never()).delete(any());
+```
+
+### 9. Exception Testing Patterns
+
+**MANDATORY exception testing pattern:**
+```java
+@Test
+@DisplayName("Method should throw [ExceptionType] when [condition]")
+void testMethod[Condition]Throws[ExceptionType]() {
+    // Given
+    RequestDto request = TestDataFactory.createRequest();
+    given(this.repository.findById(1)).willReturn(Optional.empty());
+    
+    // When & Then
+    assertThatThrownBy(() -> this.service.method(request))
+        .isInstanceOf(ResourceNotFoundException.class)
+        .hasMessageContaining("Expected message");
+        
+    then(this.repository).should().findById(1);
+}
+```
+
+### 10. Auth Integration Testing
+
+**For services using Auth, MANDATORY tests:**
+```java
+@BeforeEach
+void setUp() {
+    // Setup auth mock in all test methods
+    given(this.auth.getAccountId()).willReturn(1);
+}
+
+@Test
+@DisplayName("Method should validate account access")
+void testMethodValidatesAccountAccess() {
+    // Given
+    RequestDto request = TestDataFactory.createRequest();
+    given(this.repository.existsByIdAndAccountId(1, 1)).willReturn(true);
+    
+    // When
+    this.service.method(request);
+    
+    // Then
+    then(this.auth).should().getAccountId();
+    then(this.repository).should().existsByIdAndAccountId(1, 1);
+}
+```
+
+### 11. Transaction Testing
+
+**For @Transactional methods, test:**
+```java
+@Test
+@DisplayName("Method should handle transaction rollback on exception")
+void testMethodHandlesTransactionRollback() {
+    // Given
+    RequestDto request = TestDataFactory.createRequest();
+    given(this.repository.save(any())).willThrow(new RuntimeException("Database error"));
+    
+    // When & Then
+    assertThatThrownBy(() -> this.service.method(request))
+        .isInstanceOf(RuntimeException.class)
+        .hasMessageContaining("Database error");
+        
+    then(this.repository).should().save(any());
+}
+```
+
+### 12. Test Method Annotations
+
+- **@Test**: All test methods must have `@Test` annotation
+- **@DisplayName**: All test methods must have descriptive `@DisplayName` annotations
+- **@Transactional**: Use only when testing transaction behavior
+
+### 13. What NOT to Test
+
+- **Repository Implementation**: Don't test repository query logic
+- **Framework Functionality**: Don't test Spring transaction management
+- **External Dependencies**: Don't test external service calls
+- **Mapping Logic**: Don't test mapper implementation details (unless complex business logic)
+- **Multiple Data Scenarios**: Don't test different data unless business logic changes
+
+### 🚨 CRITICAL: What IS MANDATORY to Analyze (But Not Test)
+
+**MUST READ AND UNDERSTAND (But don't unit test the implementation):**
+- **All DTOs**: Read every DTO file to understand structure, validation, and relationships
+- **All Entities**: Read every entity file from `@/contract-staffing-entity-models` to understand relationships and constraints
+- **DTO-Entity Mapping**: Understand how DTOs map to entities in the service
+- **Entity Cascades**: Understand cascade operations and their implications for mocking
+- **Validation Rules**: Understand what validation rules apply to each DTO field
+
+**PURPOSE**: This analysis ensures your test mocks are realistic and your test data reflects actual business constraints.
+
+### 🚨 PRE-COMMIT CHECKSTYLE VALIDATION CHECKLIST
+
+Before committing any service test code, verify:
+- [ ] **MANDATORY DTO ANALYSIS COMPLETED**: All DTOs from `io.recruitcrm.microservice.timesheet.dto.*` have been read and analyzed
+- [ ] **MANDATORY ENTITY ANALYSIS COMPLETED**: All entities from `io.recruitcrm.contract_staffing.entity.model.*` have been read and analyzed from `@/contract-staffing-entity-models`
+- [ ] **DTO UNDERSTANDING VERIFIED**: Field validation rules, relationships, and test data requirements documented
+- [ ] **ENTITY UNDERSTANDING VERIFIED**: Relationships, constraints, and mock requirements documented
+- [ ] BDD-style comments used (`// Given`, `// When`, `// Then`) - RegexpSinglelineJava compliance
+- [ ] `this.` prefix used for all instance variables - RequireThis compliance
+- [ ] BDDMockito imports and methods used (`given`, `then`, `willReturn`, `should`) - BDDMockito compliance
+- [ ] TestDataFactory in separate file in testdata package
+- [ ] All public service methods tested
+- [ ] ResourceNotFoundException scenarios covered
+- [ ] Auth validation scenarios covered (if applicable)
+- [ ] No traditional Mockito methods (`when`, `verify`, `doNothing`)
+
+### 14. Analysis Template
+
+Before writing service tests, complete this analysis:
+```
+Service: [ServiceName]
+Interface: I[ServiceName]
+
+=== MANDATORY DTO ANALYSIS ===
+DTOs Used: [List all io.recruitcrm.microservice.timesheet.dto.* imports]
+DTO Details: [For each DTO, document fields, validation, purpose]
+Test Data Strategy: [How to create valid/invalid test data for each DTO]
+
+=== MANDATORY ENTITY ANALYSIS ===
+Entities Used: [List all io.recruitcrm.contract_staffing.entity.model.* imports]
+Entity Relationships: [Document @OneToMany, @ManyToOne relationships]
+Entity Constraints: [Document validation rules and business constraints]
+Mock Strategy: [How to mock each entity with realistic data]
+
+=== SERVICE ANALYSIS ===
+Dependencies: [List all @Mock dependencies]
+Auth Integration: [Yes/No - check if service uses Auth]
+Transaction Methods: [List @Transactional methods]
+Public Methods: [List all public methods to test]
+Business Logic: [Identify core business logic]
+Exception Scenarios: [List ResourceNotFoundException scenarios]
+Required Tests: [List minimum tests needed]
+Checkstyle Compliance: [Verify BDD-style, RequireThis, BDDMockito usage]
+```
+
+### 15. Complete Service Test Class Structure with STRICT CHECKSTYLE COMPLIANCE
+
+```java
+package io.recruitcrm.microservice.timesheet.services.[module];
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.BDDMockito.given;    // ✅ MANDATORY BDDMockito
+import static org.mockito.BDDMockito.then;     // ✅ MANDATORY BDDMockito
+import static org.mockito.BDDMockito.willDoNothing;  // ✅ MANDATORY BDDMockito
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.never;
+
+import io.recruitcrm.microservice.TimesheetApplication;
+import io.recruitcrm.microservice.timesheet.dto.[module].[RequestDto];
+import io.recruitcrm.microservice.timesheet.dto.[module].[ResponseDto];
+import io.recruitcrm.microservice.timesheet.exceptions.ResourceNotFoundException;
+import io.recruitcrm.microservice.timesheet.helpers.Auth;
+import io.recruitcrm.microservice.timesheet.repositories.[module].[Repository];
+import io.recruitcrm.microservice.timesheet.testdata.[Module]TestDataFactory;
+import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest(classes = TimesheetApplication.class)
+class [Service]Tests {
+    
+    @InjectMocks
+    private [Service] service;
+    
+    @Mock
+    private [Repository] repository;
+    
+    @Mock
+    private Auth auth;
+    
+    @BeforeEach
+    void setUp() {
+        // ✅ RequireThis compliance - MANDATORY
+        given(this.auth.getAccountId()).willReturn(1);
+    }
+    
+    @Test
+    @DisplayName("Create [entity] should return success response")
+    void testCreate[Entity]ValidRequestReturnsSuccess() {
+        // Given - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        RequestDto request = [Module]TestDataFactory.createRequest();
+        Entity entity = [Module]TestDataFactory.createEntity();
+        ResponseDto expectedResponse = [Module]TestDataFactory.createResponse();
+        
+        given(this.repository.findById(anyInt())).willReturn(Optional.of(entity));  // ✅ BDDMockito + RequireThis
+        given(this.repository.save(any())).willReturn(entity);  // ✅ BDDMockito + RequireThis
+        
+        // When - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        ResponseDto result = this.service.create(request);  // ✅ RequireThis
+        
+        // Then - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        assertThat(result).isEqualTo(expectedResponse);
+        then(this.repository).should().findById(anyInt());  // ✅ BDDMockito + RequireThis
+        then(this.repository).should().save(any());  // ✅ BDDMockito + RequireThis
+    }
+    
+    @Test
+    @DisplayName("Create [entity] should throw ResourceNotFoundException when entity not found")
+    void testCreate[Entity]EntityNotFoundThrowsResourceNotFoundException() {
+        // Given - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        RequestDto request = [Module]TestDataFactory.createRequest();
+        
+        given(this.repository.findById(anyInt())).willReturn(Optional.empty());  // ✅ BDDMockito + RequireThis
+        
+        // When & Then - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        assertThatThrownBy(() -> this.service.create(request))  // ✅ RequireThis
+            .isInstanceOf(ResourceNotFoundException.class)
+            .hasMessageContaining("[Entity] id 1 not found.");
+        
+        then(this.repository).should().findById(anyInt());  // ✅ BDDMockito + RequireThis
+        then(this.repository).should(never()).save(any());  // ✅ BDDMockito + RequireThis
+    }
+    
+    @Test
+    @DisplayName("Delete [entity] should delete successfully")
+    void testDelete[Entity]ValidRequestDeletesSuccessfully() {
+        // Given - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        Integer entityId = 1;
+        
+        given(this.repository.existsByIdAndAccountId(entityId, 1)).willReturn(true);  // ✅ BDDMockito + RequireThis
+        willDoNothing().given(this.repository).deleteById(entityId);  // ✅ BDDMockito + RequireThis
+        
+        // When - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        this.service.delete(entityId);  // ✅ RequireThis
+        
+        // Then - ✅ BDD-style comment - CHECKSTYLE COMPLIANT
+        then(this.auth).should().getAccountId();  // ✅ BDDMockito + RequireThis
+        then(this.repository).should().existsByIdAndAccountId(entityId, 1);  // ✅ BDDMockito + RequireThis
+        then(this.repository).should().deleteById(entityId);  // ✅ BDDMockito + RequireThis
+    }
+}
+```
+
+### 16. Forbidden Patterns - AUTOMATIC REJECTION
+
+- **❌ NO Traditional Mockito**: Using `when().thenReturn()` or `verify()` (must use BDDMockito)
+- **❌ NO Arrange/Act/Assert**: Using traditional AAA comments (must use Given/When/Then)
+- **❌ NO Missing this.**: Direct instance variable access (must use `this.`)
+- **❌ NO Framework Testing**: Testing Spring transaction management or JPA functionality
+- **❌ NO Repository Testing**: Testing repository query implementation
+- **❌ NO Embedded Factories**: TestDataFactory as inner class in test files
+- **❌ NO Multiple Data Scenarios**: Testing different data unless business logic changes
+
+### 17. Service-Specific Coverage Requirements
+
+**MANDATORY coverage for all service classes:**
+- **100% method coverage**: All public methods must be tested
+- **Branch coverage**: All conditional logic paths must be tested
+- **Exception coverage**: All exception scenarios must be tested
+- **Auth integration coverage**: All auth-related validations must be tested
+- **Repository interaction coverage**: All repository method calls must be verified
+
+These rules ensure 100% checkstyle compliance and comprehensive business logic testing while maintaining strict code quality standards across the entire project. Any violation of these checkstyle rules will result in build failure.
+description:
+globs:
+alwaysApply: false
+---
+
+

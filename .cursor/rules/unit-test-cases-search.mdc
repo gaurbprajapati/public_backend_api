@@ -1,0 +1,1263 @@
+# Unit Test Cases for Search Package - Mandatory Rules
+
+## 🚨 QUICK REFERENCE: NodeFactory Coverage Checklist
+
+**BEFORE writing ANY NodeFactory tests, complete this checklist:**
+
+1. **Read entire `NodeFactory.java`** - Identify ALL 8 switch statements
+2. **List ALL cases** - Total 54 cases across all switch statements
+3. **Identify field variants** - Some fields have multiple names (e.g., `timesheet_status`, `timesheetStatus`)
+4. **Identify routing paths** - Contractor vs non-contractor groupType routing
+5. **Write tests systematically** - One test per case
+6. **Verify coverage** - Run coverage report and ensure 100% coverage
+
+**Complete switch statement list:**
+- `createTimesheetPeriodFilterNode` - 11 cases
+- `createAssociatedDealFilterNode` - 7 cases
+- `createJobFilterNode` - 7 cases
+- `createTimesheetStatusFilterNode` - 7 cases
+- `createCompanyFilterNode` - 7 cases
+- `createAddedOnFilterNode` - 6 cases
+- `createContractorDealFilterNode` - 7 cases
+- `createStatusFilterNode` - 2 cases
+
+**See Section 3.4 for complete systematic checklist.**
+
+---
+
+## 🎯 SEARCH PACKAGE TESTING PHILOSOPHY [MANDATORY]
+
+### 🚨 CRITICAL: Switch Statement Coverage [ZERO TOLERANCE]
+
+**MANDATORY RULE**: For ANY class with switch statements (especially `NodeFactory`), you MUST achieve 100% branch coverage by testing EVERY case branch, including:
+- ✅ Every `case` statement in every switch
+- ✅ Every `default` case (exception paths)
+- ✅ All conditional branches within switch cases
+
+**Why Critical**: Switch statements are common sources of uncovered code. Missing a single case means incomplete coverage and potential bugs.
+
+**Verification Process**:
+1. Run coverage: `mvn clean test jacoco:report -Dtest="[TestClass]Tests"`
+2. Open coverage report: `target/site/jacoco/index.html`
+3. Check switch statements: Every case must show green (covered)
+4. Check default cases: Every default must show green (covered)
+
+**Common Mistakes to Avoid**:
+- ❌ Testing only one or two cases from a switch statement
+- ❌ Missing `default` case tests
+- ❌ Assuming all cases are covered when only some are tested
+- ❌ Not verifying coverage report after adding tests
+
+**Before submitting any test code with switch statements, verify:**
+- [ ] Every `case` branch is tested
+- [ ] Every `default` branch is tested
+- [ ] Coverage report shows 100% branch coverage for switch statements
+- [ ] All exception paths are tested
+
+### 1. Search Package Components Overview
+
+The search package consists of:
+- **Filter Nodes**: Individual filter implementations (e.g., `IsLessThanFilterNode`, `IsMoreThanFilterNode`)
+- **AST Builder**: Builds abstract syntax tree from filter DTOs (`FilterSearchASTBuilder`)
+- **Node Factory**: Creates filter nodes based on filter type and field (`NodeFactory`)
+- **Constants**: Enums for filter types, date values, group types (`FilterTypes`, `DateIsFilterValue`, etc.)
+- **Helpers**: Utility classes for date handling, field conditions, JOOQ field types (`DateHelper`, `FieldConditionSpecifications`, `JooqFieldTypeUtils`)
+- **CTE Providers**: Common table expression providers for search queries (`TimesheetFilterSearchCteProvider`, `ContractorFilterSearchCteProvider`)
+
+### 2. Filter Node Testing Strategy - MANDATORY APPROACH
+
+#### 2.1 Filter Node Test Structure
+
+**Filter nodes are pure logic classes that:**
+- Parse filter values from `FilterDto`
+- Generate JOOQ `Condition` objects based on filter logic
+- Handle edge cases (null values, invalid formats, etc.)
+- Apply GMT offset adjustments for date/time filters
+
+**Test Pattern for Filter Nodes:**
+```java
+@ExtendWith(MockitoExtension.class)
+class [FilterNode]Tests {
+    
+    private FilterNodeContext filterNodeContext;
+    private FilterDto filterDto;
+    
+    @BeforeEach
+    void setUp() {
+        this.filterDto = new FilterDto();
+        this.filterNodeContext = new FilterNodeContext();
+        this.filterNodeContext.setFilterDto(this.filterDto);
+        this.filterNodeContext.setAccountId(1);
+        this.filterNodeContext.setGmtDifference("+00:00");
+    }
+    
+    @Test
+    @DisplayName("Get filter conditions should return correct condition for valid filter value")
+    void testGetFilterConditionsValidFilterValueReturnsCorrectCondition() {
+        // Given
+        this.filterDto.setFilterValue("10");
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Condition> conditions = filterNode.getFilterConditions();
+        
+        // Then
+        assertThat(conditions).isNotEmpty();
+        assertThat(conditions.size()).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("Get filter conditions should return false condition for invalid filter value")
+    void testGetFilterConditionsInvalidFilterValueReturnsFalseCondition() {
+        // Given
+        this.filterDto.setFilterValue("invalid");
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Condition> conditions = filterNode.getFilterConditions();
+        
+        // Then
+        assertThat(conditions).isNotEmpty();
+        // Verify it returns falseCondition() for invalid input
+    }
+    
+    @Test
+    @DisplayName("Get filter conditions should handle null filter value")
+    void testGetFilterConditionsNullFilterValueHandlesCorrectly() {
+        // Given
+        this.filterDto.setFilterValue(null);
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Condition> conditions = filterNode.getFilterConditions();
+        
+        // Then
+        assertThat(conditions).isNotEmpty();
+        // Verify null handling
+    }
+    
+    @Test
+    @DisplayName("Is select distinct should return correct value")
+    void testIsSelectDistinctReturnsCorrectValue() {
+        // Given
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        Boolean isDistinct = filterNode.isSelectDistinct();
+        
+        // Then
+        assertThat(isDistinct).isNotNull();
+    }
+}
+```
+
+#### 2.2 Date/Time Filter Node Testing (GMT Offset Handling)
+
+**For filters that handle dates/times (e.g., `IsLessThanFilterNode`, `IsMoreThanFilterNode`, `IsBetweenFilterNode`):**
+
+```java
+@Test
+@DisplayName("Get filter conditions should apply GMT offset correctly")
+void testGetFilterConditionsAppliesGmtOffsetCorrectly() {
+    // Given
+    this.filterDto.setFilterValue("10");
+    this.filterNodeContext.setGmtDifference("+05:30"); // IST timezone
+    IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+    
+    // When
+    List<Condition> conditions = filterNode.getFilterConditions();
+    
+    // Then
+    assertThat(conditions).isNotEmpty();
+    // Verify GMT offset is applied in condition calculation
+}
+
+@Test
+@DisplayName("Get filter conditions should use default GMT offset when null")
+void testGetFilterConditionsNullGmtDifferenceUsesDefaultOffset() {
+    // Given
+    this.filterDto.setFilterValue("10");
+    this.filterNodeContext.setGmtDifference(null);
+    IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+    
+    // When
+    List<Condition> conditions = filterNode.getFilterConditions();
+    
+    // Then
+    assertThat(conditions).isNotEmpty();
+    // Verify default "+00:00" is used
+}
+```
+
+#### 2.3 Filter Value Parsing Testing
+
+**For filters that parse numeric values (e.g., days, epoch timestamps):**
+
+```java
+@Test
+@DisplayName("Parse filter value should handle integer string")
+void testParseFilterValueIntegerStringHandlesCorrectly() {
+    // Given
+    this.filterDto.setFilterValue("10");
+    IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+    
+    // When
+    List<Condition> conditions = filterNode.getFilterConditions();
+    
+    // Then
+    assertThat(conditions).isNotEmpty();
+}
+
+@Test
+@DisplayName("Parse filter value should handle JSON number")
+void testParseFilterValueJsonNumberHandlesCorrectly() {
+    // Given
+    this.filterDto.setFilterValue("10"); // JSON number as string
+    IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+    
+    // When
+    List<Condition> conditions = filterNode.getFilterConditions();
+    
+    // Then
+    assertThat(conditions).isNotEmpty();
+}
+
+@Test
+@DisplayName("Parse filter value should handle negative values")
+void testParseFilterValueNegativeValueReturnsFalseCondition() {
+    // Given
+    this.filterDto.setFilterValue("-5");
+    IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+    
+    // When
+    List<Condition> conditions = filterNode.getFilterConditions();
+    
+    // Then
+    assertThat(conditions).isNotEmpty();
+    // Verify negative values are rejected (return falseCondition)
+}
+```
+
+### 3. NodeFactory Testing Strategy
+
+#### 3.1 NodeFactory Test Pattern
+
+**NodeFactory creates filter nodes based on filter type and dbField:**
+
+```java
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
+class NodeFactoryTests {
+    
+    private NodeFactory nodeFactory;
+    private final Integer accountId = 1;
+    private final String gmtDifference = "+05:30";
+    
+    @BeforeEach
+    void setUp() {
+        this.nodeFactory = new NodeFactory(this.accountId, this.gmtDifference);
+    }
+    
+    @Test
+    @DisplayName("Create filter node should create correct filter node for timesheet period IS_LESS_THAN")
+    void testCreateFilterNodeTimesheetPeriodIsLessThanCreatesCorrectNode() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("timesheetPeriod");
+        filterDto.setFilterType(FilterTypes.IS_LESS_THAN);
+        filterDto.setFilterValue("10");
+        filterDto.setGroupType("AND");
+        
+        // When
+        FilterNode filterNode = this.nodeFactory.createFilterNode(filterDto);
+        
+        // Then
+        assertThat(filterNode).isNotNull();
+        assertThat(filterNode.getFilterNodeImpl().getClass().getSimpleName()).isEqualTo("IsLessThanFilterNode");
+    }
+    
+    @Test
+    @DisplayName("Create filter node should create correct filter node for timesheet period IS_MORE_THAN")
+    void testCreateFilterNodeTimesheetPeriodIsMoreThanCreatesCorrectNode() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("timesheetPeriod");
+        filterDto.setFilterType(FilterTypes.IS_MORE_THAN);
+        filterDto.setFilterValue("10");
+        filterDto.setGroupType("AND");
+        
+        // When
+        FilterNode filterNode = this.nodeFactory.createFilterNode(filterDto);
+        
+        // Then
+        assertThat(filterNode).isNotNull();
+        assertThat(filterNode.getFilterNodeImpl().getClass().getSimpleName()).isEqualTo("IsMoreThanFilterNode");
+    }
+    
+    @Test
+    @DisplayName("Create filter node should set accountId and gmtDifference in FilterNodeContext")
+    void testCreateFilterNodeSetsContext() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("added_on");
+        filterDto.setFilterType(FilterTypes.IS);
+        filterDto.setFilterValue("TODAY");
+        filterDto.setGroupType("AND");
+        
+        // When
+        FilterNode result = this.nodeFactory.createFilterNode(filterDto);
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.getFilterNodeContext().getAccountId()).isEqualTo(this.accountId);
+        assertThat(result.getFilterNodeContext().getGmtDifference()).isEqualTo(this.gmtDifference);
+        assertThat(result.getFilterNodeContext().getFilterDto()).isEqualTo(filterDto);
+    }
+    
+    @Test
+    @DisplayName("Create filter node should throw exception for unknown dbField")
+    void testCreateFilterNodeUnknownDbFieldThrowsException() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("unknown_field");
+        filterDto.setFilterType(FilterTypes.IS);
+        filterDto.setFilterValue("test");
+        filterDto.setGroupType("AND");
+        
+        // When & Then
+        assertThatThrownBy(() -> this.nodeFactory.createFilterNode(filterDto))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("Unknown dbField");
+    }
+    
+    @Test
+    @DisplayName("Create group conjoint node should create GroupANDNode for AND operator")
+    void testCreateGroupConjointNodeForAND() {
+        // Given
+        // When
+        GroupConjointNode result = this.nodeFactory.createGroupConjointNode("AND");
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).isInstanceOf(GroupANDNode.class);
+    }
+    
+    @Test
+    @DisplayName("Create group conjoint node should create GroupORNode for OR operator")
+    void testCreateGroupConjointNodeForOR() {
+        // Given
+        // When
+        GroupConjointNode result = this.nodeFactory.createGroupConjointNode("OR");
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).isInstanceOf(GroupORNode.class);
+    }
+    
+    @Test
+    @DisplayName("Create group conjoint node should handle case-insensitive matching")
+    void testCreateGroupConjointNodeCaseInsensitiveMatching() {
+        // Given
+        // When
+        GroupConjointNode result = this.nodeFactory.createGroupConjointNode("and");
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).isInstanceOf(GroupANDNode.class);
+    }
+}
+```
+
+#### 3.2 NodeFactory Coverage Requirements - MANDATORY 100% COVERAGE
+
+**🚨 CRITICAL: Switch Statement Coverage [ZERO TOLERANCE]**
+
+**MANDATORY RULE**: Before writing ANY NodeFactory tests, you MUST:
+1. **Read the entire `NodeFactory.java` file** to identify ALL switch statements
+2. **List ALL switch cases** for each method
+3. **Create a test for EVERY case** including `default`
+4. **Verify coverage** after writing tests
+
+**GENERALIZED PATTERN FOR ALL SWITCH STATEMENTS:**
+
+For ANY `create*FilterNode` method with a switch statement, you MUST test:
+- ✅ Every `case` statement in the switch
+- ✅ The `default` case (exception path)
+- ✅ All field name variants (if applicable)
+- ✅ All groupType routing paths (contractor vs non-contractor)
+
+**MANDATORY Coverage Checklist - Complete List of ALL Switch Statements:**
+
+**For `createTimesheetPeriodFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode
+- ✅ `case IS_EQUAL_TO` → IsEqualToFilterNode
+- ✅ `case IS_BEFORE` → IsBeforeFilterNode
+- ✅ `case IS_AFTER` → IsAfterFilterNode
+- ✅ `case IS_BETWEEN` → IsBetweenFilterNode
+- ✅ `case IS_NOT_BETWEEN` → IsNotBetweenFilterNode
+- ✅ `case IS_LESS_THAN` → IsLessThanFilterNode
+- ✅ `case IS_MORE_THAN` → IsMoreThanFilterNode
+- ✅ `case HAS_ANY_VALUE` → HasAnyValueFilterNode
+- ✅ `case IS_EMPTY` → IsEmptyFilterNode
+- ✅ `default` → IllegalArgumentException
+
+**For `createAssociatedDealFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode
+- ✅ `case IS_NOT` → IsNotFilterNode
+- ✅ `case CONTAINS_AT_LEAST_ONE` → ContainsAtLeastFilterNode
+- ✅ `case DOES_NOT_CONTAIN` → DoesNotContainFilterNode
+- ✅ `case HAS_ANY_VALUE` → HasAnyValueFilterNode
+- ✅ `case IS_EMPTY` → IsEmptyFilterNode
+- ✅ `default` → IllegalArgumentException
+
+**For `createJobFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode
+- ✅ `case IS_NOT` → IsNotFilterNode
+- ✅ `case CONTAINS_AT_LEAST_ONE` → ContainsAtLeastFilterNode
+- ✅ `case DOES_NOT_CONTAIN` → DoesNotContainFilterNode
+- ✅ `case HAS_ANY_VALUE` → HasAnyValueFilterNode
+- ✅ `case IS_EMPTY` → IsEmptyFilterNode
+- ✅ `default` → IllegalArgumentException
+
+**For `createTimesheetStatusFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode
+- ✅ `case IS_NOT` → IsNotFilterNode
+- ✅ `case CONTAINS_AT_LEAST_ONE` → ContainsAtLeastFilterNode
+- ✅ `case DOES_NOT_CONTAIN` → DoesNotContainFilterNode
+- ✅ `case HAS_ANY_VALUE` → HasAnyValueFilterNode
+- ✅ `case IS_EMPTY` → IsEmptyFilterNode
+- ✅ `default` → IllegalArgumentException
+
+**🚨 CRITICAL: Timesheet Status Field Variants**
+- `dbField` can be: `"timesheet_status"`, `"timesheetStatus"`, `"timesheet_status_id"`, or `"timesheetStatusId"`
+- All four variants must be tested to ensure routing works correctly
+
+**For `createCompanyFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode
+- ✅ `case IS_NOT` → IsNotFilterNode
+- ✅ `case CONTAINS_AT_LEAST_ONE` → ContainsAtLeastFilterNode
+- ✅ `case DOES_NOT_CONTAIN` → DoesNotContainFilterNode
+- ✅ `case HAS_ANY_VALUE` → HasAnyValueFilterNode
+- ✅ `case IS_EMPTY` → IsEmptyFilterNode
+- ✅ `default` → IllegalArgumentException
+
+**🚨 CRITICAL: Company Filter Field**
+- `dbField` must be: `"companyName"`
+- Only one variant exists, but all switch cases must be tested
+
+**For `createAddedOnFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode
+- ✅ `case IS_NOT` → IsNotFilterNode
+- ✅ `case IS_BEFORE` → IsBeforeFilterNode
+- ✅ `case IS_AFTER` → IsAfterFilterNode
+- ✅ `case IS_BETWEEN` → IsBetweenFilterNode
+- ✅ `default` → IllegalArgumentException
+
+**For `createContractorDealFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode
+- ✅ `case IS_NOT` → IsNotFilterNode
+- ✅ `case CONTAINS_AT_LEAST_ONE` → ContainsAtLeastFilterNode
+- ✅ `case DOES_NOT_CONTAIN` → DoesNotContainFilterNode
+- ✅ `case HAS_ANY_VALUE` → HasAnyValueFilterNode
+- ✅ `case IS_EMPTY` → IsEmptyFilterNode
+- ✅ `default` → IllegalArgumentException
+
+**🚨 CRITICAL: Contractor Deal Field Routing**
+- When `groupType="contractor"` and `dbField` is one of: `"dealName"`, `"associatedDeal"`, or `"deal"` → routes to contractor deal filter
+- All three dbField variants must be tested
+
+**For `createStatusFilterNode` - MUST test ALL cases:**
+- ✅ `case IS` → IsFilterNode (for contractor groupType)
+- ✅ `case IS` → IsFilterNode (for timesheet status field - when groupType is NOT contractor)
+- ✅ `default` → IllegalArgumentException (for contractor groupType)
+- ✅ `default` → IllegalArgumentException (for timesheet status field)
+
+**🚨 CRITICAL: Status Field Routing**
+- When `groupType="contractor"` and `dbField="status"` → routes to contractor status filter
+- When `groupType` is NOT "contractor" and `dbField="status"` → also routes to contractor status filter (line 92-94)
+- Both paths must be tested to achieve 100% coverage
+
+**Additional Coverage Requirements:**
+- ✅ All filter type and dbField combinations for timesheet filters
+- ✅ All filter type and dbField combinations for contractor filters
+- ✅ Group type routing (contractor vs timesheet) - **CRITICAL: Test both paths**
+- ✅ Group conjoint node creation (AND/OR, case-insensitive)
+- ✅ Sub group conjoint node creation (AND/OR, case-insensitive)
+- ✅ FilterNodeContext setup (accountId, gmtDifference, filterDto)
+- ✅ Unknown dbField exception
+- ✅ Unsupported filter type exception for each field type
+- ✅ **ALL switch statement cases** (100% branch coverage)
+- ✅ **ALL default cases** (exception paths)
+- ✅ **Field name variants** (e.g., `timesheet_status`, `timesheetStatus`, `timesheet_status_id`, `timesheetStatusId`)
+- ✅ **Group type conditional routing** (contractor vs non-contractor paths)
+
+#### 3.3 NodeFactory Test Pattern for Switch Statement Coverage
+
+**Example pattern for testing switch statement cases:**
+
+```java
+@Test
+@DisplayName("createFilterNode should create IsEqualToFilterNode for timesheetPeriod field with IS_EQUAL_TO filter")
+void testCreateFilterNodeForTimesheetPeriodIsEqualTo() {
+    // Given
+    FilterDto filterDto = new FilterDto();
+    filterDto.setDbField("timesheetPeriod");
+    filterDto.setFilterType(FilterTypes.IS_EQUAL_TO);
+    filterDto.setFilterValue("1633046400");
+    filterDto.setGroupType("AND");
+    
+    // When
+    FilterNode result = this.nodeFactory.createFilterNode(filterDto);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.getFilterNodeImpl().getClass().getSimpleName()).isEqualTo("IsEqualToFilterNode");
+}
+
+@Test
+@DisplayName("createFilterNode should create IsNotFilterNode for associatedDeal field with IS_NOT filter")
+void testCreateFilterNodeForAssociatedDealIsNot() {
+    // Given
+    FilterDto filterDto = new FilterDto();
+    filterDto.setDbField("associatedDeal");
+    filterDto.setFilterType(FilterTypes.IS_NOT);
+    filterDto.setFilterValue("1,2,3");
+    filterDto.setGroupType("AND");
+    
+    // When
+    FilterNode result = this.nodeFactory.createFilterNode(filterDto);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.getFilterNodeImpl().getClass().getSimpleName()).isEqualTo("IsNotFilterNode");
+}
+
+@Test
+@DisplayName("createFilterNode should create DoesNotContainFilterNode for job field with DOES_NOT_CONTAIN filter")
+void testCreateFilterNodeForJobDoesNotContain() {
+    // Given
+    FilterDto filterDto = new FilterDto();
+    filterDto.setDbField("jobName");
+    filterDto.setFilterType(FilterTypes.DOES_NOT_CONTAIN);
+    filterDto.setFilterValue("1,2,3");
+    filterDto.setGroupType("AND");
+    
+    // When
+    FilterNode result = this.nodeFactory.createFilterNode(filterDto);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.getFilterNodeImpl().getClass().getSimpleName()).isEqualTo("DoesNotContainFilterNode");
+}
+```
+
+#### 3.4 NodeFactory Complete Switch Statement Coverage - SYSTEMATIC CHECKLIST
+
+**🚨 MANDATORY: Complete This Checklist BEFORE Writing Any Tests**
+
+**STEP 1: Read and Analyze `NodeFactory.java`**
+- [ ] Read the ENTIRE file from top to bottom
+- [ ] Identify ALL methods that contain switch statements
+- [ ] For each switch statement, list ALL cases (including `default`)
+- [ ] Identify ALL field name variants (e.g., `timesheet_status` vs `timesheetStatus`)
+- [ ] Identify ALL groupType routing paths (contractor vs non-contractor)
+
+**STEP 2: Create Complete Test Plan**
+For EACH switch statement method, create a checklist:
+
+**Example Template:**
+```
+Method: createCompanyFilterNode
+Field: companyName
+Cases to test:
+  [ ] case IS → IsFilterNode
+  [ ] case IS_NOT → IsNotFilterNode
+  [ ] case CONTAINS_AT_LEAST_ONE → ContainsAtLeastFilterNode
+  [ ] case DOES_NOT_CONTAIN → DoesNotContainFilterNode
+  [ ] case HAS_ANY_VALUE → HasAnyValueFilterNode
+  [ ] case IS_EMPTY → IsEmptyFilterNode
+  [ ] default → IllegalArgumentException
+```
+
+**STEP 3: Write Tests Systematically**
+- [ ] Write ONE test per case
+- [ ] Follow the naming pattern: `testCreateFilterNodeFor[Field][FilterType]`
+- [ ] Use consistent test structure (Given/When/Then)
+- [ ] Verify each test passes before moving to next
+
+**STEP 4: Complete Coverage Verification**
+- [ ] Run: `mvn clean test jacoco:report -Dtest="NodeFactoryTests"`
+- [ ] Open coverage report: `target/site/jacoco/index.html`
+- [ ] Navigate to `NodeFactory.java`
+- [ ] Check EVERY switch statement - ALL cases must be GREEN
+- [ ] Check ALL default cases - must be GREEN
+- [ ] Check ALL conditional branches - must be GREEN
+- [ ] If ANY red lines exist, add tests for those specific cases
+- [ ] Repeat until 100% coverage achieved
+
+**🚨 COMPLETE LIST OF ALL SWITCH STATEMENTS IN NodeFactory:**
+
+1. **createTimesheetPeriodFilterNode** - 11 cases (IS, IS_EQUAL_TO, IS_BEFORE, IS_AFTER, IS_BETWEEN, IS_NOT_BETWEEN, IS_LESS_THAN, IS_MORE_THAN, HAS_ANY_VALUE, IS_EMPTY, default)
+2. **createAssociatedDealFilterNode** - 7 cases (IS, IS_NOT, CONTAINS_AT_LEAST_ONE, DOES_NOT_CONTAIN, HAS_ANY_VALUE, IS_EMPTY, default)
+3. **createJobFilterNode** - 7 cases (IS, IS_NOT, CONTAINS_AT_LEAST_ONE, DOES_NOT_CONTAIN, HAS_ANY_VALUE, IS_EMPTY, default)
+4. **createTimesheetStatusFilterNode** - 7 cases (IS, IS_NOT, CONTAINS_AT_LEAST_ONE, DOES_NOT_CONTAIN, HAS_ANY_VALUE, IS_EMPTY, default)
+5. **createCompanyFilterNode** - 7 cases (IS, IS_NOT, CONTAINS_AT_LEAST_ONE, DOES_NOT_CONTAIN, HAS_ANY_VALUE, IS_EMPTY, default)
+6. **createAddedOnFilterNode** - 6 cases (IS, IS_NOT, IS_BEFORE, IS_AFTER, IS_BETWEEN, default)
+7. **createContractorDealFilterNode** - 7 cases (IS, IS_NOT, CONTAINS_AT_LEAST_ONE, DOES_NOT_CONTAIN, HAS_ANY_VALUE, IS_EMPTY, default)
+8. **createStatusFilterNode** - 2 cases (IS, default)
+
+**TOTAL: 8 switch statements, 54 cases to test**
+
+**🚨 FIELD VARIANTS TO TEST:**
+- `timesheetPeriod`: Only one variant
+- `associatedDeal`: `"associatedDeal"`, `"dealName"`
+- `job`: `"jobName"`, `"job_name"`
+- `timesheetStatus`: `"timesheet_status"`, `"timesheetStatus"`, `"timesheet_status_id"`, `"timesheetStatusId"`
+- `companyName`: Only one variant
+- `added_on`: Only one variant
+- `contractor deal`: `"dealName"`, `"associatedDeal"`, `"deal"` (when groupType="contractor")
+- `status`: `"status"` (test with groupType="contractor" AND groupType="AND")
+
+**🚨 GROUP TYPE ROUTING TO TEST:**
+- `groupType="contractor"` + `dbField="status"` → contractor status filter
+- `groupType="contractor"` + `dbField="dealName"` → contractor deal filter
+- `groupType="AND"` (or any non-contractor) + `dbField="status"` → contractor status filter (line 92-94)
+- All other combinations → timesheet filters
+
+#### 3.5 NodeFactory Coverage Verification Process - MANDATORY CHECKLIST
+
+**🚨 BEFORE WRITING TESTS - Pre-Checklist:**
+1. [ ] Read entire `NodeFactory.java` file
+2. [ ] Identify ALL methods with switch statements
+3. [ ] List ALL cases for each switch statement
+4. [ ] Identify ALL field name variants (e.g., `timesheet_status`, `timesheetStatus`, etc.)
+5. [ ] Identify ALL groupType routing paths (contractor vs non-contractor)
+6. [ ] Create test plan covering ALL cases
+
+**🚨 WHILE WRITING TESTS - Coverage Checklist:**
+For EACH switch statement method, verify you have tests for:
+- [ ] `case IS` (if exists)
+- [ ] `case IS_NOT` (if exists)
+- [ ] `case IS_EQUAL_TO` (if exists)
+- [ ] `case IS_BEFORE` (if exists)
+- [ ] `case IS_AFTER` (if exists)
+- [ ] `case IS_BETWEEN` (if exists)
+- [ ] `case IS_NOT_BETWEEN` (if exists)
+- [ ] `case IS_LESS_THAN` (if exists)
+- [ ] `case IS_MORE_THAN` (if exists)
+- [ ] `case CONTAINS_AT_LEAST_ONE` (if exists)
+- [ ] `case DOES_NOT_CONTAIN` (if exists)
+- [ ] `case HAS_ANY_VALUE` (if exists)
+- [ ] `case IS_EMPTY` (if exists)
+- [ ] `default` case (exception path) - **MANDATORY FOR ALL SWITCH STATEMENTS**
+
+**🚨 AFTER WRITING TESTS - Verification Checklist:**
+1. [ ] Run coverage report: `mvn clean test jacoco:report -Dtest="NodeFactoryTests"`
+2. [ ] Open `target/site/jacoco/index.html` in browser
+3. [ ] Navigate to `NodeFactory.java`
+4. [ ] Verify ALL switch cases show green (covered) - **ZERO RED LINES**
+5. [ ] Verify ALL default cases show green (covered)
+6. [ ] Verify ALL exception paths show green (covered)
+7. [ ] Verify ALL conditional branches show green (covered)
+8. [ ] Verify 100% line coverage: All lines in NodeFactory must be executed
+9. [ ] Verify 100% branch coverage: All switch cases and conditionals must be tested
+10. [ ] If ANY red lines exist, add tests for those specific cases
+
+**🚨 COMMON MISTAKES TO AVOID:**
+- ❌ Testing only one or two cases from a switch statement
+- ❌ Missing `default` case tests
+- ❌ Missing field name variants (e.g., testing only `timesheetStatus` but not `timesheet_status`)
+- ❌ Missing groupType routing paths (e.g., testing contractor path but not non-contractor path)
+- ❌ Assuming all cases are covered when only some are tested
+- ❌ Not verifying coverage report after adding tests
+- ❌ Not reading the entire file before writing tests
+
+**🚨 SYSTEMATIC APPROACH - Follow This Order:**
+1. **Read `NodeFactory.java` completely** - identify ALL switch statements
+2. **Create a checklist** - list every case for every switch statement
+3. **Write tests systematically** - one test per case, following the pattern
+4. **Run coverage** - verify 100% coverage
+5. **Fix gaps** - add tests for any uncovered lines
+6. **Re-verify** - run coverage again until 100% achieved
+
+### 4. Constants Testing Strategy
+
+#### 4.1 Enum Testing Pattern
+
+**For enums with `fromValue` methods:**
+
+```java
+@ExtendWith(MockitoExtension.class)
+class FilterTypesTests {
+    
+    @Test
+    @DisplayName("From value should return correct enum for valid value")
+    void testFromValueValidValueReturnsCorrectEnum() {
+        // Given
+        String value = "is_lt";
+        
+        // When
+        FilterTypes result = FilterTypes.fromValue(value);
+        
+        // Then
+        assertThat(result).isEqualTo(FilterTypes.IS_LESS_THAN);
+    }
+    
+    @Test
+    @DisplayName("From value should return null for null input")
+    void testFromValueNullInputReturnsNull() {
+        // Given
+        String value = null;
+        
+        // When
+        FilterTypes result = FilterTypes.fromValue(value);
+        
+        // Then
+        assertThat(result).isNull();
+    }
+    
+    @Test
+    @DisplayName("From value should throw exception for invalid value")
+    void testFromValueInvalidValueThrowsException() {
+        // Given
+        String value = "invalid_filter_type";
+        
+        // When & Then
+        assertThatThrownBy(() -> FilterTypes.fromValue(value))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("Unknown filter type");
+    }
+    
+    @Test
+    @DisplayName("From value should handle case insensitive matching")
+    void testFromValueCaseInsensitiveMatchingHandlesCorrectly() {
+        // Given
+        String value = "IS_LT";
+        
+        // When
+        FilterTypes result = FilterTypes.fromValue(value);
+        
+        // Then
+        assertThat(result).isEqualTo(FilterTypes.IS_LESS_THAN);
+    }
+}
+```
+
+### 5. Helper Classes Testing Strategy
+
+#### 5.1 DateHelper Testing
+
+**DateHelper provides date range calculations:**
+
+```java
+@ExtendWith(MockitoExtension.class)
+class DateHelperTests {
+    
+    @Test
+    @DisplayName("Get zoned date time range should return correct range for TODAY")
+    void testGetZonedDateTimeRangeTodayReturnsCorrectRange() {
+        // Given
+        String gmtDifference = "+00:00";
+        
+        // When
+        ZonedDateTimeRangeDto result = DateHelper.getZonedDateTimeRange(
+            DateIsFilterValue.TODAY, gmtDifference);
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.getFrom()).isNotNull();
+        assertThat(result.getTo()).isNotNull();
+    }
+}
+```
+
+### 6. FilterSearchASTBuilder Testing Strategy
+
+#### 6.1 AST Builder Test Pattern
+
+**FilterSearchASTBuilder builds AST tree from filter DTOs:**
+
+```java
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
+class FilterSearchASTBuilderTests {
+    
+    private FilterSearchASTBuilder astBuilder;
+    private final Integer accountId = 1;
+    private final String gmtDifference = "+05:30";
+    
+    @BeforeEach
+    void setUp() {
+        this.astBuilder = new FilterSearchASTBuilder(this.accountId, this.gmtDifference);
+    }
+    
+    @Test
+    @DisplayName("Build filter AST tree should create root group node")
+    void testBuildFilterASTTreeCreatesRootGroupNode() {
+        // Given
+        FilterSearchListDto filterSearchListDto = new FilterSearchListDto();
+        filterSearchListDto.setGroupJoinOperator("AND");
+        filterSearchListDto.setGroupFilterList(new ArrayList<>());
+        
+        // When
+        GroupConjointNode root = this.astBuilder.buildFilterASTTree(filterSearchListDto);
+        
+        // Then
+        assertThat(root).isNotNull();
+        assertThat(root).isInstanceOf(GroupANDNode.class);
+    }
+}
+```
+
+### 7. CTE Provider Testing Strategy
+
+#### 7.1 CTE Provider Test Pattern
+
+**CTE Providers create Common Table Expressions for search queries:**
+
+```java
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
+class ContractorFilterSearchCteProviderTests {
+    
+    private ContractorFilterSearchCteProvider cteProvider;
+    private final Integer accountId = 1;
+    private final String gmtDifference = "+05:30";
+    
+    @BeforeEach
+    void setUp() {
+        this.cteProvider = new ContractorFilterSearchCteProvider(this.accountId, this.gmtDifference);
+    }
+    
+    @Test
+    @DisplayName("Get CTE name should return correct CTE name")
+    void testGetCteNameReturnsCorrectCteName() {
+        // Given
+        // When
+        String result = this.cteProvider.getCteName();
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).isEqualTo("contractorFilterSearchCte");
+    }
+    
+    @Test
+    @DisplayName("Get CTE should return CommonTableExpression with correct name")
+    void testGetCteReturnsCteWithCorrectName() {
+        // Given
+        FilterSearchListDto filterSearchListDto = this.createFilterSearchListDto();
+        
+        // When
+        CommonTableExpression<?> result = this.cteProvider.getCte(filterSearchListDto, 
+            this.accountId, this.gmtDifference);
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.getName()).isEqualTo("contractorFilterSearchCte");
+    }
+    
+    @Test
+    @DisplayName("Get CTE should handle FilterSearchListDto with single filter")
+    void testGetCteWithSingleFilter() {
+        // Given
+        FilterSearchListDto filterSearchListDto = new FilterSearchListDto();
+        filterSearchListDto.setGroupJoinOperator("AND");
+        
+        GroupFilterListDto groupFilterListDto = new GroupFilterListDto();
+        groupFilterListDto.setGroupFilterJoinOperator("OR");
+        
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("status");
+        filterDto.setFilterType(FilterTypes.IS);
+        filterDto.setFilterValue("0");
+        filterDto.setGroupType("contractor");
+        
+        groupFilterListDto.setFilters(List.of(filterDto));
+        filterSearchListDto.setGroupFilterList(List.of(groupFilterListDto));
+        
+        // When
+        CommonTableExpression<?> result = this.cteProvider.getCte(filterSearchListDto, 
+            this.accountId, this.gmtDifference);
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.getName()).isEqualTo("contractorFilterSearchCte");
+    }
+}
+```
+
+#### 7.2 CTE Provider Coverage Requirements
+
+**MUST test:**
+- ✅ `getCteName()` returns correct CTE name
+- ✅ `getCte()` returns CommonTableExpression with correct name
+- ✅ `getCte()` handles FilterSearchListDto with single filter
+- ✅ `getCte()` handles FilterSearchListDto with multiple filters
+- ✅ `getCte()` handles FilterSearchListDto with multiple group filter lists
+- ✅ CTE is built from FilterSearchASTBuilder correctly
+
+### 8. Abstract Base Class Testing Strategy
+
+#### 8.1 Testing Abstract Classes Through Concrete Subclasses
+
+**For abstract classes like `TimesheetGroupBaseFilterNode`, test through concrete subclasses:**
+
+```java
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
+class TimesheetGroupBaseFilterNodeTests {
+    
+    private FilterNodeContext filterNodeContext;
+    private final Integer accountId = 1;
+    private final String gmtDifference = "+05:30";
+    
+    @BeforeEach
+    void setUp() {
+        this.filterNodeContext = new FilterNodeContext();
+        this.filterNodeContext.setAccountId(this.accountId);
+        this.filterNodeContext.setGmtDifference(this.gmtDifference);
+    }
+    
+    @Test
+    @DisplayName("Get base table should return CST_TIMESHEET_T table")
+    void testGetBaseTableReturnsCstTimesheetT() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("timesheetPeriod");
+        filterDto.setFilterType(FilterTypes.IS_LESS_THAN);
+        filterDto.setFilterValue("10");
+        filterDto.setGroupType("AND");
+        
+        this.filterNodeContext.setFilterDto(filterDto);
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        Table<?> result = filterNode.getBaseTable();
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).isEqualTo(CstTimesheetT.CST_TIMESHEET_T);
+    }
+    
+    @Test
+    @DisplayName("Get select fields should return timesheet ID field")
+    void testGetSelectFieldsReturnsTimesheetIdField() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("timesheetPeriod");
+        filterDto.setFilterType(FilterTypes.IS_LESS_THAN);
+        filterDto.setFilterValue("10");
+        filterDto.setGroupType("AND");
+        
+        this.filterNodeContext.setFilterDto(filterDto);
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Field<?>> result = filterNode.getSelectFields();
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).hasSize(1);
+        assertThat(result.get(0)).isEqualTo(CstTimesheetT.CST_TIMESHEET_T.ID);
+    }
+    
+    @Test
+    @DisplayName("Get account ID filter condition should return condition with account ID")
+    void testGetAccountIdFilterConditionReturnsConditionWithAccountId() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("timesheetPeriod");
+        filterDto.setFilterType(FilterTypes.IS_LESS_THAN);
+        filterDto.setFilterValue("10");
+        filterDto.setGroupType("AND");
+        
+        this.filterNodeContext.setFilterDto(filterDto);
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        Condition result = filterNode.getAccountIdFilterCondition();
+        
+        // Then
+        assertThat(result).isNotNull();
+    }
+    
+    @Test
+    @DisplayName("Get join tables should return minimal joins for timesheet period field")
+    void testGetJoinTablesReturnsMinimalJoinsForTimesheetPeriodField() {
+        // Given
+        FilterDto filterDto = new FilterDto();
+        filterDto.setDbField("timesheetPeriod");
+        filterDto.setFilterType(FilterTypes.IS_LESS_THAN);
+        filterDto.setFilterValue("10");
+        filterDto.setGroupType("AND");
+        
+        this.filterNodeContext.setFilterDto(filterDto);
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<TableJoinSpecification> result = filterNode.getJoinTables();
+        
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).hasSize(1);
+        assertThat(result.get(0).getJoinType()).isEqualTo(TableJoinType.LEFT);
+    }
+}
+```
+
+#### 8.2 Abstract Base Class Coverage Requirements
+
+**For abstract base classes, MUST test through concrete subclasses:**
+- ✅ All public methods inherited from abstract class
+- ✅ All protected methods that are part of public API
+- ✅ Default implementations in abstract class
+- ✅ Overridden methods in concrete subclasses
+- ✅ Field accessors and getters
+- ✅ Join table specifications
+- ✅ Search field methods
+- ✅ Account ID filter conditions
+
+### 9. Checkstyle Compliance - MANDATORY
+
+#### 7.1 BDD-Style Comments
+
+**MUST use Given/When/Then comments:**
+
+```java
+@Test
+@DisplayName("Test description")
+void testMethodScenarioExpectedResult() {
+    // Given - ✅ CORRECT
+    FilterDto filterDto = new FilterDto();
+    
+    // When - ✅ CORRECT
+    List<Condition> conditions = filterNode.getFilterConditions();
+    
+    // Then - ✅ CORRECT
+    assertThat(conditions).isNotEmpty();
+}
+```
+
+#### 7.2 RequireThis Rule
+
+**MUST use `this.` prefix for instance variables:**
+
+```java
+@Test
+void testMethod() {
+    // Given
+    this.filterDto.setFilterValue("10");  // ✅ CORRECT
+    
+    // When
+    List<Condition> conditions = this.filterNode.getFilterConditions();  // ✅ CORRECT
+    
+    // Then
+    assertThat(conditions).isNotEmpty();
+}
+```
+
+#### 7.3 BDDMockito Usage
+
+**For tests that need mocking:**
+
+```java
+@ExtendWith(MockitoExtension.class)
+class FilterNodeTests {
+    
+    @Mock
+    private FilterNodeContext filterNodeContext;
+    
+    @Test
+    void testMethod() {
+        // Given
+        given(this.filterNodeContext.getFilterDto()).willReturn(filterDto);  // ✅ CORRECT
+        
+        // When
+        List<Condition> conditions = this.filterNode.getFilterConditions();
+        
+        // Then
+        then(this.filterNodeContext).should().getFilterDto();  // ✅ CORRECT
+    }
+}
+```
+
+### 10. Coverage Requirements - MANDATORY
+
+#### 8.1 Filter Node Coverage
+
+**For each filter node, MUST test:**
+- ✅ Valid filter value parsing
+- ✅ Invalid filter value handling (returns falseCondition)
+- ✅ Null filter value handling
+- ✅ Empty filter value handling
+- ✅ GMT offset application (for date/time filters)
+- ✅ Edge cases (negative values, boundary conditions)
+- ✅ `isSelectDistinct()` return value
+
+#### 8.2 NodeFactory Coverage
+
+**MUST test:**
+- ✅ All filter type and dbField combinations
+- ✅ Unknown dbField exception
+- ✅ Unsupported filter type exception
+- ✅ Group type routing (contractor vs timesheet)
+
+#### 8.3 Constants Coverage
+
+**MUST test:**
+- ✅ All enum values
+- ✅ `fromValue()` with valid values
+- ✅ `fromValue()` with null input
+- ✅ `fromValue()` with invalid values (exception)
+- ✅ Case insensitive matching
+
+### 11. Test Data Factory Pattern
+
+**For search package tests, create test data directly in test methods:**
+
+```java
+@Test
+@DisplayName("Get filter conditions should handle valid filter value")
+void testGetFilterConditionsValidFilterValueHandlesCorrectly() {
+    // Given
+    FilterDto filterDto = new FilterDto();
+    filterDto.setFilterValue("10");
+    filterDto.setFilterType(FilterTypes.IS_LESS_THAN);
+    filterDto.setDbField("timesheetPeriod");
+    
+    FilterNodeContext filterNodeContext = new FilterNodeContext();
+    filterNodeContext.setFilterDto(filterDto);
+    filterNodeContext.setAccountId(1);
+    filterNodeContext.setGmtDifference("+00:00");
+    
+    IsLessThanFilterNode filterNode = new IsLessThanFilterNode(filterNodeContext);
+    
+    // When
+    List<Condition> conditions = filterNode.getFilterConditions();
+    
+    // Then
+    assertThat(conditions).isNotEmpty();
+}
+```
+
+### 12. Forbidden Patterns - AUTOMATIC REJECTION
+
+- **❌ NO Traditional Mockito**: Using `when().thenReturn()` or `verify()` (must use BDDMockito)
+- **❌ NO Arrange/Act/Assert**: Using traditional AAA comments (must use Given/When/Then)
+- **❌ NO Missing this.**: Direct instance variable access (must use `this.`)
+- **❌ NO JOOQ Query Execution**: Don't test actual JOOQ query execution (test condition generation only)
+- **❌ NO Database Testing**: Don't test database interactions (test filter logic only)
+
+### 13. Complete Filter Node Test Example
+
+```java
+package io.recruitcrm.microservice.timesheet.search.filters.timesheet.timesheet_period;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
+import org.jooq.Condition;
+import org.jooq.impl.DSL;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import io.recruitcrm.microservice.timesheet.search.constants.FilterTypes;
+import io.recruitcrm.microservice.timesheet.search.dto.FilterDto;
+import io.recruitcrm.microservice.timesheet.search.filters.FilterNodeContext;
+
+@ExtendWith(MockitoExtension.class)
+class IsLessThanFilterNodeTests {
+    
+    private FilterNodeContext filterNodeContext;
+    private FilterDto filterDto;
+    
+    @BeforeEach
+    void setUp() {
+        this.filterDto = new FilterDto();
+        this.filterDto.setFilterType(FilterTypes.IS_LESS_THAN);
+        this.filterDto.setDbField("timesheetPeriod");
+        
+        this.filterNodeContext = new FilterNodeContext();
+        this.filterNodeContext.setFilterDto(this.filterDto);
+        this.filterNodeContext.setAccountId(1);
+        this.filterNodeContext.setGmtDifference("+00:00");
+    }
+    
+    @Test
+    @DisplayName("Get filter conditions should return overlap condition for valid days value")
+    void testGetFilterConditionsValidDaysValueReturnsOverlapCondition() {
+        // Given
+        this.filterDto.setFilterValue("10");
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Condition> conditions = filterNode.getFilterConditions();
+        
+        // Then
+        assertThat(conditions).isNotEmpty();
+        assertThat(conditions.size()).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("Get filter conditions should return false condition for null filter value")
+    void testGetFilterConditionsNullFilterValueReturnsFalseCondition() {
+        // Given
+        this.filterDto.setFilterValue(null);
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Condition> conditions = filterNode.getFilterConditions();
+        
+        // Then
+        assertThat(conditions).isNotEmpty();
+        assertThat(conditions.get(0)).isEqualTo(DSL.falseCondition());
+    }
+    
+    @Test
+    @DisplayName("Get filter conditions should return false condition for negative days value")
+    void testGetFilterConditionsNegativeDaysValueReturnsFalseCondition() {
+        // Given
+        this.filterDto.setFilterValue("-5");
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Condition> conditions = filterNode.getFilterConditions();
+        
+        // Then
+        assertThat(conditions).isNotEmpty();
+        assertThat(conditions.get(0)).isEqualTo(DSL.falseCondition());
+    }
+    
+    @Test
+    @DisplayName("Get filter conditions should apply GMT offset correctly")
+    void testGetFilterConditionsAppliesGmtOffsetCorrectly() {
+        // Given
+        this.filterDto.setFilterValue("10");
+        this.filterNodeContext.setGmtDifference("+05:30");
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        List<Condition> conditions = filterNode.getFilterConditions();
+        
+        // Then
+        assertThat(conditions).isNotEmpty();
+    }
+    
+    @Test
+    @DisplayName("Is select distinct should return true")
+    void testIsSelectDistinctReturnsTrue() {
+        // Given
+        IsLessThanFilterNode filterNode = new IsLessThanFilterNode(this.filterNodeContext);
+        
+        // When
+        Boolean isDistinct = filterNode.isSelectDistinct();
+        
+        // Then
+        assertThat(isDistinct).isTrue();
+    }
+}
+```
+
+---
+
+These rules ensure 100% checkstyle compliance and comprehensive search package testing while maintaining strict code quality standards across the entire project. Any violation of these checkstyle rules will result in build failure.

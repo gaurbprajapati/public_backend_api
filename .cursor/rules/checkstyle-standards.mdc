@@ -1,0 +1,85 @@
+---
+description: "Checkstyle rules for enforcing code formatting and style consistency."
+globs:
+  - "**/*.java"
+alwaysApply: true
+---
+
+# Checkstyle Standards
+## Code Formatting Requirements
+
+### Instance Variable References
+- **RequireThis**: Always use `this.` prefix for instance variables
+- **Example**: `this.accessControlChecker.allows(...)` instead of `accessControlChecker.allows(...)`
+- **Example**: `this.logger.logInfo(...)` instead of `logger.logInfo(...)`
+
+### Ternary Expressions
+- **SpringTernary**: Always wrap the condition of a ternary operator in parentheses
+- This is a **strict rule** — every ternary must use the form `(condition) ? valueIfTrue : valueIfFalse`
+- **Correct**: `(invoice != null) ? 1 : 0`
+- **Incorrect**: `invoice != null ? 1 : 0`
+- **Correct**: `(a > b) ? a : b`
+- **Incorrect**: `a > b ? a : b`
+- **Correct**: `(list.isEmpty()) ? "none" : list.get(0)`
+- **Incorrect**: `list.isEmpty() ? "none" : list.get(0)`
+
+### Lambda Expressions
+- **SpringLambda**: Always use parentheses around lambda parameters
+- **Correct**: `(parameter) -> { ... }`
+- **Incorrect**: `parameter -> { ... }`
+- **Correct**: `(item) -> item.isAllowed()` instead of `item -> item.isAllowed()`
+
+### Method References
+- **Avoid**: Method references in filter operations
+- **Use**: Lambda expressions instead
+- **Correct**: `(item) -> item.isAllowed()` instead of `BulkPermissionCheckResult.BulkPermissionCheckResultItem::isAllowed`
+
+## Comment Formatting
+
+### Multiline Comments
+- **Use**: `/** */` for multiline comments
+- **Avoid**: Inline comments for complex explanations
+- **Example**:
+```java
+/**
+ * This demonstrates how to check if a user has permission to view a specific
+ * timesheet. The AccessControlChecker will automatically load the required candidate
+ * and job data and perform the permission validation.
+ */
+```
+
+### Inline Comments
+- **Use**: Only for simple, single-line explanations
+- **Example**: `// Create the bulk request`
+
+## Common Checkstyle Errors to Avoid
+
+### RequireThis Errors
+- Missing `this.` prefix for instance variables
+- Affects: `accessControlChecker`, `logger`, `apiResponder`, etc.
+
+### SpringLambda Errors
+- Missing parentheses in lambda parameters
+- Method references instead of lambda expressions
+
+### SpringTernary Errors
+- Missing parentheses around ternary condition — always write `(condition) ? y : n`
+
+### Other Common Issues
+- Missing import statements
+- Incorrect indentation
+- Missing whitespace around operators
+
+## Files Following These Standards
+- [AccessControlCheckerExample.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/examples/AccessControlCheckerExample.java)
+- [AccessControlTestController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/access_control/AccessControlTestController.java)
+
+## Validation Commands
+```bash
+# Run checkstyle validation
+mvn checkstyle:check
+
+# Fix common issues before committing
+mvn checkstyle:check -Dcheckstyle.failOnViolation=false
+```
+

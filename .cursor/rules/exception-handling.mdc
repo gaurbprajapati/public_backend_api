@@ -1,0 +1,425 @@
+---
+description: Exception handling patterns including custom exceptions, global exception handlers, layer-specific handling, and bulk operation error handling.
+alwaysApply: false
+---
+# Exception Handling Patterns
+
+## Overview
+The timesheet microservice uses a comprehensive exception handling strategy with custom exceptions, global exception handlers, and standardized error responses. This ensures consistent error handling across all layers of the application.
+
+## Exception Hierarchy
+
+### 1. Base Exception Classes
+```java
+// Base exception for all application exceptions
+public abstract class TimesheetException extends RuntimeException {
+    private final String errorCode;
+    
+    protected TimesheetException(String message, String errorCode) {
+        super(message);
+        this.errorCode = errorCode;
+    }
+    
+    protected TimesheetException(String message, String errorCode, Throwable cause) {
+        super(message, cause);
+        this.errorCode = errorCode;
+    }
+    
+    public String getErrorCode() {
+        return errorCode;
+    }
+}
+```
+
+### 2. Custom Exception Types
+```java
+// Validation errors
+public class ValidationErrorException extends TimesheetException {
+    public ValidationErrorException(String message) {
+        super(message, "VALIDATION_ERROR");
+    }
+    
+    public ValidationErrorException(String message, Throwable cause) {
+        super(message, "VALIDATION_ERROR", cause);
+    }
+}
+
+// Resource not found errors
+public class ResourceNotFoundException extends TimesheetException {
+    public ResourceNotFoundException(String message) {
+        super(message, "RESOURCE_NOT_FOUND");
+    }
+    
+    public ResourceNotFoundException(String resourceType, Object id) {
+        super(String.format("%s not found with id: %s", resourceType, id), "RESOURCE_NOT_FOUND");
+    }
+}
+
+// Access control errors
+public class UnauthorizedAccessException extends TimesheetException {
+    public UnauthorizedAccessException(String message) {
+        super(message, "UNAUTHORIZED_ACCESS");
+    }
+    
+    public UnauthorizedAccessException(String message, Throwable cause) {
+        super(message, "UNAUTHORIZED_ACCESS", cause);
+    }
+}
+
+// Service layer errors
+public class ServiceException extends TimesheetException {
+    public ServiceException(String message) {
+        super(message, "SERVICE_ERROR");
+    }
+    
+    public ServiceException(String message, Throwable cause) {
+        super(message, "SERVICE_ERROR", cause);
+    }
+}
+
+// Repository layer errors
+public class RepositoryException extends TimesheetException {
+    public RepositoryException(String message) {
+        super(message, "REPOSITORY_ERROR");
+    }
+    
+    public RepositoryException(String message, Throwable cause) {
+        super(message, "REPOSITORY_ERROR", cause);
+    }
+}
+```
+
+## Global Exception Handler
+
+### 1. Controller-Level Exception Handling
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    private final APIResponder apiResponder;
+    private final Logger logger;
+    
+    public GlobalExceptionHandler(APIResponder apiResponder, Logger logger) {
+        this.apiResponder = apiResponder;
+        this.logger = logger;
+    }
+    
+    // Handle validation errors
+    @ExceptionHandler(ValidationErrorException.class)
+    public ResponseEntity<?> handleValidationError(ValidationErrorException ex) {
+        logger.logWarn("Validation error: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    
+    // Handle resource not found errors
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> handleResourceNotFound(ResourceNotFoundException ex) {
+        logger.logWarn("Resource not found: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    
+    // Handle unauthorized access errors
+    @ExceptionHandler(UnauthorizedAccessException.class)
+    public ResponseEntity<?> handleUnauthorized(UnauthorizedAccessException ex) {
+        logger.logWarn("Unauthorized access: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.FORBIDDEN);
+    }
+    
+    // Handle service layer errors
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<?> handleServiceError(ServiceException ex) {
+        logger.logError("Service error: " + ex.getMessage(), ex);
+        return apiResponder.respondWithError("Service error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    
+    // Handle repository layer errors
+    @ExceptionHandler(RepositoryException.class)
+    public ResponseEntity<?> handleRepositoryError(RepositoryException ex) {
+        logger.logError("Repository error: " + ex.getMessage(), ex);
+        return apiResponder.respondWithError("Data access error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    
+    // Handle Bean Validation errors
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleValidationErrors(MethodArgumentNotValidException ex) {
+        List<ValidationErrorDto> errors = ex.getBindingResult().getFieldErrors().stream()
+            .map(error -> new ValidationErrorDto(
+                error.getField(),
+                error.getDefaultMessage(),
+                error.getRejectedValue()))
+            .toList();
+        
+        logger.logWarn("Bean validation errors: " + errors);
+        return apiResponder.respondWithValidationErrors(errors);
+    }
+    
+    // Handle generic exceptions
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleGenericException(Exception ex) {
+        logger.logError("Unexpected error occurred", ex);
+        return apiResponder.respondWithError("An unexpected error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+## Layer-Specific Exception Handling
+
+### 1. Controller Layer
+```java
+@RestController
+@RequestMapping("/v1/timesheets")
+public class TimesheetController {
+    
+    @PostMapping
+    public ResponseEntity<?> createTimesheet(@Valid @RequestBody TimesheetRequestDto request) {
+        try {
+            logger.logInfo("Creating timesheet for candidate: " + request.candidateId());
+            
+            TimesheetResponseDto result = timesheetService.createTimesheet(request);
+            return apiResponder.respond(result, "Timesheet created successfully");
+            
+        } catch (ValidationErrorException ex) {
+            logger.logWarn("Validation error creating timesheet: " + ex.getMessage());
+            return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+            
+        } catch (UnauthorizedAccessException ex) {
+            logger.logWarn("Permission denied creating timesheet: " + ex.getMessage());
+            return apiResponder.respondWithError(ex.getMessage(), HttpStatus.FORBIDDEN);
+            
+        } catch (Exception ex) {
+            logger.logError("Unexpected error creating timesheet", ex);
+            return apiResponder.respondWithError("Failed to create timesheet", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
+```
+
+### 2. Service Layer
+```java
+@Service
+public class TimesheetService {
+    
+    public TimesheetResponseDto createTimesheet(TimesheetRequestDto request) {
+        try {
+            // Validate business rules
+            validateTimesheetCreation(request);
+            
+            // Check permissions
+            checkCreatePermission(request.candidateId(), request.jobId());
+            
+            // Create timesheet
+            Timesheet timesheet = timesheetMapper.toEntity(request);
+            Timesheet savedTimesheet = timesheetRepository.save(timesheet);
+            
+            return timesheetMapper.toResponseDto(savedTimesheet);
+            
+        } catch (ValidationErrorException | UnauthorizedAccessException ex) {
+            // Re-throw specific exceptions
+            throw ex;
+        } catch (Exception ex) {
+            logger.logError("Unexpected error in timesheet service", ex);
+            throw new ServiceException("Failed to create timesheet", ex);
+        }
+    }
+    
+    private void validateTimesheetCreation(TimesheetRequestDto request) {
+        if (!candidateRepository.existsByIdAndStatus(request.candidateId(), "ACTIVE")) {
+            throw new ValidationErrorException("Candidate is not active");
+        }
+        
+        if (!jobRepository.existsByIdAndStatus(request.jobId(), "ACTIVE")) {
+            throw new ValidationErrorException("Job is not active");
+        }
+        
+        if (timesheetRepository.existsByCandidateIdAndJobIdAndDate(
+                request.candidateId(), request.jobId(), request.date())) {
+            throw new ValidationErrorException("Timesheet already exists for this date");
+        }
+    }
+}
+```
+
+### 3. Repository Layer
+```java
+@Repository
+public class TimesheetRepository {
+    
+    public Optional<Timesheet> findByIdSafely(Integer id) {
+        try {
+            return findById(id);
+        } catch (DataAccessException ex) {
+            logger.logError("Database error while finding timesheet with id: " + id, ex);
+            throw new RepositoryException("Failed to find timesheet", ex);
+        }
+    }
+    
+    public List<Timesheet> saveAllSafely(List<Timesheet> timesheets) {
+        try {
+            return saveAll(timesheets);
+        } catch (DataAccessException ex) {
+            logger.logError("Database error while saving timesheets", ex);
+            throw new RepositoryException("Failed to save timesheets", ex);
+        }
+    }
+    
+    public Timesheet saveSafely(Timesheet timesheet) {
+        try {
+            return save(timesheet);
+        } catch (DataAccessException ex) {
+            logger.logError("Database error while saving timesheet", ex);
+            throw new RepositoryException("Failed to save timesheet", ex);
+        }
+    }
+}
+```
+
+## Bulk Operation Exception Handling
+
+### 1. Bulk Service Exception Handling
+```java
+@Service
+public class TimesheetService {
+    
+    @Transactional
+    public BulkTimesheetResponseDto bulkCreateTimesheets(BulkTimesheetRequestDto request) {
+        List<TimesheetResponseDto> successful = new ArrayList<>();
+        List<BulkErrorDto> errors = new ArrayList<>();
+        
+        for (int i = 0; i < request.timesheets().size(); i++) {
+            TimesheetRequestDto timesheetRequest = request.timesheets().get(i);
+            
+            try {
+                // Validate and create timesheet
+                Timesheet timesheet = createTimesheetEntity(timesheetRequest);
+                Timesheet savedTimesheet = timesheetRepository.saveSafely(timesheet);
+                successful.add(timesheetMapper.toResponseDto(savedTimesheet));
+                
+            } catch (ValidationErrorException ex) {
+                logger.logWarn("Validation error at index " + i + ": " + ex.getMessage());
+                errors.add(new BulkErrorDto(i, ex.getMessage(), "VALIDATION_ERROR"));
+                
+            } catch (UnauthorizedAccessException ex) {
+                logger.logWarn("Permission error at index " + i + ": " + ex.getMessage());
+                errors.add(new BulkErrorDto(i, ex.getMessage(), "PERMISSION_DENIED"));
+                
+            } catch (Exception ex) {
+                logger.logError("Unexpected error at index " + i, ex);
+                errors.add(new BulkErrorDto(i, "Unexpected error occurred", "INTERNAL_ERROR"));
+            }
+        }
+        
+        return new BulkTimesheetResponseDto(successful, errors, 
+            new BulkOperationSummary(successful.size(), errors.size()));
+    }
+}
+```
+
+## Error Response DTOs
+
+### 1. Validation Error DTO
+```java
+public record ValidationErrorDto(
+    String field,
+    String message,
+    Object rejectedValue
+) {}
+```
+
+### 2. Bulk Error DTO
+```java
+public record BulkErrorDto(
+    Integer index,
+    String message,
+    String errorType
+) {}
+```
+
+### 3. Error Response Structure
+```java
+// Standard error response
+{
+    "result": "ERROR",
+    "message": "Validation failed",
+    "data": null,
+    "errorCode": "VALIDATION_ERROR"
+}
+
+// Validation error response
+{
+    "result": "ERROR",
+    "message": "Validation failed",
+    "data": null,
+    "errors": [
+        {
+            "field": "name",
+            "message": "Name is required",
+            "rejectedValue": null
+        },
+        {
+            "field": "email",
+            "message": "Invalid email format",
+            "rejectedValue": "invalid-email"
+        }
+    ]
+}
+
+// Bulk operation error response
+{
+    "result": "SUCCESS",
+    "message": "Bulk operation completed. Success: 8, Errors: 2",
+    "data": {
+        "successful": [...],
+        "errors": [
+            {
+                "index": 3,
+                "message": "Timesheet already exists for this date",
+                "errorType": "VALIDATION_ERROR"
+            },
+            {
+                "index": 7,
+                "message": "Access denied",
+                "errorType": "PERMISSION_DENIED"
+            }
+        ],
+        "summary": {
+            "successfulCount": 8,
+            "errorCount": 2
+        }
+    }
+}
+```
+
+## Exception Handling Best Practices
+
+### 1. Exception Design
+- Use specific exception types for different error scenarios
+- Include meaningful error codes for client handling
+- Provide clear, actionable error messages
+- Maintain exception hierarchy for proper handling
+
+### 2. Logging Strategy
+- Log all exceptions with appropriate levels
+- Include context information in log messages
+- Use structured logging for better analysis
+- Avoid logging sensitive information
+
+### 3. Error Recovery
+- Implement retry logic for transient failures
+- Use circuit breakers for external service calls
+- Provide fallback mechanisms where possible
+- Handle partial failures in bulk operations
+
+### 4. Client Communication
+- Return appropriate HTTP status codes
+- Provide consistent error response format
+- Include error codes for client handling
+- Avoid exposing internal implementation details
+
+### 5. Testing
+- Test all exception scenarios
+- Verify proper error response format
+- Test exception propagation across layers
+- Mock external dependencies for error testing
+
+
+

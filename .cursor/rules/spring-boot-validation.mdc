@@ -1,0 +1,64 @@
+---
+description: Spring Boot validation patterns using @Validated annotation, DTO validation patterns, and proper exception handling for validation errors.
+alwaysApply: false
+---
+# Spring Boot Validation Patterns
+
+## Validation Approach
+
+### Use @Validated Instead of Manual Validation
+- **Preferred**: Use `@Validated` annotation for automatic validation
+- **Avoid**: Manual validation calls like `requestDto.validate()`
+
+### Controller Validation Pattern
+```java
+@Validated
+@RestController
+@RequestMapping("/v1/endpoint")
+public class ExampleController {
+    
+    @PostMapping("/method")
+    public ResponseEntity<?> method(@Validated @RequestBody RequestDto requestDto) {
+        // Validation happens automatically before this method is called
+        return service.process(requestDto);
+    }
+}
+```
+
+### DTO Validation Pattern
+```java
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class RequestDto {
+    
+    @NotNull(message = "Field cannot be null")
+    @Positive(message = "Field must be a positive number")
+    private Integer field;
+    
+    // Do NOT include manual validate() methods
+    // Let Spring handle validation automatically
+}
+```
+
+### Service Layer
+- **Remove**: Manual validation calls from service methods
+- **Validation**: Happens automatically in controller layer
+- **Focus**: Business logic only
+
+## Validation Annotations
+- Use Jakarta Bean Validation annotations: `@NotNull`, `@Positive`, `@Size`, `@Email`, etc.
+- Provide meaningful error messages
+- Use `@Builder.Default` for optional fields with default values
+
+## Exception Handling
+- Spring automatically converts validation errors to `MethodArgumentNotValidException`
+- Handle via existing `GlobalExceptionHandler` or `ValidationErrorException`
+- No need for manual `IllegalArgumentException` handling in controllers
+
+## Files Following This Pattern
+- [RuleEngineController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngineController.java)
+- [RuleEngineRequestBodyDto.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/dto/RuleEngineRequestBodyDto.java)
+- [AccessControlTestController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/access_control/AccessControlTestController.java)
+

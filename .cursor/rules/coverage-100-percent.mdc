@@ -1,0 +1,39 @@
+---
+description: Best practices and requirements for achieving 100% line and branch coverage in any kind of test (unit, integration, etc.).
+alwaysApply: true
+---
+
+# 100% Line and Branch Coverage Rule for All Tests
+
+This rule defines the requirements and best practices for achieving 100% line and branch coverage in any kind of test, including unit, integration, and system tests.
+
+## Coverage Requirements
+- Every line of code must be executed by at least one test (100% line coverage)
+- Every branch of every conditional (if, else, switch, ternary, etc.) must be executed in all possible directions (100% branch coverage)
+- All exception and error branches must be tested
+- All edge cases, including null, empty, and boundary values, must be covered
+
+## Best Practices
+- Write tests for both positive and negative scenarios
+- Test all logical paths, including true/false for all conditions
+- Use parameterized tests to cover multiple input combinations
+- Use mocks and stubs to simulate dependencies and edge cases
+- Test exception handling and error propagation
+- Use code coverage tools (e.g., JaCoCo, Istanbul, Coverage.py) to verify coverage
+- Refactor code to make it more testable if necessary
+
+## Example Scenarios
+- All branches of if/else, switch, and ternary operators
+- All catch and finally blocks
+- All early returns and guard clauses
+- All input validation and error handling logic
+- All combinations of boolean flags and configuration options
+- All public API endpoints and service methods
+
+## How to Use
+- Run your test suite with coverage enabled
+- Review the coverage report and identify any uncovered lines or branches
+- Add or update tests to cover all missing lines and branches
+- Repeat until 100% line and branch coverage is achieved
+
+This rule applies to all test types and all languages. Adapt the examples and practices to your specific codebase and technology stack.

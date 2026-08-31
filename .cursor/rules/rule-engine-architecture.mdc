@@ -1,0 +1,163 @@
+---
+description: Rule Engine Architecture for Timesheet Microservice
+alwaysApply: false
+---
+# Rule Engine Architecture
+
+## Overview
+The Rule Engine is a core component of the timesheet microservice that evaluates business rules for timesheet calculations. It follows a strategy pattern with support for both duration-based and range-based rule evaluation.
+
+## Core Components
+
+### Main Interfaces
+- [IRuleEngine.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/IRuleEngine.java) - Main rule engine interface
+- [IRuleFactory.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/IRuleFactory.java) - Rule factory interface for creating rule instances
+
+### Core Implementation
+- [RuleEngine.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngine.java) - Main rule engine implementation
+- [RuleFactory.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleFactory.java) - Factory implementation for creating rules
+
+### Evaluation Strategies
+- [RuleEvaluationStrategy.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEvaluationStrategy.java) - Base strategy interface
+- [DurationBasedRuleEvaluationStrategy.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/DurationBasedRuleEvaluationStrategy.java) - Strategy for duration-based rules
+- [RangeBasedRuleEvaluationStrategy.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RangeBasedRuleEvaluationStrategy.java) - Strategy for range-based rules
+
+### Configuration
+- [RuleEngineConfiguration.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngineConfiguration.java) - Spring configuration for rule engine beans
+
+### Controllers
+- [IRuleEngineController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/IRuleEngineController.java) - Controller interface
+- [RuleEngineController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngineController.java) - REST controller implementation
+
+## Directory Structure
+```
+rule_engine/
+├── dto/           # Data Transfer Objects for rule engine
+├── utils/         # Utility classes for rule processing
+├── rules/         # Individual rule implementations
+├── constants/     # Rule-related constants
+└── *.java         # Core rule engine classes
+```
+
+## Usage Patterns
+
+### Rule Engine Service Integration
+```java
+@Service
+public class RuleEngineService {
+    
+    private final IRuleEngine ruleEngine;
+    private final RuleEngineMapper ruleEngineMapper;
+    
+    public RuleValidationResult validateTimesheetRules(Timesheet timesheet) {
+        // Convert timesheet to rule engine format
+        RuleEngineInputDto input = ruleEngineMapper.toRuleEngineInput(timesheet);
+        
+        // Execute rules
+        RuleEngineResult result = ruleEngine.evaluateRules(input);
+        
+        // Convert result
+        return ruleEngineMapper.toValidationResult(result);
+    }
+}
+```
+
+### Rule Factory Usage
+```java
+@Component
+public class RuleFactory {
+    
+    public IEvaluatableRule createRule(RuleType ruleType, RuleConfiguration config) {
+        // Factory logic to create appropriate rule instance
+        return ruleFactory.createRule(ruleType, config);
+    }
+}
+```
+
+### Evaluation Strategy Pattern
+```java
+// Duration-based evaluation
+DurationBasedRuleEvaluationStrategy durationStrategy = 
+    new DurationBasedRuleEvaluationStrategy();
+RuleResult result = durationStrategy.evaluate(rule, timeLogs);
+
+// Range-based evaluation
+RangeBasedRuleEvaluationStrategy rangeStrategy = 
+    new RangeBasedRuleEvaluationStrategy();
+RuleResult result = rangeStrategy.evaluate(rule, timeRanges);
+```
+
+## Testing Patterns
+
+### Rule Engine Service Tests
+```java
+@ExtendWith(MockitoExtension.class)
+class RuleEngineServiceTests {
+    
+    @Mock
+    private IRuleEngine ruleEngine;
+    
+    @Mock
+    private RuleEngineMapper ruleEngineMapper;
+    
+    @Test
+    void testEvaluateRulesSuccess() {
+        // Arrange
+        given(this.ruleEngine.evaluateRules(any())).willReturn(result);
+        given(this.ruleEngineMapper.toRuleEngineResponseBodyDto(any())).willReturn(responseDto);
+        
+        // Act
+        RuleEngineResponseBodyDto result = this.ruleEngineService.evaluateRules(requestDto);
+        
+        // Assert
+        assertThat(result).isEqualTo(expectedResponse);
+        verify(this.ruleEngine).evaluateRules(any());
+    }
+}
+```
+
+## Default Pay (Week-end Sweep)
+
+A virtual/system rule that pays any worked time still unallocated after all daily rules and Weekly Overtime have run. Adds two RuleType values:
+
+- `RANGE_BASED_DEFAULT_PAY` (id 13)
+- `DURATION_BASED_DEFAULT_PAY` (id 14)
+
+Gated per timesheet on `TimesheetSetting.isUnplannedHoursPayEnabled == 1`. Sits last in `RulePrecedenceConfig` for both range-based and duration-based lists, but is dispatched **outside the per-rule daily loop** — invoked at week end by `BaseRuleEvaluator.evaluateDefaultPayRules` after `evaluateWeeklyOvertimeRules`. See [DefaultPayRule.md](mdc:.cursor/rules/DefaultPayRule.md) for the chronological-backfill algorithm and the WOT interaction.
+
+The two rule classes are:
+- [shifts/DefaultPayRule.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/shifts/DefaultPayRule.java)
+- [hourly/DefaultPayRule.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/hourly/DefaultPayRule.java)
+
+Both compute `duration × baseRate × 1.0` via `TimeHelper.calculatePayAmount` / `calculateBillAmount` with `ChargeMethodType.MULTIPLIER`.
+
+## Best Practices
+
+### Rule Implementation
+- Extend appropriate base classes for rule types
+- Use strategy pattern for different evaluation approaches
+- Implement proper validation in rule constructors
+- Use builder pattern for complex rule configurations
+
+### Performance Considerations
+- Use caching for frequently accessed rule configurations
+- Implement bulk evaluation for multiple timesheets
+- Use appropriate evaluation strategies based on rule type
+- Optimize rule matching algorithms
+
+### Error Handling
+- Provide meaningful error messages for rule violations
+- Use custom exceptions for rule-specific errors
+- Implement proper logging for rule evaluation
+- Handle edge cases in rule calculations
+
+## Related Files
+- [RuleEngineService.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/services/rule_engine/RuleEngineService.java)
+- [RuleEngineServiceTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/services/rule_engine/RuleEngineServiceTests.java)
+
+
+
+4. **Use the unified rule manager** for creating rule lists
+5. **Handle system rules gracefully** in custom rule logic
+
+

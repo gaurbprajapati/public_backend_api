@@ -1,0 +1,192 @@
+---
+description: Timesheet Microservice Architecture
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Timesheet Microservice Architecture
+
+## Application Entry Point
+The main application is [TimesheetApplication.java](mdc:src/main/java/io/recruitcrm/microservice/TimesheetApplication.java) which configures:
+- Entity scanning for `io.recruitcrm.microservice` package
+- JPA repositories for `io.recruitcrm.microservice` package
+- OpenAPI documentation
+- JOOQ configuration
+
+## Core Architecture Layers
+
+### 1. Controllers Layer
+Located in `controllers/` package, handles HTTP requests/responses:
+- **Timesheet Controllers**: [TimesheetController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/timesheet/TimesheetController.java)
+- **Access Control Controllers**: [AccessControlTestController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/access_control/AccessControlTestController.java)
+- **Timesheet Settings Controllers**: [TimesheetSettingController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/timesheet_setting/TimesheetSettingController.java)
+- **Timesheet Status Controllers**: [TimesheetStatusController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/timesheet_status/TimesheetStatusController.java)
+
+### 2. Services Layer
+Located in `services/` package, contains business logic:
+- **Interface-First Design**: All services have interfaces (e.g., `ITimesheetService`)
+- **Implementation Classes**: Service implementations with `@Service` annotation
+- **Transaction Management**: Uses `@Transactional` for database operations
+- **DTO Usage**: Services work with DTOs, not entities directly
+
+### 3. Repository Layer
+Located in `repositories/` and `dao/` packages:
+- **JPA Repositories**: Extend `JpaRepository` for basic CRUD operations
+- **Custom Repositories**: Implement complex queries and business logic
+- **JOOQ Integration**: For complex SQL queries and dynamic query building
+- **Query Optimization**: Uses `@EntityGraph` to avoid N+1 problems
+
+### 4. DTO Layer
+Located in `dto/` package, handles data transfer:
+- **Request DTOs**: Validate and carry input data
+- **Response DTOs**: Structure output data
+- **Record Pattern**: Most DTOs use Java records for immutability
+- **Validation**: Uses Bean Validation annotations
+
+## Key Design Patterns
+
+### 1. Interface-First Design
+```java
+// Service Interface
+public interface ITimesheetService {
+    TimesheetResponseDto createTimesheet(TimesheetRequestDto request);
+}
+
+// Service Implementation
+@Service
+public class TimesheetService implements ITimesheetService {
+    // Implementation
+}
+```
+
+### 2. Builder Pattern
+```java
+// DTO with Builder
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class TimesheetRequestDto {
+    private String name;
+    private Integer candidateId;
+}
+```
+
+### 3. Factory Pattern
+```java
+// Permission Checker Factory
+@Component
+public class PermissionCheckerFactory {
+    public BasePermissionChecker getPermissionChecker(Permission permission) {
+        // Factory logic
+    }
+}
+```
+
+## Response Handling
+
+### Standardized API Responses
+- **Success Response**: [APINormalResponse.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APINormalResponse.java)
+- **Error Response**: [APIErrorResponse.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIErrorResponse.java)
+- **Response Helper**: [APIResponder.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIResponder.java)
+
+### Controller Response Pattern
+```java
+@PostMapping("/create")
+public ResponseEntity<?> createTimesheet(@Valid @RequestBody TimesheetRequestDto request) {
+    try {
+        TimesheetResponseDto result = timesheetService.createTimesheet(request);
+        return apiResponder.respond(result, "Timesheet created successfully");
+    } catch (Exception ex) {
+        return apiResponder.respondWithError(ex.getMessage());
+    }
+}
+```
+
+## Exception Handling
+
+### Global Exception Handler
+- **Location**: [CommonControllerAdvice.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/exceptions/handlers/CommonControllerAdvice.java)
+- **Custom Exceptions**: [UnauthorizedAccessException.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/exceptions/UnauthorizedAccessException.java)
+- **Validation Errors**: [ValidationErrorException.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/exceptions/ValidationErrorException.java)
+
+### Exception Types
+- **ValidationErrorException**: Input validation failures
+- **ResourceNotFoundException**: Requested resource not found
+- **UnauthorizedAccessException**: Permission denied
+- **JsonReadException**: JSON parsing errors
+
+## Configuration
+
+### Security Configuration
+- **Location**: [SecurityConfiguration.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/configuration/auth/SecurityConfiguration.java)
+- **Authentication**: Custom authentication with [AuthHolder.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/helpers/Auth.java)
+- **CORS**: Configurable CORS settings
+
+### Database Configuration
+- **JPA Configuration**: Entity scanning and repository configuration
+- **JOOQ Configuration**: SQL query building and execution
+- **Connection Pooling**: Optimized database connection management
+
+## Testing Strategy
+
+### Test Structure
+- **Unit Tests**: Test individual components in isolation
+- **Integration Tests**: Test component interactions
+- **Test Data**: Mock data classes for consistent test data
+
+### Test Patterns
+```java
+@ExtendWith(MockitoExtension.class)
+class TimesheetServiceTest {
+    @Mock
+    private TimesheetRepository timesheetRepository;
+    
+    @InjectMocks
+    private TimesheetService timesheetService;
+    
+    @Test
+    void shouldCreateTimesheet() {
+        // Test implementation
+    }
+}
+```
+
+## Performance Optimization
+
+### Database Optimization
+- **Query Optimization**: Uses `@EntityGraph` for eager loading
+- **Bulk Operations**: Bulk permission checking and data loading
+- **Connection Pooling**: Optimized database connections
+- **Caching**: Redis integration for frequently accessed data
+
+### Memory Management
+- **DTO Usage**: Prevents entity serialization issues
+- **Lazy Loading**: Uses `FetchType.LAZY` for relationships
+- **Stream Processing**: Efficient data processing with streams
+
+## Monitoring and Logging
+
+### Logging Framework
+- **ECS Logging**: Structured logging with Logback
+- **Log Levels**: Debug, Info, Warn, Error levels
+- **Context Information**: Request tracing and correlation IDs
+
+### Monitoring
+- **New Relic**: Application performance monitoring
+- **Sentry**: Error tracking and alerting
+- **Health Checks**: Application health monitoring
+
+## Feature Flags
+
+### Flagsmith Integration
+- **Location**: [Flagsmith.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/flagsmith/Flagsmith.java)
+- **Feature Flags**: [Flags.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/flagsmith/Flags.java)
+- **Dynamic Configuration**: Runtime feature toggling
+
+
+- **Location**: [Flagsmith.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/flagsmith/Flagsmith.java)
+- **Feature Flags**: [Flags.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/flagsmith/Flags.java)
+- **Dynamic Configuration**: Runtime feature toggling
+

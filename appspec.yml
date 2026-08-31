@@ -1,0 +1,46 @@
+version: 0.0
+os: linux
+files:
+  - source: timesheet-microservice.jar
+    destination: /var/www/html
+    overwrite: true
+
+  - source: templates/processed/
+    destination: /tmp/templates
+    overwrite: true
+
+#  - source: templates/processed/new-relic/newrelic.yml
+#    destination: /opt/newrelic/
+#    overwrite: true
+
+  - source: templates/processed/application.properties
+    destination: /var/www/html/
+    overwrite: true
+
+  - source: templates/processed/filebeat.yml
+    destination: /etc/filebeat/
+    overwrite: true
+
+  - source: templates/processed/config.yaml
+    destination: /etc/otelcol-contrib/
+    overwrite: true 
+file_exists_behavior: OVERWRITE
+hooks:
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/newrelic-apm.sh
+      timeout: 300
+      runas: root
+    - location: scripts/file_placement.sh
+      timeout: 300
+      runas: root
+    - location: scripts/after_install.sh
+      timeout: 600
+      runas: root
+  ApplicationStop:
+    - location: scripts/application_stop.sh
+      timeout: 300
+      runas: root

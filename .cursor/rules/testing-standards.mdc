@@ -1,0 +1,154 @@
+---
+description: Testing standards and best practices using BDDMockito style, test structure patterns, assertion patterns, and integration test guidelines.
+alwaysApply: false
+---
+# Testing Standards
+
+## BDDMockito Style Requirements
+
+### Import Statements
+- **Use**: `import static org.mockito.BDDMockito.given;`
+- **Use**: `import static org.mockito.BDDMockito.verify;`
+- **Use**: `import static org.mockito.BDDMockito.willDoNothing;`
+- **Avoid**: `import static org.mockito.BDDMockito.willReturn;` (use `given().willReturn()` instead)
+
+### Mock Setup Pattern
+```java
+// Correct BDDMockito style
+given(this.service.methodCall()).willReturn(expectedResult);
+given(this.repository.findById(any())).willReturn(Optional.of(entity));
+
+// For void methods
+willDoNothing().given(this.service).voidMethod();
+
+// For exceptions
+given(this.service.methodCall()).willThrow(new RuntimeException("Error"));
+```
+
+### Verification Pattern
+```java
+// Correct BDDMockito style
+verify(this.service).methodCall();
+verify(this.repository).save(any(Entity.class));
+verify(this.apiResponder).respond(any(), eq("Success message"));
+```
+
+## Test Structure
+
+### Class Annotations
+```java
+@ExtendWith(MockitoExtension.class)
+@DisplayName("ServiceName Tests")
+class ServiceNameTests {
+    // Test implementation
+}
+```
+
+### Mock Declarations
+```java
+@Mock
+private ServiceInterface service;
+
+@Mock
+private RepositoryInterface repository;
+
+@InjectMocks
+private ServiceImplementation serviceImpl;
+```
+
+### Test Method Naming
+- **Format**: `test[MethodName]_[Scenario]_[ExpectedResult]`
+- **Example**: `testCreateTimesheet_validInput_createsTimesheet()`
+- **Example**: `testGetTimesheetById_invalidId_throwsResourceNotFoundException()`
+
+### Test Method Structure
+```java
+@Test
+@DisplayName("Method description - Success")
+void testMethodNameSuccess() {
+    // Arrange
+    given(this.dependency.method()).willReturn(result);
+    
+    // Act
+    ResultType result = this.service.methodCall();
+    
+    // Assert
+    assertThat(result).isEqualTo(expectedResult);
+    verify(this.dependency).method();
+}
+```
+
+## Assertion Patterns
+
+### Using AssertJ
+```java
+// Basic assertions
+assertThat(result).isNotNull();
+assertThat(result).isEqualTo(expectedValue);
+assertThat(result).hasSize(2);
+
+// Exception assertions
+assertThatThrownBy(() -> service.methodCall())
+    .isInstanceOf(ValidationErrorException.class)
+    .hasMessage("Expected error message");
+```
+
+### Collection Assertions
+```java
+assertThat(list).hasSize(2);
+assertThat(list).contains(expectedItem);
+assertThat(list).extracting("fieldName").containsOnly(expectedValues);
+```
+
+## Test Data Management
+
+### Mock Data Creation
+```java
+// Use Mockito.mock() for complex objects
+SearchRequestBodyDto searchRequest = mock(SearchRequestBodyDto.class);
+Pageable pageable = mock(Pageable.class);
+
+// Use builders for simple objects
+TimesheetRequestDto request = TimesheetRequestDto.builder()
+    .name("Test Timesheet")
+    .candidateId(123)
+    .build();
+```
+
+### Test Data Builders
+```java
+public class TestDataBuilder {
+    public static TimesheetRequestDto createTimesheetRequest() {
+        return new TimesheetRequestDto(
+            "Test Timesheet",
+            123,
+            456,
+            LocalDate.now(),
+            List.of()
+        );
+    }
+}
+```
+
+## Integration Test Patterns
+
+### Controller Integration Tests
+```java
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class ControllerIntegrationTests {
+    
+    @Autowired
+    private TestRestTemplate restTemplate;
+    
+    @Test
+    void testEndpoint_integration() {
+        // Test implementation
+    }
+}
+```
+
+## Files Following These Standards
+- [RuleEngineServiceTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/services/rule_engine/RuleEngineServiceTests.java)
+- [TimesheetServiceTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/services/timesheet/TimesheetServiceTests.java)
+- [TimesheetControllerTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/controllers/timesheet/TimesheetControllerTests.java)

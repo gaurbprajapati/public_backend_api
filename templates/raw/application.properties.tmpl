@@ -1,0 +1,151 @@
+spring.application.name=${APP_NAME}
+
+application.env=${APP_ENV}
+
+# https://stackoverflow.com/questions/3383169/hibernate-jpa-mysql-and-tinyint1-for-boolean-instead-of-bit-or-char
+
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.generate-ddl=false
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.open-in-view=false
+
+#Reverse Proxy Configuration
+server.forward-headers-strategy=native
+server.tomcat.remoteip.remote-ip-header=x-forwarded-for
+server.tomcat.remoteip.protocol-header=x-forwarded-proto
+
+#Jpa/Hibernate Batching
+# https://www.baeldung.com/jpa-hibernate-batch-insert-update
+# https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/chapters/batch/Batching.html
+
+spring.jpa.properties.hibernate.jdbc.batch_size=50
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+spring.jpa.properties.hibernate.jdbc.batch_versioned_data=true
+
+# Sentry
+sentry.dsn=${SENTRY_DSN}
+sentry.environment=${APP_ENV}
+sentry.exception-resolver-order=-2147483647
+sentry.send-default-pii=true
+
+spring.datasource.reader.schema=${DB_DATABASE}
+
+# AWS Aurora
+spring.application.datasource.read-consistency=${DB_READ_CONSISTENCY}
+
+# Reader - Local
+spring.datasource.reader.url=jdbc:mysql://${DB_HOST_READER}:3306/${DB_DATABASE}?tinyInt1isBit=false&allowMultiQueries=true
+spring.datasource.reader.username=${DB_USERNAME}
+spring.datasource.reader.password=${DB_PASSWORD}
+spring.datasource.reader.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Writer - Local
+spring.datasource.writer.url=jdbc:mysql://${DB_HOST_WRITER}:3306/${DB_DATABASE}?tinyInt1isBit=false&allowMultiQueries=true
+spring.datasource.writer.username=${DB_USERNAME}
+spring.datasource.writer.password=${DB_PASSWORD}
+spring.datasource.writer.driver-class-name=com.mysql.cj.jdbc.Driver
+
+#CORS
+application.cors.allowed-origins=
+application.cors.allowed-origin-patterns=
+
+#Redis
+spring.data.redis.host=${REDIS_HOST}
+
+#Server Config
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration,org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+
+#Logging
+logger.log-source=${APP_ENV}-contract-staffing-timesheet
+logger.log-format=${LOG_FORMAT}
+logger.context=sync
+logging.file.path=${LOGGING_FILE_PATH}
+logging.logback.rollingpolicy.total-size-cap=256MB
+
+# OpenRouteService API Configuration
+openrouteservice.api.key=${OPENROUTESERVICE_API_KEY}
+openrouteservice.api.url=${OPENROUTESERVICE_API_URL}
+
+#Actuator Configuration
+management.endpoint.health.show-details=${ACTUATOR_HEALTH_SHOW_DETAILS}
+management.health.db.enabled=false
+management.health.custom.db.aurora.enabled=${ACTUATOR_HEALTH_CUSTOM_DB_AURORA_ENABLED}
+
+# Swagger Basic Authentication
+swagger.username=${SWAGGER_USERNAME}
+swagger.password=${SWAGGER_PASSWORD}
+
+#JWT
+security.recruitcrm.jwt.secret-key=${RECRUITCRM_JWT_SECRET_KEY}
+security.recruitcrm.jwt.expiration-time=2592000000
+
+#Flagsmith
+flagsmith.api.key=${FLAGSMITH_API_KEY}
+
+# Kafka - Webhook events
+spring.kafka.webhook-events.bootstrap-servers=${WEBHOOK_EVENTS_KAFKA_BOOTSTRAP_SERVERS}
+spring.kafka.webhook-events.security.protocol=${WEBHOOK_EVENTS_KAFKA_SECURITY_PROTOCOL}
+spring.kafka.webhook-events.sasl.mechanism=${WEBHOOK_EVENTS_KAFKA_SASL_MECHANISM}
+spring.kafka.webhook-events.sasl.username=${WEBHOOK_EVENTS_KAFKA_SASL_USERNAME}
+spring.kafka.webhook-events.sasl.password=${WEBHOOK_EVENTS_KAFKA_SASL_PASSWORD}
+spring.kafka.webhook-events.consumer.group-id=${WEBHOOK_EVENTS_KAFKA_CONSUMER_GROUP_ID}
+spring.kafka.webhook-events.consumer.enable-partition-eof=${WEBHOOK_EVENTS_KAFKA_CONSUMER_ENABLE_PARTITION_EOF}
+spring.kafka.webhook-events.consumer.session-timeout-ms=${WEBHOOK_EVENTS_KAFKA_CONSUMER_SESSION_TIMEOUT_MS}
+spring.kafka.webhook-events.topic.name=${WEBHOOK_EVENTS_KAFKA_TOPIC_NAME}
+
+#Hikari Config
+spring.datasource.hikari.maximum-pool-size=${SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE}
+spring.datasource.hikari.minimum-idle=${SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE}
+spring.datasource.hikari.max-lifetime=${SPRING_DATASOURCE_HIKARI_MAX_LIFETIME}
+
+#Tomcat concurrency config
+server.tomcat.threads.max=500
+server.tomcat.threads.min-spare=200
+server.tomcat.accept-count=200
+
+#Keycloak Configuration
+security.keycloak.server-url=${SECURITY_KEYCLOAK_SERVER_URL}
+security.keycloak.realm=${SECURITY_KEYCLOAK_REALM}
+security.keycloak.issuer-uri=${SECURITY_KEYCLOAK_ISSUER_URI}
+security.keycloak.public-key=${SECURITY_KEYCLOAK_PUBLIC_KEY}
+
+security.keycloak.enabled=true
+security.keycloak.detection-strategy=auto
+
+app.service.name=contract-staffing-service
+app.kafka.env-name=${APP_ENV}
+app.kafka.topic.notification-timesheet=${APP_ENV}-reminder-notification
+spring.kafka.bootstrap-servers=${KAFKA_BOOTSTRAP_SERVERS}
+spring.kafka.producer.client-id=timesheet-service-producer
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.acks=all
+spring.kafka.producer.retries=3
+spring.kafka.producer.properties.max.in.flight.requests.per.connection=5
+spring.kafka.producer.properties.request.timeout.ms=30000
+spring.kafka.producer.properties.delivery.timeout.ms=120000
+spring.kafka.producer.properties.retry.backoff.ms=1000
+spring.kafka.security.protocol=${KAFKA_SECURITY_PROTOCOL}
+spring.kafka.sasl.mechanism=${KAFKA_SASL_MECHANISM}
+spring.kafka.sasl.username=${KAFKA_SASL_USERNAME}
+spring.kafka.sasl.password=${KAFKA_SASL_PASSWORD}
+spring.kafka.consumer.enable-partition-eof=${KAFKA_CONSUMER_ENABLE_PARTITION_EOF}
+spring.kafka.consumer.session-timeout-ms=${KAFKA_CONSUMER_SESSION_TIMEOUT_MS}
+spring.aws.lambda.email-reminder.validation-key=${AWS_LAMBDA_CRON_VALIDATION_KEY}
+spring.aws.lambda.reimbursement-email-reminder.validation-key=${AWS_LAMBDA_REIMBURSEMENT_CRON_VALIDATION_KEY}
+spring.aws.lambda.kafka-event-log-cleanup.validation-key=${AWS_LAMBDA_KAFKA_EVENT_LOG_CLEANUP_KEY}
+# S3 Configuration (required by s3-service library)
+s3.region=${S3_REGION}
+s3.bucket.south=${S3_BUCKET_SOUTH}
+s3.bucket.east=${S3_BUCKET_EAST}
+s3.bucket.west=${S3_BUCKET_WEST}
+s3.bucket.southeast=${S3_BUCKET_SOUTHEAST}
+s3.bucket.canada=${S3_BUCKET_CANADA}
+s3.default-bucket=${S3_DEFAULT_BUCKET}
+
+# Cipher Configuration (required by s3-service FileKeyEncryptionUtil)
+app.cipher.algorithm=${APP_CIPHER_ALGORITHM}
+app.cipher.key=${APP_CIPHER_KEY}
+app.cipher.iv=${APP_CIPHER_IV}

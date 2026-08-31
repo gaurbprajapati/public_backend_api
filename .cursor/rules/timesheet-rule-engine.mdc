@@ -1,0 +1,137 @@
+---
+description: Timesheet rule engine system for calculating pay and bill amounts based on complex business rules. Includes range-based and duration-based rules, evaluation strategies, and troubleshooting guidelines.
+alwaysApply: false
+---
+# Timesheet Rule Engine System
+
+## Overview
+The timesheet rule engine is a sophisticated system for calculating pay and bill amounts based on complex business rules. It supports both range-based rules (time-specific) and duration-based rules (total hours).
+
+## Core Architecture
+
+### Main Components
+- **RuleEngine**: [RuleEngine.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngine.java) - Main entry point for rule evaluation
+- **RuleFactory**: [RuleFactory.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleFactory.java) - Creates rule instances
+- **RuleEvaluationStrategy**: [RuleEvaluationStrategy.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEvaluationStrategy.java) - Orchestrates rule evaluation
+- **BaseRuleEvaluator**: [BaseRuleEvaluator.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/BaseRuleEvaluator.java) - Base class for all rule evaluators
+
+## Rule Types and Precedence
+
+### Range-Based Rules (Time-Specific)
+Rules that apply to specific time ranges within a day:
+
+1. **Regular Hours** (RANGE_BASED_REGULAR_HOURS) - Standard pay rate
+2. **Before Shift** (RANGE_BASED_BEFORE_SHIFT) - Early arrival premium
+3. **After Shift** (RANGE_BASED_AFTER_SHIFT) - Late departure premium
+4. **Break** (RANGE_BASED_BREAK) - Unpaid break periods
+5. **Daily Overtime** (RANGE_BASED_DAILY_OVERTIME) - Daily hours exceeding threshold
+6. **Weekly Overtime** (RANGE_BASED_WEEKLY_OVERTIME) - Weekly hours exceeding threshold
+7. **Default Pay** (RANGE_BASED_DEFAULT_PAY) - Week-end sweep: pays unallocated worked time at the base rate × 1.0. Virtual/system rule, gated on `TimesheetSetting.isUnplannedHoursPayEnabled == 1`. Runs **after** Weekly Overtime. See [DefaultPayRule.md](mdc:.cursor/rules/DefaultPayRule.md).
+
+### Duration-Based Rules (Total Hours)
+Rules that apply to total accumulated hours:
+- **Weekly Overtime** (DURATION_BASED_WEEKLY_OVERTIME) - Alternative weekly overtime calculation
+- **Default Pay** (DURATION_BASED_DEFAULT_PAY) - Same semantics as the range-based variant; selected when work-log type is duration-based.
+
+## Rule Evaluation Process
+
+### 1. Time Range Occupation
+- Rules are evaluated in precedence order
+- Each successful rule **occupies its time ranges**
+- Later rules cannot use time ranges already occupied by earlier rules
+- This is why Daily Overtime can prevent Weekly Overtime from calculating
+
+### 2. Evaluation State Tracking
+The system tracks:
+- `occupiedTimeRanges`: Time periods already processed by other rules
+- `workedHoursTillNow`: Cumulative hours worked up to current rule
+- `evaluationDate`: Current date being processed
+
+### 3. Rule Configuration
+Rules must be explicitly configured in timesheet settings:
+- **System Rules**: Automatically included (Regular Hours, Break)
+- **Custom Rules**: Must be added to `customRule` list (Before Shift, After Shift, Daily Overtime, Weekly Overtime)
+
+## Key Rule Implementations
+
+### Weekly Overtime Rule
+- **File**: [WeeklyOvertimeRule.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/shifts/WeeklyOvertimeRule.java)
+- **Logic**: Compares total weekly hours against `weeklyThreshold`
+- **Issue**: Can be blocked by Daily Overtime occupying time ranges
+
+### Before/After Shift Rules
+- **Files**: [BeforeShiftRule.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/shifts/BeforeShiftRule.java), [AfterShiftRule.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/shifts/AfterShiftRule.java)
+- **Logic**: Apply premium rates to time outside scheduled shift
+
+## Common Issues and Solutions
+
+### Weekly Overtime Showing Zero
+**Problem**: Weekly overtime calculates as zero despite exceeding threshold
+**Causes**:
+1. Daily Overtime rules occupying time ranges before Weekly Overtime evaluation
+2. Weekly overtime rule not configured in timesheet settings
+3. Incorrect weekly threshold configuration
+
+**Solutions**:
+1. Check rule precedence order in [RulePrecedenceConfig.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/constants/RulePrecedenceConfig.java)
+2. Ensure Weekly Overtime is added to custom rules
+3. Verify weekly threshold is correctly set
+
+### Time Range Conflicts
+**Problem**: Rules not calculating expected amounts
+**Cause**: Time ranges occupied by higher precedence rules
+**Solution**: Review rule precedence and ensure proper rule ordering
+
+## Calculation Patterns
+
+### Pay vs Bill Calculations
+- **Pay Amount**: Employee compensation (lower rate)
+- **Bill Amount**: Client billing (higher rate)
+- **Multipliers**: Applied to base rates for overtime/premium periods
+
+### Duration Calculations
+- **TimeHelper**: [TimeHelper.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/utils/TimeHelper.java) handles time calculations
+- **Duration Format**: Stored in seconds, converted to hours for display
+- **Precision**: Handles minute-level precision for accurate calculations
+
+## Testing and Debugging
+
+### Rule Evaluation Response
+The system returns detailed evaluation results including:
+- Time ranges processed by each rule
+- Pay and bill amounts per rule
+- Duration calculations
+- Success/failure status
+- Error messages for failed rules
+
+### Debugging Steps
+1. Check rule configuration in timesheet settings
+2. Verify rule precedence order
+3. Review time range occupation in evaluation state
+4. Validate weekly threshold configuration
+5. Check for time range conflicts between rules
+
+## Best Practices
+
+### Rule Configuration
+1. Always include necessary custom rules in timesheet settings
+2. Order rules by precedence (system rules first, then custom rules)
+3. Set appropriate thresholds for daily and weekly overtime
+4. Test rule combinations to ensure no conflicts
+
+### Performance Considerations
+1. Use efficient time range calculations
+2. Minimize redundant rule evaluations
+3. Cache frequently used rule configurations
+4. Monitor rule evaluation performance
+
+## Related Files
+- **Constants**: [RuleType.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/constants/RuleType.java)
+- **Configuration**: [RuleEngineConfiguration.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngineConfiguration.java)
+- **Controller**: [RuleEngineController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngineController.java)
+- **DTOs**: [dto/](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/dto/) directory
+
+- **Constants**: [RuleType.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/constants/RuleType.java)
+- **Configuration**: [RuleEngineConfiguration.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngineConfiguration.java)
+- **Controller**: [RuleEngineController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngineController.java)
+- **DTOs**: [dto/](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/dto/) directory

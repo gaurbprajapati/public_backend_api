@@ -1,0 +1,323 @@
+---
+description: DTO patterns and best practices including record-based DTOs, builder patterns, validation patterns, mapping strategies, and bulk operation DTOs.
+alwaysApply: false
+---
+# DTO Patterns and Best Practices
+
+## Overview
+DTOs (Data Transfer Objects) are used throughout the timesheet microservice to transfer data between layers while maintaining separation of concerns. They prevent entity serialization issues and provide a clean API contract.
+
+## DTO Structure Patterns
+
+### 1. Record-Based DTOs (Preferred)
+```java
+public record TimesheetRequestDto(
+    @NotBlank(message = "Timesheet name is required")
+    String name,
+    
+    @NotNull(message = "Candidate ID is required")
+    Integer candidateId,
+    
+    @NotNull(message = "Job ID is required")
+    Integer jobId,
+    
+    @Valid
+    List<TimeLogDto> timeLogs
+) {
+    public TimesheetRequestDto {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Timesheet name cannot be null or empty");
+        }
+        if (candidateId == null || candidateId <= 0) {
+            throw new IllegalArgumentException("Candidate ID must be a positive integer");
+        }
+        if (jobId == null || jobId <= 0) {
+            throw new IllegalArgumentException("Job ID must be a positive integer");
+        }
+    }
+}
+```
+
+### 2. Builder Pattern DTOs
+```java
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class BulkPermissionCheckRequest {
+    @NotNull(message = "Items list is required")
+    private List<BulkPermissionCheckItem> items;
+    
+    private BulkDataLoadingStrategy explicitStrategy;
+    
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class BulkPermissionCheckItem {
+        @NotNull(message = "Entity is required")
+        private Entity entity;
+        
+        @Valid
+        @NotNull(message = "Permission check context is required")
+        private PermissionCheckContext permissionCheckContext;
+        
+        @Valid
+        @NotNull(message = "Access control metadata context is required")
+        private AccessControlCheckMetadataContext accessControlCheckMetadataContext;
+    }
+}
+```
+
+## DTO Categories
+
+### 1. Request DTOs
+Located in `dto/` package, handle incoming data:
+- **Validation**: Use Bean Validation annotations
+- **Immutability**: Records provide natural immutability
+- **Compact Constructor**: Validate input parameters
+- **Nested DTOs**: Use `@Valid` for nested validation
+
+### 2. Response DTOs
+Handle outgoing data:
+- **Structured Data**: Organize response data logically
+- **Optional Fields**: Use `Optional<T>` for nullable fields
+- **Nested Objects**: Include related data as nested DTOs
+- **Pagination**: Include pagination metadata
+
+### 3. Internal DTOs
+Used for internal data transfer:
+- **Context DTOs**: [BulkPermissionCheckContext.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/dto/BulkPermissionCheckContext.java)
+- **Permission DTOs**: [PermissionCheckContext.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/dto/PermissionCheckContext.java)
+- **Metadata DTOs**: [AccessControlCheckMetadataContext.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/dto/AccessControlCheckMetadataContext.java)
+
+## Validation Patterns
+
+### 1. Bean Validation Annotations
+```java
+public record TimesheetRequestDto(
+    @NotBlank(message = "Name is required")
+    @Size(min = 1, max = 255, message = "Name must be between 1 and 255 characters")
+    String name,
+    
+    @NotNull(message = "Candidate ID is required")
+    @Positive(message = "Candidate ID must be positive")
+    Integer candidateId,
+    
+    @Email(message = "Email must be valid")
+    String email,
+    
+    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Date must be in YYYY-MM-DD format")
+    String startDate
+) {
+    // Compact constructor validation
+}
+```
+
+### 2. Custom Validation
+```java
+public record TimeLogDto(
+    @NotNull(message = "Start time is required")
+    LocalDateTime startTime,
+    
+    @NotNull(message = "End time is required")
+    LocalDateTime endTime,
+    
+    String description
+) {
+    public TimeLogDto {
+        if (startTime != null && endTime != null && startTime.isAfter(endTime)) {
+            throw new IllegalArgumentException("Start time cannot be after end time");
+        }
+        if (startTime != null && endTime != null && 
+            Duration.between(startTime, endTime).toHours() > 24) {
+            throw new IllegalArgumentException("Time log cannot exceed 24 hours");
+        }
+    }
+}
+```
+
+## DTO Mapping Patterns
+
+### 1. Manual Mapping
+```java
+@Service
+public class TimesheetService {
+    
+    public TimesheetResponseDto createTimesheet(TimesheetRequestDto request) {
+        // Manual mapping from DTO to entity
+        Timesheet timesheet = new Timesheet();
+        timesheet.setName(request.name());
+        timesheet.setCandidateId(request.candidateId());
+        timesheet.setJobId(request.jobId());
+        
+        // Save entity
+        Timesheet savedTimesheet = timesheetRepository.save(timesheet);
+        
+        // Manual mapping from entity to response DTO
+        return new TimesheetResponseDto(
+            savedTimesheet.getId(),
+            savedTimesheet.getName(),
+            savedTimesheet.getCandidateId(),
+            savedTimesheet.getJobId(),
+            savedTimesheet.getCreatedAt()
+        );
+    }
+}
+```
+
+### 2. Mapper Classes
+```java
+@Component
+public class TimesheetMapper {
+    
+    public Timesheet toEntity(TimesheetRequestDto dto) {
+        return Timesheet.builder()
+            .name(dto.name())
+            .candidateId(dto.candidateId())
+            .jobId(dto.jobId())
+            .build();
+    }
+    
+    public TimesheetResponseDto toResponseDto(Timesheet entity) {
+        return new TimesheetResponseDto(
+            entity.getId(),
+            entity.getName(),
+            entity.getCandidateId(),
+            entity.getJobId(),
+            entity.getCreatedAt()
+        );
+    }
+    
+    public List<TimesheetResponseDto> toResponseDtoList(List<Timesheet> entities) {
+        return entities.stream()
+            .map(this::toResponseDto)
+            .toList();
+    }
+}
+```
+
+## Bulk Operation DTOs
+
+### 1. Bulk Request DTOs
+```java
+public record BulkTimesheetRequestDto(
+    @NotEmpty(message = "Timesheet requests cannot be empty")
+    List<TimesheetRequestDto> timesheets,
+    
+    @Valid
+    BulkOperationOptions options
+) {
+    public BulkTimesheetRequestDto {
+        if (timesheets.size() > 100) {
+            throw new IllegalArgumentException("Cannot process more than 100 timesheets at once");
+        }
+    }
+}
+```
+
+### 2. Bulk Response DTOs
+```java
+public record BulkTimesheetResponseDto(
+    List<TimesheetResponseDto> successful,
+    List<BulkErrorDto> errors,
+    BulkOperationSummary summary
+) {
+    public BulkTimesheetResponseDto {
+        if (successful == null) successful = new ArrayList<>();
+        if (errors == null) errors = new ArrayList<>();
+    }
+}
+```
+
+## Pagination DTOs
+
+### 1. Pagination Request
+```java
+public record PaginationRequestDto(
+    @Min(value = 1, message = "Page number must be at least 1")
+    Integer page,
+    
+    @Min(value = 1, message = "Page size must be at least 1")
+    @Max(value = 100, message = "Page size cannot exceed 100")
+    Integer size,
+    
+    String sortBy,
+    String sortDirection
+) {
+    public PaginationRequestDto {
+        if (page == null) page = 1;
+        if (size == null) size = 20;
+        if (sortDirection == null) sortDirection = "ASC";
+    }
+}
+```
+
+### 2. Pagination Response
+```java
+public record PaginatedResponseDto<T>(
+    List<T> data,
+    int page,
+    int size,
+    long totalElements,
+    int totalPages,
+    boolean hasNext,
+    boolean hasPrevious
+) {}
+```
+
+## Error Handling DTOs
+
+### 1. Error Response DTOs
+```java
+public record ErrorResponseDto(
+    String errorCode,
+    String message,
+    String details,
+    LocalDateTime timestamp,
+    String requestId
+) {}
+```
+
+### 2. Validation Error DTOs
+```java
+public record ValidationErrorDto(
+    String field,
+    String message,
+    Object rejectedValue
+) {}
+```
+
+## Best Practices
+
+### 1. Immutability
+- Use records for immutable DTOs
+- Use `@Builder` for complex mutable DTOs
+- Avoid setters in response DTOs
+
+### 2. Validation
+- Validate at DTO level, not service level
+- Use Bean Validation annotations
+- Add custom validation in compact constructors
+- Provide meaningful error messages
+
+### 3. Naming Conventions (STRICT)
+- Request DTOs: `[Entity]RequestBodyDto` (e.g., `CreateReimbursementRequestBodyDto`)
+- Response DTOs: `[Entity]ResponseBodyDto` (e.g., `ReimbursementResponseBodyDto`)
+- Internal DTOs: `[Purpose][Context]Dto`
+- Bulk DTOs: `Bulk[Entity][Request/Response]BodyDto`
+- **RULE**: All request and response DTOs MUST use the `RequestBodyDto` / `ResponseBodyDto` suffix. Never use `RequestDto` or `ResponseDto` without `Body`. This convention is enforced project-wide for consistency.
+
+### 4. Documentation
+- Use JavaDoc for complex DTOs
+- Document validation rules
+- Provide usage examples
+- Include field descriptions
+
+### 5. Performance
+- Keep DTOs lightweight
+- Avoid deep nesting
+- Use lazy loading for related data
+- Consider pagination for large datasets
+
+

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TemplateWorkDaysJsonSchema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "workDayId": { "type": "integer" },
+      "workTime": { "type": "integer" },
+      "workStartTime": { "type": "integer" },
+      "workEndTime": { "type": "integer" }
+    },
+    "required": [ "workDayId", "workTime", "workStartTime", "workEndTime" ],
+    "additionalProperties": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "synthetic_column_patterns": [
+    {
+      "patternId": "candidate_full_name",
+      "description": "Concatenates candidate first and last name with null handling",
+      "requiredKeywords": ["DSL.when", "CANDIDATE.LASTNAME"],
+      "templateKey": "CANDIDATE_NAME_CONCAT",
+      "enabled": true,
+      "priority": 10
+    },
+    {
+      "patternId": "timesheet_period_display",
+      "description": "Formats timesheet period as readable date range",
+      "requiredKeywords": ["DSL.concat", "FROM_UNIXTIME"],
+      "templateKey": "TIMESHEET_PERIOD_DISPLAY",
+      "enabled": true,
+      "priority": 20
+    },
+    {
+      "patternId": "formatted_date",
+      "description": "Formats dates using DATE_FORMAT function",
+      "requiredKeywords": ["DSL.function", "DATE_FORMAT"],
+      "templateKey": "DATE_FORMAT_DMY",
+      "enabled": true,
+      "priority": 5
+    },
+    {
+      "patternId": "candidate_status_display",
+      "description": "Shows candidate status with custom formatting",
+      "requiredKeywords": ["DSL.case", "CANDIDATE.STATUS"],
+      "templateKey": "CANDIDATE_STATUS_FORMATTED",
+      "enabled": false,
+      "priority": 15
+    }
+  ],
+  "timesheet_fields": [
+    {
+      "frontendName": "candidate_full_name",
+      "jooqExpression": "DSL.when(CANDIDATE.LASTNAME.isNull().or(CANDIDATE.LASTNAME.eq(\"\")), CANDIDATE.FIRSTNAME).otherwise(DSL.concat(CANDIDATE.FIRSTNAME, DSL.val(\" \"), CANDIDATE.LASTNAME))",
+      "displayName": "Candidate Full Name",
+      "javaType": "String",
+      "requiredEntities": ["CANDIDATE"],
+      "nullable": true,
+      "enabled": true
+    },
+    {
+      "frontendName": "timesheet_period_range",
+      "jooqExpression": "DSL.concat(DSL.function(\"FROM_UNIXTIME\", String.class, TS.PERIOD_START, DSL.val(\"%d %b %Y\")), DSL.val(\" - \"), DSL.function(\"FROM_UNIXTIME\", String.class, TS.PERIOD_END, DSL.val(\"%d %b %Y\")))",
+      "displayName": "Timesheet Period",
+      "javaType": "String",
+      "requiredEntities": ["TS"],
+      "nullable": false,
+      "enabled": true
+    }
+  ]
+}

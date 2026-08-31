@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    
+    <!-- Placeholder rule that never matches - keeps file valid for the parser -->
+    <suppress until="2026-01-01Z">
+        <notes><![CDATA[Placeholder - does not match any real package]]></notes>
+        <packageUrl>pkg:maven/placeholder/placeholder@0.0.0</packageUrl>
+        <cve>CVE-0000-00000</cve>
+    </suppress>
+
+</suppressions>

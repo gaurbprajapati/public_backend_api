@@ -1,0 +1,180 @@
+---
+description: Range-based resolver test patterns and intersection coverage scenarios for time range resolvers
+alwaysApply: false
+---
+
+# Range-Based Resolver Test Patterns
+
+## Intersection Coverage Scenarios
+
+### RangeBasedBreakRuleTimeRangeResolver Intersection Branches
+The `intersection.isEmpty()` branch in [RangeBasedBreakRuleTimeRangeResolver.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/range_based/RangeBasedBreakRuleTimeRangeResolver.java) must be covered:
+
+```java
+if (!intersection.isEmpty()) {
+    constrainedRanges.add(intersection);
+}
+```
+
+### Required Test Scenarios
+
+#### 1. Empty Intersection Test
+```java
+@Test
+void testResolveTimeRangeWithBreakIntervalAdjacentToWorkPeriod() {
+    // Given
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+    given(this.breakInterval1.getBreakStartTime()).willReturn(LocalTime.of(17, 0));
+    given(this.breakInterval1.getBreakEndTime()).willReturn(LocalTime.of(18, 0));
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isTrue();
+    // intersection.isEmpty() returns true, so nothing is added
+}
+```
+
+#### 2. Non-Empty Intersection Test
+```java
+@Test
+void testResolveTimeRangeWithBreakIntervalPartiallyOverlappingWorkPeriod() {
+    // Given
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+    given(this.breakInterval1.getBreakStartTime()).willReturn(LocalTime.of(8, 0));
+    given(this.breakInterval1.getBreakEndTime()).willReturn(LocalTime.of(13, 0));
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isFalse();
+    // intersection.isEmpty() returns false, so intersection is added
+}
+```
+
+## Range-Based Test Patterns
+
+### Test Setup for Range-Based Resolvers
+```java
+@ExtendWith(MockitoExtension.class)
+class RangeBasedResolverTests {
+    @Mock private Logger logger;
+    @Mock private TimeLog timeLog;
+    @Mock private TimeLogBreakInterval breakInterval1;
+    @Mock private TimeRangeResolverContext context;
+    
+    private RangeBasedResolver resolver;
+    
+    @BeforeEach
+    void setUp() {
+        this.resolver = new RangeBasedResolver(this.logger);
+    }
+}
+```
+
+### Break Interval Validation Tests
+```java
+@Test
+void testResolveTimeRangeWithInvalidBreakInterval() {
+    // Given
+    given(this.breakInterval1.getBreakStartTime()).willReturn(LocalTime.of(13, 0));
+    given(this.breakInterval1.getBreakEndTime()).willReturn(LocalTime.of(12, 0)); // Invalid
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isTrue();
+}
+```
+
+### Work Period Constraint Tests
+```java
+@Test
+void testResolveTimeRangeWithBreakIntervalOutsideWorkPeriod() {
+    // Given
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+    given(this.breakInterval1.getBreakStartTime()).willReturn(LocalTime.of(18, 0));
+    given(this.breakInterval1.getBreakEndTime()).willReturn(LocalTime.of(19, 0));
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isTrue();
+}
+```
+
+## Intersection Coverage Requirements
+
+### Connected vs Disconnected Ranges
+1. **Connected ranges with empty intersection** - Adjacent ranges (e.g., 9:00-17:00 and 17:00-18:00)
+2. **Connected ranges with non-empty intersection** - Overlapping ranges (e.g., 9:00-17:00 and 8:00-13:00)
+3. **Disconnected ranges** - No overlap and not adjacent (e.g., 9:00-17:00 and 18:00-19:00)
+
+### Intersection Edge Cases
+```java
+@Test
+void testResolveTimeRangeWithBreakIntervalEqualToWorkPeriod() {
+    // Given
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+    given(this.breakInterval1.getBreakStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.breakInterval1.getBreakEndTime()).willReturn(LocalTime.of(17, 0));
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isFalse();
+    // Full intersection, should be added
+}
+```
+
+## Coverage Validation Checklist
+
+### Intersection Branch Coverage
+- [ ] `intersection.isEmpty()` returns `true` (empty intersection)
+- [ ] `intersection.isEmpty()` returns `false` (non-empty intersection)
+- [ ] `isConnected()` returns `true` for adjacent ranges
+- [ ] `isConnected()` returns `true` for overlapping ranges
+- [ ] `isConnected()` returns `false` for disconnected ranges
+
+### Range Validation Coverage
+- [ ] Null break start time
+- [ ] Null break end time
+- [ ] Break start time after break end time
+- [ ] Break start time equal to break end time
+- [ ] Valid break intervals
+
+### Work Period Constraint Coverage
+- [ ] Break interval completely outside work period
+- [ ] Break interval partially overlapping work period
+- [ ] Break interval completely within work period
+- [ ] Break interval equal to work period
+- [ ] Break interval adjacent to work period
+
+## Best Practices for Range-Based Testing
+
+1. **Use realistic time ranges** - Test with actual work hours (9:00-17:00, etc.)
+2. **Test boundary conditions** - Adjacent times, exact matches, edge cases
+3. **Verify intersection logic** - Ensure both empty and non-empty intersections are tested
+4. **Mock break intervals properly** - Use realistic break times that make sense
+5. **Test multiple intervals** - Cover scenarios with multiple break intervals
+
+## Reference Implementation
+See [RangeBasedBreakRuleTimeRangeResolverTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/range_based/RangeBasedBreakRuleTimeRangeResolverTests.java) for complete implementation examples.
+description:
+globs:
+alwaysApply: false
+---

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OvertimeDetailsJsonSchema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "overtime_type": { "type": "string" },
+      "rule_name": { "type": ["string", "null"] },
+      "hours": { "type": "integer" },
+      "pay_rate_multiplier": { "type": ["number", "null"] },
+      "bill_rate_multiplier": { "type": ["number", "null"] },
+      "pay_amount": { "type": "number" },
+      "bill_amount": { "type": "number" }
+    },
+    "required": [
+      "overtime_type",
+      "hours",
+      "pay_amount",
+      "bill_amount"
+    ],
+    "additionalProperties": false
+  }
+}

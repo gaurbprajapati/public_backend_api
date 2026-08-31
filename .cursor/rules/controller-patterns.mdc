@@ -1,0 +1,434 @@
+---
+description: Controller patterns and REST API design guidelines including HTTP method patterns, bulk operations, search and pagination, and standardized response handling.
+alwaysApply: false
+---
+# Controller Patterns and REST API Design
+
+## Overview
+Controllers handle HTTP requests and responses, following REST principles and standardized response patterns. They delegate business logic to services and use DTOs for data transfer.
+
+## Controller Structure
+
+### 1. Basic Controller Pattern
+```java
+@RestController
+@RequestMapping("/v1/timesheets")
+@Validated
+public class TimesheetController implements ITimesheetController {
+    
+    private final ITimesheetService timesheetService;
+    private final APIResponder apiResponder;
+    private final Logger logger;
+    
+    public TimesheetController(ITimesheetService timesheetService,
+                              APIResponder apiResponder,
+                              Logger logger) {
+        this.timesheetService = timesheetService;
+        this.apiResponder = apiResponder;
+        this.logger = logger;
+    }
+}
+```
+
+### 2. Interface-First Design
+```java
+public interface ITimesheetController {
+    ResponseEntity<?> createTimesheet(@Valid @RequestBody TimesheetRequestDto request);
+    ResponseEntity<?> getTimesheetById(@PathVariable Integer id);
+    ResponseEntity<?> updateTimesheet(@PathVariable Integer id, @Valid @RequestBody TimesheetRequestDto request);
+    ResponseEntity<?> deleteTimesheet(@PathVariable Integer id);
+    ResponseEntity<?> getTimesheetsByCandidate(@PathVariable Integer candidateId);
+    ResponseEntity<?> bulkCreateTimesheets(@Valid @RequestBody BulkTimesheetRequestDto request);
+}
+```
+
+## HTTP Method Patterns
+
+### 1. POST - Create Operations
+```java
+@PostMapping
+public ResponseEntity<?> createTimesheet(@Valid @RequestBody TimesheetRequestDto request) {
+    try {
+        logger.logInfo("Creating timesheet for candidate: " + request.candidateId());
+        
+        TimesheetResponseDto result = timesheetService.createTimesheet(request);
+        
+        return apiResponder.respond(result, "Timesheet created successfully");
+        
+    } catch (ValidationErrorException ex) {
+        logger.logWarn("Validation error creating timesheet: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        
+    } catch (UnauthorizedAccessException ex) {
+        logger.logWarn("Permission denied creating timesheet: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.FORBIDDEN);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error creating timesheet", ex);
+        return apiResponder.respondWithError("Failed to create timesheet", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+### 2. GET - Read Operations
+```java
+@GetMapping("/{id}")
+public ResponseEntity<?> getTimesheetById(@PathVariable Integer id) {
+    try {
+        logger.logInfo("Fetching timesheet with id: " + id);
+        
+        TimesheetResponseDto result = timesheetService.getTimesheetById(id);
+        
+        return apiResponder.respond(result, "Timesheet retrieved successfully");
+        
+    } catch (ResourceNotFoundException ex) {
+        logger.logWarn("Timesheet not found with id: " + id);
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.NOT_FOUND);
+        
+    } catch (UnauthorizedAccessException ex) {
+        logger.logWarn("Permission denied accessing timesheet: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.FORBIDDEN);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error fetching timesheet", ex);
+        return apiResponder.respondWithError("Failed to retrieve timesheet", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+### 3. PUT - Update Operations
+```java
+@PutMapping("/{id}")
+public ResponseEntity<?> updateTimesheet(@PathVariable Integer id, 
+                                        @Valid @RequestBody TimesheetRequestDto request) {
+    try {
+        logger.logInfo("Updating timesheet with id: " + id);
+        
+        TimesheetResponseDto result = timesheetService.updateTimesheet(id, request);
+        
+        return apiResponder.respond(result, "Timesheet updated successfully");
+        
+    } catch (ResourceNotFoundException ex) {
+        logger.logWarn("Timesheet not found for update with id: " + id);
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.NOT_FOUND);
+        
+    } catch (ValidationErrorException ex) {
+        logger.logWarn("Validation error updating timesheet: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error updating timesheet", ex);
+        return apiResponder.respondWithError("Failed to update timesheet", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+### 4. DELETE - Delete Operations
+```java
+@DeleteMapping("/{id}")
+public ResponseEntity<?> deleteTimesheet(@PathVariable Integer id) {
+    try {
+        logger.logInfo("Deleting timesheet with id: " + id);
+        
+        timesheetService.deleteTimesheet(id);
+        
+        return apiResponder.respond(null, "Timesheet deleted successfully");
+        
+    } catch (ResourceNotFoundException ex) {
+        logger.logWarn("Timesheet not found for deletion with id: " + id);
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.NOT_FOUND);
+        
+    } catch (UnauthorizedAccessException ex) {
+        logger.logWarn("Permission denied deleting timesheet: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.FORBIDDEN);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error deleting timesheet", ex);
+        return apiResponder.respondWithError("Failed to delete timesheet", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+## Bulk Operations
+
+### 1. Bulk Create Controller
+```java
+@PostMapping("/bulk")
+public ResponseEntity<?> bulkCreateTimesheets(@Valid @RequestBody BulkTimesheetRequestDto request) {
+    try {
+        logger.logInfo("Bulk creating " + request.timesheets().size() + " timesheets");
+        
+        BulkTimesheetResponseDto result = timesheetService.bulkCreateTimesheets(request);
+        
+        String message = String.format("Bulk operation completed. Success: %d, Errors: %d", 
+            result.successful().size(), result.errors().size());
+        
+        return apiResponder.respond(result, message);
+        
+    } catch (ValidationErrorException ex) {
+        logger.logWarn("Validation error in bulk timesheet creation: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error in bulk timesheet creation", ex);
+        return apiResponder.respondWithError("Failed to process bulk timesheet creation", 
+            HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+### 2. Bulk Permission Check Controller
+```java
+@PostMapping("/bulk-permission-check")
+public ResponseEntity<?> bulkPermissionCheck(@Valid @RequestBody BulkPermissionCheckRequest request) {
+    try {
+        logger.logInfo("Performing bulk permission check for " + request.getItems().size() + " items");
+        
+        BulkPermissionCheckResult result = bulkPermissionChecker.checkBulkPermissions(request);
+        
+        return apiResponder.respond(result, "Bulk permission check completed");
+        
+    } catch (ValidationErrorException ex) {
+        logger.logWarn("Validation error in bulk permission check: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error in bulk permission check", ex);
+        return apiResponder.respondWithError("Failed to perform bulk permission check", 
+            HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+## Search and Pagination
+
+### 1. Search Controller
+```java
+@GetMapping("/search")
+public ResponseEntity<?> searchTimesheets(@Valid SearchRequestBodyDto searchRequest,
+                                         @Valid PaginationRequestBodyDto pagination) {
+    try {
+        logger.logInfo("Searching timesheets with criteria: " + searchRequest.toString());
+        
+        PaginatedResponseDto<TimesheetResponseDto> result = timesheetService.searchTimesheets(
+            searchRequest, pagination);
+        
+        return apiResponder.respond(result, "Timesheet search completed");
+        
+    } catch (ValidationErrorException ex) {
+        logger.logWarn("Validation error in timesheet search: " + ex.getMessage());
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error in timesheet search", ex);
+        return apiResponder.respondWithError("Failed to search timesheets", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+### 2. Filtered List Controller
+```java
+@GetMapping("/candidate/{candidateId}")
+public ResponseEntity<?> getTimesheetsByCandidate(@PathVariable Integer candidateId,
+                                                 @RequestParam(defaultValue = "1") Integer page,
+                                                 @RequestParam(defaultValue = "20") Integer size) {
+    try {
+        logger.logInfo("Fetching timesheets for candidate: " + candidateId);
+        
+        PaginationRequestBodyDto pagination = new PaginationRequestBodyDto(page, size, "createdAt", "DESC");
+        List<TimesheetResponseDto> result = timesheetService.getTimesheetsByCandidate(candidateId, pagination);
+        
+        return apiResponder.respond(result, "Timesheets retrieved successfully");
+        
+    } catch (ResourceNotFoundException ex) {
+        logger.logWarn("Candidate not found: " + candidateId);
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.NOT_FOUND);
+        
+    } catch (Exception ex) {
+        logger.logError("Unexpected error fetching timesheets for candidate", ex);
+        return apiResponder.respondWithError("Failed to retrieve timesheets", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+## Response Handling
+
+### 1. Standardized Response Pattern
+```java
+@RestController
+public class BaseController {
+    
+    protected ResponseEntity<?> handleSuccess(Object data, String message) {
+        return apiResponder.respond(data, message);
+    }
+    
+    protected ResponseEntity<?> handleError(String message, HttpStatus status) {
+        return apiResponder.respondWithError(message, status);
+    }
+    
+    protected ResponseEntity<?> handleValidationError(String message) {
+        return apiResponder.respondWithError(message, HttpStatus.BAD_REQUEST);
+    }
+    
+    protected ResponseEntity<?> handleNotFound(String message) {
+        return apiResponder.respondWithError(message, HttpStatus.NOT_FOUND);
+    }
+    
+    protected ResponseEntity<?> handleUnauthorized(String message) {
+        return apiResponder.respondWithError(message, HttpStatus.FORBIDDEN);
+    }
+}
+```
+
+### 2. API Response Structure
+```java
+// Success Response
+{
+    "result": "SUCCESS",
+    "message": "Timesheet created successfully",
+    "data": {
+        "id": 123,
+        "name": "Weekly Timesheet",
+        "candidateId": 456,
+        "jobId": 789,
+        "status": "DRAFT",
+        "createdAt": "2024-01-15T10:30:00Z"
+    }
+}
+
+// Error Response
+{
+    "result": "ERROR",
+    "message": "Validation failed",
+    "data": null,
+    "errors": [
+        {
+            "field": "name",
+            "message": "Name is required",
+            "rejectedValue": null
+        }
+    ]
+}
+```
+
+## Validation and Error Handling
+
+### 1. Input Validation
+```java
+@PostMapping
+public ResponseEntity<?> createTimesheet(@Valid @RequestBody TimesheetRequestDto request,
+                                        BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+        List<ValidationErrorDto> errors = bindingResult.getFieldErrors().stream()
+            .map(error -> new ValidationErrorDto(
+                error.getField(),
+                error.getDefaultMessage(),
+                error.getRejectedValue()))
+            .toList();
+        
+        return apiResponder.respondWithValidationErrors(errors);
+    }
+    
+    // Process request
+    return processCreateRequest(request);
+}
+```
+
+### 2. Global Exception Handling
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(ValidationErrorException.class)
+    public ResponseEntity<?> handleValidationError(ValidationErrorException ex) {
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> handleResourceNotFound(ResourceNotFoundException ex) {
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler(UnauthorizedAccessException.class)
+    public ResponseEntity<?> handleUnauthorized(UnauthorizedAccessException ex) {
+        return apiResponder.respondWithError(ex.getMessage(), HttpStatus.FORBIDDEN);
+    }
+    
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleGenericException(Exception ex) {
+        return apiResponder.respondWithError("An unexpected error occurred", 
+            HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+## Access Control Integration
+
+### 1. Permission-Based Controller
+```java
+@RestController
+@RequestMapping("/v1/timesheets")
+public class TimesheetController {
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getTimesheetById(@PathVariable Integer id) {
+        // Check permission using bulk permission checker
+        BulkPermissionCheckRequest permissionRequest = BulkPermissionCheckRequest.builder()
+            .items(List.of(BulkPermissionCheckRequest.BulkPermissionCheckItem.builder()
+                .entity(Entity.TIMESHEET)
+                .permissionCheckContext(PermissionCheckContext.builder()
+                    .permission(Permission.VIEW_TIMESHEET)
+                    .permissionLevel(PermissionLevel.YES)
+                    .build())
+                .accessControlCheckMetadataContext(AccessControlCheckMetadataContext.builder()
+                    .timesheetId(id)
+                    .build())
+                .build()))
+            .build();
+        
+        BulkPermissionCheckResult permissionResult = bulkPermissionChecker.checkBulkPermissions(permissionRequest);
+        
+        if (!permissionResult.getResults().get(0).isAllowed()) {
+            return apiResponder.respondWithError("Access denied", HttpStatus.FORBIDDEN);
+        }
+        
+        // Process request
+        return processGetRequest(id);
+    }
+}
+```
+
+## Best Practices
+
+### 1. Controller Design
+- Keep controllers thin - delegate business logic to services
+- Use consistent error handling patterns
+- Implement proper logging for debugging
+- Use appropriate HTTP status codes
+
+### 2. Request/Response Handling
+- Use DTOs for all input/output
+- Validate input at controller level
+- Use standardized response formats
+- Handle exceptions gracefully
+
+### 3. Performance
+- Use pagination for large result sets
+- Implement caching where appropriate
+- Use async operations for long-running tasks
+- Monitor response times
+
+### 4. Security
+- Implement proper authentication/authorization
+- Validate all input parameters
+- Use HTTPS in production
+- Log security-related events
+
+### 5. Documentation
+- Use OpenAPI annotations for API documentation
+- Provide clear error messages
+- Document response formats
+- Include usage examples
+
+
+

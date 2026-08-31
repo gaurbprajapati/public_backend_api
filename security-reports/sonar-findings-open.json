@@ -1,0 +1,20 @@
+{
+  "fetchedAt": "2026-07-20T08:46:32.111712+00:00",
+  "projectKey": "Workforce-Cloud-Tech_contract-staffing-timesheet-microservice",
+  "scope": "pullRequest=1051",
+  "total": 1,
+  "issues": [
+    {
+      "key": "AZ91LWAIDeeK920-LldA",
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "rule": "java:S125",
+      "message": "This block of commented-out lines of code should be removed.",
+      "component": "src/test/java/io/recruitcrm/microservice/timesheet/services/rule_engine/RuleEngineServiceTests.java",
+      "line": 2046,
+      "status": "OPEN",
+      "disposition": null,
+      "rationale": null
+    }
+  ]
+}

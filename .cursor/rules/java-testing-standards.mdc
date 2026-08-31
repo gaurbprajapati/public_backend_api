@@ -1,0 +1,272 @@
+---
+alwaysApply: false
+---
+# Java Testing Standards
+
+## Test Structure and Organization
+
+### Test Class Naming
+- Test classes should be named `{ClassName}Tests` (e.g., `BaseBreakRuleTimeRangeResolverTests`)
+- Test methods should be descriptive and follow the pattern `test{Scenario}`
+- Use camelCase for test method names
+
+### Test Method Structure
+```java
+@Test
+void testScenarioDescription() {
+    // Given - Setup test data and mocks
+    given(this.mockObject.getMethod()).willReturn(expectedValue);
+    
+    // When - Execute the method under test
+    ResultType result = this.service.methodUnderTest(input);
+    
+    // Then - Verify the results
+    assertThat(result).isNotNull();
+    assertThat(result.getProperty()).isEqualTo(expectedValue);
+}
+```
+
+## Mocking Standards
+
+### Mockito Usage
+- Use `@Mock` annotation for dependencies
+- Use `@InjectMocks` for the class under test
+- Use `@ExtendWith(MockitoExtension.class)` for test class
+- Use `BDDMockito.given()` for stubbing (preferred over `when()`)
+
+### Mock Setup Examples
+```java
+@ExtendWith(MockitoExtension.class)
+class ServiceTests {
+    @Mock private Repository repository;
+    @Mock private Logger logger;
+    
+    @InjectMocks private Service service;
+    
+    @Test
+    void testMethod() {
+        // Given
+        given(this.repository.findById(1L)).willReturn(Optional.of(entity));
+        
+        // When & Then
+        // Test implementation
+    }
+}
+```
+
+## Assertion Standards
+
+### AssertJ Usage
+- Use AssertJ for all assertions
+- Use descriptive assertion messages
+- Chain assertions for better readability
+
+### Assertion Examples
+```java
+// Basic assertions
+assertThat(result).isNotNull();
+assertThat(result).isEqualTo(expectedValue);
+assertThat(result).isNotEqualTo(unexpectedValue);
+
+// Collection assertions
+assertThat(collection).hasSize(expectedSize);
+assertThat(collection).contains(expectedElement);
+assertThat(collection).isEmpty();
+
+// Exception assertions
+assertThatThrownBy(() -> service.method())
+    .isInstanceOf(IllegalArgumentException.class)
+    .hasMessage("Expected error message");
+```
+
+## Branch Coverage Requirements
+
+### 100% Branch Coverage
+- All conditional statements must be tested
+- Both true and false branches must be covered
+- Edge cases and boundary conditions must be tested
+- Null checks and validation logic must be covered
+
+### Branch Coverage Examples
+```java
+// Test both branches of a conditional
+@Test
+void testWithValidInput() {
+    // Given
+    given(this.input.isValid()).willReturn(true);
+    
+    // When
+    Result result = this.service.process(input);
+    
+    // Then
+    assertThat(result).isNotNull();
+}
+
+@Test
+void testWithInvalidInput() {
+    // Given
+    given(this.input.isValid()).willReturn(false);
+    
+    // When
+    Result result = this.service.process(input);
+    
+    // Then
+    assertThat(result).isNull();
+}
+```
+
+## Test Data Management
+
+### Test Data Setup
+- Use `@BeforeEach` for common setup
+- Create helper methods for complex test data
+- Use builders for complex objects
+- Keep test data realistic and meaningful
+
+### Test Data Examples
+```java
+@BeforeEach
+void setUp() {
+    this.testEntity = TestEntity.builder()
+        .id(1L)
+        .name("Test Name")
+        .value("Test Value")
+        .build();
+}
+
+private TimeRangeResolverContext createTestContext() {
+    return TimeRangeResolverContext.builder()
+        .currentTimeLogBeingEvaluated(this.timeLog)
+        .currentCustomRuleBeingEvaluated(this.customRule)
+        .build();
+}
+```
+
+## Exception Testing
+
+### Exception Test Patterns
+```java
+@Test
+void testMethodThrowsException() {
+    // Given
+    given(this.repository.findById(1L)).willThrow(new EntityNotFoundException());
+    
+    // When & Then
+    assertThatThrownBy(() -> this.service.findById(1L))
+        .isInstanceOf(EntityNotFoundException.class);
+}
+
+@Test
+void testMethodWithInvalidInput() {
+    // Given
+    String invalidInput = null;
+    
+    // When & Then
+    assertThatThrownBy(() -> this.service.process(invalidInput))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("Input cannot be null");
+}
+```
+
+## Integration Testing
+
+### Integration Test Structure
+- Use `@SpringBootTest` for full integration tests
+- Use `@TestPropertySource` for test-specific properties
+- Use `@Transactional` for database tests
+- Use `@Rollback` to ensure test isolation
+
+### Integration Test Example
+```java
+@SpringBootTest
+@TestPropertySource(properties = {
+    "spring.datasource.url=jdbc:h2:mem:testdb",
+    "spring.jpa.hibernate.ddl-auto=create-drop"
+})
+@Transactional
+@Rollback
+class ServiceIntegrationTests {
+    @Autowired private Service service;
+    @Autowired private Repository repository;
+    
+    @Test
+    void testIntegrationScenario() {
+        // Given
+        Entity entity = new Entity();
+        repository.save(entity);
+        
+        // When
+        Result result = service.process(entity.getId());
+        
+        // Then
+        assertThat(result).isNotNull();
+    }
+}
+```
+
+## Performance Testing
+
+### Performance Test Patterns
+- Use `@Timeout` annotation for performance tests
+- Test with realistic data volumes
+- Measure execution time and memory usage
+- Use profiling tools for detailed analysis
+
+### Performance Test Example
+```java
+@Test
+@Timeout(value = 5, unit = TimeUnit.SECONDS)
+void testPerformanceWithLargeDataset() {
+    // Given
+    List<Entity> largeDataset = createLargeDataset(10000);
+    
+    // When
+    long startTime = System.currentTimeMillis();
+    List<Result> results = this.service.processBatch(largeDataset);
+    long endTime = System.currentTimeMillis();
+    
+    // Then
+    assertThat(results).hasSize(10000);
+    assertThat(endTime - startTime).isLessThan(1000); // Less than 1 second
+}
+```
+
+## Code Coverage Standards
+
+### Coverage Requirements
+- **Line Coverage**: Minimum 90%
+- **Branch Coverage**: Minimum 95%
+- **Method Coverage**: 100%
+- **Class Coverage**: 100%
+
+### Coverage Verification
+```bash
+# Run tests with coverage
+mvn clean test jacoco:report
+
+# Check coverage thresholds
+mvn jacoco:check
+```
+
+## Best Practices
+
+1. **Test Independence**: Each test should be independent and not rely on other tests
+2. **Test Isolation**: Use `@BeforeEach` and `@AfterEach` for proper setup/teardown
+3. **Descriptive Names**: Test names should clearly describe what is being tested
+4. **Single Responsibility**: Each test should test one specific scenario
+5. **Maintainability**: Keep tests simple and easy to understand
+6. **Documentation**: Add comments for complex test scenarios
+7. **Regular Review**: Regularly review and update tests as code changes
+
+## Common Anti-Patterns to Avoid
+
+1. **Testing Implementation Details**: Focus on behavior, not implementation
+2. **Over-Mocking**: Only mock external dependencies, not internal logic
+3. **Test Coupling**: Avoid tests that depend on each other
+4. **Hardcoded Values**: Use meaningful test data instead of magic numbers
+5. **Incomplete Assertions**: Verify all relevant aspects of the result
+6. **Slow Tests**: Keep tests fast and efficient
+description:
+globs:
+alwaysApply: false
+---

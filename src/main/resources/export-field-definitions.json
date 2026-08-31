@@ -1,0 +1,911 @@
+{
+  "timesheet_fields": [
+    {
+      "frontendName": "timesheet",
+      "jooqExpression": "TS.ID",
+      "displayName": "Timesheet",
+      "javaType": "Integer",
+      "nullable": false,
+      "enabled": true,
+      "requiredEntities": ["ts"]
+    },
+    {
+      "frontendName": "timesheetId",
+      "jooqExpression": "DSL.concat(DSL.val(\"TS-\"), C.SRNO, DSL.val(\"-\"), TS.ID)",
+      "displayName": "Timesheet ID",
+      "javaType": "String",
+      "nullable": false,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "contractor",
+      "jooqExpression": "DSL.when(C.LASTNAME.isNull().or(C.LASTNAME.eq(\"\")), C.FIRSTNAME).otherwise(DSL.concat(C.FIRSTNAME, DSL.val(\" \"), C.LASTNAME))",
+      "displayName": "Contractor Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "timesheetPeriod",
+      "jooqExpression": "DSL.concat(DSL.function(\"FROM_UNIXTIME\", String.class, TS.PERIOD_START, DSL.val(\"%m/%d/%Y\")), DSL.val(\" - \"), DSL.function(\"FROM_UNIXTIME\", String.class, TS.PERIOD_END, DSL.val(\"%m/%d/%Y\")))",
+      "displayName": "Timesheet Period",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "description": "Timesheet period is a default field, it has to be passed in the payload."
+    },
+    {
+      "frontendName": "timesheetStatusId",
+      "jooqExpression": "DSL.case_().when(TA.TIMESHEET_APPROVAL_STATUS_TYPE_ID.eq(1), DSL.val(\"Open\")).when(TA.TIMESHEET_APPROVAL_STATUS_TYPE_ID.eq(2), DSL.val(\"Submitted\")).when(TA.TIMESHEET_APPROVAL_STATUS_TYPE_ID.eq(3), DSL.val(\"Rejected\")).when(TA.TIMESHEET_APPROVAL_STATUS_TYPE_ID.eq(4), DSL.val(\"Approved\")).otherwise(DSL.val(\"Unknown\"))",
+      "displayName": "Timesheet Status",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ta"]
+    },
+    {
+      "frontendName": "approvedBy",
+      "jooqExpression": "DSL.concat(DSL.coalesce(TU.FIRST_NAME, DSL.val(\"\")), DSL.val(\" \"), DSL.coalesce(TU.LAST_NAME, DSL.val(\"\")))",
+      "displayName": "Timesheet Approved By",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ta", "tu"]
+    },
+    {
+      "frontendName": "addedBy",
+      "jooqExpression": "DSL.concat(DSL.coalesce(TU_ADDED.FIRSTNAME, DSL.val(\"\")), DSL.val(\" \"), DSL.coalesce(TU_ADDED.LASTNAME, DSL.val(\"\")))",
+      "displayName": "Added By",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tu_added"]
+    },
+    {
+      "frontendName": "updatedBy",
+      "jooqExpression": "DSL.concat(DSL.coalesce(TU_UPDATED.FIRSTNAME, DSL.val(\"\")), DSL.val(\" \"), DSL.coalesce(TU_UPDATED.LASTNAME, DSL.val(\"\")))",
+      "displayName": "Updated By",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tu_updated"]
+    },
+    {
+      "frontendName": "allApprovers",
+      "jooqExpression": "SUBQUERY_GROUP_CONCAT_APPROVERS",
+      "displayName": "Timesheet Approvers",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss"],
+      "description": "Comma-separated list of timesheet approver names from cst_timesheet_approver_t table"
+    },
+    {
+      "frontendName": "jobDuration",
+      "jooqExpression": "DSL.concat(DSL.function(\"FROM_UNIXTIME\", String.class, TSS.JOB_START_DATE, DSL.val(\"%m/%d/%Y\")), DSL.val(\" - \"), DSL.function(\"FROM_UNIXTIME\", String.class, TSS.JOB_END_DATE, DSL.val(\"%m/%d/%Y\")))",
+      "displayName": "Job Duration",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss"]
+    },
+    {
+      "frontendName": "jobName",
+      "jooqExpression": "J.NAME",
+      "displayName": "Job Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "j"]
+    },
+    {
+      "frontendName": "dealName",
+      "jooqExpression": "DSL.field(\"deals.deal_name\", String.class)",
+      "displayName": "Deal Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "j", "deals"],
+      "description": "GROUP_CONCAT of deal names grouped by candidate and job using LEFT JOIN with deal subquery"
+    },
+    {
+      "frontendName": "payData",
+      "jooqExpression": "TS.PAY_DATA",
+      "displayName": "Pay Amount",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"]
+    },
+    {
+      "frontendName": "billData",
+      "jooqExpression": "TS.BILL_DATA",
+      "displayName": "Bill Amount",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"]
+    },
+    {
+      "frontendName": "payRate",
+      "jooqExpression": "TSS.PAY_RATE",
+      "displayName": "Pay Rate",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss"]
+    },
+    {
+      "frontendName": "billRate",
+      "jooqExpression": "TSS.BILL_RATE",
+      "displayName": "Bill Rate",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss"]
+    },
+    {
+      "frontendName": "workHours",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Work Hours",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "dynamicColumns": true,
+      "description": "Only works with exportEachDay:true. Expands into separate date columns per period."
+    },
+    {
+      "frontendName": "breakIntervals",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Break Intervals",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "dynamicColumns": true,
+      "description": "Only works with exportEachDay:true. Time-interval: comma-separated start-end ranges (e.g. 09:00-09:15, 12:00-13:00). Hours-based: break hours as decimal."
+    },
+    {
+      "frontendName": "timeLogRemarks",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Remarks",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "dynamicColumns": true,
+      "description": "Only works with exportEachDay:true. Time-interval: comma-separated remarks per range. Hours-based: single remark."
+    },
+    {
+      "frontendName": "overtimeHours",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Overtime Hours",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "dynamicColumns": true,
+      "description": "Only works with exportEachDay:true. Expands into separate date columns showing overtime hours per day."
+    },
+    {
+      "frontendName": "effectiveWorkHours",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Effective Work Hours",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "dynamicColumns": true,
+      "description": "Auto-added when exportEachDay:true. Shows total_time as decimal hours per day (e.g., 4.5, 10.5)."
+    },
+    {
+      "frontendName": "totalOvertime",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Total Overtime Hours",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "description": "Sum of overtime hours for the entire timesheet period. Works with both exportEachDay true/false."
+    },
+    {
+      "frontendName": "totalWorkTime",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Total Work Hours",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "description": "Sum of work hours for the entire timesheet period. Calculation depends on work_log_type. Works with both exportEachDay true/false."
+    },
+    {
+      "frontendName": "totalRegularHours",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Total Regular Hours",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "description": "Sum of regular hours (total_regular_hour) for the entire timesheet period. Matches the Regular Hours value from the Get Timesheets API. Appears immediately after Total Work Hours. Works with both exportEachDay true/false."
+    },
+    {
+      "frontendName": "totalTime",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Total Hours",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"],
+      "description": "Sum of total hours for the entire timesheet period. Works with both exportEachDay true/false."
+    },
+    {
+      "frontendName": "addedOn",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, TS.ADDED_ON, DSL.val(\"%m/%d/%Y\"))",
+      "displayName": "Timesheet Added On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"]
+    },
+    {
+      "frontendName": "updatedOn",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, TS.UPDATED_ON, DSL.val(\"%m/%d/%Y\"))",
+      "displayName": "Timesheet Updated On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"]
+    },
+    {
+      "frontendName": "timesheetCompany",
+      "jooqExpression": "COMP.COMPANYNAME",
+      "displayName": "Company Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "j", "comp"]
+    },
+    {
+      "frontendName": "timesheetFrequency",
+      "jooqExpression": "DSL.case_().when(TSS.TIMESHEET_FREQUENCY.eq(1), DSL.val(\"Custom\")).when(TSS.TIMESHEET_FREQUENCY.eq(2), DSL.val(\"Weekly\")).when(TSS.TIMESHEET_FREQUENCY.eq(3), DSL.val(\"Biweekly\")).when(TSS.TIMESHEET_FREQUENCY.eq(4), DSL.val(\"Monthly\")).otherwise(DSL.val(\"Unknown\"))",
+      "displayName": "Timesheet Frequency",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss"]
+    },
+    {
+      "frontendName": "workDays",
+      "jooqExpression": "TSS.TEMPLATE_WORK_DAY",
+      "displayName": "Work Days",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss"],
+      "requiresPostProcessing": true
+    },
+    {
+      "frontendName": "payStatus",
+      "jooqExpression": "PAY_STATUS_CASE",
+      "displayName": "Pay Status",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ti"],
+      "description": "payStatusId 1=Paid, 2=Unpaid"
+    },
+    {
+      "frontendName": "billStatus",
+      "jooqExpression": "BILL_STATUS_CASE",
+      "displayName": "Bill Status",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ti"],
+      "description": "billStatusId 1=Billed, 2=Unbilled, 3=Collected"
+    },
+    {
+      "frontendName": "payoutPaidOn",
+      "jooqExpression": "PAYOUT_PAID_ON_EXPR",
+      "displayName": "Payout Paid On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ti"],
+      "description": "Date when payout was paid"
+    },
+    {
+      "frontendName": "payoutNumber",
+      "jooqExpression": "TI.PAYOUT_NUMBER",
+      "displayName": "Payout Number",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ti"]
+    },
+    {
+      "frontendName": "invoiceCreatedOn",
+      "jooqExpression": "INVOICE_CREATED_ON_EXPR",
+      "displayName": "Invoice Created On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ti", "invoice"],
+      "description": "Date when invoice was created"
+    },
+    {
+      "frontendName": "invoiceNumber",
+      "jooqExpression": "INVOICE_NUMBER_EXPR",
+      "displayName": "Invoice Number",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "ti", "invoice"],
+      "description": "Invoice number from invoice_t table"
+    },
+    {
+      "frontendName": "payCurrency",
+      "jooqExpression": "PAY_CURRENCY_CODE",
+      "displayName": "Pay Currency",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "pay_curr"]
+    },
+    {
+      "frontendName": "billCurrency",
+      "jooqExpression": "BILL_CURRENCY_CODE",
+      "displayName": "Bill Currency",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "bill_curr"]
+    }
+  ],
+  "candidate_fields": [
+    {
+      "frontendName": "srno",
+      "jooqExpression": "C.SRNO",
+      "displayName": "Candidate Id",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "candidatename",
+      "jooqExpression": "DSL.when(C.LASTNAME.isNull().or(C.LASTNAME.eq(\"\")), C.FIRSTNAME).otherwise(DSL.concat(C.FIRSTNAME, DSL.val(\" \"), C.LASTNAME))",
+      "displayName": "Candidate Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "firstname",
+      "jooqExpression": "C.FIRSTNAME",
+      "displayName": "Candidate First Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "lastname",
+      "jooqExpression": "C.LASTNAME",
+      "displayName": "Candidate Last Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "emailid",
+      "jooqExpression": "C.EMAILID",
+      "displayName": "Email",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "genderid",
+      "jooqExpression": "GEN.LABEL",
+      "displayName": "Gender",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "gen"]
+    },
+    {
+      "frontendName": "contactnumber",
+      "jooqExpression": "C.CONTACTNUMBER",
+      "displayName": "Phone",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "candidatedob",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, C.CANDIDATEDOB, DSL.val(\"%b %d %Y\"))",
+      "displayName": "Date of Birth",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "age",
+      "jooqExpression": "DSL.when(C.CANDIDATEDOB.ne(1).and(C.CANDIDATEDOB.ne(0)), DSL.function(\"TIMESTAMPDIFF\", Integer.class, DSL.val(\"YEAR\"), DSL.function(\"FROM_UNIXTIME\", java.sql.Timestamp.class, C.CANDIDATEDOB), DSL.function(\"NOW\", java.sql.Timestamp.class))).otherwise(0)",
+      "displayName": "Candidate Age",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "workexpyr",
+      "jooqExpression": "C.WORKEXPYR",
+      "displayName": "Total Experience",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "relevantexperience",
+      "jooqExpression": "C.RELEVANTEXPERIENCE",
+      "displayName": "Relevant Experience",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "currentsalary",
+      "jooqExpression": "C.CURRENTSALARY",
+      "displayName": "Current Salary",
+      "javaType": "BigDecimal",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "lastorganisation",
+      "jooqExpression": "C.LASTORGANISATION",
+      "displayName": "Current Organisation",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "skill",
+      "jooqExpression": "C.SKILL",
+      "displayName": "Skills",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "willingtorelocate",
+      "jooqExpression": "C.WILLINGTORELOCATE",
+      "displayName": "Willing to Relocate",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "salaryexpectation",
+      "jooqExpression": "C.SALARYEXPECTATION",
+      "displayName": "Salary Expectation",
+      "javaType": "BigDecimal",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "position",
+      "jooqExpression": "C.POSITION",
+      "displayName": "Title / Position",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "address",
+      "jooqExpression": "C.ADDRESS",
+      "displayName": "Full Address",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "city",
+      "jooqExpression": "C.CITY",
+      "displayName": "City",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "locality",
+      "jooqExpression": "C.LOCALITY",
+      "displayName": "Locality",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "state",
+      "jooqExpression": "C.STATE",
+      "displayName": "State",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "country",
+      "jooqExpression": "C.COUNTRY",
+      "displayName": "Country",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "postal_code",
+      "jooqExpression": "C.POSTAL_CODE",
+      "displayName": "Postal Code",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "ownerid",
+      "jooqExpression": "C.OWNERID",
+      "displayName": "Owner",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"],
+      "requiresPostProcessing": true,
+      "description": "Transforms user ID to user name using tbluser table with caching"
+    },
+    {
+      "frontendName": "resumeupdatedon",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, C.RESUMEUPDATEDON, DSL.val(\"%b %d %Y %H:%i:%s UTC\"))",
+      "displayName": "Profile Updated By Candidate On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "resumeupdaterequestedon",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, C.RESUMEUPDATEREQUESTEDON, DSL.val(\"%b %d %Y %H:%i:%s UTC\"))",
+      "displayName": "Profile Request Sent On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "profilefacebook",
+      "jooqExpression": "C.PROFILEFACEBOOK",
+      "displayName": "Facebook Profile",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "profiletwitter",
+      "jooqExpression": "C.PROFILETWITTER",
+      "displayName": "Twitter Profile",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "profilelinkedin",
+      "jooqExpression": "C.PROFILELINKEDIN",
+      "displayName": "LinkedIn Profile",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "profilegithub",
+      "jooqExpression": "C.PROFILEGITHUB",
+      "displayName": "GitHub Profile",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "profilexing",
+      "jooqExpression": "C.PROFILEXING",
+      "displayName": "Xing Profile",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "source",
+      "jooqExpression": "C.SOURCE",
+      "displayName": "Source",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "currentstatus",
+      "jooqExpression": "C.CURRENTSTATUS",
+      "displayName": "Current Employment Status",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "noticeperiod",
+      "jooqExpression": "C.NOTICEPERIOD",
+      "displayName": "Notice Period (Days)",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "createdon",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, C.CREATEDON, DSL.val(\"%b %d %Y %H:%i:%s UTC\"))",
+      "displayName": "Added On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "updatedon",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, C.UPDATEDON, DSL.val(\"%b %d %Y %H:%i:%s UTC\"))",
+      "displayName": "Updated On",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "createdby",
+      "jooqExpression": "C.CREATEDBY",
+      "displayName": "Created By",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"],
+      "requiresPostProcessing": true,
+      "description": "Transforms user ID to user name using tbluser table with caching"
+    },
+    {
+      "frontendName": "updatedby",
+      "jooqExpression": "C.UPDATEDBY",
+      "displayName": "Updated By",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"],
+      "requiresPostProcessing": true,
+      "description": "Transforms user ID to user name using tbluser table with caching"
+    },
+    {
+      "frontendName": "availablefrom",
+      "jooqExpression": "DSL.function(\"FROM_UNIXTIME\", String.class, C.AVAILABLEFROM, DSL.val(\"%b %d %Y\"))",
+      "displayName": "Available From",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "languageskills",
+      "jooqExpression": "C.LANGUAGESKILLS",
+      "displayName": "Language Skills",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "slug",
+      "jooqExpression": "C.SLUG",
+      "displayName": "Candidate Slug",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "last_calllog_created_on",
+      "jooqExpression": "\"DSL.function(\\\"FROM_UNIXTIME\\\", String.class, CLA.CALLLOG_CREATED_ON, DSL.val(\\\"%b %d %Y %H:%i:%s UTC\\\"))\", ",
+      "displayName": "Last Call Log Added On",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "cla"],
+      "description": "Last activity tracking from candidate_last_activities_t table"
+    },
+    {
+      "frontendName": "last_sms_sent_on",
+      "jooqExpression": "\"DSL.function(\\\"FROM_UNIXTIME\\\", String.class, CLA.SMS_SENT_ON, DSL.val(\\\"%b %d %Y %H:%i:%s UTC\\\"))\", ",
+      "displayName": "Last SMS Sent On",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "cla"]
+    },
+    {
+      "frontendName": "last_email_sent_on",
+      "jooqExpression": "\"DSL.function(\\\"FROM_UNIXTIME\\\", String.class, CLA.EMAIL_SENT_ON, DSL.val(\\\"%b %d %Y %H:%i:%s UTC\\\"))\", ",
+      "displayName": "Last Email Sent On",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "cla"]
+    },
+    {
+      "frontendName": "last_communication_timestamp",
+      "jooqExpression": "\"DSL.function(\\\"FROM_UNIXTIME\\\", String.class, CLA.LAST_COMMUNICATION_TIMESTAMP, DSL.val(\\\"%b %d %Y %H:%i:%s UTC\\\"))\", ",
+      "displayName": "Last Communication",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "cla"]
+    },
+    {
+      "frontendName": "last_meeting_created_on",
+      "jooqExpression": "\"DSL.function(\\\"FROM_UNIXTIME\\\", String.class, CLA.MEETING_CREATED_ON, DSL.val(\\\"%b %d %Y %H:%i:%s UTC\\\"))\", ",
+      "displayName": "Last Meeting Added",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "cla"]
+    },
+    {
+      "frontendName": "last_message_sent_on",
+      "jooqExpression": "\"DSL.function(\\\"FROM_UNIXTIME\\\", String.class, CLA.MESSAGE_SENT_ON, DSL.val(\\\"%b %d %Y %H:%i:%s UTC\\\"))\", ",
+      "displayName": "Last LinkedIn Message Sent On",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "cla"]
+    },
+    {
+      "frontendName": "last_note_created_on",
+      "jooqExpression": "\"DSL.function(\\\"FROM_UNIXTIME\\\", String.class, CLA.NOTE_CREATED_ON, DSL.val(\\\"%b %d %Y %H:%i:%s UTC\\\"))\", ",
+      "displayName": "Last Note Added",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "cla"]
+    },
+    {
+      "frontendName": "resource_url",
+      "jooqExpression": "C.SLUG",
+      "displayName": "Resource URL",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"],
+      "requiresPostProcessing": true,
+      "description": "Constructs full candidate profile URL using slug. Local: http://localhost:9000/v1/candidate/{slug}, Other envs: https://{env}.recruitcrm.io/v1/candidate/{slug}"
+    },
+         {
+       "frontendName": "email_opt_out",
+       "jooqExpression": "DSL.case_().when(C.EMAIL_OPT_OUT.eq(0), DSL.val(\"No\")).otherwise(DSL.val(\"Yes\"))",
+       "displayName": "Email Opt-out",
+       "javaType": "String",
+       "nullable": true,
+       "enabled": true,
+       "requiredEntities": ["ts", "tss", "tsa", "c"],
+       "description": "Shows 'No' if email_opt_out is 0, 'Yes' otherwise"
+     },
+    {
+      "frontendName": "off_limit_status_id",
+      "jooqExpression": "OLS.STATUS_LABEL",
+      "displayName": "Off-Limit Status",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c", "eol", "ols"],
+      "description": "Off-limit status label via JOIN with entity_off_limit_t and off_limit_status_t tables"
+    },
+         {
+       "frontendName": "sms_opt_out",
+       "jooqExpression": "DSL.case_().when(C.SMS_OPT_OUT.eq(0), DSL.val(\"No\")).otherwise(DSL.val(\"Yes\"))",
+       "displayName": "SMS Opt-out",
+       "javaType": "String",
+       "nullable": true,
+       "enabled": true,
+       "requiredEntities": ["ts", "tss", "tsa", "c"],
+       "description": "Shows 'No' if sms_opt_out is 0, 'Yes' otherwise"
+    }
+  ],
+  "job_fields": [
+    {
+      "frontendName": "job_id",
+      "jooqExpression": "JOB.ID",
+      "displayName": "Job ID",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "j"]
+    },
+    {
+      "frontendName": "job_reference",
+      "jooqExpression": "JOB.REFERENCE",
+      "displayName": "Job Reference",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "j"]
+    }
+  ],
+  "company_fields": [
+    {
+      "frontendName": "company_id",
+      "jooqExpression": "COMPANY.ID",
+      "displayName": "Company ID",
+      "javaType": "Integer",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    },
+    {
+      "frontendName": "company_name",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Company Name",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts", "tss", "tsa", "c"]
+    }
+  ],
+  "approval_fields": [
+    {
+      "frontendName": "approved_by",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Approved By",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"]
+    },
+    {
+      "frontendName": "approval_date",
+      "jooqExpression": "DSL.val(\"\")",
+      "displayName": "Approval Date",
+      "javaType": "String",
+      "nullable": true,
+      "enabled": true,
+      "requiredEntities": ["ts"]
+    }
+  ]
+}

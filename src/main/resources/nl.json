@@ -1,0 +1,4406 @@
+{
+    "candidates": {
+        "id": {
+            "label": "ID kaart",
+            "longlabel": "ID kaart"
+        },
+        "srno": {
+            "label": "ID kaart",
+            "longlabel": "Kandidaat-ID"
+        },
+        "candidatename": {
+            "label": "Naam",
+            "longlabel": "Naam van de kandidaat"
+        },
+        "firstname": {
+            "label": "Voornaam",
+            "longlabel": "Voornaam kandidaat"
+        },
+        "lastname": {
+            "label": "Achternaam",
+            "longlabel": "Achternaam kandidaat"
+        },
+        "emailid": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "genderid": {
+            "label": "Geslacht",
+            "longlabel": "Geslacht"
+        },
+        "contactnumber": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "candidatedob": {
+            "label": "Geboortedatum",
+            "longlabel": "Geboortedatum"
+        },
+        "age": {
+            "label": "Leeftijd",
+            "longlabel": "Leeftijd kandidaat"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Educatieve Kwalificatie"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Educatieve specialisatie"
+        },
+        "workexpyr": {
+            "label": "Totale ervaring",
+            "longlabel": "Totale ervaring"
+        },
+        "relevantexperience": {
+            "label": "Relevante ervaring",
+            "longlabel": "Relevante ervaring"
+        },
+        "resumetext": {
+            "label": "CV Tekst",
+            "longlabel": "CV Tekst"
+        },
+        "currentsalary": {
+            "label": "Huidige salaris",
+            "longlabel": "Huidige salaris"
+        },
+        "resume": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "resumefilename": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "lastorganisation": {
+            "label": "Huidige organisatie",
+            "longlabel": "Huidige organisatie"
+        },
+        "skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "willingtorelocate": {
+            "label": "Bereid te verhuizen",
+            "longlabel": "Bereid te verhuizen"
+        },
+        "salaryexpectation": {
+            "label": "Salarisindicatie",
+            "longlabel": "Salarisindicatie"
+        },
+        "position": {
+            "label": "Titel",
+            "longlabel": "Titel / Positie"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "city": {
+            "label": "stad",
+            "longlabel": "stad"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "currencyid": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "currencycountry": {
+            "label": "Valuta Land",
+            "longlabel": "Valuta Land"
+        },
+        "symbol": {
+            "label": "Symbool",
+            "longlabel": "Symbool"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownerslug": {
+            "label": "Eigenaar Slug",
+            "longlabel": "Eigenaar Slug"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "canaccess": {
+            "label": "Kan toegang krijgen",
+            "longlabel": "Kan toegang krijgen"
+        },
+        "profilepic": {
+            "label": "Profielfoto",
+            "longlabel": "Profielfoto"
+        },
+        "deleted": {
+            "label": "verwijderd",
+            "longlabel": "verwijderd"
+        },
+        "authid": {
+            "label": "Verificatie-ID",
+            "longlabel": "Verificatie-ID"
+        },
+        "resumeupdatedon": {
+            "label": "Profiel bijgewerkt door kandidaat op",
+            "longlabel": "Profiel bijgewerkt door kandidaat op"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profielverzoek verzonden op",
+            "longlabel": "Profielverzoek verzonden op"
+        },
+        "requestresumelinkstatus": {
+            "label": "Verzoek om CV-linkstatus",
+            "longlabel": "Verzoek om CV-linkstatus"
+        },
+        "resumeaddedon": {
+            "label": "CV toegevoegd aan",
+            "longlabel": "CV toegevoegd aan"
+        },
+        "profilefacebook": {
+            "label": "Facebook profiel",
+            "longlabel": "Facebook profiel"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiel",
+            "longlabel": "Twitter-profiel"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn profiel",
+            "longlabel": "LinkedIn profiel"
+        },
+        "profilegithub": {
+            "label": "Github-profiel",
+            "longlabel": "Github-profiel"
+        },
+        "source": {
+            "label": "Bron",
+            "longlabel": "Bron"
+        },
+        "createdbyname": {
+            "label": "Gemaakt op naam",
+            "longlabel": "Gemaakt op naam"
+        },
+        "qualification": {
+            "label": "Kwalificatielabel",
+            "longlabel": "Kwalificatielabel"
+        },
+        "currentstatus": {
+            "label": "Arbeidsstatus",
+            "longlabel": "Huidige arbeidssituatie"
+        },
+        "noticeperiod": {
+            "label": "Opzegtermijn",
+            "longlabel": "Opzegtermijn (dagen)"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdon": {
+            "label": "Toegevoegd",
+            "longlabel": "Toegevoegd"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "availablefrom": {
+            "label": "Beschikbaar vanaf",
+            "longlabel": "Beschikbaar vanaf"
+        },
+        "salarytype": {
+            "label": "Salaristype",
+            "longlabel": "Salaristype"
+        },
+        "languageskills": {
+            "label": "Taal",
+            "longlabel": "Taalvaardigheid"
+        },
+        "accountlogo": {
+            "label": "Accountlogo",
+            "longlabel": "Accountlogo"
+        },
+        "accounttitle": {
+            "label": "Accounttitel",
+            "longlabel": "Accounttitel"
+        },
+        "candidateterms": {
+            "label": "Kandidaatvoorwaarden",
+            "longlabel": "Kandidaatvoorwaarden"
+        },
+        "jobapplicationsettings": {
+            "label": "Sollicitatie-instellingen",
+            "longlabel": "Sollicitatie-instellingen"
+        },
+        "eeocompliance": {
+            "label": "EEO-naleving",
+            "longlabel": "EEO-naleving"
+        },
+        "gdprcompliance": {
+            "label": "AVG-naleving",
+            "longlabel": "AVG-naleving"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "profilexing": {
+            "label": "Xing Profiel",
+            "longlabel": "Xing Profiel"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "proficiency_level": {
+            "label": "Bekwaamheidsniveau",
+            "longlabel": "Bekwaamheidsniveau"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "work_history": {
+            "label": "Werkverleden",
+            "longlabel": "Werkverleden"
+        },
+        "title": {
+            "label": "Werkpositie",
+            "longlabel": "Werkpositie"
+        },
+        "work_company_name": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "employment_type": {
+            "label": "Type werk",
+            "longlabel": "Type werk"
+        },
+        "industry_id": {
+            "label": "Type industrie",
+            "longlabel": "Type industrie"
+        },
+        "work_location": {
+            "label": "Werklocatie",
+            "longlabel": "Werklocatie"
+        },
+        "salary": {
+            "label": "Salaris",
+            "longlabel": "Salaris"
+        },
+        "is_currently_working": {
+            "label": "Momenteel aan het werk",
+            "longlabel": "Momenteel aan het werk"
+        },
+        "work_start_date": {
+            "label": "Startdatum werk",
+            "longlabel": "Startdatum werk"
+        },
+        "work_end_date": {
+            "label": "Einddatum werk",
+            "longlabel": "Einddatum werk"
+        },
+        "work_description": {
+            "label": "Werkomschrijving",
+            "longlabel": "Werkomschrijving"
+        },
+        "education_history": {
+            "label": "Geschiedenis",
+            "longlabel": "Geschiedenis"
+        },
+        "institute_name": {
+            "label": "Naam school/universiteit",
+            "longlabel": "Naam school/universiteit"
+        },
+        "educational_qualification": {
+            "label": "Onderwijskwalificatie",
+            "longlabel": "Onderwijskwalificatie"
+        },
+        "educational_specialization": {
+            "label": "Onderwijsspecialisatie",
+            "longlabel": "Onderwijsspecialisatie"
+        },
+        "grade": {
+            "label": "Rang",
+            "longlabel": "Rang"
+        },
+        "education_location": {
+            "label": "Onderwijslocatie",
+            "longlabel": "Onderwijslocatie"
+        },
+        "education_start_date": {
+            "label": "Onderwijs Startdatum",
+            "longlabel": "Onderwijs Startdatum"
+        },
+        "education_end_date": {
+            "label": "Einddatum onderwijs",
+            "longlabel": "Einddatum onderwijs"
+        },
+        "education_description": {
+            "label": "Onderwijs Beschrijving",
+            "longlabel": "Onderwijs Beschrijving"
+        },
+        "summary": {
+            "label": "Samenvatting",
+            "longlabel": "Samenvatting"
+        },
+        "unavailable": {
+            "label": "Beschikbaarheid",
+            "longlabel": "Beschikbaarheid"
+        },
+        "off_limit_status": {
+            "label": "Status buiten limiet",
+            "longlabel": "Status buiten limiet"
+        },
+        "sms_opt_out": {
+            "label": "Opt-out sms",
+            "longlabel": "Opt-out sms"
+        },
+        "last_calllog_created_on": {
+            "label": "Logboek laatste oproep toegevoegd",
+            "longlabel": "Logboek laatste oproep toegevoegd"
+        },
+        "last_sms_sent_on": {
+            "label": "Laatst verzonden SMS op",
+            "longlabel": "Laatst verzonden SMS op"
+        },
+        "last_email_sent_on": {
+            "label": "Laatste e-mail verzonden op",
+            "longlabel": "Laatste e-mail verzonden op"
+        },
+        "last_communication_timestamp": {
+            "label": "Laatste mededeling",
+            "longlabel": "Laatste mededeling"
+        },
+        "last_communication_method": {
+            "label": "Laatste Comm Type",
+            "longlabel": "Laatste Comm Type"
+        },
+        "contact_linked": {
+            "label": "Contactgekoppeld",
+            "longlabel": "Contactgekoppeld"
+        },
+        "last_meeting_created_on": {
+            "label": "Laatste bijeenkomst toegevoegd",
+            "longlabel": "Laatste bijeenkomst toegevoegd"
+        },
+        "last_message_sent_on": {
+            "label": "Laatste LinkedIn-bericht verzonden op",
+            "longlabel": "Laatste LinkedIn-bericht verzonden op"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        }
+    },
+    "assigned_candidates": {
+        "jobslug": {
+            "label": "baan",
+            "longlabel": "baan"
+        },
+        "jobid": {
+            "label": "baan",
+            "longlabel": "baan"
+        },
+        "jobname": {
+            "label": "baan",
+            "longlabel": "baan"
+        },
+        "candidateid": {
+            "label": "Kandidaat",
+            "longlabel": "Kandidaat"
+        },
+        "candidatename": {
+            "label": "Kandidaat",
+            "longlabel": "Kandidaat"
+        },
+        "firstname": {
+            "label": "Voornaam",
+            "longlabel": "Voornaam"
+        },
+        "lastname": {
+            "label": "Achternaam",
+            "longlabel": "Achternaam"
+        },
+        "lastorganisation": {
+            "label": "Huidige organisatie",
+            "longlabel": "Huidige organisatie"
+        },
+        "resumetext": {
+            "label": "CV Tekst",
+            "longlabel": "CV Tekst"
+        },
+        "resume": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "resumefilename": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "candidatestatusid": {
+            "label": "Aanwervingsfase",
+            "longlabel": "U kunt de aanwervingsfase van een kandidaat wijzigen"
+        },
+        "candidatestatus": {
+            "label": "Aanwervingsfase",
+            "longlabel": "U kunt de aanwervingsfase van een kandidaat wijzigen"
+        },
+        "remark": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "emailid": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "contactnumber": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "currentsalary": {
+            "label": "Huidige salaris",
+            "longlabel": "Huidige salaris"
+        },
+        "salaryexpectation": {
+            "label": "Salarisindicatie",
+            "longlabel": "Salarisindicatie"
+        },
+        "noticeperiod": {
+            "label": "Opzegtermijn",
+            "longlabel": "Opzegtermijn (dagen)"
+        },
+        "candidatedob": {
+            "label": "Geboortedatum",
+            "longlabel": "Geboortedatum kandidaat"
+        },
+        "genderid": {
+            "label": "Geslacht",
+            "longlabel": "Geslacht"
+        },
+        "age": {
+            "label": "Leeftijd",
+            "longlabel": "Leeftijd kandidaat"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Kwalificatie"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Specialisatie"
+        },
+        "workexpyr": {
+            "label": "Totale ervaring",
+            "longlabel": "Totale ervaring"
+        },
+        "relevantexperience": {
+            "label": "Relevante ervaring",
+            "longlabel": "Relevante ervaring"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "city": {
+            "label": "stad",
+            "longlabel": "stad"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "availablefrom": {
+            "label": "Beschikbaar vanaf",
+            "longlabel": "Beschikbaar vanaf"
+        },
+        "position": {
+            "label": "Titel",
+            "longlabel": "Titel / Positie"
+        },
+        "profilefacebook": {
+            "label": "Facebook profiel",
+            "longlabel": "Facebook profiel"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiel",
+            "longlabel": "Twitter-profiel"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn profiel",
+            "longlabel": "LinkedIn profiel"
+        },
+        "profilegithub": {
+            "label": "Github-profiel",
+            "longlabel": "Github-profiel"
+        },
+        "share": {
+            "label": "Zichtbaarheid",
+            "longlabel": "Zichtbaarheid"
+        },
+        "id": {
+            "label": "Kandidaat Vragen",
+            "longlabel": "Kandidaat Vragen"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "source": {
+            "label": "Bron",
+            "longlabel": "Bron"
+        },
+        "createdon": {
+            "label": "Toegevoegd",
+            "longlabel": "Toegevoegd"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "profilexing": {
+            "label": "Xing Profiel",
+            "longlabel": "Xing Profiel"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "unavailable": {
+            "label": "Beschikbaarheid",
+            "longlabel": "Beschikbaarheid"
+        },
+        "summary": {
+            "label": "Samenvatting",
+            "longlabel": "Samenvatting"
+        },
+        "jobstatus": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profielaanvraag verzonden op",
+            "longlabel": "Profielaanvraag verzonden op"
+        },
+        "willingtorelocate": {
+            "label": "Bereid om te verhuizen",
+            "longlabel": "Bereid om te verhuizen"
+        },
+        "currentstatus": {
+            "label": "Werkstatus",
+            "longlabel": "Werkstatus"
+        },
+        "languageskills": {
+            "label": "Taal",
+            "longlabel": "Taal"
+        },
+        "skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Sollicitatie-CV",
+            "longlabel": "Sollicitatie-CV"
+        },
+        "assigned_job_coverletter": {
+            "label": "Sollicitatie Begeleidende brief",
+            "longlabel": "Sollicitatie Begeleidende brief"
+        },
+        "assigned_job_portfolio": {
+            "label": "Portfolio sollicitaties",
+            "longlabel": "Portfolio sollicitaties"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Sollicitatiedossier 1",
+            "longlabel": "Sollicitatiedossier 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Sollicitatiedossier 2",
+            "longlabel": "Sollicitatiedossier 2"
+        },
+        "work_history": {
+            "label": "Werkverleden",
+            "longlabel": "Werkverleden"
+        },
+        "education_history": {
+            "label": "Geschiedenis",
+            "longlabel": "Geschiedenis"
+        },
+        "companyname": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "job_type": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "job_category": {
+            "label": "Functiecategorie",
+            "longlabel": "Functiecategorie"
+        },
+        "resumeupdatedon": {
+            "label": "Profiel bijgewerkt door kandidaat op",
+            "longlabel": "Profiel bijgewerkt door kandidaat op"
+        },
+        "requestresumelinkstatus": {
+            "label": "Status hervattingslink aanvragen",
+            "longlabel": "Status hervattingslink aanvragen"
+        },
+        "resumeaddedon": {
+            "label": "Hervatten Toegevoegd Op",
+            "longlabel": "Hervatten Toegevoegd Op"
+        },
+        "off_limit_status": {
+            "label": "Status buiten limiet",
+            "longlabel": "Status buiten limiet"
+        },
+        "sms_opt_out": {
+            "label": "Opt-out sms",
+            "longlabel": "Opt-out sms"
+        },
+        "last_calllog_created_on": {
+            "label": "Logboek laatste oproep toegevoegd",
+            "longlabel": "Logboek laatste oproep toegevoegd"
+        },
+        "last_sms_sent_on": {
+            "label": "Laatst verzonden SMS op",
+            "longlabel": "Laatst verzonden SMS op"
+        },
+        "last_email_sent_on": {
+            "label": "Laatste e-mail verzonden op",
+            "longlabel": "Laatste e-mail verzonden op"
+        },
+        "last_communication_timestamp": {
+            "label": "Laatste mededeling",
+            "longlabel": "Laatste mededeling"
+        },
+        "last_communication_method": {
+            "label": "Laatste Comm Type",
+            "longlabel": "Laatste Comm Type"
+        },
+        "remote": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "last_meeting_created_on": {
+            "label": "Laatste bijeenkomst toegevoegd",
+            "longlabel": "Laatste bijeenkomst toegevoegd"
+        },
+        "last_message_sent_on": {
+            "label": "Laatste LinkedIn-bericht verzonden op",
+            "longlabel": "Laatste LinkedIn-bericht verzonden op"
+        },
+        "timesheet_setting": {
+            "label": "Timesheet",
+            "longlabel": "Timesheet"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Kandidaat-ID"
+        },
+        "updatedby": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "job_function": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "job_industry": {
+            "label": "Functie-industrie",
+            "longlabel": "Functie-industrie"
+        },
+        "placement_id": {
+            "label": "Plaatsing",
+            "longlabel": "Plaatsing"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        }
+    },
+    "companies": {
+        "id": {
+            "label": "ID kaart",
+            "longlabel": "ID kaart"
+        },
+        "srno": {
+            "label": "ID kaart",
+            "longlabel": "bedrijfs ID"
+        },
+        "companyname": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres van het bedrijf"
+        },
+        "city": {
+            "label": "stad",
+            "longlabel": "Bedrijf Stad"
+        },
+        "industryid": {
+            "label": "Industrie",
+            "longlabel": "Bedrijfs-industrie"
+        },
+        "industry": {
+            "label": "Industrie",
+            "longlabel": "Bedrijfs-industrie"
+        },
+        "website": {
+            "label": "Website",
+            "longlabel": "Website"
+        },
+        "totalopenjob": {
+            "label": "Openstaande vacatures",
+            "longlabel": "Totaal aantal openstaande vacatures"
+        },
+        "totalclosedjob": {
+            "label": "Gesloten vacatures",
+            "longlabel": "Totaal aantal gesloten banen"
+        },
+        "totalonholdjob": {
+            "label": "Vacatures in de wacht",
+            "longlabel": "Vacatures in de wacht"
+        },
+        "totalcanceledjob": {
+            "label": "Geannuleerde taken",
+            "longlabel": "Geannuleerde taken"
+        },
+        "logo": {
+            "label": "Logo",
+            "longlabel": "Bedrijfslogo"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "profilefacebook": {
+            "label": "Facebook profiel",
+            "longlabel": "Facebook-profiel van het bedrijf"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiel",
+            "longlabel": "Twitter-profiel van het bedrijf"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn profiel",
+            "longlabel": "Bedrijf Linkedin Profiel"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "creatorname": {
+            "label": "Naam maker",
+            "longlabel": "Naam maker"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "deleted": {
+            "label": "verwijderd",
+            "longlabel": "verwijderd"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdon": {
+            "label": "Toegevoegd",
+            "longlabel": "Toegevoegd"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "updatedby": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Bedrijfsnotitie"
+        },
+        "aboutcompany": {
+            "label": "Over bedrijf",
+            "longlabel": "Over bedrijf"
+        },
+        "parentcompanyname": {
+            "label": "Moeder bedrijf",
+            "longlabel": "Naam van de hoofdorganisatie"
+        },
+        "off_limit_status": {
+            "label": "Status buiten limiet",
+            "longlabel": "Status buiten limiet"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat van het bedrijf"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Bedrijf Land"
+        },
+        "postal_code": {
+            "label": "Postcode",
+            "longlabel": "Postcode bedrijf"
+        },
+        "last_meeting_created_on": {
+            "label": "Laatste bijeenkomst toegevoegd",
+            "longlabel": "Laatste bijeenkomst toegevoegd"
+        },
+        "linkedin_id": {
+            "label": "LinkedIn Bedrijfs-ID",
+            "longlabel": "LinkedIn Bedrijfs-ID"
+        },
+        "monster_board_company_name": {
+            "label": "Monster Board Company",
+            "longlabel": "Monster Board Company"
+        },
+        "indeed_opted_out": {
+            "label": "Inderdaad afgemeld",
+            "longlabel": "Inderdaad afgemeld"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        }
+    },
+    "contacts": {
+        "id": {
+            "label": "ID kaart",
+            "longlabel": "Contact-ID"
+        },
+        "srno": {
+            "label": "ID kaart",
+            "longlabel": "Contact-ID"
+        },
+        "name": {
+            "label": "Naam",
+            "longlabel": "contactnaam"
+        },
+        "firstname": {
+            "label": "Voornaam",
+            "longlabel": "Voornaam contactpersoon"
+        },
+        "lastname": {
+            "label": "Achternaam",
+            "longlabel": "Achternaam contactpersoon"
+        },
+        "stageid": {
+            "label": "Stadium",
+            "longlabel": "Neem contact op met Stage"
+        },
+        "stage": {
+            "label": "Stadium",
+            "longlabel": "Neem contact op met Stage"
+        },
+        "companyid": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijf"
+        },
+        "companyslug": {
+            "label": "Bedrijfsslak",
+            "longlabel": "Bedrijf Naaktslak"
+        },
+        "companyname": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "E-mailadres voor contact"
+        },
+        "contactnumber": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres contact opnemen"
+        },
+        "city": {
+            "label": "stad",
+            "longlabel": "Contact Stad"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownerslug": {
+            "label": "Eigenaar Slug",
+            "longlabel": "Eigenaar Slug"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "profilefacebook": {
+            "label": "Facebook profiel",
+            "longlabel": "Contact Facebook-profiel-URL"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiel",
+            "longlabel": "Contact-URL van Twitter-profiel"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn profiel",
+            "longlabel": "Contact Linkedin Profiel-URL"
+        },
+        "designation": {
+            "label": "Titel",
+            "longlabel": "Titel"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "canaccess": {
+            "label": "Kan toegang krijgen",
+            "longlabel": "Kan toegang krijgen"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdbyname": {
+            "label": "Gemaakt op naam",
+            "longlabel": "Gemaakt op naam"
+        },
+        "createdon": {
+            "label": "Toegevoegd",
+            "longlabel": "Toegevoegd"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "deleted": {
+            "label": "verwijderd",
+            "longlabel": "verwijderd"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Contact Opmerking:"
+        },
+        "photo": {
+            "label": "Profielfoto",
+            "longlabel": "Profielfoto"
+        },
+        "company_accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "company_address": {
+            "label": "Bedrijf - Volledig adres",
+            "longlabel": "Bedrijf - Volledig adres"
+        },
+        "company_city": {
+            "label": "Bedrijf - Stad",
+            "longlabel": "Bedrijf - Stad"
+        },
+        "company_companyname": {
+            "label": "Bedrijf - Naam",
+            "longlabel": "Bedrijf - Naam"
+        },
+        "company_parentcompanyname": {
+            "label": "Vennootschap - Moedermaatschappij",
+            "longlabel": "Bedrijf - Naam moedermaatschappij"
+        },
+        "company_createdby": {
+            "label": "Bedrijf - Gemaakt Door",
+            "longlabel": "Bedrijf - Gemaakt Door"
+        },
+        "company_createdon": {
+            "label": "Bedrijf - Gemaakt Op",
+            "longlabel": "Bedrijf - Gemaakt Op"
+        },
+        "company_creatorname": {
+            "label": "Bedrijf - Naam aanmaker",
+            "longlabel": "Bedrijf - Naam aanmaker"
+        },
+        "company_deleted": {
+            "label": "Bedrijf - Verwijderd",
+            "longlabel": "Bedrijf - Verwijderd"
+        },
+        "company_id": {
+            "label": "Bedrijf - ID",
+            "longlabel": "Bedrijf - ID"
+        },
+        "company_industry": {
+            "label": "Bedrijf - Industrie",
+            "longlabel": "Bedrijf - Industrie"
+        },
+        "company_industryid": {
+            "label": "Bedrijf - Industrie",
+            "longlabel": "Bedrijf - Industrie"
+        },
+        "company_logo": {
+            "label": "Bedrijf - Logo",
+            "longlabel": "Bedrijf - Logo"
+        },
+        "company_note": {
+            "label": "Bedrijf - Notitie",
+            "longlabel": "Bedrijf - Notitie"
+        },
+        "company_ownerid": {
+            "label": "Bedrijf - Eigenaar Naam",
+            "longlabel": "Bedrijf - Eigenaar Naam"
+        },
+        "company_ownername": {
+            "label": "Bedrijf - Eigenaar Naam",
+            "longlabel": "Bedrijf - Eigenaar Naam"
+        },
+        "company_profilefacebook": {
+            "label": "Bedrijf - Facebook-profiel",
+            "longlabel": "Bedrijf - Facebook-profiel"
+        },
+        "company_profilelinkedin": {
+            "label": "Bedrijf - Linkedin-profiel",
+            "longlabel": "Bedrijf - Linkedin-profiel"
+        },
+        "company_profiletwitter": {
+            "label": "Bedrijf - Twitter-profiel",
+            "longlabel": "Bedrijf - Twitter-profiel"
+        },
+        "company_slug": {
+            "label": "Bedrijf - Acties",
+            "longlabel": "Bedrijf - Naaktslak"
+        },
+        "company_srno": {
+            "label": "Bedrijf - ID",
+            "longlabel": "Bedrijf - ID"
+        },
+        "company_totalcanceledjob": {
+            "label": "Bedrijf - Geannuleerde taken",
+            "longlabel": "Bedrijf - Geannuleerde taken"
+        },
+        "company_totalclosedjob": {
+            "label": "Bedrijf - Gesloten vacatures",
+            "longlabel": "Bedrijf - Totaal aantal gesloten banen"
+        },
+        "company_totalonholdjob": {
+            "label": "Bedrijf - Vacatures in de wacht",
+            "longlabel": "Bedrijf - Vacatures in de wacht"
+        },
+        "company_totalopenjob": {
+            "label": "Bedrijf - Openstaande vacatures",
+            "longlabel": "Bedrijf - Totaal aantal openstaande vacatures"
+        },
+        "company_updatedby": {
+            "label": "Bedrijf - Bijgewerkt door",
+            "longlabel": "Bedrijf - Bijgewerkt door"
+        },
+        "company_updatedon": {
+            "label": "Bedrijf - Bijgewerkt door",
+            "longlabel": "Bedrijf - Bijgewerkt door"
+        },
+        "company_website": {
+            "label": "Bedrijf - Website",
+            "longlabel": "Bedrijf - Website"
+        },
+        "parentcompanyname": {
+            "label": "Bedrijf -Moeder bedrijf",
+            "longlabel": "Bedrijf - Naam van de hoofdorganisatie"
+        },
+        "profilexing": {
+            "label": "Xing Profiel",
+            "longlabel": "Contact Xing Profiel URL"
+        },
+        "off_limit_status": {
+            "label": "Status buiten limiet",
+            "longlabel": "Status buiten limiet"
+        },
+        "sms_opt_out": {
+            "label": "Opt-out sms",
+            "longlabel": "Opt-out sms"
+        },
+        "last_calllog_created_on": {
+            "label": "Logboek laatste oproep toegevoegd",
+            "longlabel": "Logboek laatste oproep toegevoegd"
+        },
+        "last_sms_sent_on": {
+            "label": "Laatst verzonden SMS op",
+            "longlabel": "Laatst verzonden SMS op"
+        },
+        "last_email_sent_on": {
+            "label": "Laatste e-mail verzonden op",
+            "longlabel": "Laatste e-mail verzonden op"
+        },
+        "last_communication_timestamp": {
+            "label": "Laatste mededeling",
+            "longlabel": "Laatste mededeling"
+        },
+        "last_communication_method": {
+            "label": "Laatste Comm Type",
+            "longlabel": "Laatste Comm Type"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Contact Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Contact Land"
+        },
+        "postal_code": {
+            "label": "Postcode",
+            "longlabel": "Postcode contactpersoon"
+        },
+        "company_locality": {
+            "label": "Bedrijf - Plaats",
+            "longlabel": "Bedrijf - Plaats"
+        },
+        "company_state": {
+            "label": "Bedrijf - Staat",
+            "longlabel": "Bedrijf - Staat"
+        },
+        "company_country": {
+            "label": "Bedrijf - Land",
+            "longlabel": "Bedrijf - Land"
+        },
+        "company_postal_code": {
+            "label": "Bedrijf - Postcode",
+            "longlabel": "Bedrijf - Postcode"
+        },
+        "last_meeting_created_on": {
+            "label": "Laatste bijeenkomst toegevoegd",
+            "longlabel": "Laatste bijeenkomst toegevoegd"
+        },
+        "last_message_sent_on": {
+            "label": "Laatste LinkedIn-bericht verzonden op",
+            "longlabel": "Laatste LinkedIn-bericht verzonden op"
+        },
+        "company_linkedin_id": {
+            "label": "Bedrijf - LinkedIn-ID",
+            "longlabel": "Bedrijf - LinkedIn-ID"
+        },
+        "company_monster_board_company_name": {
+            "label": "Bedrijf - Monster Board Company",
+            "longlabel": "Bedrijf - Monster Board Company"
+        },
+        "company_indeed_opted_out": {
+            "label": "Bedrijf - Indeed Opted Out",
+            "longlabel": "Bedrijf - Indeed Opted Out"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        }
+    },
+    "jobs": {
+        "id": {
+            "label": "ID kaart",
+            "longlabel": "ID kaart"
+        },
+        "srno": {
+            "label": "ID kaart",
+            "longlabel": "Taak-ID"
+        },
+        "name": {
+            "label": "Naam",
+            "longlabel": "Functietitel"
+        },
+        "jobstatus": {
+            "label": "Toestand",
+            "longlabel": "Werkstatus"
+        },
+        "jobstatuslabel": {
+            "label": "Toestand",
+            "longlabel": "Werkstatus"
+        },
+        "companyid": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijf"
+        },
+        "companyname": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "contactid": {
+            "label": "Contacten",
+            "longlabel": "Contacten"
+        },
+        "salarytype": {
+            "label": "Salaristype",
+            "longlabel": "Salaristype"
+        },
+        "currencyid": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "land",
+            "longlabel": "land"
+        },
+        "collaborator": {
+            "label": "Medewerker",
+            "longlabel": "Medewerker"
+        },
+        "jobquestions": {
+            "label": "Vragen over sollicitatieformulier",
+            "longlabel": "Vragen over sollicitatieformulier"
+        },
+        "allowapply": {
+            "label": "Sollicitatieformulier inschakelen",
+            "longlabel": "Sollicitatieformulier inschakelen"
+        },
+        "description": {
+            "label": "Opmerking voor kandidaten",
+            "longlabel": "Opmerking voor kandidaten"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "city": {
+            "label": "stad",
+            "longlabel": "stad"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Educatieve Kwalificatie"
+        },
+        "qualification": {
+            "label": "Kwalificatielabel",
+            "longlabel": "Kwalificatielabel"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Educatieve specialisatie"
+        },
+        "detailfilename": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "jdtext": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "jdtextdetails": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "minexperienceinyears": {
+            "label": "Minimale ervaring (jaren)",
+            "longlabel": "Minimale ervaring (jaren)"
+        },
+        "maxexperienceinyears": {
+            "label": "Maximale ervaring (jaren)",
+            "longlabel": "Maximale ervaring (jaren)"
+        },
+        "annualsalarymin": {
+            "label": "Min. \nSalaris",
+            "longlabel": "Minimumloon"
+        },
+        "annualsalarymax": {
+            "label": "Maximaal \nSalaris",
+            "longlabel": "Maximaal salaris"
+        },
+        "noofopenings": {
+            "label": "openingen",
+            "longlabel": "Aantal openingen"
+        },
+        "contactname": {
+            "label": "contactnaam",
+            "longlabel": "contactnaam"
+        },
+        "contactemail": {
+            "label": "contact email",
+            "longlabel": "contact email"
+        },
+        "contactnumber": {
+            "label": "Contact nummer",
+            "longlabel": "Contact nummer"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "creatorname": {
+            "label": "Schepper",
+            "longlabel": "Naam maker"
+        },
+        "createdon": {
+            "label": "Datum toegevoegd",
+            "longlabel": "Datum toegevoegd"
+        },
+        "updatedon": {
+            "label": "Datum bijgewerkt",
+            "longlabel": "Datum bijgewerkt"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "jobpostingstatus": {
+            "label": "Acties",
+            "longlabel": "Status vacature"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "contactslug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "companyslug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "hiring_pipeline_id": {
+            "label": "Pijplijn inhuren",
+            "longlabel": "Pijplijn inhuren"
+        },
+        "job_skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "job_type": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "job_category": {
+            "label": "Functiecategorie",
+            "longlabel": "Functiecategorie"
+        },
+        "secondarycontactid": {
+            "label": "Secundaire contacten",
+            "longlabel": "Secundaire contacten"
+        },
+        "targetcompanies": {
+            "label": "Doelondernemingen",
+            "longlabel": "Doelondernemingen"
+        },
+        "remote": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "rate_type": {
+            "label": "Tarieftype",
+            "longlabel": "Tarieftype"
+        },
+        "pay_rate": {
+            "label": "Salaris",
+            "longlabel": "Salaris"
+        },
+        "bill_rate": {
+            "label": "Rekeningtarief",
+            "longlabel": "Rekeningtarief"
+        },
+        "job_function": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "job_industry": {
+            "label": "Functie-industrie",
+            "longlabel": "Functie-industrie"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        },
+        "salaryrange": {
+            "label": "Salarisbereik",
+            "longlabel": "Salarisbereik"
+        }
+    },
+    "deals": {
+        "id": {
+            "label": "ID kaart",
+            "longlabel": "ID kaart"
+        },
+        "srno": {
+            "label": "ID kaart",
+            "longlabel": "Deal-ID"
+        },
+        "name": {
+            "label": "Naam",
+            "longlabel": "Naam deal"
+        },
+        "dealstage": {
+            "label": "Stadium",
+            "longlabel": "Stadium"
+        },
+        "dealstagelabel": {
+            "label": "Stadium",
+            "longlabel": "Stadium"
+        },
+        "percentage": {
+            "label": "Stadiumgewicht",
+            "longlabel": "Stadiumgewicht"
+        },
+        "dealvalue": {
+            "label": "Dealbedrag",
+            "longlabel": "Dealbedrag"
+        },
+        "dealpercentagevalue": {
+            "label": "Gewogen dealbedrag",
+            "longlabel": "Gewogen dealbedrag"
+        },
+        "dealtype": {
+            "label": "Soort deal",
+            "longlabel": "Soort deal"
+        },
+        "archived": {
+            "label": "gearchiveerd",
+            "longlabel": "gearchiveerd"
+        },
+        "dealtypelabel": {
+            "label": "Soort deal",
+            "longlabel": "Soort deal"
+        },
+        "closedate": {
+            "label": "Sluitingsdatum",
+            "longlabel": "Sluitingsdatum"
+        },
+        "relatedcompany": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijf"
+        },
+        "relatedcontact": {
+            "label": "Contact",
+            "longlabel": "Contact"
+        },
+        "companyname": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "website": {
+            "label": "Website",
+            "longlabel": "Website"
+        },
+        "relatedjob": {
+            "label": "Job",
+            "longlabel": "Job"
+        },
+        "jobname": {
+            "label": "baan",
+            "longlabel": "Taaknaam"
+        },
+        "jobcity": {
+            "label": "stad",
+            "longlabel": "stad"
+        },
+        "relatedcandidate": {
+            "label": "Kandidaat",
+            "longlabel": "Kandidaat"
+        },
+        "candidatename": {
+            "label": "Naam van de kandidaat",
+            "longlabel": "Naam van de kandidaat"
+        },
+        "candidatetitle": {
+            "label": "Titel",
+            "longlabel": "Titel / Positie"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "ownerslug": {
+            "label": "Eigenaar Slug",
+            "longlabel": "Eigenaar Slug"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdon": {
+            "label": "Toegevoegd",
+            "longlabel": "Toegevoegd"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "updatedby": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "createdbyname": {
+            "label": "Gemaakt op naam",
+            "longlabel": "Gemaakt op naam"
+        },
+        "updatedbyname": {
+            "label": "Bijgewerkt op naam",
+            "longlabel": "Bijgewerkt op naam"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "companyslug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "jobslug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "candidateslug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "collaborator": {
+            "label": "Medewerker",
+            "longlabel": "Medewerker"
+        },
+        "splitdealvalue": {
+            "label": "Split Deal Bedrag",
+            "longlabel": "Split Deal Bedrag"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Gewogen Split Deal Bedrag",
+            "longlabel": "Gewogen Split Deal Bedrag"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        }
+    },
+    "reports_assigned_candidates": {
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "age": {
+            "label": "Leeftijd",
+            "longlabel": "Leeftijd kandidaat"
+        },
+        "availablefrom": {
+            "label": "Beschikbaar vanaf",
+            "longlabel": "Beschikbaar vanaf"
+        },
+        "candidatedob": {
+            "label": "Geboortedatum",
+            "longlabel": "Geboortedatum kandidaat"
+        },
+        "candidateid": {
+            "label": "Kandidaat",
+            "longlabel": "Kandidaat"
+        },
+        "candidatename": {
+            "label": "Kandidaat",
+            "longlabel": "Kandidaat"
+        },
+        "candidatestatus": {
+            "label": "Aanwervingsfase",
+            "longlabel": "U kunt de aanwervingsfase van een kandidaat wijzigen"
+        },
+        "candidatestatusid": {
+            "label": "Aanwervingsfase",
+            "longlabel": "U kunt de aanwervingsfase van een kandidaat wijzigen"
+        },
+        "city": {
+            "label": "stad",
+            "longlabel": "stad"
+        },
+        "contactnumber": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "createdon": {
+            "label": "Toegevoegd",
+            "longlabel": "Toegevoegd"
+        },
+        "currentsalary": {
+            "label": "Huidige salaris",
+            "longlabel": "Huidige salaris"
+        },
+        "emailid": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "firstname": {
+            "label": "Voornaam",
+            "longlabel": "Voornaam"
+        },
+        "genderid": {
+            "label": "Geslacht",
+            "longlabel": "Geslacht"
+        },
+        "id": {
+            "label": "Kandidaat Vragen",
+            "longlabel": "Kandidaat Vragen"
+        },
+        "jobid": {
+            "label": "baan",
+            "longlabel": "baan"
+        },
+        "jobname": {
+            "label": "baan",
+            "longlabel": "baan"
+        },
+        "jobslug": {
+            "label": "baan",
+            "longlabel": "baan"
+        },
+        "lastname": {
+            "label": "Achternaam",
+            "longlabel": "Achternaam"
+        },
+        "lastorganisation": {
+            "label": "Huidige organisatie",
+            "longlabel": "Huidige organisatie"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "noticeperiod": {
+            "label": "Opzegtermijn",
+            "longlabel": "Opzegtermijn (dagen)"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "position": {
+            "label": "Titel",
+            "longlabel": "Titel / Positie"
+        },
+        "profilefacebook": {
+            "label": "Facebook profiel",
+            "longlabel": "Facebook profiel"
+        },
+        "profilegithub": {
+            "label": "Github-profiel",
+            "longlabel": "Github-profiel"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn profiel",
+            "longlabel": "LinkedIn profiel"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiel",
+            "longlabel": "Twitter-profiel"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Kwalificatie"
+        },
+        "relevantexperience": {
+            "label": "Relevante ervaring",
+            "longlabel": "Relevante ervaring"
+        },
+        "remark": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "resume": {
+            "label": "Hervat",
+            "longlabel": "Hervat"
+        },
+        "resumefilename": {
+            "label": "Hervat",
+            "longlabel": "Hervat"
+        },
+        "resumetext": {
+            "label": "Tekst hervatten",
+            "longlabel": "Tekst hervatten"
+        },
+        "salaryexpectation": {
+            "label": "Salarisindicatie",
+            "longlabel": "Salarisindicatie"
+        },
+        "share": {
+            "label": "Zichtbaarheid",
+            "longlabel": "Zichtbaarheid"
+        },
+        "source": {
+            "label": "Bron",
+            "longlabel": "Bron"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Specialisatie"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "workexpyr": {
+            "label": "Totale ervaring",
+            "longlabel": "Totale ervaring"
+        },
+        "currenthiringstage": {
+            "label": "Huidige wervingsfase",
+            "longlabel": "Huidige wervingsfase"
+        },
+        "assignedby": {
+            "label": "Toegewezen door",
+            "longlabel": "Toegewezen door"
+        },
+        "stagedate": {
+            "label": "Stage datum",
+            "longlabel": "Stage datum"
+        },
+        "companyname": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "companycontactname": {
+            "label": "Naam contactpersoon bedrijf",
+            "longlabel": "Naam contactpersoon bedrijf"
+        },
+        "jobownername": {
+            "label": "Naam taakeigenaar",
+            "longlabel": "Naam taakeigenaar"
+        },
+        "profilexing": {
+            "label": "Xing Profiel",
+            "longlabel": "Xing Profiel"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "job_srno": {
+            "label": "Job ID",
+            "longlabel": "Job ID"
+        },
+        "jobstatus": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "unavailable": {
+            "label": "Beschikbaarheid",
+            "longlabel": "Niet beschikbaar"
+        },
+        "summary": {
+            "label": "Samenvatting",
+            "longlabel": "Samenvatting"
+        },
+        "skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "work_history": {
+            "label": "Werkverleden",
+            "longlabel": "Werkverleden"
+        },
+        "education_history": {
+            "label": "Geschiedenis",
+            "longlabel": "Geschiedenis"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Sollicitatie-CV",
+            "longlabel": "Sollicitatie-CV"
+        },
+        "hotlist": {
+            "label": "Hotlist",
+            "longlabel": "Hotlist"
+        },
+        "assigned_job_coverletter": {
+            "label": "Sollicitatie Begeleidende brief",
+            "longlabel": "Sollicitatie Begeleidende brief"
+        },
+        "assigned_job_portfolio": {
+            "label": "Portfolio sollicitaties",
+            "longlabel": "Portfolio sollicitaties"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Sollicitatiedossier 1",
+            "longlabel": "Sollicitatiedossier 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Sollicitatiedossier 2",
+            "longlabel": "Sollicitatiedossier 2"
+        },
+        "job_type": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "job_category": {
+            "label": "Functiecategorie",
+            "longlabel": "Functiecategorie"
+        },
+        "resumeupdatedon": {
+            "label": "Profiel bijgewerkt door kandidaat op",
+            "longlabel": "Profiel bijgewerkt door kandidaat op"
+        },
+        "requestresumelinkstatus": {
+            "label": "Status hervattingslink aanvragen",
+            "longlabel": "Status hervattingslink aanvragen"
+        },
+        "resumeaddedon": {
+            "label": "Hervatten Toegevoegd Op",
+            "longlabel": "Hervatten Toegevoegd Op"
+        },
+        "contactemail": {
+            "label": "Contactpersoon e-mail",
+            "longlabel": "Contactpersoon e-mail"
+        },
+        "off_limit_status": {
+            "label": "Status buiten limiet",
+            "longlabel": "Status buiten limiet"
+        },
+        "sms_opt_out": {
+            "label": "Opt-out sms",
+            "longlabel": "Opt-out sms"
+        },
+        "remote": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "last_calllog_created_on": {
+            "label": "Logboek laatste oproep toegevoegd",
+            "longlabel": "Logboek laatste oproep toegevoegd"
+        },
+        "last_sms_sent_on": {
+            "label": "Laatst verzonden SMS op",
+            "longlabel": "Laatst verzonden SMS op"
+        },
+        "last_email_sent_on": {
+            "label": "Laatste e-mail verzonden op",
+            "longlabel": "Laatste e-mail verzonden op"
+        },
+        "last_communication_timestamp": {
+            "label": "Laatste mededeling",
+            "longlabel": "Laatste mededeling"
+        },
+        "last_communication_method": {
+            "label": "Laatste Comm Type",
+            "longlabel": "Laatste Comm Type"
+        },
+        "last_meeting_created_on": {
+            "label": "Laatste bijeenkomst toegevoegd",
+            "longlabel": "Laatste bijeenkomst toegevoegd"
+        },
+        "last_message_sent_on": {
+            "label": "Laatste LinkedIn-bericht verzonden op",
+            "longlabel": "Laatste LinkedIn-bericht verzonden op"
+        },
+        "job_function": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "job_industry": {
+            "label": "Functie-industrie",
+            "longlabel": "Functie-industrie"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        }
+    },
+    "reports_pitch_candidates": {
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "accountlogo": {
+            "label": "Accountlogo",
+            "longlabel": "Accountlogo"
+        },
+        "accounttitle": {
+            "label": "Accounttitel",
+            "longlabel": "Accounttitel"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "age": {
+            "label": "Leeftijd",
+            "longlabel": "Leeftijd kandidaat"
+        },
+        "authid": {
+            "label": "Verificatie-ID",
+            "longlabel": "Verificatie-ID"
+        },
+        "availablefrom": {
+            "label": "Beschikbaar vanaf",
+            "longlabel": "Beschikbaar vanaf"
+        },
+        "canaccess": {
+            "label": "Kan toegang krijgen",
+            "longlabel": "Kan toegang krijgen"
+        },
+        "candidatedob": {
+            "label": "Geboortedatum",
+            "longlabel": "Geboortedatum"
+        },
+        "candidatename": {
+            "label": "Naam",
+            "longlabel": "Naam van de kandidaat"
+        },
+        "candidateterms": {
+            "label": "Kandidaatvoorwaarden",
+            "longlabel": "Kandidaatvoorwaarden"
+        },
+        "city": {
+            "label": "stad",
+            "longlabel": "stad"
+        },
+        "contactnumber": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdbyname": {
+            "label": "Gemaakt op naam",
+            "longlabel": "Gemaakt op naam"
+        },
+        "createdon": {
+            "label": "Toegevoegd",
+            "longlabel": "Toegevoegd"
+        },
+        "currencycountry": {
+            "label": "Valuta Land",
+            "longlabel": "Valuta Land"
+        },
+        "currencyid": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "currentsalary": {
+            "label": "Huidige salaris",
+            "longlabel": "Huidige salaris"
+        },
+        "currentstatus": {
+            "label": "Arbeidsstatus",
+            "longlabel": "Huidige arbeidssituatie"
+        },
+        "deleted": {
+            "label": "verwijderd",
+            "longlabel": "verwijderd"
+        },
+        "eeocompliance": {
+            "label": "EEO-naleving",
+            "longlabel": "EEO-naleving"
+        },
+        "emailid": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "firstname": {
+            "label": "Voornaam",
+            "longlabel": "Voornaam kandidaat"
+        },
+        "gdprcompliance": {
+            "label": "AVG-naleving",
+            "longlabel": "AVG-naleving"
+        },
+        "genderid": {
+            "label": "Geslacht",
+            "longlabel": "Geslacht"
+        },
+        "id": {
+            "label": "ID kaart",
+            "longlabel": "ID kaart"
+        },
+        "jobapplicationsettings": {
+            "label": "Sollicitatie-instellingen",
+            "longlabel": "Sollicitatie-instellingen"
+        },
+        "languageskills": {
+            "label": "Taal",
+            "longlabel": "Taalvaardigheid"
+        },
+        "lastname": {
+            "label": "Achternaam",
+            "longlabel": "Achternaam kandidaat"
+        },
+        "lastorganisation": {
+            "label": "Huidige organisatie",
+            "longlabel": "Huidige organisatie"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "noticeperiod": {
+            "label": "Opzegtermijn",
+            "longlabel": "Opzegtermijn (dagen)"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "ownerslug": {
+            "label": "Eigenaar Slug",
+            "longlabel": "Eigenaar Slug"
+        },
+        "position": {
+            "label": "Titel",
+            "longlabel": "Titel / Positie"
+        },
+        "profilefacebook": {
+            "label": "Facebook profiel",
+            "longlabel": "Facebook profiel"
+        },
+        "profilegithub": {
+            "label": "Github-profiel",
+            "longlabel": "Github-profiel"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn profiel",
+            "longlabel": "LinkedIn profiel"
+        },
+        "profilepic": {
+            "label": "Profielfoto",
+            "longlabel": "Profielfoto"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiel",
+            "longlabel": "Twitter-profiel"
+        },
+        "qualification": {
+            "label": "Kwalificatielabel",
+            "longlabel": "Kwalificatielabel"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Educatieve Kwalificatie"
+        },
+        "relevantexperience": {
+            "label": "Relevante ervaring",
+            "longlabel": "Relevante ervaring"
+        },
+        "requestresumelinkstatus": {
+            "label": "Verzoek om CV-linkstatus",
+            "longlabel": "Verzoek om CV-linkstatus"
+        },
+        "resume": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "resumeaddedon": {
+            "label": "CV toegevoegd aan",
+            "longlabel": "CV toegevoegd aan"
+        },
+        "resumefilename": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "resumetext": {
+            "label": "CV Tekst",
+            "longlabel": "CV Tekst"
+        },
+        "resumeupdatedon": {
+            "label": "Profiel bijgewerkt door kandidaat op",
+            "longlabel": "Profiel bijgewerkt door kandidaat op"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profielverzoek verzonden op",
+            "longlabel": "Profielverzoek verzonden op"
+        },
+        "salaryexpectation": {
+            "label": "Salarisindicatie",
+            "longlabel": "Salarisindicatie"
+        },
+        "salarytype": {
+            "label": "Salaristype",
+            "longlabel": "Salaristype"
+        },
+        "skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Naaktslak"
+        },
+        "source": {
+            "label": "Bron",
+            "longlabel": "Bron"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Educatieve specialisatie"
+        },
+        "srno": {
+            "label": "ID kaart",
+            "longlabel": "Kandidaat-ID"
+        },
+        "symbol": {
+            "label": "Symbool",
+            "longlabel": "Symbool"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "willingtorelocate": {
+            "label": "Bereid te verhuizen",
+            "longlabel": "Bereid te verhuizen"
+        },
+        "workexpyr": {
+            "label": "Totale ervaring",
+            "longlabel": "Totale ervaring"
+        },
+        "stagedate": {
+            "label": "Stage datum",
+            "longlabel": "Stage datum"
+        },
+        "pitchedcontactname": {
+            "label": "gegooid naar",
+            "longlabel": "gegooid naar"
+        },
+        "profilexing": {
+            "label": "Xing Profiel",
+            "longlabel": "Xing Profiel"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "off_limit_status": {
+            "label": "Status buiten limiet",
+            "longlabel": "Status buiten limiet"
+        },
+        "sms_opt_out": {
+            "label": "Opt-out sms",
+            "longlabel": "Opt-out sms"
+        },
+        "last_calllog_created_on": {
+            "label": "Logboek laatste oproep toegevoegd",
+            "longlabel": "Logboek laatste oproep toegevoegd"
+        },
+        "last_sms_sent_on": {
+            "label": "Laatst verzonden SMS op",
+            "longlabel": "Laatst verzonden SMS op"
+        },
+        "last_email_sent_on": {
+            "label": "Laatste e-mail verzonden op",
+            "longlabel": "Laatste e-mail verzonden op"
+        },
+        "last_communication_timestamp": {
+            "label": "Laatste mededeling",
+            "longlabel": "Laatste mededeling"
+        },
+        "last_communication_method": {
+            "label": "Laatste Comm Type",
+            "longlabel": "Laatste Comm Type"
+        },
+        "last_meeting_created_on": {
+            "label": "Laatste bijeenkomst toegevoegd",
+            "longlabel": "Laatste bijeenkomst toegevoegd"
+        },
+        "last_message_sent_on": {
+            "label": "Laatste LinkedIn-bericht verzonden op",
+            "longlabel": "Laatste LinkedIn-bericht verzonden op"
+        },
+        "last_note_created_on": {
+            "label": "Laatste notitie toegevoegd",
+            "longlabel": "Laatste notitie toegevoegd"
+        }
+    },
+    "company_candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Kandidaat-ID"
+        },
+        "candidatename": {
+            "label": "Naam",
+            "longlabel": "Naam kandidaat"
+        },
+        "firstname": {
+            "label": "Voornaam",
+            "longlabel": "Voornaam kandidaat"
+        },
+        "lastname": {
+            "label": "Achternaam",
+            "longlabel": "Achternaam kandidaat"
+        },
+        "emailid": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "genderid": {
+            "label": "Geslacht",
+            "longlabel": "Geslacht"
+        },
+        "contactnumber": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "candidatedob": {
+            "label": "Geboortedatum",
+            "longlabel": "Geboortedatum"
+        },
+        "age": {
+            "label": "Leeftijd",
+            "longlabel": "Leeftijd kandidaat"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Onderwijskwalificatie"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Onderwijsspecialisatie"
+        },
+        "workexpyr": {
+            "label": "Totale ervaring",
+            "longlabel": "Totale ervaring"
+        },
+        "relevantexperience": {
+            "label": "Relevante ervaring",
+            "longlabel": "Relevante ervaring"
+        },
+        "resumetext": {
+            "label": "Hervattekst",
+            "longlabel": "Hervattekst"
+        },
+        "currentsalary": {
+            "label": "Huidige salaris",
+            "longlabel": "Huidige salaris"
+        },
+        "resume": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "resumefilename": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "lastorganisation": {
+            "label": "Huidige organisatie",
+            "longlabel": "Huidige organisatie"
+        },
+        "skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "willingtorelocate": {
+            "label": "Bereid om te verhuizen",
+            "longlabel": "Bereid om te verhuizen"
+        },
+        "salaryexpectation": {
+            "label": "Salarisindicatie",
+            "longlabel": "Salarisindicatie"
+        },
+        "position": {
+            "label": "Titel",
+            "longlabel": "Titel / Positie"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "city": {
+            "label": "Stad",
+            "longlabel": "Stad"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "currencyid": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "currencycountry": {
+            "label": "Valuta Land",
+            "longlabel": "Valuta Land"
+        },
+        "symbol": {
+            "label": "Symbool",
+            "longlabel": "Symbool"
+        },
+        "accountid": {
+            "label": "Account-ID",
+            "longlabel": "Account-ID"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownerslug": {
+            "label": "Eigenaar Slak",
+            "longlabel": "Eigenaar Slak"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "canaccess": {
+            "label": "Kan toegang krijgen",
+            "longlabel": "Kan toegang krijgen"
+        },
+        "profilepic": {
+            "label": "Profielfoto",
+            "longlabel": "Profielfoto"
+        },
+        "deleted": {
+            "label": "Verwijderd",
+            "longlabel": "Verwijderd"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "resumeupdatedon": {
+            "label": "Profiel bijgewerkt door kandidaat op",
+            "longlabel": "Profiel bijgewerkt door kandidaat op"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profielaanvraag verzonden op",
+            "longlabel": "Profielaanvraag verzonden op"
+        },
+        "requestresumelinkstatus": {
+            "label": "Status hervattingslink aanvragen",
+            "longlabel": "Status hervattingslink aanvragen"
+        },
+        "resumeaddedon": {
+            "label": "Hervatten Toegevoegd Op",
+            "longlabel": "Hervatten Toegevoegd Op"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiel",
+            "longlabel": "Facebook-profiel"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profiel",
+            "longlabel": "Twitter Profiel"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiel",
+            "longlabel": "Linkedin profiel"
+        },
+        "profilegithub": {
+            "label": "Github-profiel",
+            "longlabel": "Github-profiel"
+        },
+        "source": {
+            "label": "Bron",
+            "longlabel": "Bron"
+        },
+        "createdbyname": {
+            "label": "Gemaakt op naam",
+            "longlabel": "Gemaakt op naam"
+        },
+        "qualification": {
+            "label": "Kwalificatielabel",
+            "longlabel": "Kwalificatielabel"
+        },
+        "currentstatus": {
+            "label": "Werkstatus",
+            "longlabel": "Huidige werkstatus"
+        },
+        "noticeperiod": {
+            "label": "Opzegtermijn",
+            "longlabel": "Opzegtermijn (Dagen)"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdon": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "availablefrom": {
+            "label": "Beschikbaar vanaf",
+            "longlabel": "Beschikbaar vanaf"
+        },
+        "salarytype": {
+            "label": "Salaris",
+            "longlabel": "Salaris"
+        },
+        "languageskills": {
+            "label": "Taal",
+            "longlabel": "Taalvaardigheden"
+        },
+        "accountlogo": {
+            "label": "Account logo",
+            "longlabel": "Account logo"
+        },
+        "accounttitle": {
+            "label": "Titel rekening",
+            "longlabel": "Titel rekening"
+        },
+        "candidateterms": {
+            "label": "Kandidaat Termen",
+            "longlabel": "Kandidaat Termen"
+        },
+        "jobapplicationsettings": {
+            "label": "Instellingen voor sollicitaties",
+            "longlabel": "Instellingen voor sollicitaties"
+        },
+        "eeocompliance": {
+            "label": "EEO naleving",
+            "longlabel": "EEO naleving"
+        },
+        "gdprcompliance": {
+            "label": "GDPR-compliance",
+            "longlabel": "GDPR-compliance"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "profilexing": {
+            "label": "Xing Profiel",
+            "longlabel": "Xing Profiel"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "proficiency_level": {
+            "label": "Vaardigheidsniveau",
+            "longlabel": "Vaardigheidsniveau"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "sms_opt_out": {
+            "label": "Opt-out sms",
+            "longlabel": "Opt-out sms"
+        }
+    },
+    "meetings": {
+        "meeting_date": {
+            "label": "Vergaderdatum",
+            "longlabel": "Vergaderdatum"
+        },
+        "meeting_time": {
+            "label": "Tijd vergadering",
+            "longlabel": "Tijd vergadering"
+        },
+        "title": {
+            "label": "Titel",
+            "longlabel": "Titel bijeenkomst"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "relatedto": {
+            "label": "Gerelateerd aan",
+            "longlabel": "Gerelateerd aan"
+        },
+        "attendees": {
+            "label": "Aanwezigen",
+            "longlabel": "Aanwezigen"
+        },
+        "notetype": {
+            "label": "Type bijeenkomst",
+            "longlabel": "Type bijeenkomst"
+        },
+        "address": {
+            "label": "Ontmoetingsplaats",
+            "longlabel": "Ontmoetingsplaats"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "enddate": {
+            "label": "Vervaldatum",
+            "longlabel": "Vervaldatum"
+        },
+        "createdon": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "createdby": {
+            "label": "Toegevoegd door",
+            "longlabel": "Toegevoegd door "
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "description": {
+            "label": "Beschrijving",
+            "longlabel": "Beschrijving"
+        },
+        "collaborator": {
+            "label": "Medewerker",
+            "longlabel": "Medewerker"
+        },
+        "associations": {
+            "label": "Verenigingen",
+            "longlabel": "Verenigingen"
+        },
+        "id": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        }
+    },
+    "tasks": {
+        "title": {
+            "label": "Titel",
+            "longlabel": "Taak Titel"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "relatedto": {
+            "label": "Gerelateerd aan",
+            "longlabel": "Gerelateerd aan"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "enddate": {
+            "label": "Vervaldatum",
+            "longlabel": "Vervaldatum"
+        },
+        "createdon": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "createdby": {
+            "label": "Toegevoegd door",
+            "longlabel": "Toegevoegd door "
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "description": {
+            "label": "Beschrijving",
+            "longlabel": "Beschrijving"
+        },
+        "collaborator": {
+            "label": "Medewerker",
+            "longlabel": "Medewerker"
+        },
+        "associations": {
+            "label": "Verenigingen",
+            "longlabel": "Verenigingen"
+        },
+        "id": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "notetype": {
+            "label": "Type taak",
+            "longlabel": "Type taak"
+        }
+    },
+    "target_reports": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "title": {
+            "label": "Naam doelwit",
+            "longlabel": "Naam doelwit"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "assignee_id": {
+            "label": "Toegewezen aan",
+            "longlabel": "Toegewezen aan"
+        },
+        "frequency": {
+            "label": "Frequentie",
+            "longlabel": "Frequentie"
+        },
+        "target_period": {
+            "label": "Doelperiode",
+            "longlabel": "Doelperiode"
+        },
+        "startdate": {
+            "label": "Startdatum",
+            "longlabel": "Startdatum"
+        },
+        "enddate": {
+            "label": "Einddatum",
+            "longlabel": "Einddatum"
+        },
+        "created_on": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "created_by": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "updated_on": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "updated_by": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "action": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        }
+    },
+    "invoices": {
+        "invoiceid": {
+            "label": "Factuur ID",
+            "longlabel": "Factuur ID"
+        },
+        "description": {
+            "label": "Beschrijving",
+            "longlabel": "Beschrijving"
+        },
+        "company": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijf"
+        },
+        "templateused": {
+            "label": "Sjabloon gebruikt",
+            "longlabel": "Sjabloon gebruikt"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdon": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "issuedon": {
+            "label": "Uitgegeven op",
+            "longlabel": "Uitgegeven op"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "totalamount": {
+            "label": "Totaal bedrag",
+            "longlabel": "Totaal bedrag"
+        },
+        "duedate": {
+            "label": "Vervaldatum",
+            "longlabel": "Vervaldatum"
+        },
+        "paidon": {
+            "label": "Betaald op",
+            "longlabel": "Betaald op"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "currency": {
+            "label": "Factuur Valuta",
+            "longlabel": "Factuur Valuta"
+        },
+        "contact": {
+            "label": "Naam contactpersoon",
+            "longlabel": "Naam contactpersoon"
+        },
+        "phone": {
+            "label": "Contact Telefoon",
+            "longlabel": "Contact Telefoon"
+        },
+        "associations": {
+            "label": "Verenigingen",
+            "longlabel": "Verenigingen"
+        },
+        "address": {
+            "label": "Adres",
+            "longlabel": "Adres"
+        },
+        "email": {
+            "label": "Contact e-mail",
+            "longlabel": "Contact e-mail"
+        }
+    },
+    "placements": {
+        "placementId": {
+            "label": "Plaatsing ID",
+            "longlabel": "Plaatsing ID"
+        },
+        "currency": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "associations": {
+            "label": "Verenigingen",
+            "longlabel": "Verenigingen"
+        },
+        "createdBy": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdOn": {
+            "label": "Gemaakt op",
+            "longlabel": "Gemaakt op"
+        },
+        "candidateName": {
+            "label": "Naam kandidaat",
+            "longlabel": "Naam kandidaat"
+        },
+        "contactName": {
+            "label": "Naam contactpersoon",
+            "longlabel": "Naam contactpersoon"
+        },
+        "dealName": {
+            "label": "Deal Naam",
+            "longlabel": "Deal Naam"
+        },
+        "jobName": {
+            "label": "Functie Naam",
+            "longlabel": "Functie Naam"
+        },
+        "companyName": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "joiningDate": {
+            "label": "Datum toetreding",
+            "longlabel": "Datum toetreding"
+        }
+    },
+    "candidate_assigned_job": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Job ID"
+        },
+        "name": {
+            "label": "Naam",
+            "longlabel": "Functie Naam"
+        },
+        "candidatestatus": {
+            "label": "Aanwervingsfase & Geschiedenis",
+            "longlabel": "Aanwervingsfase & Geschiedenis"
+        },
+        "interview": {
+            "label": "Interview",
+            "longlabel": "Interview"
+        },
+        "share": {
+            "label": "Zichtbaarheid",
+            "longlabel": "Zichtbaarheid"
+        },
+        "jobstatus": {
+            "label": "Status",
+            "longlabel": "Functie"
+        },
+        "jobstatuslabel": {
+            "label": "Status",
+            "longlabel": "Functie"
+        },
+        "companyid": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijf"
+        },
+        "companyname": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "contactid": {
+            "label": "Contacten",
+            "longlabel": "Contacten"
+        },
+        "salarytype": {
+            "label": "Salaris",
+            "longlabel": "Salaris"
+        },
+        "currencyid": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "collaborator": {
+            "label": "Medewerker",
+            "longlabel": "Medewerker"
+        },
+        "jobquestions": {
+            "label": "Vragen over sollicitatieformulier",
+            "longlabel": "Vragen over sollicitatieformulier"
+        },
+        "allowapply": {
+            "label": "Sollicitatieformulier inschakelen",
+            "longlabel": "Sollicitatieformulier inschakelen"
+        },
+        "description": {
+            "label": "Opmerking voor kandidaten",
+            "longlabel": "Opmerking voor kandidaten"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "city": {
+            "label": "Stad",
+            "longlabel": "Stad"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Onderwijskwalificatie"
+        },
+        "qualification": {
+            "label": "Kwalificatielabel",
+            "longlabel": "Kwalificatielabel"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Onderwijsspecialisatie"
+        },
+        "detailfilename": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "jdtext": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "jdtextdetails": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "minexperienceinyears": {
+            "label": "Minimale ervaring (jaren)",
+            "longlabel": "Minimale ervaring (jaren)"
+        },
+        "maxexperienceinyears": {
+            "label": "Maximale ervaring (jaren)",
+            "longlabel": "Maximale ervaring (jaren)"
+        },
+        "annualsalarymin": {
+            "label": "Min. Salaris",
+            "longlabel": "Minimum salaris"
+        },
+        "annualsalarymax": {
+            "label": "Max. Salaris",
+            "longlabel": "Maximum salaris"
+        },
+        "noofopenings": {
+            "label": "Openingen",
+            "longlabel": "Aantal openingen"
+        },
+        "contactname": {
+            "label": "Naam contactpersoon",
+            "longlabel": "Naam contactpersoon"
+        },
+        "contactemail": {
+            "label": "Contact e-mail",
+            "longlabel": "Contact e-mail"
+        },
+        "contactnumber": {
+            "label": "Contact Nummer",
+            "longlabel": "Contact Nummer"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "creatorname": {
+            "label": "Schepper",
+            "longlabel": "Naam maker"
+        },
+        "createdon": {
+            "label": "Datum toegevoegd",
+            "longlabel": "Datum toegevoegd"
+        },
+        "updatedon": {
+            "label": "Aanwervingsfase bijgewerkt op",
+            "longlabel": "Aanwervingsfase bijgewerkt op"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "jobpostingstatus": {
+            "label": "Acties",
+            "longlabel": "Status vacature"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "contactslug": {
+            "label": "Slak",
+            "longlabel": "Slak"
+        },
+        "companyslug": {
+            "label": "Slak",
+            "longlabel": "Slak"
+        },
+        "hiring_pipeline_id": {
+            "label": "Pijplijn aannemen",
+            "longlabel": "Pijplijn aannemen"
+        },
+        "job_skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "job_type": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "job_category": {
+            "label": "Functiecategorie",
+            "longlabel": "Functiecategorie"
+        },
+        "secondarycontactid": {
+            "label": "Secundaire contacten",
+            "longlabel": "Secundaire contacten"
+        },
+        "targetcompanies": {
+            "label": "Doelondernemingen",
+            "longlabel": "Doelondernemingen"
+        },
+        "remote": {
+            "label": "Type baan",
+            "longlabel": "Type baan"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Sollicitatie-CV",
+            "longlabel": "Sollicitatie-CV"
+        },
+        "assigned_job_coverletter": {
+            "label": "Sollicitatie Begeleidende brief",
+            "longlabel": "Sollicitatie Begeleidende brief"
+        },
+        "assigned_job_portfolio": {
+            "label": "Portfolio sollicitaties",
+            "longlabel": "Portfolio sollicitaties"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Sollicitatiedossier 1",
+            "longlabel": "Sollicitatiedossier 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Sollicitatiedossier 2",
+            "longlabel": "Sollicitatiedossier 2"
+        },
+        "postal_code": {
+            "label": "Postcode",
+            "longlabel": "Postcode"
+        },
+        "job_function": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "job_industry": {
+            "label": "Functie-industrie",
+            "longlabel": "Functie-industrie"
+        },
+        "updatedby": {
+            "label": "Aanwervingsfase bijgewerkt door",
+            "longlabel": "Aanwervingsfase bijgewerkt door"
+        }
+    },
+    "postal_code": {
+        "label": "Postcode",
+        "longlabel": "Postcode"
+    },
+    "timesheet": {
+        "timesheetId": {
+            "label": "Timesheet-id",
+            "longlabel": "Timesheet-id"
+        },
+        "timesheetPeriod": {
+            "label": "Timesheet Periode",
+            "longlabel": "Timesheet Periode"
+        },
+        "contractorName": {
+            "label": "Naam kandidaat",
+            "longlabel": "Naam kandidaat"
+        },
+        "timesheetStatusId": {
+            "label": "Timesheet status",
+            "longlabel": "Timesheet status"
+        },
+        "timesheetStatus": {
+            "label": "Timesheet status",
+            "longlabel": "Timesheet status"
+        },
+        "jobName": {
+            "label": "Functie Naam",
+            "longlabel": "Functie Naam"
+        },
+        "dealName": {
+            "label": "Deal Naam",
+            "longlabel": "Deal Naam"
+        },
+        "jobDuration": {
+            "label": "Duur van de baan",
+            "longlabel": "Duur van de baan"
+        },
+        "totalWorkTime": {
+            "label": "Totaal aantal werkuren",
+            "longlabel": "Totaal aantal werkuren"
+        },
+        "totalOvertime": {
+            "label": "Totaal aantal overuren",
+            "longlabel": "Totaal aantal overuren"
+        },
+        "totalTime": {
+            "label": "Totaal aantal uren",
+            "longlabel": "Totaal aantal uren"
+        },
+        "billData": {
+            "label": "Rekening Bedrag",
+            "longlabel": "Rekening Bedrag"
+        },
+        "billAmount": {
+            "label": "Rekening Bedrag",
+            "longlabel": "Factuurgegevens"
+        },
+        "payData": {
+            "label": "Betalen Bedrag",
+            "longlabel": "Betalen Bedrag"
+        },
+        "payAmount": {
+            "label": "Betalen Bedrag",
+            "longlabel": "Loongegevens"
+        },
+        "billRate": {
+            "label": "Rekeningtarief",
+            "longlabel": "Rekeningtarief"
+        },
+        "payRate": {
+            "label": "Salaris",
+            "longlabel": "Salaris"
+        },
+        "approvedBy": {
+            "label": "Timesheet Goedgekeurd door",
+            "longlabel": "Timesheet Goedgekeurd door"
+        },
+        "approver": {
+            "label": "Timesheet Goedgekeurd door",
+            "longlabel": "Timesheet Goedgekeurd door"
+        },
+        "approvers": {
+            "label": "Timesheet goedkeurders",
+            "longlabel": "Timesheet goedkeurders"
+        },
+        "billingStatusId": {
+            "label": "Status wetsvoorstel",
+            "longlabel": "Status wetsvoorstel"
+        },
+        "paymentStatusId": {
+            "label": "Betaalstatus",
+            "longlabel": "Betaalstatus"
+        },
+        "paymentDate": {
+            "label": "Uitbetalingsdatum",
+            "longlabel": "Uitbetalingsdatum"
+        },
+        "payoutNumber": {
+            "label": "Uitbetaling Aantal",
+            "longlabel": "Uitbetaling Aantal"
+        },
+        "billingDate": {
+            "label": "Factureringsdatum",
+            "longlabel": "Factureringsdatum"
+        },
+        "invoiceNumber": {
+            "label": "Factuurnummer",
+            "longlabel": "Factuurnummer"
+        },
+        "addedOn": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "addedBy": {
+            "label": "Toegevoegd door",
+            "longlabel": "Toegevoegd door"
+        },
+        "updatedOn": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "updatedBy": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "company": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijf"
+        },
+        "frequency": {
+            "label": "Frequentie",
+            "longlabel": "Frequentie"
+        },
+        "workDays": {
+            "label": "Werkdagen",
+            "longlabel": "Werkdagen"
+        },
+        "workHours": {
+            "label": "Werkuren",
+            "longlabel": "Werkuren"
+        },
+        "actions": {
+            "label": "Acties",
+            "longlabel": "Acties"
+        },
+        "action": {
+            "label": "Actie",
+            "longlabel": "Actie"
+        },
+        "billStatus": {
+            "label": "Status wetsvoorstel",
+            "longlabel": "Status wetsvoorstel"
+        },
+        "payStatus": {
+            "label": "Betaalstatus",
+            "longlabel": "Betaalstatus"
+        },
+        "invoiceCreatedOn": {
+            "label": "Factuur aangemaakt op",
+            "longlabel": "Factuur aangemaakt op"
+        },
+        "payoutPaidOn": {
+            "label": "Uitbetaling Betaald op",
+            "longlabel": "Uitbetaling Betaald op"
+        },
+        "companyname": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "gender": {
+            "label": "Geslacht",
+            "longlabel": "Geslacht"
+        },
+        "city": {
+            "label": "Stad",
+            "longlabel": "Stad"
+        },
+        "postalCode": {
+            "label": "Postcode",
+            "longlabel": "Postcode"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiel",
+            "longlabel": "Facebook-profiel"
+        },
+        "title": {
+            "label": "Titel",
+            "longlabel": "Titel"
+        },
+        "birthDate": {
+            "label": "Geboortedatum",
+            "longlabel": "Geboortedatum"
+        },
+        "skills": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "profilexing": {
+            "label": "Xing Profiel",
+            "longlabel": "Xing Profiel"
+        },
+        "phone": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "name": {
+            "label": "Naam",
+            "longlabel": "Naam"
+        },
+        "fullAddress": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "currentOrganization": {
+            "label": "Huidige organisatie",
+            "longlabel": "Huidige organisatie"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profiel",
+            "longlabel": "Twitter Profiel"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiel",
+            "longlabel": "Linkedin profiel"
+        },
+        "profilegithub": {
+            "label": "Github-profiel",
+            "longlabel": "Github-profiel"
+        },
+        "source": {
+            "label": "Bron",
+            "longlabel": "Bron"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "companyName": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "timesheetFrequency": {
+            "label": "Timesheet Frequentie",
+            "longlabel": "Timesheet Frequentie"
+        },
+        "expenseClaim": {
+            "label": "Onkostendeclaratie",
+            "longlabel": "Onkostendeclaratie"
+        },
+        "payCurrency": {
+            "label": "Betaalvaluta",
+            "longlabel": "Betaalvaluta"
+        },
+        "billCurrency": {
+            "label": "Bankbiljetten en munten",
+            "longlabel": "Bankbiljetten en munten"
+        },
+        "totalRegularHours": {
+            "label": "Totaal aantal reguliere uren",
+            "longlabel": "Totaal aantal reguliere uren"
+        }
+    },
+    "jobs_widget": {
+        "name": {
+            "label": "Functie Naam",
+            "longlabel": "Functie Naam"
+        },
+        "jobstatuslabel": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "assignedcandidatestatuscount": {
+            "label": "Kandidaat pijplijn",
+            "longlabel": "Kandidaat pijplijn"
+        },
+        "joinedcandidatestatuscount": {
+            "label": "Geplaatst",
+            "longlabel": "Geplaatst"
+        },
+        "detailfilename": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "contactname": {
+            "label": "Neem contact op met",
+            "longlabel": "Neem contact op met"
+        },
+        "city": {
+            "label": "Stad",
+            "longlabel": "Stad"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Vacature-ID"
+        },
+        "archived": {
+            "label": "Gearchiveerd",
+            "longlabel": "Gearchiveerd"
+        },
+        "companyid": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijf"
+        },
+        "contactid": {
+            "label": "Contactpersonen",
+            "longlabel": "Contactpersonen"
+        },
+        "secondarycontactid": {
+            "label": "Nevencontacten",
+            "longlabel": "Nevencontacten"
+        },
+        "salarytype": {
+            "label": "Soort salaris",
+            "longlabel": "Soort salaris"
+        },
+        "currencyid": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "salaryrange": {
+            "label": "Salarisbereik",
+            "longlabel": "Salarisbereik"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "collaborator": {
+            "label": "Medewerker",
+            "longlabel": "Medewerker"
+        },
+        "jobquestions": {
+            "label": "Vragen op het sollicitatieformulier",
+            "longlabel": "Vragen op het sollicitatieformulier"
+        },
+        "allowapply": {
+            "label": "Sollicitatieformulier inschakelen",
+            "longlabel": "Sollicitatieformulier inschakelen"
+        },
+        "description": {
+            "label": "Opmerking voor kandidaten",
+            "longlabel": "Opmerking voor kandidaten"
+        },
+        "job_skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Opleiding"
+        },
+        "qualification": {
+            "label": "Kwaliteitslabel",
+            "longlabel": "Kwaliteitslabel"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Onderwijskundige specialisatie"
+        },
+        "jdtext": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "jdtextdetails": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "minexperienceinyears": {
+            "label": "Minimale werkervaring (jaren)",
+            "longlabel": "Minimale werkervaring (jaren)"
+        },
+        "maxexperienceinyears": {
+            "label": "Maximale werkervaring (jaren)",
+            "longlabel": "Maximaal aantal jaren ervaring"
+        },
+        "annualsalarymin": {
+            "label": "Minimumsalaris",
+            "longlabel": "Minimumsalaris"
+        },
+        "annualsalarymax": {
+            "label": "Max. salaris",
+            "longlabel": "Maximaal salaris"
+        },
+        "noofopenings": {
+            "label": "Vacatures",
+            "longlabel": "Aantal vacatures"
+        },
+        "contactslug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "companyslug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "contactemail": {
+            "label": "E-mailadres",
+            "longlabel": "E-mailadres"
+        },
+        "contactnumber": {
+            "label": "Telefoonnummer",
+            "longlabel": "Telefoonnummer"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "job_function": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "creatorname": {
+            "label": "Maker",
+            "longlabel": "Naam van de maker"
+        },
+        "createdon": {
+            "label": "Datum van toevoeging",
+            "longlabel": "Datum van toevoeging"
+        },
+        "updatedon": {
+            "label": "Datum van laatste update",
+            "longlabel": "Datum van laatste update"
+        },
+        "updatedby": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "jobpostingstatus": {
+            "label": "Acties",
+            "longlabel": "Status van de vacature"
+        },
+        "note": {
+            "label": "Opmerking",
+            "longlabel": "Opmerking"
+        },
+        "hiring_pipeline_id": {
+            "label": "Wervingsproces",
+            "longlabel": "Wervingsproces"
+        },
+        "hiring_pipeline_name": {
+            "label": "Wervingsproces",
+            "longlabel": "Wervingsproces"
+        },
+        "job_type": {
+            "label": "Soort dienstverband",
+            "longlabel": "Soort dienstverband"
+        },
+        "job_category": {
+            "label": "Functiecategorie",
+            "longlabel": "Functiecategorie"
+        },
+        "remote": {
+            "label": "Type standplaats",
+            "longlabel": "Type standplaats"
+        },
+        "hotlist": {
+            "label": "Toplijst",
+            "longlabel": "Toplijst"
+        },
+        "xml_feeds": {
+            "label": "XML-feeds",
+            "longlabel": "XML-feeds"
+        },
+        "targetcompanies": {
+            "label": "Doelondernemingen",
+            "longlabel": "Doelondernemingen"
+        },
+        "contactfirstname": {
+            "label": "Contactpersoon Voornaam",
+            "longlabel": "Contactpersoon Voornaam"
+        },
+        "contactlastname": {
+            "label": "Contact Achternaam",
+            "longlabel": "Contact Achternaam"
+        },
+        "postalcode": {
+            "label": "Postcode",
+            "longlabel": "Postcode"
+        },
+        "pay_rate": {
+            "label": "Uurtarief",
+            "longlabel": "Uurtarief"
+        },
+        "bill_rate": {
+            "label": "Factuurbedrag",
+            "longlabel": "Factuurbedrag"
+        },
+        "job_industry": {
+            "label": "Sector",
+            "longlabel": "Sector"
+        }
+    },
+    "list_of_candidates": {
+        "label": "Lijst van kandidaten",
+        "longlabel": "Lijst van kandidaten"
+    },
+    "job_candidate_pipeline": {
+        "candidatename": {
+            "label": "Naam kandidaat",
+            "longlabel": "Naam kandidaat"
+        },
+        "detailfilename": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "hiring_stage_remark": {
+            "label": "Sollicitatiefase &amp; Opmerking",
+            "longlabel": "Sollicitatiefase &amp; Opmerking"
+        },
+        "visibility": {
+            "label": "Zichtbaarheid",
+            "longlabel": "Zichtbaarheid"
+        },
+        "job_specific_details": {
+            "label": "Specifieke functie-informatie",
+            "longlabel": "Specifieke functie-informatie"
+        },
+        "interview": {
+            "label": "Interview",
+            "longlabel": "Interview"
+        },
+        "timesheet": {
+            "label": "Urenstaat",
+            "longlabel": "Urenstaat"
+        },
+        "placement": {
+            "label": "Plaatsing",
+            "longlabel": "Plaatsing"
+        },
+        "phone": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "accountid": {
+            "label": "Account-ID",
+            "longlabel": "Account-ID"
+        },
+        "accountlogo": {
+            "label": "Accountlogo",
+            "longlabel": "Accountlogo"
+        },
+        "accounttitle": {
+            "label": "Functietitel",
+            "longlabel": "Functietitel"
+        },
+        "address": {
+            "label": "Volledig adres",
+            "longlabel": "Volledig adres"
+        },
+        "age": {
+            "label": "Leeftijd",
+            "longlabel": "Leeftijd van de kandidaat"
+        },
+        "authid": {
+            "label": "Auth-ID",
+            "longlabel": "Auth-ID"
+        },
+        "availablefrom": {
+            "label": "Verkrijgbaar bij",
+            "longlabel": "Verkrijgbaar bij"
+        },
+        "canaccess": {
+            "label": "Toegang mogelijk",
+            "longlabel": "Toegang mogelijk"
+        },
+        "candidate_company_city": {
+            "label": "Huidige organisatie - Stad",
+            "longlabel": "Huidige organisatie - Stad"
+        },
+        "candidate_company_logo": {
+            "label": "Huidige organisatie - Logo",
+            "longlabel": "Huidige organisatie - Logo"
+        },
+        "candidate_company_slug": {
+            "label": "Huidige organisatie - Slug",
+            "longlabel": "Huidige organisatie - Slug"
+        },
+        "candidatedob": {
+            "label": "Geboortedatum",
+            "longlabel": "Geboortedatum"
+        },
+        "candidateterms": {
+            "label": "Voorwaarden voor kandidaten",
+            "longlabel": "Voorwaarden voor kandidaten"
+        },
+        "city": {
+            "label": "Stad",
+            "longlabel": "Stad"
+        },
+        "contactnumber": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "country": {
+            "label": "Land",
+            "longlabel": "Land"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdbyname": {
+            "label": "Gemaakt door Naam",
+            "longlabel": "Gemaakt door Naam"
+        },
+        "createdon": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "currencycountry": {
+            "label": "Valuta Land",
+            "longlabel": "Valuta Land"
+        },
+        "currencyid": {
+            "label": "Valuta",
+            "longlabel": "Valuta"
+        },
+        "currentsalary": {
+            "label": "Huidig salaris",
+            "longlabel": "Huidig salaris"
+        },
+        "currentstatus": {
+            "label": "Arbeidsstatus",
+            "longlabel": "Huidige arbeidsstatus"
+        },
+        "education_description": {
+            "label": "Opleidingsbeschrijving",
+            "longlabel": "Opleidingsbeschrijving"
+        },
+        "education_end_date": {
+            "label": "Einddatum opleiding",
+            "longlabel": "Einddatum opleiding"
+        },
+        "education_history": {
+            "label": "Opleidingsgeschiedenis",
+            "longlabel": "Opleidingsgeschiedenis"
+        },
+        "education_location": {
+            "label": "Onderwijs Locatie",
+            "longlabel": "Onderwijs Locatie"
+        },
+        "education_start_date": {
+            "label": "Startdatum opleiding",
+            "longlabel": "Startdatum opleiding"
+        },
+        "educational_qualification": {
+            "label": "Opleiding",
+            "longlabel": "Opleiding"
+        },
+        "educational_specialization": {
+            "label": "Onderwijskundige specialisatie",
+            "longlabel": "Onderwijskundige specialisatie"
+        },
+        "eeocompliance": {
+            "label": "Naleving van de wetgeving inzake gelijke kansen op de arbeidsmarkt",
+            "longlabel": "Naleving van de wetgeving inzake gelijke kansen op de arbeidsmarkt"
+        },
+        "email_opt_out": {
+            "label": "Afmelden",
+            "longlabel": "Afmelden"
+        },
+        "emailid": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "employment_type": {
+            "label": "Dienstverband",
+            "longlabel": "Dienstverband"
+        },
+        "firstname": {
+            "label": "Voornaam",
+            "longlabel": "Voornaam van de kandidaat"
+        },
+        "gdprcompliance": {
+            "label": "Naleving van de AVG",
+            "longlabel": "Naleving van de AVG"
+        },
+        "genderid": {
+            "label": "Geslacht",
+            "longlabel": "Geslacht"
+        },
+        "grade": {
+            "label": "Cijfer",
+            "longlabel": "Cijfer"
+        },
+        "hotlist": {
+            "label": "Toplijst",
+            "longlabel": "Toplijst"
+        },
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "industry_id": {
+            "label": "Sector",
+            "longlabel": "Sector"
+        },
+        "institute_name": {
+            "label": "Naam school/hogeschool",
+            "longlabel": "Naam school/hogeschool"
+        },
+        "is_currently_working": {
+            "label": "Momenteel in uitvoering",
+            "longlabel": "Momenteel in uitvoering"
+        },
+        "jobapplicationsettings": {
+            "label": "Instellingen voor sollicitaties",
+            "longlabel": "Instellingen voor sollicitaties"
+        },
+        "languageskills": {
+            "label": "Taal",
+            "longlabel": "Taalvaardigheden"
+        },
+        "last_calllog_created_on": {
+            "label": "Logboek met laatste oproepen toegevoegd",
+            "longlabel": "Logboek met laatste oproepen toegevoegd"
+        },
+        "last_communication_method": {
+            "label": "Laatste communicatietype",
+            "longlabel": "Laatste communicatietype"
+        },
+        "last_communication_timestamp": {
+            "label": "Laatste bericht",
+            "longlabel": "Laatste bericht"
+        },
+        "last_email_sent_on": {
+            "label": "Laatste e-mail verzonden op",
+            "longlabel": "Laatste e-mail verzonden op"
+        },
+        "last_meeting_created_on": {
+            "label": "Laatst toegevoegde vergadering",
+            "longlabel": "Laatst toegevoegde vergadering"
+        },
+        "last_message_sent_on": {
+            "label": "Laatste LinkedIn-bericht verzonden op",
+            "longlabel": "Laatste LinkedIn-bericht verzonden op"
+        },
+        "last_sms_sent_on": {
+            "label": "Laatste verzonden sms op",
+            "longlabel": "Laatste verzonden sms op"
+        },
+        "lastname": {
+            "label": "Achternaam",
+            "longlabel": "Achternaam van de kandidaat"
+        },
+        "lastorganisation": {
+            "label": "Huidige organisatie",
+            "longlabel": "Huidige organisatie"
+        },
+        "locality": {
+            "label": "Plaats",
+            "longlabel": "Plaats"
+        },
+        "noticeperiod": {
+            "label": "Opzegtermijn",
+            "longlabel": "Opzegtermijn (dagen)"
+        },
+        "off_limit_status": {
+            "label": "Status 'Toegankelijk'",
+            "longlabel": "Status 'Toegankelijk'"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "ownerslug": {
+            "label": "Eigenaar Slug",
+            "longlabel": "Eigenaar Slug"
+        },
+        "position": {
+            "label": "Titel",
+            "longlabel": "Functietitel / Functie"
+        },
+        "postal_code": {
+            "label": "Postcode",
+            "longlabel": "Postcode"
+        },
+        "proficiency_level": {
+            "label": "Vaardigheidsniveau",
+            "longlabel": "Vaardigheidsniveau"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiel",
+            "longlabel": "Facebook-profiel"
+        },
+        "profilegithub": {
+            "label": "GitHub-profiel",
+            "longlabel": "GitHub-profiel"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn-profiel",
+            "longlabel": "LinkedIn-profiel"
+        },
+        "profilepic": {
+            "label": "Profielfoto",
+            "longlabel": "Profielfoto"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiel",
+            "longlabel": "Twitter-profiel"
+        },
+        "profilexing": {
+            "label": "Xing-profiel",
+            "longlabel": "Xing-profiel"
+        },
+        "qualification": {
+            "label": "Kwaliteitslabel",
+            "longlabel": "Kwaliteitslabel"
+        },
+        "qualificationid": {
+            "label": "Kwalificatie",
+            "longlabel": "Opleiding"
+        },
+        "relevantexperience": {
+            "label": "Relevante ervaring",
+            "longlabel": "Relevante ervaring"
+        },
+        "requestresumelinkstatus": {
+            "label": "Status van de link naar het cv opvragen",
+            "longlabel": "Status van de link naar het cv opvragen"
+        },
+        "resume": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "resumeaddedon": {
+            "label": "CV toegevoegd op",
+            "longlabel": "CV toegevoegd op"
+        },
+        "resumefilename": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "resumetext": {
+            "label": "Tekst van het cv",
+            "longlabel": "Tekst van het cv"
+        },
+        "resumeupdatedon": {
+            "label": "Profiel bijgewerkt door kandidaat op",
+            "longlabel": "Profiel bijgewerkt door kandidaat op"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profielverzoek verzonden op",
+            "longlabel": "Profielverzoek verzonden op"
+        },
+        "salary": {
+            "label": "Salaris",
+            "longlabel": "Salaris"
+        },
+        "salaryexpectation": {
+            "label": "Salarisverwachting",
+            "longlabel": "Salarisverwachting"
+        },
+        "salarytype": {
+            "label": "Soort salaris",
+            "longlabel": "Soort salaris"
+        },
+        "skill": {
+            "label": "Vaardigheden",
+            "longlabel": "Vaardigheden"
+        },
+        "slug": {
+            "label": "Naaktslak",
+            "longlabel": "Naaktslak"
+        },
+        "source": {
+            "label": "Bron",
+            "longlabel": "Bron"
+        },
+        "specialization": {
+            "label": "Specialisatie",
+            "longlabel": "Onderwijskundige specialisatie"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Kandidaten-ID"
+        },
+        "state": {
+            "label": "Staat",
+            "longlabel": "Staat"
+        },
+        "summary": {
+            "label": "Samenvatting",
+            "longlabel": "Samenvatting"
+        },
+        "symbol": {
+            "label": "Symbool",
+            "longlabel": "Symbool"
+        },
+        "title": {
+            "label": "Functie",
+            "longlabel": "Functie"
+        },
+        "unavailable": {
+            "label": "Beschikbaarheid",
+            "longlabel": "Beschikbaarheid"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "willingtorelocate": {
+            "label": "Bereid te verhuizen",
+            "longlabel": "Bereid te verhuizen"
+        },
+        "work_company_name": {
+            "label": "Bedrijfsnaam",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "work_description": {
+            "label": "Functieomschrijving",
+            "longlabel": "Functieomschrijving"
+        },
+        "work_end_date": {
+            "label": "Einddatum van het werk",
+            "longlabel": "Einddatum van het werk"
+        },
+        "work_history": {
+            "label": "Werkervaring",
+            "longlabel": "Werkervaring"
+        },
+        "work_location": {
+            "label": "Werkplek",
+            "longlabel": "Werkplek"
+        },
+        "work_start_date": {
+            "label": "Startdatum",
+            "longlabel": "Startdatum"
+        },
+        "workexpyr": {
+            "label": "Totale ervaring",
+            "longlabel": "Totale ervaring"
+        }
+    },
+    "entity_related_deals": {
+        "accountid": {
+            "label": "Account-ID",
+            "longlabel": "Account-ID"
+        },
+        "archived": {
+            "label": "Gearchiveerd",
+            "longlabel": "Gearchiveerd"
+        },
+        "candidatename": {
+            "label": "Kandidaat",
+            "longlabel": "Kandidaat"
+        },
+        "candidateslug": {
+            "label": "kandidaat",
+            "longlabel": "kandidaat"
+        },
+        "candidatetitle": {
+            "label": "Titel",
+            "longlabel": "Functietitel / Functie"
+        },
+        "closedate": {
+            "label": "Sluitingsdatum",
+            "longlabel": "Sluitingsdatum"
+        },
+        "collaborator": {
+            "label": "Medewerker",
+            "longlabel": "Medewerker"
+        },
+        "companyname": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "companyslug": {
+            "label": "bedrijfsnaam",
+            "longlabel": "bedrijfsnaam"
+        },
+        "createdby": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "createdbyname": {
+            "label": "Gemaakt door Naam",
+            "longlabel": "Gemaakt door Naam"
+        },
+        "createdon": {
+            "label": "Toegevoegd op",
+            "longlabel": "Toegevoegd op"
+        },
+        "dealpercentagevalue": {
+            "label": "Gewogen transactiebedrag",
+            "longlabel": "Gewogen transactiebedrag"
+        },
+        "dealstage": {
+            "label": "Podium",
+            "longlabel": "Podium"
+        },
+        "dealstagelabel": {
+            "label": "Podium",
+            "longlabel": "Podium"
+        },
+        "dealtype": {
+            "label": "Soort transactie",
+            "longlabel": "Soort transactie"
+        },
+        "dealtypelabel": {
+            "label": "Soort transactie",
+            "longlabel": "Soort transactie"
+        },
+        "dealvalue": {
+            "label": "Transactiebedrag",
+            "longlabel": "Transactiebedrag"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "jobname": {
+            "label": "Vacature",
+            "longlabel": "Functienaam"
+        },
+        "jobslug": {
+            "label": "vacature-tag",
+            "longlabel": "vacature-tag"
+        },
+        "name": {
+            "label": "Naam",
+            "longlabel": "Naam van de deal"
+        },
+        "ownerid": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        },
+        "ownername": {
+            "label": "Naam eigenaar",
+            "longlabel": "Naam eigenaar"
+        },
+        "ownerslug": {
+            "label": "Eigenaar Slug",
+            "longlabel": "Eigenaar Slug"
+        },
+        "percentage": {
+            "label": "Podiumgewicht",
+            "longlabel": "Podiumgewicht"
+        },
+        "relatedcandidate": {
+            "label": "Kandidaten-ID",
+            "longlabel": "Kandidaten-ID"
+        },
+        "relatedcompany": {
+            "label": "Bedrijfsnummer",
+            "longlabel": "Bedrijfsnummer"
+        },
+        "relatedcontact": {
+            "label": "Contact",
+            "longlabel": "Contact"
+        },
+        "relatedjob": {
+            "label": "Vacature-ID",
+            "longlabel": "Vacature-ID"
+        },
+        "slug": {
+            "label": "Acties",
+            "longlabel": "Naaktslak"
+        },
+        "splitdealvalue": {
+            "label": "Gedeeld transactiebedrag",
+            "longlabel": "Gedeeld transactiebedrag"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Transactie-ID"
+        },
+        "updatedby": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "updatedbyname": {
+            "label": "Bijgewerkt op naam",
+            "longlabel": "Bijgewerkt op naam"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "website": {
+            "label": "Website",
+            "longlabel": "Website"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Gewogen verdeeld transactiebedrag",
+            "longlabel": "Gewogen verdeeld transactiebedrag"
+        }
+    },
+    "hotlist_widget": {
+        "name": {
+            "label": "Naam op de hotlist",
+            "longlabel": "Naam op de hotlist"
+        },
+        "createdOn": {
+            "label": "Aangemaakt op",
+            "longlabel": "Aangemaakt op"
+        },
+        "updatedOn": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "ownerId": {
+            "label": "Eigenaar",
+            "longlabel": "Eigenaar"
+        }
+    },
+    "executive_search_report": {
+        "report_title": {
+            "label": "Naam rapport",
+            "longlabel": "Naam rapport"
+        },
+        "created_by": {
+            "label": "Gemaakt door",
+            "longlabel": "Gemaakt door"
+        },
+        "updated_by": {
+            "label": "Gewijzigd door",
+            "longlabel": "Gewijzigd door"
+        },
+        "updated_on": {
+            "label": "Gewijzigd op",
+            "longlabel": "Gewijzigd op"
+        }
+    },
+    "pitch_candidate": {
+        "name": {
+            "label": "Naam kandidaat",
+            "longlabel": "Naam kandidaat"
+        },
+        "pitchStage": {
+            "label": "Presentatiepodium &amp; Opmerking",
+            "longlabel": "Presentatiepodium &amp; Opmerking"
+        },
+        "phone": {
+            "label": "Telefoon",
+            "longlabel": "Telefoon"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "resumefilename": {
+            "label": "CV",
+            "longlabel": "CV"
+        },
+        "contactName": {
+            "label": "Neem contact op met Pitched",
+            "longlabel": "Neem contact op met Pitched"
+        },
+        "createdByName": {
+            "label": "Voorgesteld door",
+            "longlabel": "Voorgesteld door"
+        },
+        "createdOn": {
+            "label": "Aangeprezen",
+            "longlabel": "Aangeprezen"
+        },
+        "candidateTitle": {
+            "label": "Titel van de kandidaat",
+            "longlabel": "Functietitel / Functie"
+        },
+        "last_communication_timestamp": {
+            "label": "Laatste bericht van de kandidaat",
+            "longlabel": "Laatste bericht van de kandidaat"
+        }
+    },
+    "candidate_history": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "name": {
+            "label": "Naam",
+            "longlabel": "Naam"
+        },
+        "updatedby": {
+            "label": "Bijgewerkt door",
+            "longlabel": "Bijgewerkt door"
+        },
+        "updatedon": {
+            "label": "Bijgewerkt op",
+            "longlabel": "Bijgewerkt op"
+        },
+        "candidatestatus": {
+            "label": "Wervingsfase en geschiedenis",
+            "longlabel": "Wervingsfase en -geschiedenis"
+        },
+        "companycontactname": {
+            "label": "Contactgegevens van het bedrijf",
+            "longlabel": "Contactgegevens van het bedrijf"
+        }
+    },
+    "pitch_contact": {
+        "name": {
+            "label": "Contactpersoon",
+            "longlabel": "Contactpersoon"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "E-mailadres voor contact"
+        },
+        "phone": {
+            "label": "Telefoon",
+            "longlabel": "Telefoonnummer"
+        },
+        "pitchStage": {
+            "label": "Presentatiepodium &amp; Opmerking",
+            "longlabel": "Presentatiepodium &amp; Opmerking"
+        },
+        "companyName": {
+            "label": "Bedrijf",
+            "longlabel": "Bedrijfsnaam"
+        },
+        "createdByName": {
+            "label": "Voorgesteld door",
+            "longlabel": "Voorgesteld door"
+        },
+        "createdOn": {
+            "label": "Aangeprezen",
+            "longlabel": "Aangeprezen"
+        },
+        "contactTitle": {
+            "label": "Contacttitel",
+            "longlabel": "Contacttitel"
+        },
+        "last_communication_timestamp": {
+            "label": "Contact Laatste communicatie",
+            "longlabel": "Contact Laatste communicatie"
+        }
+    }
+}

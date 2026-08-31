@@ -1,0 +1,514 @@
+---
+alwaysApply: false
+---
+# Service Layer Patterns and Business Logic
+
+## Overview
+The service layer contains all business logic and orchestrates operations between controllers and repositories. Services follow interface-first design and use DTOs for data transfer.
+
+## Service Structure
+
+### 1. Interface-First Design
+```java
+// Service Interface
+public interface ITimesheetService {
+    TimesheetResponseDto createTimesheet(TimesheetRequestDto request);
+    TimesheetResponseDto getTimesheetById(Integer id);
+    List<TimesheetResponseDto> getTimesheetsByCandidate(Integer candidateId);
+    TimesheetResponseDto updateTimesheet(Integer id, TimesheetRequestDto request);
+    void deleteTimesheet(Integer id);
+    BulkTimesheetResponseDto bulkCreateTimesheets(BulkTimesheetRequestDto request);
+}
+```
+
+### 2. Service Implementation
+```java
+@Service
+@Transactional
+public class TimesheetService implements ITimesheetService {
+    
+    private final TimesheetRepository timesheetRepository;
+    private final TimesheetMapper timesheetMapper;
+    private final BulkPermissionChecker bulkPermissionChecker;
+    private final Logger logger;
+    
+    public TimesheetService(TimesheetRepository timesheetRepository,
+                           TimesheetMapper timesheetMapper,
+                           BulkPermissionChecker bulkPermissionChecker,
+                           Logger logger) {
+        this.timesheetRepository = timesheetRepository;
+        this.timesheetMapper = timesheetMapper;
+        this.bulkPermissionChecker = bulkPermissionChecker;
+        this.logger = logger;
+    }
+    
+    @Override
+    @Transactional
+    public TimesheetResponseDto createTimesheet(TimesheetRequestDto request) {
+        // Business logic implementation
+    }
+}
+```
+
+## Business Logic Patterns
+
+### 1. Validation and Business Rules
+```java
+@Service
+public class TimesheetService {
+    
+    public TimesheetResponseDto createTimesheet(TimesheetRequestDto request) {
+        // Validate business rules
+        validateTimesheetCreation(request);
+        
+        // Check permissions
+        checkCreatePermission(request.candidateId(), request.jobId());
+        
+        // Create timesheet
+        Timesheet timesheet = timesheetMapper.toEntity(request);
+        Timesheet savedTimesheet = timesheetRepository.save(timesheet);
+        
+        // Apply business rules
+        applyTimesheetRules(savedTimesheet);
+        
+        return timesheetMapper.toResponseDto(savedTimesheet);
+    }
+    
+    private void validateTimesheetCreation(TimesheetRequestDto request) {
+        // Check if candidate exists and is active
+        if (!candidateRepository.existsByIdAndStatus(request.candidateId(), "ACTIVE")) {
+            throw new ValidationErrorException("Candidate is not active");
+        }
+        
+        // Check if job exists and is active
+        if (!jobRepository.existsByIdAndStatus(request.jobId(), "ACTIVE")) {
+            throw new ValidationErrorException("Job is not active");
+        }
+        
+        // Check for duplicate timesheet
+        if (timesheetRepository.existsByCandidateIdAndJobIdAndDate(
+                request.candidateId(), request.jobId(), request.date())) {
+            throw new ValidationErrorException("Timesheet already exists for this date");
+        }
+    }
+}
+```
+
+### 2. Permission Checking Integration
+```java
+@Service
+public class TimesheetService {
+    
+    public TimesheetResponseDto getTimesheetById(Integer id) {
+        // Check permission using bulk permission checker
+        BulkPermissionCheckRequest request = BulkPermissionCheckRequest.builder()
+            .items(List.of(BulkPermissionCheckRequest.BulkPermissionCheckItem.builder()
+                .entity(Entity.TIMESHEET)
+                .permissionCheckContext(PermissionCheckContext.builder()
+                    .permission(Permission.VIEW_TIMESHEET)
+                    .permissionLevel(PermissionLevel.YES)
+                    .build())
+                .accessControlCheckMetadataContext(AccessControlCheckMetadataContext.builder()
+                    .timesheetId(id)
+                    .build())
+                .build()))
+            .build();
+        
+        BulkPermissionCheckResult result = bulkPermissionChecker.checkBulkPermissions(request);
+        
+        if (!result.getResults().get(0).isAllowed()) {
+            throw new UnauthorizedAccessException("Access denied to timesheet");
+        }
+        
+        // Get timesheet
+        Timesheet timesheet = timesheetRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Timesheet not found"));
+        
+        return timesheetMapper.toResponseDto(timesheet);
+    }
+}
+```
+
+### 3. Bulk Operations
+```java
+@Service
+public class TimesheetService {
+    
+    @Transactional
+    public BulkTimesheetResponseDto bulkCreateTimesheets(BulkTimesheetRequestDto request) {
+        List<TimesheetResponseDto> successful = new ArrayList<>();
+        List<BulkErrorDto> errors = new ArrayList<>();
+        
+        // Check permissions for all timesheets
+        BulkPermissionCheckRequest permissionRequest = buildPermissionRequest(request.timesheets());
+        BulkPermissionCheckResult permissionResult = bulkPermissionChecker.checkBulkPermissions(permissionRequest);
+        
+        // Process each timesheet
+        for (int i = 0; i < request.timesheets().size(); i++) {
+            TimesheetRequestDto timesheetRequest = request.timesheets().get(i);
+            
+            try {
+                // Check individual permission
+                if (!permissionResult.getResults().get(i).isAllowed()) {
+                    errors.add(new BulkErrorDto(i, "Access denied", "PERMISSION_DENIED"));
+                    continue;
+                }
+                
+                // Validate and create timesheet
+                Timesheet timesheet = createTimesheetEntity(timesheetRequest);
+                Timesheet savedTimesheet = timesheetRepository.save(timesheet);
+                successful.add(timesheetMapper.toResponseDto(savedTimesheet));
+                
+            } catch (Exception ex) {
+                logger.error("Failed to create timesheet at index " + i, ex);
+                errors.add(new BulkErrorDto(i, ex.getMessage(), "CREATION_FAILED"));
+            }
+        }
+        
+        return new BulkTimesheetResponseDto(successful, errors, 
+            new BulkOperationSummary(successful.size(), errors.size()));
+    }
+}
+```
+
+## Transaction Management
+
+### 1. Service-Level Transactions
+```java
+@Service
+@Transactional
+public class TimesheetService {
+    
+    @Transactional(readOnly = true)
+    public List<TimesheetResponseDto> getTimesheetsByCandidate(Integer candidateId) {
+        // Read-only transaction for queries
+        return timesheetRepository.findByCandidateId(candidateId)
+            .stream()
+            .map(timesheetMapper::toResponseDto)
+            .toList();
+    }
+    
+    @Transactional
+    public TimesheetResponseDto updateTimesheet(Integer id, TimesheetRequestDto request) {
+        // Write transaction for updates
+        Timesheet timesheet = timesheetRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Timesheet not found"));
+        
+        // Update fields
+        timesheet.setName(request.name());
+        timesheet.setStatus(request.status());
+        
+        // Save and return
+        Timesheet savedTimesheet = timesheetRepository.save(timesheet);
+        return timesheetMapper.toResponseDto(savedTimesheet);
+    }
+}
+```
+
+### 2. Complex Transaction Scenarios
+```java
+@Service
+public class TimesheetApprovalService {
+    
+    @Transactional
+    public void approveTimesheet(Integer timesheetId, String approverId) {
+        // Load timesheet with related data
+        Timesheet timesheet = timesheetRepository.findByIdWithRelatedEntities(timesheetId)
+            .orElseThrow(() -> new ResourceNotFoundException("Timesheet not found"));
+        
+        // Validate approval rules
+        validateApprovalRules(timesheet, approverId);
+        
+        // Update timesheet status
+        timesheet.setStatus("APPROVED");
+        timesheet.setApprovedBy(approverId);
+        timesheet.setApprovedAt(LocalDateTime.now());
+        
+        // Create approval record
+        TimesheetApproval approval = new TimesheetApproval();
+        approval.setTimesheetId(timesheetId);
+        approval.setApproverId(approverId);
+        approval.setApprovedAt(LocalDateTime.now());
+        timesheetApprovalRepository.save(approval);
+        
+        // Update related entities
+        updateRelatedEntities(timesheet);
+        
+        // Send notifications
+        notificationService.sendApprovalNotification(timesheet);
+    }
+}
+```
+
+## Error Handling
+
+### 1. Service-Level Exception Handling
+```java
+@Service
+public class TimesheetService {
+    
+    public TimesheetResponseDto createTimesheet(TimesheetRequestDto request) {
+        try {
+            // Validate input
+            validateTimesheetRequest(request);
+            
+            // Check permissions
+            checkPermissions(request);
+            
+            // Create timesheet
+            Timesheet timesheet = timesheetMapper.toEntity(request);
+            Timesheet savedTimesheet = timesheetRepository.save(timesheet);
+            
+            return timesheetMapper.toResponseDto(savedTimesheet);
+            
+        } catch (ValidationErrorException ex) {
+            logger.warn("Validation error creating timesheet: " + ex.getMessage());
+            throw ex;
+        } catch (UnauthorizedAccessException ex) {
+            logger.warn("Permission denied creating timesheet: " + ex.getMessage());
+            throw ex;
+        } catch (Exception ex) {
+            logger.error("Unexpected error creating timesheet", ex);
+            throw new ServiceException("Failed to create timesheet", ex);
+        }
+    }
+}
+```
+
+### 2. Custom Service Exceptions
+```java
+public class ServiceException extends RuntimeException {
+    private final String errorCode;
+    
+    public ServiceException(String message, Throwable cause) {
+        super(message, cause);
+        this.errorCode = "SERVICE_ERROR";
+    }
+    
+    public ServiceException(String message, String errorCode) {
+        super(message);
+        this.errorCode = errorCode;
+    }
+}
+```
+
+## Business Rule Engine Integration
+
+### 1. Rule Engine Service
+```java
+@Service
+public class RuleEngineService {
+    
+    private final IRuleEngine ruleEngine;
+    private final RuleEngineMapper ruleEngineMapper;
+    
+    public RuleValidationResult validateTimesheetRules(Timesheet timesheet) {
+        // Convert timesheet to rule engine format
+        RuleEngineInputDto input = ruleEngineMapper.toRuleEngineInput(timesheet);
+        
+        // Execute rules
+        RuleEngineResult result = ruleEngine.evaluateRules(input);
+        
+        // Convert result
+        return ruleEngineMapper.toValidationResult(result);
+    }
+    
+    public void applyTimesheetRules(Timesheet timesheet) {
+        RuleValidationResult validation = validateTimesheetRules(timesheet);
+        
+        if (!validation.isValid()) {
+            throw new ValidationErrorException("Timesheet violates business rules: " + 
+                validation.getViolations().stream()
+                    .map(RuleViolation::getMessage)
+                    .collect(Collectors.joining(", ")));
+        }
+        
+        // Apply any automatic adjustments
+        applyAutomaticAdjustments(timesheet, validation);
+    }
+}
+```
+
+## Caching and Performance
+
+### 1. Service-Level Caching
+```java
+@Service
+public class TimesheetService {
+    
+    @Cacheable(value = "timesheets", key = "#id")
+    public TimesheetResponseDto getTimesheetById(Integer id) {
+        Timesheet timesheet = timesheetRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Timesheet not found"));
+        return timesheetMapper.toResponseDto(timesheet);
+    }
+    
+    @CacheEvict(value = "timesheets", key = "#id")
+    public void deleteTimesheet(Integer id) {
+        timesheetRepository.deleteById(id);
+    }
+    
+    @CachePut(value = "timesheets", key = "#id")
+    public TimesheetResponseDto updateTimesheet(Integer id, TimesheetRequestDto request) {
+        // Update logic
+    }
+}
+```
+
+## Service Composition
+
+### 1. Orchestrating Multiple Services
+```java
+@Service
+public class TimesheetWorkflowService {
+    
+    private final TimesheetService timesheetService;
+    private final TimeLogService timeLogService;
+    private final ApprovalService approvalService;
+    private final NotificationService notificationService;
+    
+    @Transactional
+    public TimesheetWorkflowResult processTimesheetSubmission(TimesheetSubmissionDto submission) {
+        // Create timesheet
+        TimesheetResponseDto timesheet = timesheetService.createTimesheet(submission.timesheetRequest());
+        
+        // Create time logs
+        List<TimeLogResponseDto> timeLogs = timeLogService.createTimeLogs(
+            submission.timeLogRequests(), timesheet.id());
+        
+        // Submit for approval
+        ApprovalResponseDto approval = approvalService.submitForApproval(timesheet.id());
+        
+        // Send notifications
+        notificationService.sendSubmissionNotification(timesheet, timeLogs);
+        
+        return new TimesheetWorkflowResult(timesheet, timeLogs, approval);
+    }
+}
+```
+
+## Cognitive Complexity [STRICT — MAX 12]
+
+**RULE**: Every method in the codebase MUST have a cognitive complexity of 12 or less. No exceptions.
+
+Cognitive complexity counts: `if`, `else if`, `else`, `for`, `while`, `catch`, `switch`, ternary operators, `&&`, `||`, nested conditions (with nesting increments), and recursion. Each nesting level adds +1 to the increment for nested structures.
+
+### How to Reduce Cognitive Complexity
+
+1. **Extract validation logic** into dedicated private methods (e.g., `validateReopenAccess(...)`, `validateReopenStatus(...)`)
+2. **Extract entity mutation** into private methods (e.g., `resetReimbursementForReopen(...)`, `createStatusHistory(...)`)
+3. **Extract complex conditionals** into well-named boolean methods (e.g., `isReopenable(status)`)
+4. **Use early returns** to avoid deep nesting
+5. **Never inline** multiple validation checks + entity setters + persistence calls in a single method
+
+### Enforcement Examples
+
+**FORBIDDEN — method exceeding complexity 12:**
+```java
+public ResponseDto process(RequestDto request) {
+    // auth checks (2 branches)
+    // timesheet validation (1 branch)
+    // invoice check (1 branch)
+    // entity lookup (1 branch)
+    // status check (2 branches via && / ||)
+    // 7 setters
+    // status history creation with 6 setters
+    // mapper call
+    // Total cognitive complexity: ~15+
+}
+```
+
+**REQUIRED — decomposed into focused methods:**
+```java
+public ResponseDto process(RequestDto request) {
+    validateAccess(userTypeId, timesheetId, accountId);
+    Entity entity = findEntity(id, timesheetId, accountId);
+    validateStatus(entity);
+    updateEntity(entity, userId, userTypeId, timestamp);
+    Entity saved = repository.save(entity);
+    createStatusHistory(saved.getId(), statusId, remark, userId, userTypeId, timestamp, accountId);
+    return mapper.toResponseDto(saved, statusLabel);
+}
+```
+
+### Pre-Commit Validation
+- [ ] Every public and private method has cognitive complexity <= 12
+- [ ] Validation logic is in separate private methods
+- [ ] Entity mutation (setters) is in separate private methods
+- [ ] No method does auth + validation + mutation + persistence + mapping all inline
+
+## Best Practices
+
+### 1. Service Design
+- Keep services focused on single responsibility
+- Use interfaces for testability and flexibility
+- Implement proper error handling and logging
+- Use transactions appropriately
+
+### 2. Business Logic
+- Validate business rules at service level
+- Use rule engine for complex business logic
+- Implement proper permission checking
+- Handle bulk operations efficiently
+
+### 3. Performance
+- Use caching for frequently accessed data
+- Implement bulk operations for multiple records
+- Use read-only transactions for queries
+- Optimize database queries
+
+### 4. Testing
+- Write unit tests for all business logic
+- Mock dependencies for isolated testing
+- Test error scenarios and edge cases
+- Use integration tests for complex workflows
+
+### 5. Cognitive Complexity (STRICT — enforced by SonarQube quality gate)
+> **Every method must have a Cognitive Complexity score strictly below 15.**
+> A PR that introduces or leaves a method with CC ≥ 15 must not be merged.
+
+Reduce CC by:
+- Using **guard clauses** (early return) instead of wrapping logic in `if` blocks
+- **Extracting inner loops** into focused private helper methods — each has its own CC budget
+- **Extracting predicate methods** for multi-`&&`/`||` conditions
+- **Pre-computing boolean flags** before loops to avoid compound conditions inside them
+- Replacing filter-then-transform patterns with **streams** (adds zero CC)
+
+```java
+// ❌ PROHIBITED — deeply nested loops push CC above 15
+public void process(Parent parent) {
+    if (parent.getChildren() != null) {
+        for (Child child : parent.getChildren()) {
+            if (child.getItems() != null) {
+                for (Item item : child.getItems()) {
+                    if (item.isActive() && item.getValue() != null) {
+                        total += item.getValue();
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ✅ REQUIRED — each method independently stays well below 15
+public void process(Parent parent) {          // CC = 2
+    if (parent.getChildren() == null) return;
+    for (Child child : parent.getChildren()) {
+        collectFromChild(child);
+    }
+}
+
+private void collectFromChild(Child child) {  // CC = 3
+    if (child.getItems() == null) return;
+    for (Item item : child.getItems()) {
+        if (isActiveWithValue(item)) total += item.getValue();
+    }
+}
+
+private boolean isActiveWithValue(Item item) { // CC = 1 (one &&)
+    return item.isActive() && item.getValue() != null;
+}
+```
+
+
+

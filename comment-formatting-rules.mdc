@@ -1,0 +1,229 @@
+---
+description: Comment formatting rules for Java files - enforce multiline comments and prohibit single-line comments at line endings
+alwaysApply: true
+glob: "**/*.java"
+---
+
+# Comment Formatting Rules
+
+## Multiline Comment Requirements
+
+### When to Use Multiline Comments
+- **Always use multiline comments** (`/** */`) for complex explanations, documentation, and detailed descriptions
+- **Use multiline comments** before method implementations, class definitions, and complex logic blocks
+- **Use multiline comments** for explaining business logic, algorithms, and non-obvious code behavior
+- **Use multiline comments** for API documentation, parameter descriptions, and return value explanations
+
+### Multiline Comment Format
+```java
+/**
+ * This method calculates the total hours worked for a timesheet.
+ * It processes all time logs and applies business rules for overtime calculation.
+ * 
+ * @param timesheetId The unique identifier of the timesheet
+ * @param includeOvertime Whether to include overtime hours in the calculation
+ * @return TotalHoursDto containing regular and overtime hours
+ * @throws ResourceNotFoundException if timesheet is not found
+ */
+public TotalHoursDto calculateTotalHours(Long timesheetId, boolean includeOvertime) {
+    // Implementation here
+}
+```
+
+### Multiline Comment Placement
+- **Place multiline comments BEFORE** the code they describe
+- **Never place multiline comments AFTER** code lines
+- **Use multiline comments** to explain the "why" and "how" of complex logic
+
+## Single-Line Comment Restrictions
+
+### Prohibited Single-Line Comment Usage
+- **NEVER use single-line comments** (`//`) at the end of code lines
+- **NEVER use single-line comments** in between code statements within the same method
+- **NEVER use single-line comments** to explain obvious code behavior
+
+### Examples of Prohibited Comments
+```java
+// ❌ WRONG - Single-line comment at end of line
+String name = "John"; // This is the user's name
+
+// ❌ WRONG - Single-line comment between statements
+int count = 0;
+// Initialize the counter
+count++;
+
+// ❌ WRONG - Obvious comment
+int age = 25; // Set age to 25
+```
+
+### Allowed Single-Line Comment Usage
+- **Use single-line comments** only for section headers and brief explanations at the beginning of code blocks
+- **Use single-line comments** for TODO, FIXME, and NOTE markers
+- **Use single-line comments** for debugging purposes (temporary)
+
+### Examples of Allowed Comments
+```java
+// TODO: Implement caching mechanism for better performance
+// FIXME: Handle edge case when user has no permissions
+// NOTE: This method is called from the scheduler every 5 minutes
+
+// Section: Data validation
+if (input == null) {
+    throw new IllegalArgumentException("Input cannot be null");
+}
+
+// Section: Business logic processing
+/**
+ * Process the timesheet data according to company policies.
+ * This includes calculating regular hours, overtime, and applying
+ * any applicable rules or exceptions.
+ */
+public void processTimesheet(TimesheetDto timesheet) {
+    // Implementation here
+}
+```
+
+## Comment Content Guidelines
+
+### What to Document
+- **Business logic** and complex algorithms
+- **API contracts** and method signatures
+- **Configuration** and setup requirements
+- **Performance considerations** and optimizations
+- **Security implications** and access control
+- **Integration points** with external systems
+- **Error handling** strategies and edge cases
+
+### What NOT to Document
+- **Obvious code behavior** (e.g., "set variable to 5")
+- **Self-explanatory method names** (e.g., `calculateTotal()` doesn't need "calculates the total")
+- **Standard library usage** (e.g., "create a new ArrayList")
+- **Simple variable assignments** (e.g., "assign value to variable")
+
+## Comment Quality Standards
+
+### Good Comment Examples
+```java
+/**
+ * Validates timesheet entries against company overtime policies.
+ * Checks for daily overtime (over 8 hours) and weekly overtime (over 40 hours).
+ * Applies different rate calculations based on the overtime type.
+ * 
+ * @param timeLogs List of time log entries to validate
+ * @return ValidationResult containing any policy violations
+ */
+public ValidationResult validateOvertimePolicies(List<TimeLog> timeLogs) {
+    // Implementation here
+}
+
+/**
+ * Processes bulk timesheet approvals with optimized database queries.
+ * Uses batch processing to reduce database round trips and improve performance.
+ * Handles partial failures gracefully by rolling back only failed transactions.
+ * 
+ * @param approvalRequests List of timesheet approval requests
+ * @return BulkApprovalResult with success/failure status for each request
+ */
+public BulkApprovalResult processBulkApprovals(List<ApprovalRequest> approvalRequests) {
+    // Implementation here
+}
+```
+
+### Bad Comment Examples
+```java
+// ❌ WRONG - Obvious and unhelpful
+public void saveData(String data) {
+    // Save the data to database
+    repository.save(data);
+}
+
+// ❌ WRONG - Commenting the obvious
+int count = 0; // Initialize count to zero
+count++; // Increment count by one
+
+// ❌ WRONG - Single-line comment at end of line
+String name = getUserName(); // Get user name from database
+```
+
+## Implementation Guidelines
+
+### For New Code
+- **Always write multiline comments** before implementing complex methods
+- **Document the business requirements** and expected behavior
+- **Explain any non-obvious algorithms** or calculations
+- **Include parameter and return value descriptions**
+
+### For Existing Code
+- **Replace single-line comments** at line endings with proper multiline documentation
+- **Add missing documentation** for public APIs and complex methods
+- **Remove obvious or redundant comments** that don't add value
+- **Update comments** when business logic changes
+
+### For Refactoring
+- **Update comments** to reflect the new implementation
+- **Remove outdated comments** that no longer apply
+- **Add comments** for any new complexity introduced
+- **Ensure comments** explain the "why" not just the "what"
+
+## Enforcement
+
+### Code Review Checklist
+- [ ] No single-line comments at the end of code lines
+- [ ] No single-line comments between statements in the same method
+- [ ] All public methods have proper multiline documentation
+- [ ] Complex logic is explained with multiline comments
+- [ ] Comments explain business logic, not obvious code behavior
+- [ ] TODO/FIXME comments are properly formatted and justified
+
+### Automated Checks
+- Use IDE settings to highlight single-line comments at line endings
+- Configure linting rules to flag prohibited comment patterns
+- Include comment quality in code review templates
+- Use static analysis tools to identify missing documentation
+
+## File Examples
+
+### Well-Documented Class
+```java
+/**
+ * Service for managing timesheet calculations and business rule processing.
+ * Handles complex overtime calculations, rule engine integration, and
+ * bulk operations for timesheet management.
+ */
+@Service
+public class TimesheetCalculationService {
+    
+    /**
+     * Calculates total hours including overtime for a given timesheet.
+     * Applies company-specific overtime rules and handles edge cases
+     * such as holiday pay and special rate calculations.
+     * 
+     * @param timesheetId The ID of the timesheet to calculate
+     * @param includeOvertime Whether to include overtime calculations
+     * @return CalculationResult with detailed breakdown of hours and rates
+     */
+    public CalculationResult calculateTotalHours(Long timesheetId, boolean includeOvertime) {
+        // Implementation here
+    }
+}
+```
+
+### Poorly Documented Class
+```java
+// ❌ WRONG - Missing proper documentation
+@Service
+public class TimesheetService {
+    
+    // Calculate hours
+    public CalculationResult calculateHours(Long id, boolean overtime) { // Calculate hours for timesheet
+        // Get timesheet
+        Timesheet timesheet = repository.findById(id); // Find timesheet by ID
+        // Process calculation
+        return processCalculation(timesheet, overtime); // Return result
+    }
+}
+```
+description:
+globs:
+alwaysApply: false
+---

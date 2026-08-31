@@ -1,0 +1,577 @@
+---
+description: |
+  Step-by-step guide for adding a new custom pay rule to the rule engine.
+  Covers every mandatory touch point: RuleType enum, rule class, time range resolver,
+  RuleFactory registration, RulePrecedenceConfig ordering, and tests.
+  All patterns derived from the existing Duration-based and Range-based rule families.
+globs:
+  - src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/**/*.java
+  - src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/**/*.java
+alwaysApply: false
+---
+
+# Adding a New Pay Rule
+
+## 1  Understand the two rule families before you start
+
+Every rule in this engine belongs to exactly one family based on `work_log_type`:
+
+| Family | work_log_type | How time is recorded | Package |
+|---|---|---|---|
+| **Duration-based** | `1` (WORK_HOUR) | Total hours per day logged as a duration | `rules/hourly/` |
+| **Range-based** | `2` (START_AND_END_TIME) | Clock-in / clock-out times as time ranges | `rules/shifts/` |
+
+A new rule that applies to **both** work log types needs **two** rule classes and **two** time range resolvers — one per family. If it applies to only one type, create only that one.
+
+The existing rule pairs illustrate this:
+- `rules/hourly/DailyOvertimeRule` ↔ `rules/shifts/DailyOvertimeRule`
+- `DurationBasedDailyOvertimeRuleTimeRangeResolver` ↔ `RangeBasedDailyOvertimeRuleRangeResolver`
+
+---
+
+## 2  Key classes to read before writing any code
+
+| Class | Why |
+|---|---|
+| `RuleType` | The master enum — every rule has an entry here |
+| `ChargeMethodType` | `MULTIPLIER(1)` or `FIXED_RATE(2)` — determines how pay is calculated |
+| `RulePrecedenceConfig` | Defines evaluation order; your rule must be inserted at the right position |
+| `BaseRule` | Abstract base all rules extend — provides `createCompleteResult`, `validateContext`, logging |
+| `BaseDailyOvertimeRuleTimeRangeResolver` | Extend this for daily overtime resolvers; override only `getDailyOvertimeRuleType()` |
+| `BaseWeeklyOvertimeRuleTimeRangeResolver` | Extend this for weekly overtime resolvers; override only `getWeeklyOvertimeRuleType()` |
+| `BaseBreakRuleTimeRangeResolver` | Extend this for break resolvers |
+| `RuleFactory` | The wiring point — switch statement for rules, map for resolvers |
+| `UnifiedRuleManager` | Combines `CustomRule` + `VirtualRule` lists and sorts by precedence |
+| `RuleEvaluationContext` | All inputs available inside `evaluate()` |
+| `RuleEvaluationResult` | The output your rule must produce |
+| `CustomRule` (dto) | Carries per-rule config: thresholds, workDays, chargeMethod, multipliers |
+
+---
+
+## 3  Decide the rule's position in the evaluation order
+
+Read `RulePrecedenceConfig` before creating anything. Evaluation order is:
+
+**Range-based:**
+1. Break
+2. After Shift
+3. Before Shift
+4. Specific Time Range
+5. Regular Hours
+6. Daily Overtime (sorted by threshold ascending)
+7. Weekly Overtime
+8. Default Pay
+
+**Duration-based:**
+1. Break
+2. Specific Hour Range
+3. Regular Hours
+4. Daily Overtime (sorted by threshold ascending)
+5. Weekly Overtime
+6. Default Pay
+
+The `Default Pay` rule runs last and sweeps any unallocated worked time at 1× rate. **Never place a new rule after Default Pay.**
+
+---
+
+## 4  Step 1 — Add entries to `RuleType`
+
+File: `rule_engine/constants/RuleType.java`
+
+```java
+// Add alongside the existing enum entries; assign the next available ID
+DURATION_BASED_MY_NEW_RULE(15, "My New Rule"),
+RANGE_BASED_MY_NEW_RULE(16, "My New Rule");
+```
+
+Rules:
+- IDs must be globally unique across all enum entries.
+- The label string is used in metadata and logging — keep it human-readable.
+- `fromId(int id)` in the same enum resolves the variant from a DB integer; the new IDs are automatically handled.
+
+---
+
+## 5  Step 2 — Create the rule class
+
+### Duration-based rule — `rules/hourly/MyNewRule.java`
+
+```java
+package io.recruitcrm.microservice.timesheet.rule_engine.rules.hourly;
+
+import io.recruitcrm.logging.logger.Logger;
+import io.recruitcrm.microservice.timesheet.rule_engine.constants.ChargeMethodType;
+import io.recruitcrm.microservice.timesheet.rule_engine.constants.RuleType;
+import io.recruitcrm.microservice.timesheet.rule_engine.dto.RuleEvaluationContext;
+import io.recruitcrm.microservice.timesheet.rule_engine.dto.RuleEvaluationResult;
+import io.recruitcrm.microservice.timesheet.rule_engine.rules.BaseRule;
+import io.recruitcrm.microservice.timesheet.rule_engine.utils.TimeHelper;
+
+import java.math.BigDecimal;
+import java.time.Duration;
+
+/**
+ * Rule for calculating {describe what this rule does}.
+ * Applies to duration-based (WORK_HOUR) timesheets.
+ */
+public class MyNewRule extends BaseRule {
+
+    private Float basePayRatePerHour;
+
+    private Float baseBillRatePerHour;
+
+    private Float rulePayRateMultiplier;
+
+    private Float ruleBillRateMultiplier;
+
+    private ChargeMethodType ruleChargeMethod;
+
+    private Float rulePayRatePerHour;
+
+    private Float ruleBillRatePerHour;
+
+    public MyNewRule(Logger logger) {
+        super(logger);
+    }
+
+    @Override
+    protected void initRatesAndMethods(RuleEvaluationContext ctx) {
+        if (ctx.getCurrentRuleBeingEvaluated() == null) {
+            throw new IllegalArgumentException("Current rule being evaluated cannot be null");
+        }
+        this.basePayRatePerHour = ctx.getTimesheetSetting().getPayRate();
+        this.baseBillRatePerHour = ctx.getTimesheetSetting().getBillRate();
+        this.rulePayRateMultiplier = ctx.getCurrentRuleBeingEvaluated().getPayRateMultiplier();
+        this.ruleBillRateMultiplier = ctx.getCurrentRuleBeingEvaluated().getBillRateMultiplier();
+        this.ruleChargeMethod = ctx.getCurrentRuleBeingEvaluated().getChargeMethod();
+        this.rulePayRatePerHour = ctx.getCurrentRuleBeingEvaluated().getPayRatePerHour();
+        this.ruleBillRatePerHour = ctx.getCurrentRuleBeingEvaluated().getBillRatePerHour();
+    }
+
+    @Override
+    public RuleEvaluationResult evaluate(RuleEvaluationContext ruleEvaluationContext) {
+        validateContext(ruleEvaluationContext);
+        logEvaluationStart(ruleEvaluationContext);
+
+        this.initRatesAndMethods(ruleEvaluationContext);
+
+        Duration ruleDuration = TimeHelper
+            .convertRangeSetToDuration(ruleEvaluationContext.getTimeRangesToEvaluate());
+
+        BigDecimal payableAmount = TimeHelper.calculatePayAmount(ruleDuration, this.ruleChargeMethod,
+            this.basePayRatePerHour, this.rulePayRateMultiplier, this.rulePayRatePerHour);
+
+        BigDecimal billableAmount = TimeHelper.calculateBillAmount(ruleDuration, this.ruleChargeMethod,
+            this.baseBillRatePerHour, this.ruleBillRateMultiplier, this.ruleBillRatePerHour);
+
+        RuleEvaluationResult result = createCompleteResult(ruleEvaluationContext,
+            ruleEvaluationContext.getTimeRangesToEvaluate(), payableAmount, billableAmount);
+
+        logEvaluationComplete(result);
+        return result;
+    }
+
+    @Override
+    public String getName() {
+        return "Duration-Based My New Rule";
+    }
+
+    @Override
+    protected RuleType getDefaultRuleType() {
+        return RuleType.DURATION_BASED_MY_NEW_RULE;
+    }
+
+}
+```
+
+### Range-based rule — `rules/shifts/MyNewRule.java`
+
+Same structure; change the package, `getName()` return value, and `getDefaultRuleType()` to `RuleType.RANGE_BASED_MY_NEW_RULE`.
+
+Rules:
+- `initRatesAndMethods()` **must** guard against `getCurrentRuleBeingEvaluated() == null` with `IllegalArgumentException`.
+- `evaluate()` **must** call `validateContext()`, `logEvaluationStart()`, `initRatesAndMethods()`, and `logEvaluationComplete()` in that order.
+- Always use `createCompleteResult()` — never construct `RuleEvaluationResult` manually.
+- `getName()` must start with `"Duration-Based "` or `"Range-Based "` to match the existing naming convention.
+- Do **not** annotate these classes with `@Component` or `@Service` — they are constructed by `RuleFactory`.
+
+---
+
+## 6  Step 3 — Create the time range resolver
+
+### When you can extend a base resolver (preferred)
+
+If your rule's time range logic is structurally identical to an existing rule family (daily overtime, weekly overtime, break), extend the base class and override only the abstract `get*RuleType()` method.
+
+**Duration-based example:**
+```java
+package io.recruitcrm.microservice.timesheet.rule_engine.rules.timerange_resolver.duration_based;
+
+import io.recruitcrm.logging.logger.Logger;
+import io.recruitcrm.microservice.timesheet.rule_engine.constants.RuleType;
+// Extend the appropriate base for your rule family:
+// BaseDailyOvertimeRuleTimeRangeResolver
+// BaseWeeklyOvertimeRuleTimeRangeResolver
+// BaseBreakRuleTimeRangeResolver
+
+public class DurationBasedMyNewRuleTimeRangeResolver extends BaseDailyOvertimeRuleTimeRangeResolver {
+
+    public DurationBasedMyNewRuleTimeRangeResolver(Logger logger) {
+        super(logger);
+    }
+
+    @Override
+    protected RuleType getDailyOvertimeRuleType() {
+        return RuleType.DURATION_BASED_MY_NEW_RULE;
+    }
+
+}
+```
+
+**Range-based counterpart** — place in `range_based/`, extend `RangeBasedDailyOvertimeRuleRangeResolver`'s base, return `RuleType.RANGE_BASED_MY_NEW_RULE`.
+
+### When you need a custom resolver (fully new logic)
+
+Implement `ICustomRuleTimeRangeResolver` directly and write `resolveTimeRange(TimeRangeResolverContext ctx)`. Use `TimeHelper` and `VirtualTimeRangeAllocator` — do not replicate their logic inline.
+
+```java
+package io.recruitcrm.microservice.timesheet.rule_engine.rules.timerange_resolver.duration_based;
+
+import com.google.common.collect.RangeSet;
+import com.google.common.collect.TreeRangeSet;
+import io.recruitcrm.logging.logger.Logger;
+import io.recruitcrm.microservice.timesheet.rule_engine.rules.ICustomRuleTimeRangeResolver;
+import io.recruitcrm.microservice.timesheet.rule_engine.rules.timerange_resolver.TimeRangeResolverContext;
+
+import java.time.LocalTime;
+
+public class DurationBasedMyNewRuleTimeRangeResolver implements ICustomRuleTimeRangeResolver {
+
+    private final Logger logger;
+
+    public DurationBasedMyNewRuleTimeRangeResolver(Logger logger) {
+        this.logger = logger;
+    }
+
+    @Override
+    public RangeSet<LocalTime> resolveTimeRange(TimeRangeResolverContext ctx) {
+        // Return empty set when this rule does not apply in this context.
+        // Return the calculated RangeSet<LocalTime> when it does.
+        return TreeRangeSet.create();
+    }
+
+}
+```
+
+---
+
+## 7  Step 4 — Register in `RuleFactory`
+
+File: `rule_engine/RuleFactory.java`
+
+### 4a — Add to the `createRule()` switch
+
+```java
+case DURATION_BASED_MY_NEW_RULE:
+    return new io.recruitcrm.microservice.timesheet.rule_engine.rules.hourly.MyNewRule(logger);
+case RANGE_BASED_MY_NEW_RULE:
+    return new io.recruitcrm.microservice.timesheet.rule_engine.rules.shifts.MyNewRule(logger);
+```
+
+Place these alongside the other rules of the same family (duration-based block or range-based block).
+
+### 4b — Add to `initializeTimeRangeResolverMap()`
+
+```java
+map.put(RuleType.DURATION_BASED_MY_NEW_RULE, new DurationBasedMyNewRuleTimeRangeResolver(logger));
+map.put(RuleType.RANGE_BASED_MY_NEW_RULE,    new RangeBasedMyNewRuleTimeRangeResolver(logger));
+```
+
+Both rule and resolver must be registered. An unregistered `RuleType` throws `IllegalArgumentException` at runtime when a timesheet with that rule is evaluated.
+
+---
+
+## 8  Step 5 — Add to `RulePrecedenceConfig`
+
+File: `rule_engine/constants/RulePrecedenceConfig.java`
+
+Insert your `RuleType` at the correct position in both lists (see Section 3 for the evaluation order):
+
+```java
+private static final List<RuleType> RANGE_BASED_PRECEDENCE = Arrays.asList(
+        RuleType.RANGE_BASED_BREAK,
+        RuleType.RANGE_BASED_AFTER_SHIFT,
+        RuleType.RANGE_BASED_BEFORE_SHIFT,
+        RuleType.RANGE_BASED_SPECIFIC_TIME_RANGE,
+        RuleType.RANGE_BASED_MY_NEW_RULE,          // ← insert at the correct position
+        RuleType.RANGE_BASED_REGULAR_HOURS,
+        RuleType.RANGE_BASED_DAILY_OVERTIME,
+        RuleType.RANGE_BASED_WEEKLY_OVERTIME,
+        RuleType.RANGE_BASED_DEFAULT_PAY);
+
+private static final List<RuleType> DURATION_BASED_PRECEDENCE = Arrays.asList(
+        RuleType.DURATION_BASED_BREAK,
+        RuleType.DURATION_BASED_SPECIFIC_HOUR_RANGE,
+        RuleType.DURATION_BASED_MY_NEW_RULE,       // ← insert at the correct position
+        RuleType.DURATION_BASED_REGULAR_HOURS,
+        RuleType.DURATION_BASED_DAILY_OVERTIME,
+        RuleType.DURATION_BASED_WEEKLY_OVERTIME,
+        RuleType.DURATION_BASED_DEFAULT_PAY);
+```
+
+The `PRECEDENCE_MAP` constants are computed from these lists at class load time — no other changes needed in this file.
+
+---
+
+## 9  Step 6 — Write tests
+
+### 9a  Rule class tests — `rule_engine/rules/hourly/MyNewRuleTests.java`
+
+```java
+package io.recruitcrm.microservice.timesheet.rule_engine.rules.hourly;
+
+import com.google.common.collect.RangeSet;
+import com.google.common.collect.TreeRangeSet;
+import io.recruitcrm.contract_staffing.entity.model.Timesheet;
+import io.recruitcrm.contract_staffing.entity.model.TimesheetSetting;
+import io.recruitcrm.logging.logger.Logger;
+import io.recruitcrm.microservice.timesheet.rule_engine.constants.ChargeMethodType;
+import io.recruitcrm.microservice.timesheet.rule_engine.constants.RuleType;
+import io.recruitcrm.microservice.timesheet.rule_engine.dto.CustomRule;
+import io.recruitcrm.microservice.timesheet.rule_engine.dto.RuleEvaluationContext;
+import io.recruitcrm.microservice.timesheet.rule_engine.dto.RuleEvaluationResult;
+import io.recruitcrm.microservice.timesheet.rule_engine.dto.TimeLog;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.BDDMockito.given;
+
+@ExtendWith(MockitoExtension.class)
+class MyNewRuleTests {
+
+    @Mock
+    private Logger logger;
+
+    @Mock
+    private Timesheet timesheet;
+
+    @Mock
+    private TimesheetSetting timesheetSetting;
+
+    @Mock
+    private TimeLog timeLog;
+
+    @Mock
+    private CustomRule mockCustomRule;
+
+    private MyNewRule rule;
+
+    @BeforeEach
+    void setUp() {
+        this.rule = new MyNewRule(this.logger);
+    }
+
+    @Test
+    @DisplayName("getName returns correct label")
+    void testGetNameReturnsCorrectLabel() {
+        assertThat(this.rule.getName()).isEqualTo("Duration-Based My New Rule");
+    }
+
+    @Test
+    @DisplayName("getDefaultRuleType returns DURATION_BASED_MY_NEW_RULE")
+    void testGetDefaultRuleTypeReturnsDurationBasedMyNewRule() {
+        assertThat(this.rule.getDefaultRuleType()).isEqualTo(RuleType.DURATION_BASED_MY_NEW_RULE);
+    }
+
+    @Test
+    @DisplayName("evaluate returns result when context is valid")
+    void testEvaluateValidContextReturnsResult() {
+        // Given
+        given(this.timesheet.getId()).willReturn(1);
+        given(this.timeLog.getDate()).willReturn(LocalDate.of(2024, 1, 1));
+        given(this.timesheetSetting.getPayRate()).willReturn(25.0f);
+        given(this.timesheetSetting.getBillRate()).willReturn(50.0f);
+        given(this.mockCustomRule.getPayRateMultiplier()).willReturn(1.5f);
+        given(this.mockCustomRule.getBillRateMultiplier()).willReturn(1.5f);
+        given(this.mockCustomRule.getChargeMethod()).willReturn(ChargeMethodType.MULTIPLIER);
+        given(this.mockCustomRule.getPayRatePerHour()).willReturn(25.0f);
+        given(this.mockCustomRule.getBillRatePerHour()).willReturn(50.0f);
+        given(this.mockCustomRule.getRuleType()).willReturn(RuleType.DURATION_BASED_MY_NEW_RULE);
+        given(this.mockCustomRule.getRuleName()).willReturn("My New Rule");
+
+        RangeSet<LocalTime> timeRanges = TreeRangeSet.create();
+        RuleEvaluationContext context = RuleEvaluationContext.builder()
+            .timesheet(this.timesheet)
+            .timesheetSetting(this.timesheetSetting)
+            .currentTimeLogBeingEvaluated(this.timeLog)
+            .currentRuleBeingEvaluated(this.mockCustomRule)
+            .timeRangesToEvaluate(timeRanges)
+            .build();
+
+        // When
+        RuleEvaluationResult result = this.rule.evaluate(context);
+
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.getRuleType()).isEqualTo(RuleType.DURATION_BASED_MY_NEW_RULE);
+        assertThat(result.isSuccessful()).isTrue();
+    }
+
+    @Test
+    @DisplayName("evaluate throws IllegalArgumentException when context is null")
+    void testEvaluateNullContextThrowsIllegalArgumentException() {
+        assertThatThrownBy(() -> this.rule.evaluate(null))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("Rule evaluation context cannot be null");
+    }
+
+    @Test
+    @DisplayName("evaluate throws IllegalArgumentException when current rule is null")
+    void testEvaluateNullCustomRuleThrowsIllegalArgumentException() {
+        // Given
+        RangeSet<LocalTime> timeRanges = TreeRangeSet.create();
+        RuleEvaluationContext context = RuleEvaluationContext.builder()
+            .timesheet(this.timesheet)
+            .timesheetSetting(this.timesheetSetting)
+            .currentTimeLogBeingEvaluated(this.timeLog)
+            .currentRuleBeingEvaluated(null)
+            .timeRangesToEvaluate(timeRanges)
+            .build();
+
+        // When & Then
+        assertThatThrownBy(() -> this.rule.evaluate(context))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("Current rule being evaluated cannot be null");
+    }
+
+    @Test
+    @DisplayName("evaluate with null timeLog sets evaluationDate to null and metadata to Weekly Evaluation")
+    void testEvaluateNullTimeLogSetsWeeklyEvaluationMetadata() {
+        // Given
+        given(this.timesheet.getId()).willReturn(1);
+        given(this.timesheetSetting.getPayRate()).willReturn(25.0f);
+        given(this.timesheetSetting.getBillRate()).willReturn(50.0f);
+        given(this.mockCustomRule.getPayRateMultiplier()).willReturn(1.5f);
+        given(this.mockCustomRule.getBillRateMultiplier()).willReturn(1.5f);
+        given(this.mockCustomRule.getChargeMethod()).willReturn(ChargeMethodType.MULTIPLIER);
+        given(this.mockCustomRule.getPayRatePerHour()).willReturn(25.0f);
+        given(this.mockCustomRule.getBillRatePerHour()).willReturn(50.0f);
+        given(this.mockCustomRule.getRuleType()).willReturn(RuleType.DURATION_BASED_MY_NEW_RULE);
+        given(this.mockCustomRule.getRuleName()).willReturn("My New Rule");
+
+        RuleEvaluationContext context = RuleEvaluationContext.builder()
+            .timesheet(this.timesheet)
+            .timesheetSetting(this.timesheetSetting)
+            .currentTimeLogBeingEvaluated(null)
+            .currentRuleBeingEvaluated(this.mockCustomRule)
+            .timeRangesToEvaluate(TreeRangeSet.create())
+            .build();
+
+        // When
+        RuleEvaluationResult result = this.rule.evaluate(context);
+
+        // Then
+        assertThat(result.getEvaluationDate()).isNull();
+        assertThat(result.getMetadata()).contains("Date: Weekly Evaluation");
+    }
+
+    @Test
+    @DisplayName("evaluate with FIXED_RATE charge method returns result")
+    void testEvaluateFixedRateChargeMethodReturnsResult() {
+        // Given
+        given(this.timesheet.getId()).willReturn(1);
+        given(this.timeLog.getDate()).willReturn(LocalDate.of(2024, 1, 1));
+        given(this.timesheetSetting.getPayRate()).willReturn(25.0f);
+        given(this.timesheetSetting.getBillRate()).willReturn(50.0f);
+        given(this.mockCustomRule.getPayRateMultiplier()).willReturn(null);
+        given(this.mockCustomRule.getBillRateMultiplier()).willReturn(null);
+        given(this.mockCustomRule.getChargeMethod()).willReturn(ChargeMethodType.FIXED_RATE);
+        given(this.mockCustomRule.getPayRatePerHour()).willReturn(40.0f);
+        given(this.mockCustomRule.getBillRatePerHour()).willReturn(80.0f);
+        given(this.mockCustomRule.getRuleType()).willReturn(RuleType.DURATION_BASED_MY_NEW_RULE);
+        given(this.mockCustomRule.getRuleName()).willReturn("My New Rule");
+
+        RuleEvaluationContext context = RuleEvaluationContext.builder()
+            .timesheet(this.timesheet)
+            .timesheetSetting(this.timesheetSetting)
+            .currentTimeLogBeingEvaluated(this.timeLog)
+            .currentRuleBeingEvaluated(this.mockCustomRule)
+            .timeRangesToEvaluate(TreeRangeSet.create())
+            .build();
+
+        // When
+        RuleEvaluationResult result = this.rule.evaluate(context);
+
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.getRuleType()).isEqualTo(RuleType.DURATION_BASED_MY_NEW_RULE);
+    }
+}
+```
+
+### 9b  RuleFactory registration tests
+
+Add two tests to `RuleFactoryTests.java`:
+
+```java
+@Test
+@DisplayName("Create rule - Duration based my new rule")
+void testCreateRuleDurationBasedMyNewRuleReturnsMyNewRule() {
+    // Act
+    IRule rule = this.ruleFactory.createRule(RuleType.DURATION_BASED_MY_NEW_RULE, this.logger);
+
+    // Assert
+    assertThat(rule)
+        .isInstanceOf(io.recruitcrm.microservice.timesheet.rule_engine.rules.hourly.MyNewRule.class);
+}
+
+@Test
+@DisplayName("Create time range resolver - Duration based my new rule")
+void testCreateTimeRangeResolverDurationBasedMyNewRuleReturnsResolver() {
+    // Act
+    ICustomRuleTimeRangeResolver resolver =
+        this.ruleFactory.createTimeRangeResolver(RuleType.DURATION_BASED_MY_NEW_RULE);
+
+    // Assert
+    assertThat(resolver).isInstanceOf(DurationBasedMyNewRuleTimeRangeResolver.class);
+}
+```
+
+---
+
+## 10  Complete file checklist
+
+Work through this in order. Every item is mandatory.
+
+- [ ] **`RuleType`** — new enum entry (one per family: `DURATION_BASED_*` and `RANGE_BASED_*`)
+- [ ] **Rule class** — `rules/hourly/MyNewRule.java` (duration-based family)
+- [ ] **Rule class** — `rules/shifts/MyNewRule.java` (range-based family)
+- [ ] **Resolver** — `rules/timerange_resolver/duration_based/DurationBasedMyNewRuleTimeRangeResolver.java`
+- [ ] **Resolver** — `rules/timerange_resolver/range_based/RangeBasedMyNewRuleTimeRangeResolver.java`
+- [ ] **`RuleFactory.createRule()`** — two `case` branches
+- [ ] **`RuleFactory.initializeTimeRangeResolverMap()`** — two `map.put(...)` entries
+- [ ] **`RulePrecedenceConfig`** — insert at correct position in both precedence lists
+- [ ] **Tests** — rule class tests for both families (6 scenarios minimum each)
+- [ ] **Tests** — resolver tests for both families
+- [ ] **Tests** — two new tests in `RuleFactoryTests`
+
+---
+
+## 11  What NOT to do
+
+| Mistake | Why it breaks things |
+|---|---|
+| Annotating rule or resolver with `@Component` / `@Service` | Rules are created by `RuleFactory`, not Spring — Spring would also create a second uninitialized instance |
+| Skipping `initRatesAndMethods()` in `evaluate()` | Rates remain null; `TimeHelper.calculatePayAmount` will NPE at runtime |
+| Constructing `RuleEvaluationResult` manually | Use `createCompleteResult()` — it fills `ruleType`, `ruleName`, `virtualRule`, `successful`, metadata |
+| Forgetting to register in `RuleFactory` | `RuleFactory.createRule()` hits `default` and throws `IllegalArgumentException` at evaluation time |
+| Forgetting `RulePrecedenceConfig` entry | Rule evaluates at `Integer.MAX_VALUE` precedence — it runs last, after `Default Pay`, and claims nothing |
+| Placing the new rule after `DEFAULT_PAY` in the precedence list | Default Pay sweeps remaining time first; your rule finds nothing to claim |
+| Same ID as an existing `RuleType` | `fromId()` returns the wrong type; pay calculations are silently wrong |
+| Testing only `evaluate()` without testing `null` context and `null` custom rule | `BaseRule.validateContext` and `initRatesAndMethods` guard throw `IllegalArgumentException` — missing those paths breaks coverage |

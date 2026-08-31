@@ -1,0 +1,140 @@
+application.env=local
+
+spring.application.name=candidate
+spring.application.datasource.read-consistency=true
+spring.jpa.open-in-view=false
+
+spring.datasource.reader.schema=SCHEMA
+
+# https://stackoverflow.com/questions/3383169/hibernate-jpa-mysql-and-tinyint1-for-boolean-instead-of-bit-or-char
+# Writer DataSource
+spring.datasource.writer.url=jdbc:mysql://WRITER_DB_HOST:3306/DB_NAME?tinyInt1isBit=false
+spring.datasource.writer.username=DB_USERNAME
+spring.datasource.writer.password=DB_PASSWORD
+spring.datasource.writer.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Reader DataSource
+spring.datasource.reader.url=jdbc:mysql://READER_DB_HOST:3306/DB_NAME?tinyInt1isBit=false
+spring.datasource.reader.username=DB_USERNAME
+spring.datasource.reader.password=DB_PASSWORD
+spring.datasource.reader.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA Properties
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.generate-ddl=false
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+
+
+#Jpa/Hibernate Batching
+# https://www.baeldung.com/jpa-hibernate-batch-insert-update
+# https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/chapters/batch/Batching.html
+
+spring.jpa.properties.hibernate.jdbc.batch_size=50
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+spring.jpa.properties.hibernate.jdbc.batch_versioned_data=true
+
+# Sentry
+sentry.dsn=
+sentry.environment=local
+sentry.exception-resolver-order=-2147483647
+
+#CORS
+application.cors.allowed-origins=*
+application.cors.allowed-origin-patterns=
+
+ #JWT - Legacy Authentication (Backward Compatibility)
+# openssl rand -hex 32
+security.recruitcrm.jwt.secret-key=ee8520d677f1f76b5714e75521dc34770abf3d06ba0e1028603dd3f0398bc94a
+security.recruitcrm.jwt.expiration-time=2592000000
+
+#Keycloak Configuration
+# Enable/Disable Keycloak authentication
+security.keycloak.enabled=true
+
+# Keycloak Server Configuration
+security.keycloak.server-url=http://localhost:8080/
+security.keycloak.realm=Workforce-Cloud-Tech
+security.keycloak.issuer-uri=http://localhost:8080/realms/Workforce-Cloud-Tech
+
+# Option A: Public Key (Use for development/testing)
+# Get this from Keycloak Admin Console -> Realm Settings -> Keys -> RS256 Public Key
+security.keycloak.public-key=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApUDDxVQZOnWVhgPFz5IFoixwvFYk5IwQdltprP3fnsI4rKbDLD2FMi23HBzv16lHgXo9pOKU/JdPCV+sJnwfdqczapJeYdFPaCJ+KCsyOnMT9H3d/rPXI2xSebQ0IkQ4u9sIzhX4XuGxY4UFsYUYFCNXK9Vnoc+dU/iluPGSkWd6O+LkX3Mu7Krr/phUnlnsxiNm7nP6e/heN475AwvwJ2sBVDQ/TWedh3Na5ndrxxmZUu9ze0fz+brt3MmBp2hoqxto8jYHyLsgpduE16Ml5fwC71rx//RbktqswHlhFePNq6yX9UBvS2cywBHnptwvCW+9Dr/MNf857Q7YhGXtYQIDAQAB
+
+# Option B: JWKS Endpoint (Recommended for production - comment out public-key if using this)
+# security.keycloak.jwk-set-uri=https://your-keycloak-server:8443/realms/your-realm-name/protocol/openid-connect/certs
+
+# Token Validation Settings
+security.keycloak.validate-issuer=true
+security.keycloak.validate-audience=false
+security.keycloak.expected-audience=account
+
+# Token Auto-Detection Strategy
+# Options: auto (inspect token), header-only (require X-Auth-Type header), issuer-only (check issuer claim)
+security.keycloak.detection-strategy=auto
+
+#Flagsmith
+flagsmith.api.key=API_KEY
+flagsmith.webhook.secret=WEBHOOK_SECRET
+
+#Redis
+spring.data.redis.host=localhost
+
+# Application identity (e.g. for message metadata or logging)
+app.service.name=contract-staffing-service
+
+# Kafka producer (fan-out: one topic, many consumer groups on downstream services)
+# Set app.kafka.env-name per environment so the topic matches your cluster naming (e.g. dev, staging, prod).
+app.kafka.env-name=local
+app.kafka.topic.notification-timesheet=${app.kafka.env-name}-reminder-notification
+
+spring.kafka.bootstrap-servers=
+spring.kafka.producer.client-id=timesheet-service-producer
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.acks=all
+spring.kafka.producer.retries=3
+spring.kafka.producer.properties.max.in.flight.requests.per.connection=5
+spring.kafka.producer.properties.request.timeout.ms=30000
+spring.kafka.producer.properties.delivery.timeout.ms=120000
+spring.kafka.producer.properties.retry.backoff.ms=1000
+
+# Optional: use when your cluster requires SASL/TLS (leave blank for local/plaintext)
+spring.kafka.security.protocol=
+spring.kafka.sasl.mechanism=
+spring.kafka.sasl.username=
+spring.kafka.sasl.password=
+
+# Consumer settings (used if you add @KafkaListener in this service later)
+spring.kafka.consumer.group-id=
+spring.kafka.consumer.enable-partition-eof=
+spring.kafka.consumer.session-timeout-ms=
+
+#Auditlog
+auditlog.sqs.queue-name=auditlog-local-parthib.fifo
+auditlog.transport.driver=aws-sqs
+auditlog.library.context=producer
+
+#Server Config
+server.port=8080
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration,org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+
+#Logging
+logger.log-source=candidate-microservice
+logger.context=sync
+logging.file.path=logs
+
+#SQS
+spring.cloud.aws.credentials.access-key=AWS_ACCESS_KEY
+spring.cloud.aws.credentials.secret-key=AWS_SECRET_KEY
+spring.cloud.aws.region.static=ap-south-1
+
+# Swagger Basic Authentication
+ These are optional. If not set, defaults will be used:
+ - Username: internal_dev
+ - Password: posting1-starlight-deflector
+# Uncomment and set your own values for custom credentials
+ swagger.username=your_custom_username
+ swagger.password=your_secure_password

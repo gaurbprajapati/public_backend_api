@@ -1,0 +1,44 @@
+---
+description: Rule Engine Branch Coverage and Test Best Practices
+globs:
+alwaysApply: false
+---
+
+# Rule Engine Branch Coverage and Test Best Practices
+
+This rule summarizes the requirements and best practices for achieving 100% branch coverage in rule engine classes, specifically for `BreakRule`, `RegularHoursRule`, `SpecificHoursRangeRule`, and `WeeklyOvertimeRule`.
+
+## Coverage Requirements
+- All logical branches, including null checks, different enum values, and calculation paths, must be covered by tests.
+- Tests must cover:
+  - All possible values for key fields (e.g., `calculateBreakTime`, `dayType`, `chargeMethodType`)
+  - Edge cases (zero/partial hours, null context, non-work days)
+  - Both true and false branches for all conditionals
+  - Error handling and exceptional cases
+
+## Test Implementation Best Practices
+- Use minimal and relevant Mockito stubbing; avoid unnecessary stubbing to prevent `UnnecessaryStubbingException`.
+- Align `BigDecimal` assertions with the actual output scale (e.g., `200.0` vs `200.00`).
+- Use correct time ranges and input data to trigger all branches in calculation methods.
+- For rules with virtual/real distinction, assert the correct value of `isVirtualRule()`.
+- Remove or update tests if method names or signatures change (e.g., `getWorkDayType` vs `getWorkDay`).
+
+## Example Branches to Cover
+- `BreakRule`: calculateBreakTime true/false/null, zero/partial break, null context/fields
+- `RegularHoursRule`: `WorkDayType.DAY_OFF` vs work day, zero/partial hours
+- `SpecificHoursRangeRule`: null current rule, time range inside/outside regular hours, all charge methods, non-work day
+- `WeeklyOvertimeRule`: null threshold, hours above/below threshold, all charge methods, overtime and non-overtime scenarios
+
+## Assertion Guidelines
+- Use `compareTo` or string conversion for `BigDecimal` if scale is inconsistent
+- Assert all output fields, not just the main calculated value
+
+## Maintenance
+- Update tests when rule logic changes to maintain 100% branch coverage
+- Remove obsolete tests and stubbing
+
+- Assert all output fields, not just the main calculated value
+
+## Maintenance
+- Update tests when rule logic changes to maintain 100% branch coverage
+- Remove obsolete tests and stubbing

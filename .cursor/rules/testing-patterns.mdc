@@ -1,0 +1,563 @@
+---
+description: Comprehensive testing strategies for the timesheet microservice, including unit tests, integration tests, and test utilities.
+alwaysApply: false
+---
+# Testing Patterns and Strategies
+
+## Overview
+The timesheet microservice follows comprehensive testing strategies with unit tests, integration tests, and test utilities. Testing ensures code quality, reliability, and maintainability across all layers of the application.
+
+## Test Structure
+
+### 1. Test Package Organization
+```
+src/test/java/io/recruitcrm/microservice/timesheet/
+├── controllers/
+│   ├── timesheet/
+│   │   ├── TimesheetControllerTests.java
+│   │   └── ITimesheetControllerTests.java
+│   └── access_control/
+│       └── AccessControlTestControllerTests.java
+├── services/
+│   ├── timesheet/
+│   │   ├── TimesheetServiceTests.java
+│   │   └── ITimesheetServiceTests.java
+│   └── rule_engine/
+│       └── RuleEngineServiceTests.java
+├── repositories/
+│   ├── timesheet/
+│   │   ├── TimesheetRepositoryTests.java
+│   │   └── TimesheetDaoTests.java
+│   └── time_log/
+│       └── TimeLogRepositoryTests.java
+└── helpers/
+    ├── AuthTests.java
+    └── GenericHelperTests.java
+```
+
+### 2. Test Class Naming Conventions
+- **Unit Tests**: `[Class]Tests` (e.g., `TimesheetServiceTests`)
+- **Integration Tests**: `[Class]IntegrationTests` (e.g., `TimesheetControllerIntegrationTests`)
+- **Test Interfaces**: `I[Class]Tests` (e.g., `ITimesheetServiceTests`)
+
+## Unit Testing Patterns
+
+### 1. Service Layer Testing
+```java
+@ExtendWith(MockitoExtension.class)
+class TimesheetServiceTests {
+    
+    @Mock
+    private TimesheetRepository timesheetRepository;
+    
+    @Mock
+    private TimesheetMapper timesheetMapper;
+    
+    @Mock
+    private BulkPermissionChecker bulkPermissionChecker;
+    
+    @Mock
+    private Logger logger;
+    
+    @InjectMocks
+    private TimesheetService timesheetService;
+    
+    @Test
+    @DisplayName("Create timesheet - Success")
+    void testCreateTimesheet_validInput_createsTimesheet() {
+        // Arrange
+        TimesheetRequestDto request = new TimesheetRequestDto(
+            "Weekly Timesheet", 123, 456, LocalDate.now(), List.of());
+        
+        Timesheet timesheet = new Timesheet();
+        timesheet.setId(1);
+        timesheet.setName("Weekly Timesheet");
+        
+        TimesheetResponseDto expectedResponse = new TimesheetResponseDto(
+            1, "Weekly Timesheet", 123, 456, "DRAFT", LocalDateTime.now());
+        
+        when(timesheetMapper.toEntity(request)).thenReturn(timesheet);
+        when(timesheetRepository.save(timesheet)).thenReturn(timesheet);
+        when(timesheetMapper.toResponseDto(timesheet)).thenReturn(expectedResponse);
+        
+        // Act
+        TimesheetResponseDto result = timesheetService.createTimesheet(request);
+        
+        // Assert
+        assertThat(result).isNotNull();
+        assertThat(result.id()).isEqualTo(1);
+        assertThat(result.name()).isEqualTo("Weekly Timesheet");
+        
+        verify(timesheetRepository).save(timesheet);
+        verify(logger).logInfo(contains("Creating timesheet"));
+    }
+    
+    @Test
+    @DisplayName("Create timesheet - Validation error")
+    void testCreateTimesheet_invalidInput_throwsValidationError() {
+        // Arrange
+        TimesheetRequestDto request = new TimesheetRequestDto(
+            "", 123, 456, LocalDate.now(), List.of());
+        
+        when(timesheetRepository.existsByCandidateIdAndJobIdAndDate(
+            request.candidateId(), request.jobId(), request.date()))
+            .thenReturn(true);
+        
+        // Act & Assert
+        ValidationErrorException exception = assertThrows(ValidationErrorException.class, () ->
+            timesheetService.createTimesheet(request));
+        
+        assertThat(exception.getMessage()).contains("Timesheet already exists");
+        verify(timesheetRepository, never()).save(any());
+    }
+    
+    @Test
+    @DisplayName("Get timesheet by id - Success")
+    void testGetTimesheetById_validId_returnsTimesheet() {
+        // Arrange
+        Integer timesheetId = 1;
+        Timesheet timesheet = new Timesheet();
+        timesheet.setId(timesheetId);
+        timesheet.setName("Test Timesheet");
+        
+        TimesheetResponseDto expectedResponse = new TimesheetResponseDto(
+            timesheetId, "Test Timesheet", 123, 456, "DRAFT", LocalDateTime.now());
+        
+        when(timesheetRepository.findById(timesheetId)).thenReturn(Optional.of(timesheet));
+        when(timesheetMapper.toResponseDto(timesheet)).thenReturn(expectedResponse);
+        
+        // Mock permission check
+        BulkPermissionCheckResult permissionResult = BulkPermissionCheckResult.builder()
+            .results(List.of(BulkPermissionCheckResult.BulkPermissionCheckResultItem.builder()
+                .allowed(true)
+                .build()))
+            .build();
+        
+        when(bulkPermissionChecker.checkBulkPermissions(any())).thenReturn(permissionResult);
+        
+        // Act
+        TimesheetResponseDto result = timesheetService.getTimesheetById(timesheetId);
+        
+        // Assert
+        assertThat(result).isNotNull();
+        assertThat(result.id()).isEqualTo(timesheetId);
+        verify(bulkPermissionChecker).checkBulkPermissions(any());
+    }
+    
+    @Test
+    @DisplayName("Get timesheet by id - Not found")
+    void testGetTimesheetById_invalidId_throwsResourceNotFoundException() {
+        // Arrange
+        Integer timesheetId = 999;
+        when(timesheetRepository.findById(timesheetId)).thenReturn(Optional.empty());
+        
+        // Mock permission check
+        BulkPermissionCheckResult permissionResult = BulkPermissionCheckResult.builder()
+            .results(List.of(BulkPermissionCheckResult.BulkPermissionCheckResultItem.builder()
+                .allowed(true)
+                .build()))
+            .build();
+        
+        when(bulkPermissionChecker.checkBulkPermissions(any())).thenReturn(permissionResult);
+        
+        // Act & Assert
+        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () ->
+            timesheetService.getTimesheetById(timesheetId));
+        
+        assertThat(exception.getMessage()).contains("Timesheet not found");
+    }
+}
+```
+
+### 2. Controller Layer Testing
+```java
+@ExtendWith(MockitoExtension.class)
+class TimesheetControllerTests {
+    
+    @Mock
+    private ITimesheetService timesheetService;
+    
+    @Mock
+    private APIResponder apiResponder;
+    
+    @Mock
+    private Logger logger;
+    
+    @InjectMocks
+    private TimesheetController timesheetController;
+    
+    @Test
+    @DisplayName("POST /timesheets - Success")
+    void testCreateTimesheet_validInput_returns200() {
+        // Arrange
+        TimesheetRequestDto request = new TimesheetRequestDto(
+            "Weekly Timesheet", 123, 456, LocalDate.now(), List.of());
+        
+        TimesheetResponseDto serviceResponse = new TimesheetResponseDto(
+            1, "Weekly Timesheet", 123, 456, "DRAFT", LocalDateTime.now());
+        
+        ResponseEntity<?> expectedResponse = ResponseEntity.ok()
+            .body(new APINormalResponse<>("SUCCESS", "Timesheet created successfully", serviceResponse));
+        
+        when(timesheetService.createTimesheet(request)).thenReturn(serviceResponse);
+        when(apiResponder.respond(serviceResponse, "Timesheet created successfully"))
+            .thenReturn(expectedResponse);
+        
+        // Act
+        ResponseEntity<?> result = timesheetController.createTimesheet(request);
+        
+        // Assert
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        verify(timesheetService).createTimesheet(request);
+        verify(logger).logInfo(contains("Creating timesheet"));
+    }
+    
+    @Test
+    @DisplayName("POST /timesheets - Validation error")
+    void testCreateTimesheet_invalidInput_returns400() {
+        // Arrange
+        TimesheetRequestDto request = new TimesheetRequestDto(
+            "", 123, 456, LocalDate.now(), List.of());
+        
+        ResponseEntity<?> expectedResponse = ResponseEntity.badRequest()
+            .body(new APIErrorResponse("ERROR", "Validation failed", "VALIDATION_ERROR"));
+        
+        when(timesheetService.createTimesheet(request))
+            .thenThrow(new ValidationErrorException("Name is required"));
+        when(apiResponder.respondWithError("Name is required", HttpStatus.BAD_REQUEST))
+            .thenReturn(expectedResponse);
+        
+        // Act
+        ResponseEntity<?> result = timesheetController.createTimesheet(request);
+        
+        // Assert
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        verify(logger).logWarn(contains("Validation error"));
+    }
+    
+    @Test
+    @DisplayName("GET /timesheets/{id} - Success")
+    void testGetTimesheetById_validId_returns200() {
+        // Arrange
+        Integer timesheetId = 1;
+        TimesheetResponseDto serviceResponse = new TimesheetResponseDto(
+            timesheetId, "Test Timesheet", 123, 456, "DRAFT", LocalDateTime.now());
+        
+        ResponseEntity<?> expectedResponse = ResponseEntity.ok()
+            .body(new APINormalResponse<>("SUCCESS", "Timesheet retrieved successfully", serviceResponse));
+        
+        when(timesheetService.getTimesheetById(timesheetId)).thenReturn(serviceResponse);
+        when(apiResponder.respond(serviceResponse, "Timesheet retrieved successfully"))
+            .thenReturn(expectedResponse);
+        
+        // Act
+        ResponseEntity<?> result = timesheetController.getTimesheetById(timesheetId);
+        
+        // Assert
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        verify(timesheetService).getTimesheetById(timesheetId);
+    }
+}
+```
+
+### 3. Repository Layer Testing
+```java
+@DataJpaTest
+class TimesheetRepositoryTests {
+    
+    @Autowired
+    private TimesheetRepository timesheetRepository;
+    
+    @Autowired
+    private TestEntityManager entityManager;
+    
+    @Test
+    @DisplayName("Find by candidate id - Success")
+    void testFindByCandidateId_validCandidateId_returnsTimesheets() {
+        // Arrange
+        Timesheet timesheet1 = createTestTimesheet("Timesheet 1", 123);
+        Timesheet timesheet2 = createTestTimesheet("Timesheet 2", 123);
+        Timesheet timesheet3 = createTestTimesheet("Timesheet 3", 456);
+        
+        entityManager.persistAndFlush(timesheet1);
+        entityManager.persistAndFlush(timesheet2);
+        entityManager.persistAndFlush(timesheet3);
+        
+        // Act
+        List<Timesheet> result = timesheetRepository.findByCandidateId(123);
+        
+        // Assert
+        assertThat(result).hasSize(2);
+        assertThat(result).extracting("candidateId").containsOnly(123);
+        assertThat(result).extracting("name").contains("Timesheet 1", "Timesheet 2");
+    }
+    
+    @Test
+    @DisplayName("Exists by candidate id and job id and date - Success")
+    void testExistsByCandidateIdAndJobIdAndDate_validData_returnsTrue() {
+        // Arrange
+        Timesheet timesheet = createTestTimesheet("Test Timesheet", 123);
+        timesheet.setJobId(456);
+        timesheet.setDate(LocalDate.of(2024, 1, 15));
+        
+        entityManager.persistAndFlush(timesheet);
+        
+        // Act
+        boolean exists = timesheetRepository.existsByCandidateIdAndJobIdAndDate(123, 456, LocalDate.of(2024, 1, 15));
+        
+        // Assert
+        assertThat(exists).isTrue();
+    }
+    
+    private Timesheet createTestTimesheet(String name, Integer candidateId) {
+        Timesheet timesheet = new Timesheet();
+        timesheet.setName(name);
+        timesheet.setCandidateId(candidateId);
+        timesheet.setJobId(1);
+        timesheet.setStatus("DRAFT");
+        timesheet.setDate(LocalDate.now());
+        timesheet.setAccountId(1);
+        return timesheet;
+    }
+}
+```
+
+## Integration Testing
+
+### 1. Controller Integration Tests
+```java
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@TestPropertySource(properties = {
+    "spring.datasource.url=jdbc:h2:mem:testdb",
+    "spring.jpa.hibernate.ddl-auto=create-drop"
+})
+class TimesheetControllerIntegrationTests {
+    
+    @Autowired
+    private TestRestTemplate restTemplate;
+    
+    @Autowired
+    private TimesheetRepository timesheetRepository;
+    
+    @Test
+    @DisplayName("POST /v1/timesheets - Integration test")
+    void testCreateTimesheet_integration() {
+        // Arrange
+        TimesheetRequestDto request = new TimesheetRequestDto(
+            "Integration Test Timesheet", 123, 456, LocalDate.now(), List.of());
+        
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        HttpEntity<TimesheetRequestDto> entity = new HttpEntity<>(request, headers);
+        
+        // Act
+        ResponseEntity<APINormalResponse> response = restTemplate.postForEntity(
+            "/v1/timesheets", entity, APINormalResponse.class);
+        
+        // Assert
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody().getResult()).isEqualTo("SUCCESS");
+        
+        // Verify database
+        List<Timesheet> timesheets = timesheetRepository.findByCandidateId(123);
+        assertThat(timesheets).hasSize(1);
+        assertThat(timesheets.get(0).getName()).isEqualTo("Integration Test Timesheet");
+    }
+    
+    @Test
+    @DisplayName("GET /v1/timesheets/{id} - Integration test")
+    void testGetTimesheetById_integration() {
+        // Arrange
+        Timesheet timesheet = createTestTimesheet("Integration Test", 123);
+        timesheetRepository.save(timesheet);
+        
+        // Act
+        ResponseEntity<APINormalResponse> response = restTemplate.getForEntity(
+            "/v1/timesheets/" + timesheet.getId(), APINormalResponse.class);
+        
+        // Assert
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody().getResult()).isEqualTo("SUCCESS");
+    }
+}
+```
+
+### 2. Service Integration Tests
+```java
+@SpringBootTest
+@Transactional
+class TimesheetServiceIntegrationTests {
+    
+    @Autowired
+    private TimesheetService timesheetService;
+    
+    @Autowired
+    private TimesheetRepository timesheetRepository;
+    
+    @Test
+    @DisplayName("Create and retrieve timesheet - Integration")
+    void testCreateAndRetrieveTimesheet_integration() {
+        // Arrange
+        TimesheetRequestDto request = new TimesheetRequestDto(
+            "Integration Test", 123, 456, LocalDate.now(), List.of());
+        
+        // Act
+        TimesheetResponseDto created = timesheetService.createTimesheet(request);
+        TimesheetResponseDto retrieved = timesheetService.getTimesheetById(created.id());
+        
+        // Assert
+        assertThat(created).isNotNull();
+        assertThat(created.name()).isEqualTo("Integration Test");
+        assertThat(retrieved).isNotNull();
+        assertThat(retrieved.id()).isEqualTo(created.id());
+        assertThat(retrieved.name()).isEqualTo(created.name());
+    }
+}
+```
+
+## Test Utilities and Helpers
+
+### 1. Test Data Builders
+```java
+public class TestDataBuilder {
+    
+    public static TimesheetRequestDto createTimesheetRequest() {
+        return new TimesheetRequestDto(
+            "Test Timesheet",
+            123,
+            456,
+            LocalDate.now(),
+            List.of()
+        );
+    }
+    
+    public static TimesheetRequestDto createTimesheetRequest(String name, Integer candidateId, Integer jobId) {
+        return new TimesheetRequestDto(
+            name,
+            candidateId,
+            jobId,
+            LocalDate.now(),
+            List.of()
+        );
+    }
+    
+    public static Timesheet createTimesheet() {
+        Timesheet timesheet = new Timesheet();
+        timesheet.setName("Test Timesheet");
+        timesheet.setCandidateId(123);
+        timesheet.setJobId(456);
+        timesheet.setStatus("DRAFT");
+        timesheet.setDate(LocalDate.now());
+        timesheet.setAccountId(1);
+        return timesheet;
+    }
+    
+    public static TimesheetResponseDto createTimesheetResponse() {
+        return new TimesheetResponseDto(
+            1,
+            "Test Timesheet",
+            123,
+            456,
+            "DRAFT",
+            LocalDateTime.now()
+        );
+    }
+    
+    public static BulkPermissionCheckRequest createBulkPermissionRequest() {
+        return BulkPermissionCheckRequest.builder()
+            .items(List.of(BulkPermissionCheckRequest.BulkPermissionCheckItem.builder()
+                .entity(Entity.TIMESHEET)
+                .permissionCheckContext(PermissionCheckContext.builder()
+                    .permission(Permission.VIEW_TIMESHEET)
+                    .permissionLevel(PermissionLevel.YES)
+                    .build())
+                .accessControlCheckMetadataContext(AccessControlCheckMetadataContext.builder()
+                    .timesheetId(1)
+                    .build())
+                .build()))
+            .build();
+    }
+}
+```
+
+### 2. Mock Data Classes
+```java
+public class MockData {
+    
+    public static TimesheetRequestDto mockTimesheetRequest() {
+        return new TimesheetRequestDto(
+            "Mock Timesheet",
+            123,
+            456,
+            LocalDate.now(),
+            List.of()
+        );
+    }
+    
+    public static Timesheet mockTimesheet() {
+        Timesheet timesheet = new Timesheet();
+        timesheet.setId(1);
+        timesheet.setName("Mock Timesheet");
+        timesheet.setCandidateId(123);
+        timesheet.setJobId(456);
+        timesheet.setStatus("DRAFT");
+        timesheet.setDate(LocalDate.now());
+        timesheet.setAccountId(1);
+        timesheet.setCreatedAt(LocalDateTime.now());
+        return timesheet;
+    }
+    
+    public static TimesheetResponseDto mockTimesheetResponse() {
+        return new TimesheetResponseDto(
+            1,
+            "Mock Timesheet",
+            123,
+            456,
+            "DRAFT",
+            LocalDateTime.now()
+        );
+    }
+}
+```
+
+## Testing Best Practices
+
+### 1. Test Organization
+- Use descriptive test method names with `@DisplayName`
+- Group related tests in test classes
+- Use `@Nested` for complex test scenarios
+- Follow AAA pattern (Arrange, Act, Assert)
+
+### 2. Mocking Strategy
+- Mock external dependencies and services
+- Use `@Mock` and `@InjectMocks` for unit tests
+- Verify mock interactions when important
+- Use realistic mock data
+
+### 3. Test Data Management
+- Use test data builders for complex objects
+- Create reusable test utilities
+- Use `@TestPropertySource` for test configuration
+- Clean up test data after tests
+
+### 4. Assertion Patterns
+- Use descriptive assertion messages
+- Test both positive and negative scenarios
+- Verify exception types and messages
+- Test edge cases and boundary conditions
+
+### 5. Performance Testing
+- Use `@DirtiesContext` sparingly
+- Optimize test database operations
+- Use `@Transactional` for test isolation
+- Monitor test execution times
+
+
+
+
+- Monitor test execution times
+
+
+

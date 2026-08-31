@@ -1,0 +1,4406 @@
+{
+    "candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Ehdokkaan tunnus"
+        },
+        "candidatename": {
+            "label": "Nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "firstname": {
+            "label": "Etunimi",
+            "longlabel": "Ehdokkaan etunimi"
+        },
+        "lastname": {
+            "label": "Sukunimi",
+            "longlabel": "Ehdokkaan sukunimi"
+        },
+        "emailid": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "genderid": {
+            "label": "Sukupuoli",
+            "longlabel": "Sukupuoli"
+        },
+        "contactnumber": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "candidatedob": {
+            "label": "Syntymäaika",
+            "longlabel": "Syntymäaika"
+        },
+        "age": {
+            "label": "Ikä",
+            "longlabel": "Ehdokkaan ikä"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Koulutuksellinen pätevyys"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Koulutuksellinen erikoistuminen"
+        },
+        "workexpyr": {
+            "label": "Kokemus yhteensä",
+            "longlabel": "Kokemus yhteensä"
+        },
+        "relevantexperience": {
+            "label": "Asiaankuuluva kokemus",
+            "longlabel": "Asiaankuuluva kokemus"
+        },
+        "resumetext": {
+            "label": "Yhteenvetoteksti",
+            "longlabel": "Yhteenvetoteksti"
+        },
+        "currentsalary": {
+            "label": "Nykyinen palkka",
+            "longlabel": "Nykyinen palkka"
+        },
+        "resume": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "resumefilename": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "lastorganisation": {
+            "label": "Nykyinen organisaatio",
+            "longlabel": "Nykyinen organisaatio"
+        },
+        "skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "willingtorelocate": {
+            "label": "Halukas muuttamaan",
+            "longlabel": "Halukas muuttamaan"
+        },
+        "salaryexpectation": {
+            "label": "Palkkaodotus",
+            "longlabel": "Palkkaodotus"
+        },
+        "position": {
+            "label": "Otsikko",
+            "longlabel": "Titteli / asema"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "currencyid": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "currencycountry": {
+            "label": "Valuutta Maa",
+            "longlabel": "Valuutta Maa"
+        },
+        "symbol": {
+            "label": "Symboli",
+            "longlabel": "Symboli"
+        },
+        "accountid": {
+            "label": "Tilin tunnus",
+            "longlabel": "Tilin tunnus"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownerslug": {
+            "label": "Omistaja Slug",
+            "longlabel": "Omistaja Slug"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "canaccess": {
+            "label": "Voi käyttää",
+            "longlabel": "Voi käyttää"
+        },
+        "profilepic": {
+            "label": "Profiilikuva",
+            "longlabel": "Profiilikuva"
+        },
+        "deleted": {
+            "label": "Poistettu",
+            "longlabel": "Poistettu"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "resumeupdatedon": {
+            "label": "Ehdokkaan päivittämä profiili",
+            "longlabel": "Ehdokkaan päivittämä profiili"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profiilipyyntö lähetetty",
+            "longlabel": "Profiilipyyntö lähetetty"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Linkin tila",
+            "longlabel": "Request Resume Linkin tila"
+        },
+        "resumeaddedon": {
+            "label": "Resume lisätty",
+            "longlabel": "Resume lisätty"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Facebook-profiili"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Twitter-profiili"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiili",
+            "longlabel": "Linkedin profiili"
+        },
+        "profilegithub": {
+            "label": "Github-profiili",
+            "longlabel": "Github-profiili"
+        },
+        "source": {
+            "label": "Lähde",
+            "longlabel": "Lähde"
+        },
+        "createdbyname": {
+            "label": "Luotu nimen mukaan",
+            "longlabel": "Luotu nimen mukaan"
+        },
+        "qualification": {
+            "label": "Pätevyysmerkintä",
+            "longlabel": "Pätevyysmerkintä"
+        },
+        "currentstatus": {
+            "label": "Työllisyysasema",
+            "longlabel": "Nykyinen työllisyystilanne"
+        },
+        "noticeperiod": {
+            "label": "Irtisanomisaika",
+            "longlabel": "Irtisanomisaika (päivää)"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "availablefrom": {
+            "label": "Saatavilla osoitteesta",
+            "longlabel": "Saatavilla osoitteesta"
+        },
+        "salarytype": {
+            "label": "Palkkatyyppi",
+            "longlabel": "Palkkatyyppi"
+        },
+        "languageskills": {
+            "label": "Kieli",
+            "longlabel": "Kielitaito"
+        },
+        "accountlogo": {
+            "label": "Tilin logo",
+            "longlabel": "Tilin logo"
+        },
+        "accounttitle": {
+            "label": "Tilin nimi",
+            "longlabel": "Tilin nimi"
+        },
+        "candidateterms": {
+            "label": "Ehdokkaan ehdot",
+            "longlabel": "Ehdokkaan ehdot"
+        },
+        "jobapplicationsettings": {
+            "label": "Työhakemusten asetukset",
+            "longlabel": "Työhakemusten asetukset"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "gdprcompliance": {
+            "label": "GDPR-yhteensopivuus",
+            "longlabel": "GDPR-yhteensopivuus"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "profilexing": {
+            "label": "Xing profiili",
+            "longlabel": "Xing profiili"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "proficiency_level": {
+            "label": "Taitotaso",
+            "longlabel": "Taitotaso"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "work_history": {
+            "label": "Työhistoria",
+            "longlabel": "Työhistoria"
+        },
+        "title": {
+            "label": "Työpaikka",
+            "longlabel": "Työpaikka"
+        },
+        "work_company_name": {
+            "label": "Yrityksen nimi",
+            "longlabel": "Yrityksen nimi"
+        },
+        "employment_type": {
+            "label": "Työsuhteen tyyppi",
+            "longlabel": "Työsuhteen tyyppi"
+        },
+        "industry_id": {
+            "label": "Toimialatyyppi",
+            "longlabel": "Toimialatyyppi"
+        },
+        "work_location": {
+            "label": "Työpaikka",
+            "longlabel": "Työpaikka"
+        },
+        "salary": {
+            "label": "Palkka",
+            "longlabel": "Palkka"
+        },
+        "is_currently_working": {
+            "label": "Tällä hetkellä töissä",
+            "longlabel": "Tällä hetkellä töissä"
+        },
+        "work_start_date": {
+            "label": "Työn alkamispäivä",
+            "longlabel": "Työn alkamispäivä"
+        },
+        "work_end_date": {
+            "label": "Työn päättymispäivä",
+            "longlabel": "Työn päättymispäivä"
+        },
+        "work_description": {
+            "label": "Työn kuvaus",
+            "longlabel": "Työn kuvaus"
+        },
+        "education_history": {
+            "label": "Koulutuksen historia",
+            "longlabel": "Koulutuksen historia"
+        },
+        "institute_name": {
+            "label": "Koulun/korkeakoulun nimi",
+            "longlabel": "Koulun/korkeakoulun nimi"
+        },
+        "educational_qualification": {
+            "label": "Koulutuksellinen pätevyys",
+            "longlabel": "Koulutuksellinen pätevyys"
+        },
+        "educational_specialization": {
+            "label": "Koulutuksellinen erikoistuminen",
+            "longlabel": "Koulutuksellinen erikoistuminen"
+        },
+        "grade": {
+            "label": "Luokka",
+            "longlabel": "Luokka"
+        },
+        "education_location": {
+            "label": "Koulutus Sijainti",
+            "longlabel": "Koulutus Sijainti"
+        },
+        "education_start_date": {
+            "label": "Koulutuksen alkamispäivä",
+            "longlabel": "Koulutuksen alkamispäivä"
+        },
+        "education_end_date": {
+            "label": "Koulutuksen päättymispäivä",
+            "longlabel": "Koulutuksen päättymispäivä"
+        },
+        "education_description": {
+            "label": "Koulutuksen kuvaus",
+            "longlabel": "Koulutuksen kuvaus"
+        },
+        "summary": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "unavailable": {
+            "label": "Saatavuus",
+            "longlabel": "Saatavuus"
+        },
+        "off_limit_status": {
+            "label": "Tilanne rajan ulkopuolella",
+            "longlabel": "Tilanne rajan ulkopuolella"
+        },
+        "sms_opt_out": {
+            "label": "Tekstiviestien käytöstä poistaminen",
+            "longlabel": "Tekstiviestien käytöstä poistaminen"
+        },
+        "last_calllog_created_on": {
+            "label": "Viimeisen puhelun loki lisätty",
+            "longlabel": "Viimeisen puhelun loki lisätty"
+        },
+        "last_sms_sent_on": {
+            "label": "Viimeksi lähetetty tekstiviesti",
+            "longlabel": "Viimeksi lähetetty tekstiviesti"
+        },
+        "last_email_sent_on": {
+            "label": "Viimeksi lähetetty sähköposti",
+            "longlabel": "Viimeksi lähetetty sähköposti"
+        },
+        "last_communication_timestamp": {
+            "label": "Viimeinen tiedonanto",
+            "longlabel": "Viimeinen tiedonanto"
+        },
+        "last_communication_method": {
+            "label": "Viimeisin komentotyyppi",
+            "longlabel": "Viimeisin komentotyyppi"
+        },
+        "contact_linked": {
+            "label": "Contact-Linked",
+            "longlabel": "Contact-Linked"
+        },
+        "last_meeting_created_on": {
+            "label": "Viimeisin kokous lisätty",
+            "longlabel": "Viimeisin kokous lisätty"
+        },
+        "last_message_sent_on": {
+            "label": "Viimeksi lähetetty LinkedIn-viesti",
+            "longlabel": "Viimeksi lähetetty LinkedIn-viesti"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        }
+    },
+    "assigned_candidates": {
+        "jobslug": {
+            "label": "Työ",
+            "longlabel": "Job Slug"
+        },
+        "jobid": {
+            "label": "Työ",
+            "longlabel": "Työ"
+        },
+        "jobname": {
+            "label": "Työ",
+            "longlabel": "Työ"
+        },
+        "candidateid": {
+            "label": "Ehdokas",
+            "longlabel": "Ehdokas"
+        },
+        "candidatename": {
+            "label": "Ehdokas",
+            "longlabel": "Ehdokas"
+        },
+        "firstname": {
+            "label": "Etunimi",
+            "longlabel": "Etunimi"
+        },
+        "lastname": {
+            "label": "Sukunimi",
+            "longlabel": "Sukunimi"
+        },
+        "lastorganisation": {
+            "label": "Nykyinen organisaatio",
+            "longlabel": "Nykyinen organisaatio"
+        },
+        "resumetext": {
+            "label": "Yhteenvetoteksti",
+            "longlabel": "Yhteenvetoteksti"
+        },
+        "resume": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "resumefilename": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "candidatestatusid": {
+            "label": "Palkkausvaihe",
+            "longlabel": "Voit muuttaa ehdokkaan palkkausvaihetta ja antaa palautetta klikkaamalla ehdokkaan nykyistä palkkausvaihetta."
+        },
+        "candidatestatus": {
+            "label": "Palkkausvaihe",
+            "longlabel": "Voit muuttaa ehdokkaan palkkausvaihetta ja antaa palautetta klikkaamalla ehdokkaan nykyistä palkkausvaihetta."
+        },
+        "remark": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "emailid": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "contactnumber": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "currentsalary": {
+            "label": "Nykyinen palkka",
+            "longlabel": "Nykyinen palkka"
+        },
+        "salaryexpectation": {
+            "label": "Palkkaodotus",
+            "longlabel": "Palkkaodotus"
+        },
+        "noticeperiod": {
+            "label": "Irtisanomisaika",
+            "longlabel": "Irtisanomisaika (päivää)"
+        },
+        "candidatedob": {
+            "label": "Syntymäaika",
+            "longlabel": "Ehdokkaan syntymäaika"
+        },
+        "genderid": {
+            "label": "Sukupuoli",
+            "longlabel": "Sukupuoli"
+        },
+        "age": {
+            "label": "Ikä",
+            "longlabel": "Ehdokkaan ikä"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Pätevyys"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Erikoistuminen"
+        },
+        "workexpyr": {
+            "label": "Kokemus yhteensä",
+            "longlabel": "Kokemus yhteensä"
+        },
+        "relevantexperience": {
+            "label": "Asiaankuuluva kokemus",
+            "longlabel": "Asiaankuuluva kokemus"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "availablefrom": {
+            "label": "Saatavilla osoitteesta",
+            "longlabel": "Saatavilla osoitteesta"
+        },
+        "position": {
+            "label": "Otsikko",
+            "longlabel": "Titteli / asema"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Facebook-profiili"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Twitter-profiili"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiili",
+            "longlabel": "Linkedin profiili"
+        },
+        "profilegithub": {
+            "label": "Github-profiili",
+            "longlabel": "Github-profiili"
+        },
+        "share": {
+            "label": "Näkyvyys",
+            "longlabel": "Näkyvyys"
+        },
+        "id": {
+            "label": "Ehdokkaan kysymykset",
+            "longlabel": "Ehdokkaan kysymykset"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "source": {
+            "label": "Lähde",
+            "longlabel": "Lähde"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "profilexing": {
+            "label": "Xing profiili",
+            "longlabel": "Xing profiili"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "unavailable": {
+            "label": "Saatavuus",
+            "longlabel": "Saatavuus"
+        },
+        "summary": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "jobstatus": {
+            "label": "Työn tila",
+            "longlabel": "Työn tila"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profiilipyyntö lähetetty",
+            "longlabel": "Profiilipyyntö lähetetty"
+        },
+        "willingtorelocate": {
+            "label": "Halukas muuttamaan",
+            "longlabel": "Halukas muuttamaan"
+        },
+        "currentstatus": {
+            "label": "Työllisyysasema",
+            "longlabel": "Työllisyysasema"
+        },
+        "languageskills": {
+            "label": "Kieli",
+            "longlabel": "Kieli"
+        },
+        "skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Työhakemus ansioluettelo",
+            "longlabel": "Työhakemus ansioluettelo"
+        },
+        "assigned_job_coverletter": {
+            "label": "Työhakemus Saatekirje",
+            "longlabel": "Työhakemus Saatekirje"
+        },
+        "assigned_job_portfolio": {
+            "label": "Työhakemusportfolio",
+            "longlabel": "Työhakemusportfolio"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Työhakemustiedosto 1",
+            "longlabel": "Työhakemustiedosto 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Työhakemustiedosto 2",
+            "longlabel": "Työhakemustiedosto 2"
+        },
+        "work_history": {
+            "label": "Työhistoria",
+            "longlabel": "Työhistoria"
+        },
+        "education_history": {
+            "label": "Koulutuksen historia",
+            "longlabel": "Koulutuksen historia"
+        },
+        "companyname": {
+            "label": "Yrityksen nimi",
+            "longlabel": "Yrityksen nimi"
+        },
+        "job_type": {
+            "label": "Työn tyyppi",
+            "longlabel": "Työn tyyppi"
+        },
+        "job_category": {
+            "label": "Työn luokka",
+            "longlabel": "Työn luokka"
+        },
+        "resumeupdatedon": {
+            "label": "Ehdokkaan päivittämä profiili",
+            "longlabel": "Ehdokkaan päivittämä profiili"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Linkin tila",
+            "longlabel": "Request Resume Linkin tila"
+        },
+        "resumeaddedon": {
+            "label": "Resume lisätty",
+            "longlabel": "Resume lisätty"
+        },
+        "off_limit_status": {
+            "label": "Tilanne rajan ulkopuolella",
+            "longlabel": "Tilanne rajan ulkopuolella"
+        },
+        "sms_opt_out": {
+            "label": "Tekstiviestien käytöstä poistaminen",
+            "longlabel": "Tekstiviestien käytöstä poistaminen"
+        },
+        "last_calllog_created_on": {
+            "label": "Viimeisen puhelun loki lisätty",
+            "longlabel": "Viimeisen puhelun loki lisätty"
+        },
+        "last_sms_sent_on": {
+            "label": "Viimeksi lähetetty tekstiviesti",
+            "longlabel": "Viimeksi lähetetty tekstiviesti"
+        },
+        "last_email_sent_on": {
+            "label": "Viimeksi lähetetty sähköposti",
+            "longlabel": "Viimeksi lähetetty sähköposti"
+        },
+        "last_communication_timestamp": {
+            "label": "Viimeinen tiedonanto",
+            "longlabel": "Viimeinen tiedonanto"
+        },
+        "last_communication_method": {
+            "label": "Viimeisin komentotyyppi",
+            "longlabel": "Viimeisin komentotyyppi"
+        },
+        "remote": {
+            "label": "Työpaikan tyyppi",
+            "longlabel": "Työpaikan tyyppi"
+        },
+        "last_meeting_created_on": {
+            "label": "Viimeisin kokous lisätty",
+            "longlabel": "Viimeisin kokous lisätty"
+        },
+        "last_message_sent_on": {
+            "label": "Viimeksi lähetetty LinkedIn-viesti",
+            "longlabel": "Viimeksi lähetetty LinkedIn-viesti"
+        },
+        "timesheet_setting": {
+            "label": "Työaikataulu",
+            "longlabel": "Työaikataulu"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Ehdokkaan tunnus"
+        },
+        "updatedby": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "job_function": {
+            "label": "Työtehtävä",
+            "longlabel": "Työtehtävä"
+        },
+        "job_industry": {
+            "label": "Työala",
+            "longlabel": "Työala"
+        },
+        "placement_id": {
+            "label": "Sijoitus",
+            "longlabel": "Sijoitus"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        }
+    },
+    "companies": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Yrityksen tunnus"
+        },
+        "companyname": {
+            "label": "Yrityksen nimi",
+            "longlabel": "Yrityksen nimi"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Yrityksen täydellinen osoite"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Yritys Kaupunki"
+        },
+        "industryid": {
+            "label": "Teollisuus",
+            "longlabel": "Yritys Toimiala"
+        },
+        "industry": {
+            "label": "Teollisuus",
+            "longlabel": "Yritys Toimiala"
+        },
+        "website": {
+            "label": "Verkkosivusto",
+            "longlabel": "Verkkosivusto"
+        },
+        "totalopenjob": {
+            "label": "Avoimet työpaikat",
+            "longlabel": "Avoimet työpaikat yhteensä"
+        },
+        "totalclosedjob": {
+            "label": "Suljetut työpaikat",
+            "longlabel": "Suljetut työpaikat yhteensä"
+        },
+        "totalonholdjob": {
+            "label": "Pidossa olevat työpaikat",
+            "longlabel": "Pidossa olevat työpaikat"
+        },
+        "totalcanceledjob": {
+            "label": "Peruutetut työpaikat",
+            "longlabel": "Peruutetut työpaikat"
+        },
+        "logo": {
+            "label": "Logo",
+            "longlabel": "Yrityksen logo"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistajan nimi"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Yrityksen Facebook-profiili"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Yrityksen Twitter-profiili"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiili",
+            "longlabel": "Yrityksen Linkedin-profiili"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "creatorname": {
+            "label": "Luojan nimi",
+            "longlabel": "Luojan nimi"
+        },
+        "accountid": {
+            "label": "Tilin tunnus",
+            "longlabel": "Tilin tunnus"
+        },
+        "deleted": {
+            "label": "Poistettu",
+            "longlabel": "Poistettu"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "updatedby": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Yrityksen huomautus"
+        },
+        "aboutcompany": {
+            "label": "Tietoja yrityksestä",
+            "longlabel": "Tietoja yrityksestä"
+        },
+        "parentcompanyname": {
+            "label": "Emoyhtiö",
+            "longlabel": "Emoyhtiön nimi"
+        },
+        "off_limit_status": {
+            "label": "Tilanne rajan ulkopuolella",
+            "longlabel": "Tilanne rajan ulkopuolella"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Yritys Paikkakunta"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Yrityksen valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Yritys Maa"
+        },
+        "postal_code": {
+            "label": "Postinumero",
+            "longlabel": "Yrityksen postinumero"
+        },
+        "last_meeting_created_on": {
+            "label": "Viimeisin kokous lisätty",
+            "longlabel": "Viimeisin kokous lisätty"
+        },
+        "linkedin_id": {
+            "label": "LinkedIn-yritystunnus",
+            "longlabel": "LinkedIn-yritystunnus"
+        },
+        "monster_board_company_name": {
+            "label": "Monster Board Company",
+            "longlabel": "Monster Board Company"
+        },
+        "indeed_opted_out": {
+            "label": "Todellakin jättäytyi pois",
+            "longlabel": "Todellakin jättäytyi pois"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        }
+    },
+    "contacts": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Yhteyshenkilön tunnus"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Yhteyshenkilön tunnus"
+        },
+        "name": {
+            "label": "Nimi",
+            "longlabel": "Yhteyshenkilön nimi"
+        },
+        "firstname": {
+            "label": "Etunimi",
+            "longlabel": "Yhteyshenkilön etunimi"
+        },
+        "lastname": {
+            "label": "Sukunimi",
+            "longlabel": "Yhteyshenkilön sukunimi"
+        },
+        "stageid": {
+            "label": "Vaihe",
+            "longlabel": "Yhteysvaihe"
+        },
+        "stage": {
+            "label": "Vaihe",
+            "longlabel": "Yhteysvaihe"
+        },
+        "companyid": {
+            "label": "Yritys",
+            "longlabel": "Yritys"
+        },
+        "companyslug": {
+            "label": "Komppanian etana",
+            "longlabel": "Yritys Slug"
+        },
+        "companyname": {
+            "label": "Yritys",
+            "longlabel": "Yrityksen nimi"
+        },
+        "email": {
+            "label": "Sähköposti",
+            "longlabel": "Yhteyshenkilön sähköpostiosoite"
+        },
+        "contactnumber": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Yhteyshenkilön täydellinen osoite"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Yhteystiedot Kaupunki"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownerslug": {
+            "label": "Omistaja Slug",
+            "longlabel": "Omistaja Slug"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Yhteydenotto Facebook-profiilin URL-osoite"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Yhteydenotto Twitter-profiilin URL-osoite"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiili",
+            "longlabel": "Yhteystiedot Linkedin-profiilin URL-osoite"
+        },
+        "designation": {
+            "label": "Otsikko",
+            "longlabel": "Otsikko"
+        },
+        "accountid": {
+            "label": "Tilin tunnus",
+            "longlabel": "Tilin tunnus"
+        },
+        "canaccess": {
+            "label": "Voi käyttää",
+            "longlabel": "Voi käyttää"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdbyname": {
+            "label": "Luotu nimen mukaan",
+            "longlabel": "Luotu nimen mukaan"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "deleted": {
+            "label": "Poistettu",
+            "longlabel": "Poistettu"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Yhteystiedot Huomautus"
+        },
+        "photo": {
+            "label": "Profiilikuva",
+            "longlabel": "Profiilikuva"
+        },
+        "company_accountid": {
+            "label": "Yritys - tilin tunnus",
+            "longlabel": "Yritys - tilin tunnus"
+        },
+        "company_address": {
+            "label": "Yritys - täydellinen osoite",
+            "longlabel": "Yritys - täydellinen osoite"
+        },
+        "company_city": {
+            "label": "Yritys - Kaupunki",
+            "longlabel": "Yritys - Kaupunki"
+        },
+        "company_companyname": {
+            "label": "Yritys - Nimi",
+            "longlabel": "Yritys - Nimi"
+        },
+        "company_parentcompanyname": {
+            "label": "Yritys - emoyhtiö",
+            "longlabel": "Yritys - emoyhtiön nimi"
+        },
+        "company_createdby": {
+            "label": "Yritys - Luonut",
+            "longlabel": "Yritys - Luonut"
+        },
+        "company_createdon": {
+            "label": "Yritys - Lisätty",
+            "longlabel": "Yritys - Lisätty"
+        },
+        "company_creatorname": {
+            "label": "Yritys - Luojan nimi",
+            "longlabel": "Yritys - Luojan nimi"
+        },
+        "company_deleted": {
+            "label": "Yritys - Poistettu",
+            "longlabel": "Yritys - Poistettu"
+        },
+        "company_id": {
+            "label": "Yritys - Id",
+            "longlabel": "Yritys - Id"
+        },
+        "company_industry": {
+            "label": "Yritys - Teollisuus",
+            "longlabel": "Yritys - Teollisuus"
+        },
+        "company_industryid": {
+            "label": "Yritys - Teollisuus",
+            "longlabel": "Yritys - Teollisuus"
+        },
+        "company_logo": {
+            "label": "Yritys - Logo",
+            "longlabel": "Yritys - Logo"
+        },
+        "company_note": {
+            "label": "Yritys - Huomautus",
+            "longlabel": "Yritys - Huomautus"
+        },
+        "company_ownerid": {
+            "label": "Yritys - omistaja",
+            "longlabel": "Yritys - omistajan nimi"
+        },
+        "company_ownername": {
+            "label": "Yritys - omistajan nimi",
+            "longlabel": "Yritys - omistajan nimi"
+        },
+        "company_profilefacebook": {
+            "label": "Yritys - Facebook-profiili",
+            "longlabel": "Yritys - Facebook-profiili"
+        },
+        "company_profilelinkedin": {
+            "label": "Yritys - Linkedin profiili",
+            "longlabel": "Yritys - Linkedin profiili"
+        },
+        "company_profiletwitter": {
+            "label": "Yritys - Twitter-profiili",
+            "longlabel": "Yritys - Twitter-profiili"
+        },
+        "company_slug": {
+            "label": "Yritys - Toimet",
+            "longlabel": "Yritys - Toimet"
+        },
+        "company_srno": {
+            "label": "Yritys - ID",
+            "longlabel": "Yritys - ID"
+        },
+        "company_totalcanceledjob": {
+            "label": "Yritys - Peruutetut työpaikat",
+            "longlabel": "Yritys - Peruutetut työpaikat"
+        },
+        "company_totalclosedjob": {
+            "label": "Yritys - Suljettu Työpaikat",
+            "longlabel": "Yritys - Suljettuja työpaikkoja yhteensä"
+        },
+        "company_totalonholdjob": {
+            "label": "Yritys - On Hold Työpaikat",
+            "longlabel": "Yritys - On Hold Työpaikat"
+        },
+        "company_totalopenjob": {
+            "label": "Yritys - Avoimet työpaikat",
+            "longlabel": "Yritys - Yhteensä avoimet työpaikat"
+        },
+        "company_updatedby": {
+            "label": "Yritys - Päivitetty",
+            "longlabel": "Yritys - Päivitetty"
+        },
+        "company_updatedon": {
+            "label": "Yritys - Päivitetty",
+            "longlabel": "Yritys - Päivitetty"
+        },
+        "company_website": {
+            "label": "Yritys - Verkkosivusto",
+            "longlabel": "Yritys - Verkkosivusto"
+        },
+        "parentcompanyname": {
+            "label": "Yritys - emoyhtiö",
+            "longlabel": "Yritys - emoyhtiön nimi"
+        },
+        "profilexing": {
+            "label": "Xing profiili",
+            "longlabel": "Yhteydenotto Xing Profiilin URL-osoite"
+        },
+        "off_limit_status": {
+            "label": "Tilanne rajan ulkopuolella",
+            "longlabel": "Tilanne rajan ulkopuolella"
+        },
+        "sms_opt_out": {
+            "label": "Tekstiviestien käytöstä poistaminen",
+            "longlabel": "Tekstiviestien käytöstä poistaminen"
+        },
+        "last_calllog_created_on": {
+            "label": "Viimeisen puhelun loki lisätty",
+            "longlabel": "Viimeisen puhelun loki lisätty"
+        },
+        "last_sms_sent_on": {
+            "label": "Viimeksi lähetetty tekstiviesti",
+            "longlabel": "Viimeksi lähetetty tekstiviesti"
+        },
+        "last_email_sent_on": {
+            "label": "Viimeksi lähetetty sähköposti",
+            "longlabel": "Viimeksi lähetetty sähköposti"
+        },
+        "last_communication_timestamp": {
+            "label": "Viimeinen tiedonanto",
+            "longlabel": "Viimeinen tiedonanto"
+        },
+        "last_communication_method": {
+            "label": "Viimeisin komentotyyppi",
+            "longlabel": "Viimeisin komentotyyppi"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Yhteystiedot Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Yhteystiedot Maa"
+        },
+        "postal_code": {
+            "label": "Postinumero",
+            "longlabel": "Yhteyshenkilön postinumero"
+        },
+        "company_locality": {
+            "label": "Yritys - Paikkakunta",
+            "longlabel": "Yritys - Paikkakunta"
+        },
+        "company_state": {
+            "label": "Yritys - valtio",
+            "longlabel": "Yritys - valtio"
+        },
+        "company_country": {
+            "label": "Yritys - Maa",
+            "longlabel": "Yritys - Maa"
+        },
+        "company_postal_code": {
+            "label": "Yritys - Postinumero",
+            "longlabel": "Yritys - Postinumero"
+        },
+        "last_meeting_created_on": {
+            "label": "Viimeisin kokous lisätty",
+            "longlabel": "Viimeisin kokous lisätty"
+        },
+        "last_message_sent_on": {
+            "label": "Viimeksi lähetetty LinkedIn-viesti",
+            "longlabel": "Viimeksi lähetetty LinkedIn-viesti"
+        },
+        "company_linkedin_id": {
+            "label": "Yritys - LinkedIn ID",
+            "longlabel": "Yritys - LinkedIn ID"
+        },
+        "company_monster_board_company_name": {
+            "label": "Yritys - Monster Board Company",
+            "longlabel": "Yritys - Monster Board Company"
+        },
+        "company_indeed_opted_out": {
+            "label": "Yritys - Indeed Opted Out",
+            "longlabel": "Yritys - Indeed Opted Out"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        }
+    },
+    "jobs": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Työn tunnus"
+        },
+        "name": {
+            "label": "Nimi",
+            "longlabel": "Työn nimi"
+        },
+        "jobstatus": {
+            "label": "Tila",
+            "longlabel": "Työn tila"
+        },
+        "jobstatuslabel": {
+            "label": "Tila",
+            "longlabel": "Työn tila"
+        },
+        "companyid": {
+            "label": "Yritys",
+            "longlabel": "Yritys"
+        },
+        "companyname": {
+            "label": "Yritys",
+            "longlabel": "Yrityksen nimi"
+        },
+        "contactid": {
+            "label": "Yhteystiedot",
+            "longlabel": "Yhteystiedot"
+        },
+        "salarytype": {
+            "label": "Palkkatyyppi",
+            "longlabel": "Palkkatyyppi"
+        },
+        "currencyid": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "collaborator": {
+            "label": "Yhteistyökumppani",
+            "longlabel": "Yhteistyökumppani"
+        },
+        "jobquestions": {
+            "label": "Työhakemuslomakkeen kysymykset",
+            "longlabel": "Työhakemuslomakkeen kysymykset"
+        },
+        "allowapply": {
+            "label": "Ota käyttöön työnhakulomake",
+            "longlabel": "Ota käyttöön työnhakulomake"
+        },
+        "description": {
+            "label": "Huomautus ehdokkaille",
+            "longlabel": "Huomautus ehdokkaille"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Koulutuksellinen pätevyys"
+        },
+        "qualification": {
+            "label": "Pätevyysmerkintä",
+            "longlabel": "Pätevyysmerkintä"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Koulutuksellinen erikoistuminen"
+        },
+        "detailfilename": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "jdtext": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "jdtextdetails": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "minexperienceinyears": {
+            "label": "Vähimmäiskokemus (vuotta)",
+            "longlabel": "Vähimmäiskokemus (vuotta)"
+        },
+        "maxexperienceinyears": {
+            "label": "Enimmäiskokemus (vuotta)",
+            "longlabel": "Enimmäiskokemus (vuotta)"
+        },
+        "annualsalarymin": {
+            "label": "Min. Palkka",
+            "longlabel": "Vähimmäispalkka"
+        },
+        "annualsalarymax": {
+            "label": "Max. Palkka",
+            "longlabel": "Enimmäispalkka"
+        },
+        "noofopenings": {
+            "label": "Avoimet työpaikat",
+            "longlabel": "Avointen työpaikkojen määrä"
+        },
+        "contactname": {
+            "label": "Yhteyshenkilön nimi",
+            "longlabel": "Yhteyshenkilön nimi"
+        },
+        "contactemail": {
+            "label": "Yhteyshenkilön sähköpostiosoite",
+            "longlabel": "Yhteyshenkilön sähköpostiosoite"
+        },
+        "contactnumber": {
+            "label": "Yhteystiedot",
+            "longlabel": "Yhteystiedot"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "creatorname": {
+            "label": "Luoja",
+            "longlabel": "Luojan nimi"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Päivitetty päivämäärä",
+            "longlabel": "Päivitetty päivämäärä"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "jobpostingstatus": {
+            "label": "Toimet",
+            "longlabel": "Työpaikkailmoituksen tila"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "contactslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "companyslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "hiring_pipeline_id": {
+            "label": "Palkkausputki",
+            "longlabel": "Palkkausputki"
+        },
+        "job_skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "job_type": {
+            "label": "Työn tyyppi",
+            "longlabel": "Työn tyyppi"
+        },
+        "job_category": {
+            "label": "Työn luokka",
+            "longlabel": "Työn luokka"
+        },
+        "secondarycontactid": {
+            "label": "Toissijaiset yhteystiedot",
+            "longlabel": "Toissijaiset yhteystiedot"
+        },
+        "targetcompanies": {
+            "label": "Kohdeyritykset",
+            "longlabel": "Kohdeyritykset"
+        },
+        "remote": {
+            "label": "Työpaikan tyyppi",
+            "longlabel": "Työpaikan tyyppi"
+        },
+        "rate_type": {
+            "label": "Kurssityyppi",
+            "longlabel": "Kurssityyppi"
+        },
+        "pay_rate": {
+            "label": "Palkka",
+            "longlabel": "Palkka"
+        },
+        "bill_rate": {
+            "label": "Laskun korko",
+            "longlabel": "Laskun korko"
+        },
+        "job_function": {
+            "label": "Työtehtävä",
+            "longlabel": "Työtehtävä"
+        },
+        "job_industry": {
+            "label": "Työala",
+            "longlabel": "Työala"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        },
+        "salaryrange": {
+            "label": "Palkka-alue",
+            "longlabel": "Palkka-alue"
+        }
+    },
+    "deals": {
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Sopimuksen tunnus"
+        },
+        "name": {
+            "label": "Nimi",
+            "longlabel": "Sopimuksen nimi"
+        },
+        "dealstage": {
+            "label": "Vaihe",
+            "longlabel": "Vaihe"
+        },
+        "dealstagelabel": {
+            "label": "Vaihe",
+            "longlabel": "Vaihe"
+        },
+        "percentage": {
+            "label": "Vaihe Paino",
+            "longlabel": "Vaihe Paino"
+        },
+        "dealvalue": {
+            "label": "Sopimuksen määrä",
+            "longlabel": "Sopimuksen määrä"
+        },
+        "dealpercentagevalue": {
+            "label": "Painotettu sopimuksen määrä",
+            "longlabel": "Painotettu sopimuksen määrä"
+        },
+        "dealtype": {
+            "label": "Sopimuksen tyyppi",
+            "longlabel": "Sopimuksen tyyppi"
+        },
+        "archived": {
+            "label": "Arkistoitu",
+            "longlabel": "Arkistoitu"
+        },
+        "dealtypelabel": {
+            "label": "Sopimuksen tyyppi",
+            "longlabel": "Sopimuksen tyyppi"
+        },
+        "closedate": {
+            "label": "Sulkemispäivä",
+            "longlabel": "Sulkemispäivä"
+        },
+        "relatedcompany": {
+            "label": "Yritys",
+            "longlabel": "Yritys"
+        },
+        "relatedcontact": {
+            "label": "Ota yhteyttä",
+            "longlabel": "Ota yhteyttä"
+        },
+        "companyname": {
+            "label": "Yritys",
+            "longlabel": "Yrityksen nimi"
+        },
+        "website": {
+            "label": "Verkkosivusto",
+            "longlabel": "Verkkosivusto"
+        },
+        "relatedjob": {
+            "label": "Työ",
+            "longlabel": "Työ"
+        },
+        "jobname": {
+            "label": "Työ",
+            "longlabel": "Työn nimi"
+        },
+        "jobcity": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "relatedcandidate": {
+            "label": "Ehdokas",
+            "longlabel": "Ehdokas"
+        },
+        "candidatename": {
+            "label": "Ehdokkaan nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "candidatetitle": {
+            "label": "Otsikko",
+            "longlabel": "Titteli / asema"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "ownerslug": {
+            "label": "Omistaja Slug",
+            "longlabel": "Omistaja Slug"
+        },
+        "accountid": {
+            "label": "Tilin tunnus",
+            "longlabel": "Tilin tunnus"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "updatedby": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "createdbyname": {
+            "label": "Luotu nimen mukaan",
+            "longlabel": "Luotu nimen mukaan"
+        },
+        "updatedbyname": {
+            "label": "Päivitetty nimen mukaan",
+            "longlabel": "Päivitetty nimen mukaan"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "companyslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "jobslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "candidateslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "collaborator": {
+            "label": "Yhteistyökumppani",
+            "longlabel": "Yhteistyökumppani"
+        },
+        "splitdealvalue": {
+            "label": "Jaettu sopimuksen määrä",
+            "longlabel": "Jaettu sopimuksen määrä"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Painotettu Split Deal Määrä",
+            "longlabel": "Painotettu Split Deal Määrä"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        }
+    },
+    "reports_assigned_candidates": {
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "age": {
+            "label": "Ikä",
+            "longlabel": "Ehdokkaan ikä"
+        },
+        "availablefrom": {
+            "label": "Saatavilla osoitteesta",
+            "longlabel": "Saatavilla osoitteesta"
+        },
+        "candidatedob": {
+            "label": "Syntymäaika",
+            "longlabel": "Ehdokkaan syntymäaika"
+        },
+        "candidateid": {
+            "label": "Ehdokas",
+            "longlabel": "Ehdokas"
+        },
+        "candidatename": {
+            "label": "Ehdokas",
+            "longlabel": "Ehdokas"
+        },
+        "candidatestatus": {
+            "label": "Palkkausvaihe",
+            "longlabel": "Voit muuttaa ehdokkaan palkkausvaihetta ja antaa palautetta klikkaamalla ehdokkaan nykyistä palkkausvaihetta."
+        },
+        "candidatestatusid": {
+            "label": "Palkkausvaihe",
+            "longlabel": "Voit muuttaa ehdokkaan palkkausvaihetta ja antaa palautetta klikkaamalla ehdokkaan nykyistä palkkausvaihetta."
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "contactnumber": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "currentsalary": {
+            "label": "Nykyinen palkka",
+            "longlabel": "Nykyinen palkka"
+        },
+        "emailid": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "firstname": {
+            "label": "Etunimi",
+            "longlabel": "Etunimi"
+        },
+        "genderid": {
+            "label": "Sukupuoli",
+            "longlabel": "Sukupuoli"
+        },
+        "id": {
+            "label": "Ehdokkaan kysymykset",
+            "longlabel": "Ehdokkaan kysymykset"
+        },
+        "jobid": {
+            "label": "Työ",
+            "longlabel": "Työ"
+        },
+        "jobname": {
+            "label": "Työ",
+            "longlabel": "Työ"
+        },
+        "jobslug": {
+            "label": "Työ",
+            "longlabel": "Job Slug"
+        },
+        "lastname": {
+            "label": "Sukunimi",
+            "longlabel": "Sukunimi"
+        },
+        "lastorganisation": {
+            "label": "Nykyinen organisaatio",
+            "longlabel": "Nykyinen organisaatio"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "noticeperiod": {
+            "label": "Irtisanomisaika",
+            "longlabel": "Irtisanomisaika (päivää)"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "position": {
+            "label": "Otsikko",
+            "longlabel": "Titteli / asema"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Facebook-profiili"
+        },
+        "profilegithub": {
+            "label": "Github-profiili",
+            "longlabel": "Github-profiili"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiili",
+            "longlabel": "Linkedin profiili"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Twitter-profiili"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Pätevyys"
+        },
+        "relevantexperience": {
+            "label": "Asiaankuuluva kokemus",
+            "longlabel": "Asiaankuuluva kokemus"
+        },
+        "remark": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "resume": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "resumefilename": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "resumetext": {
+            "label": "Yhteenvetoteksti",
+            "longlabel": "Yhteenvetoteksti"
+        },
+        "salaryexpectation": {
+            "label": "Palkkaodotus",
+            "longlabel": "Palkkaodotus"
+        },
+        "share": {
+            "label": "Näkyvyys",
+            "longlabel": "Näkyvyys"
+        },
+        "source": {
+            "label": "Lähde",
+            "longlabel": "Lähde"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Erikoistuminen"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "workexpyr": {
+            "label": "Kokemus yhteensä",
+            "longlabel": "Kokemus yhteensä"
+        },
+        "currenthiringstage": {
+            "label": "Nykyinen palkkausvaihe",
+            "longlabel": "Nykyinen palkkausvaihe"
+        },
+        "assignedby": {
+            "label": "Määrittänyt",
+            "longlabel": "Määrittänyt"
+        },
+        "stagedate": {
+            "label": "Vaihe Päivämäärä",
+            "longlabel": "Vaihe Päivämäärä"
+        },
+        "companyname": {
+            "label": "Yritys",
+            "longlabel": "Yrityksen nimi"
+        },
+        "companycontactname": {
+            "label": "Työn yhteyshenkilön nimi",
+            "longlabel": "Työn yhteyshenkilön nimi"
+        },
+        "jobownername": {
+            "label": "Työn omistajan nimi",
+            "longlabel": "Työn omistajan nimi"
+        },
+        "profilexing": {
+            "label": "Xing profiili",
+            "longlabel": "Xing profiili"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "job_srno": {
+            "label": "Työn tunnus",
+            "longlabel": "Työn tunnus"
+        },
+        "jobstatus": {
+            "label": "Työn tila",
+            "longlabel": "Työn tila"
+        },
+        "unavailable": {
+            "label": "Ei käytettävissä",
+            "longlabel": "Ei käytettävissä"
+        },
+        "summary": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "work_history": {
+            "label": "Työhistoria",
+            "longlabel": "Työhistoria"
+        },
+        "education_history": {
+            "label": "Koulutuksen historia",
+            "longlabel": "Koulutuksen historia"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Työhakemus ansioluettelo",
+            "longlabel": "Työhakemus ansioluettelo"
+        },
+        "hotlist": {
+            "label": "Hotlist",
+            "longlabel": "Hotlist"
+        },
+        "assigned_job_coverletter": {
+            "label": "Työhakemus Saatekirje",
+            "longlabel": "Työhakemus Saatekirje"
+        },
+        "assigned_job_portfolio": {
+            "label": "Työhakemusportfolio",
+            "longlabel": "Työhakemusportfolio"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Työhakemustiedosto 1",
+            "longlabel": "Työhakemustiedosto 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Työhakemustiedosto 2",
+            "longlabel": "Työhakemustiedosto 2"
+        },
+        "job_type": {
+            "label": "Työn tyyppi",
+            "longlabel": "Työn tyyppi"
+        },
+        "job_category": {
+            "label": "Työn luokka",
+            "longlabel": "Työn luokka"
+        },
+        "resumeupdatedon": {
+            "label": "Ehdokkaan päivittämä profiili",
+            "longlabel": "Ehdokkaan päivittämä profiili"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Linkin tila",
+            "longlabel": "Request Resume Linkin tila"
+        },
+        "resumeaddedon": {
+            "label": "Resume lisätty",
+            "longlabel": "Resume lisätty"
+        },
+        "contactemail": {
+            "label": "Työpaikan yhteyshenkilön sähköpostiosoite",
+            "longlabel": "Työpaikan yhteyshenkilön sähköpostiosoite"
+        },
+        "off_limit_status": {
+            "label": "Tilanne rajan ulkopuolella",
+            "longlabel": "Tilanne rajan ulkopuolella"
+        },
+        "sms_opt_out": {
+            "label": "Tekstiviestien käytöstä poistaminen",
+            "longlabel": "Tekstiviestien käytöstä poistaminen"
+        },
+        "remote": {
+            "label": "Työpaikan tyyppi",
+            "longlabel": "Työpaikan tyyppi"
+        },
+        "last_calllog_created_on": {
+            "label": "Viimeisen puhelun loki lisätty",
+            "longlabel": "Viimeisen puhelun loki lisätty"
+        },
+        "last_sms_sent_on": {
+            "label": "Viimeksi lähetetty tekstiviesti",
+            "longlabel": "Viimeksi lähetetty tekstiviesti"
+        },
+        "last_email_sent_on": {
+            "label": "Viimeksi lähetetty sähköposti",
+            "longlabel": "Viimeksi lähetetty sähköposti"
+        },
+        "last_communication_timestamp": {
+            "label": "Viimeinen tiedonanto",
+            "longlabel": "Viimeinen tiedonanto"
+        },
+        "last_communication_method": {
+            "label": "Viimeisin komentotyyppi",
+            "longlabel": "Viimeisin komentotyyppi"
+        },
+        "last_meeting_created_on": {
+            "label": "Viimeisin kokous lisätty",
+            "longlabel": "Viimeisin kokous lisätty"
+        },
+        "last_message_sent_on": {
+            "label": "Viimeksi lähetetty LinkedIn-viesti",
+            "longlabel": "Viimeksi lähetetty LinkedIn-viesti"
+        },
+        "job_function": {
+            "label": "Työtehtävä",
+            "longlabel": "Työtehtävä"
+        },
+        "job_industry": {
+            "label": "Työala",
+            "longlabel": "Työala"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        }
+    },
+    "reports_pitch_candidates": {
+        "accountid": {
+            "label": "Tilin tunnus",
+            "longlabel": "Tilin tunnus"
+        },
+        "accountlogo": {
+            "label": "Tilin logo",
+            "longlabel": "Tilin logo"
+        },
+        "accounttitle": {
+            "label": "Tilin nimi",
+            "longlabel": "Tilin nimi"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "age": {
+            "label": "Ikä",
+            "longlabel": "Ehdokkaan ikä"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "availablefrom": {
+            "label": "Saatavilla osoitteesta",
+            "longlabel": "Saatavilla osoitteesta"
+        },
+        "canaccess": {
+            "label": "Voi käyttää",
+            "longlabel": "Voi käyttää"
+        },
+        "candidatedob": {
+            "label": "Syntymäaika",
+            "longlabel": "Syntymäaika"
+        },
+        "candidatename": {
+            "label": "Nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "candidateterms": {
+            "label": "Ehdokkaan ehdot",
+            "longlabel": "Ehdokkaan ehdot"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "contactnumber": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdbyname": {
+            "label": "Luotu nimen mukaan",
+            "longlabel": "Luotu nimen mukaan"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "currencycountry": {
+            "label": "Valuutta Maa",
+            "longlabel": "Valuutta Maa"
+        },
+        "currencyid": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "currentsalary": {
+            "label": "Nykyinen palkka",
+            "longlabel": "Nykyinen palkka"
+        },
+        "currentstatus": {
+            "label": "Työllisyysasema",
+            "longlabel": "Nykyinen työllisyystilanne"
+        },
+        "deleted": {
+            "label": "Poistettu",
+            "longlabel": "Poistettu"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "emailid": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "firstname": {
+            "label": "Etunimi",
+            "longlabel": "Ehdokkaan etunimi"
+        },
+        "gdprcompliance": {
+            "label": "GDPR-yhteensopivuus",
+            "longlabel": "GDPR-yhteensopivuus"
+        },
+        "genderid": {
+            "label": "Sukupuoli",
+            "longlabel": "Sukupuoli"
+        },
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "jobapplicationsettings": {
+            "label": "Työhakemusten asetukset",
+            "longlabel": "Työhakemusten asetukset"
+        },
+        "languageskills": {
+            "label": "Kieli",
+            "longlabel": "Kielitaito"
+        },
+        "lastname": {
+            "label": "Sukunimi",
+            "longlabel": "Ehdokkaan sukunimi"
+        },
+        "lastorganisation": {
+            "label": "Nykyinen organisaatio",
+            "longlabel": "Nykyinen organisaatio"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "noticeperiod": {
+            "label": "Irtisanomisaika",
+            "longlabel": "Irtisanomisaika (päivää)"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "ownerslug": {
+            "label": "Omistaja Slug",
+            "longlabel": "Omistaja Slug"
+        },
+        "position": {
+            "label": "Otsikko",
+            "longlabel": "Titteli / asema"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Facebook-profiili"
+        },
+        "profilegithub": {
+            "label": "Github-profiili",
+            "longlabel": "Github-profiili"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiili",
+            "longlabel": "Linkedin profiili"
+        },
+        "profilepic": {
+            "label": "Profiilikuva",
+            "longlabel": "Profiilikuva"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Twitter-profiili"
+        },
+        "qualification": {
+            "label": "Pätevyysmerkintä",
+            "longlabel": "Pätevyysmerkintä"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Koulutuksellinen pätevyys"
+        },
+        "relevantexperience": {
+            "label": "Asiaankuuluva kokemus",
+            "longlabel": "Asiaankuuluva kokemus"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Linkin tila",
+            "longlabel": "Request Resume Linkin tila"
+        },
+        "resume": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "resumeaddedon": {
+            "label": "Resume lisätty",
+            "longlabel": "Resume lisätty"
+        },
+        "resumefilename": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "resumetext": {
+            "label": "Yhteenvetoteksti",
+            "longlabel": "Yhteenvetoteksti"
+        },
+        "resumeupdatedon": {
+            "label": "Ehdokkaan päivittämä profiili",
+            "longlabel": "Ehdokkaan päivittämä profiili"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profiilipyyntö lähetetty",
+            "longlabel": "Profiilipyyntö lähetetty"
+        },
+        "salaryexpectation": {
+            "label": "Palkkaodotus",
+            "longlabel": "Palkkaodotus"
+        },
+        "salarytype": {
+            "label": "Palkkatyyppi",
+            "longlabel": "Palkkatyyppi"
+        },
+        "skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Etana"
+        },
+        "source": {
+            "label": "Lähde",
+            "longlabel": "Lähde"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Koulutuksellinen erikoistuminen"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Ehdokkaan tunnus"
+        },
+        "symbol": {
+            "label": "Symboli",
+            "longlabel": "Symboli"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "willingtorelocate": {
+            "label": "Halukas muuttamaan",
+            "longlabel": "Halukas muuttamaan"
+        },
+        "workexpyr": {
+            "label": "Kokemus yhteensä",
+            "longlabel": "Kokemus yhteensä"
+        },
+        "stagedate": {
+            "label": "Vaihe Päivämäärä",
+            "longlabel": "Vaihe Päivämäärä"
+        },
+        "pitchedcontactname": {
+            "label": "Pitched To",
+            "longlabel": "Pitched To"
+        },
+        "profilexing": {
+            "label": "Xing profiili",
+            "longlabel": "Xing profiili"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "off_limit_status": {
+            "label": "Tilanne rajan ulkopuolella",
+            "longlabel": "Tilanne rajan ulkopuolella"
+        },
+        "sms_opt_out": {
+            "label": "Tekstiviestien käytöstä poistaminen",
+            "longlabel": "Tekstiviestien käytöstä poistaminen"
+        },
+        "last_calllog_created_on": {
+            "label": "Viimeisen puhelun loki lisätty",
+            "longlabel": "Viimeisen puhelun loki lisätty"
+        },
+        "last_sms_sent_on": {
+            "label": "Viimeksi lähetetty tekstiviesti",
+            "longlabel": "Viimeksi lähetetty tekstiviesti"
+        },
+        "last_email_sent_on": {
+            "label": "Viimeksi lähetetty sähköposti",
+            "longlabel": "Viimeksi lähetetty sähköposti"
+        },
+        "last_communication_timestamp": {
+            "label": "Viimeinen tiedonanto",
+            "longlabel": "Viimeinen tiedonanto"
+        },
+        "last_communication_method": {
+            "label": "Viimeisin komentotyyppi",
+            "longlabel": "Viimeisin komentotyyppi"
+        },
+        "last_meeting_created_on": {
+            "label": "Viimeisin kokous lisätty",
+            "longlabel": "Viimeisin kokous lisätty"
+        },
+        "last_message_sent_on": {
+            "label": "Viimeksi lähetetty LinkedIn-viesti",
+            "longlabel": "Viimeksi lähetetty LinkedIn-viesti"
+        },
+        "last_note_created_on": {
+            "label": "Viimeinen lisätty huomautus",
+            "longlabel": "Viimeinen lisätty huomautus"
+        }
+    },
+    "company_candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Ehdokkaan tunnus"
+        },
+        "candidatename": {
+            "label": "Nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "firstname": {
+            "label": "Etunimi",
+            "longlabel": "Ehdokkaan etunimi"
+        },
+        "lastname": {
+            "label": "Sukunimi",
+            "longlabel": "Ehdokkaan sukunimi"
+        },
+        "emailid": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "genderid": {
+            "label": "Sukupuoli",
+            "longlabel": "Sukupuoli"
+        },
+        "contactnumber": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "candidatedob": {
+            "label": "Syntymäaika",
+            "longlabel": "Syntymäaika"
+        },
+        "age": {
+            "label": "Ikä",
+            "longlabel": "Ehdokkaan ikä"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Koulutuksellinen pätevyys"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Koulutuksellinen erikoistuminen"
+        },
+        "workexpyr": {
+            "label": "Kokemus yhteensä",
+            "longlabel": "Kokemus yhteensä"
+        },
+        "relevantexperience": {
+            "label": "Asiaankuuluva kokemus",
+            "longlabel": "Asiaankuuluva kokemus"
+        },
+        "resumetext": {
+            "label": "Yhteenvetoteksti",
+            "longlabel": "Yhteenvetoteksti"
+        },
+        "currentsalary": {
+            "label": "Nykyinen palkka",
+            "longlabel": "Nykyinen palkka"
+        },
+        "resume": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "resumefilename": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "lastorganisation": {
+            "label": "Nykyinen organisaatio",
+            "longlabel": "Nykyinen organisaatio"
+        },
+        "skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "willingtorelocate": {
+            "label": "Halukas muuttamaan",
+            "longlabel": "Halukas muuttamaan"
+        },
+        "salaryexpectation": {
+            "label": "Palkkaodotus",
+            "longlabel": "Palkkaodotus"
+        },
+        "position": {
+            "label": "Otsikko",
+            "longlabel": "Titteli / asema"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "currencyid": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "currencycountry": {
+            "label": "Valuutta Maa",
+            "longlabel": "Valuutta Maa"
+        },
+        "symbol": {
+            "label": "Symboli",
+            "longlabel": "Symboli"
+        },
+        "accountid": {
+            "label": "Tilin tunnus",
+            "longlabel": "Tilin tunnus"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownerslug": {
+            "label": "Omistaja Slug",
+            "longlabel": "Omistaja Slug"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "canaccess": {
+            "label": "Voi käyttää",
+            "longlabel": "Voi käyttää"
+        },
+        "profilepic": {
+            "label": "Profiilikuva",
+            "longlabel": "Profiilikuva"
+        },
+        "deleted": {
+            "label": "Poistettu",
+            "longlabel": "Poistettu"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "resumeupdatedon": {
+            "label": "Ehdokkaan päivittämä profiili",
+            "longlabel": "Ehdokkaan päivittämä profiili"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profiilipyyntö lähetetty",
+            "longlabel": "Profiilipyyntö lähetetty"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Linkin tila",
+            "longlabel": "Request Resume Linkin tila"
+        },
+        "resumeaddedon": {
+            "label": "Resume lisätty",
+            "longlabel": "Resume lisätty"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Facebook-profiili"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Twitter-profiili"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin profiili",
+            "longlabel": "Linkedin profiili"
+        },
+        "profilegithub": {
+            "label": "Github-profiili",
+            "longlabel": "Github-profiili"
+        },
+        "source": {
+            "label": "Lähde",
+            "longlabel": "Lähde"
+        },
+        "createdbyname": {
+            "label": "Luotu nimen mukaan",
+            "longlabel": "Luotu nimen mukaan"
+        },
+        "qualification": {
+            "label": "Pätevyysmerkintä",
+            "longlabel": "Pätevyysmerkintä"
+        },
+        "currentstatus": {
+            "label": "Työllisyysasema",
+            "longlabel": "Nykyinen työllisyystilanne"
+        },
+        "noticeperiod": {
+            "label": "Irtisanomisaika",
+            "longlabel": "Irtisanomisaika (päivää)"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "availablefrom": {
+            "label": "Saatavilla osoitteesta",
+            "longlabel": "Saatavilla osoitteesta"
+        },
+        "salarytype": {
+            "label": "Palkkatyyppi",
+            "longlabel": "Palkkatyyppi"
+        },
+        "languageskills": {
+            "label": "Kieli",
+            "longlabel": "Kielitaito"
+        },
+        "accountlogo": {
+            "label": "Tilin logo",
+            "longlabel": "Tilin logo"
+        },
+        "accounttitle": {
+            "label": "Tilin nimi",
+            "longlabel": "Tilin nimi"
+        },
+        "candidateterms": {
+            "label": "Ehdokkaan ehdot",
+            "longlabel": "Ehdokkaan ehdot"
+        },
+        "jobapplicationsettings": {
+            "label": "Työhakemusten asetukset",
+            "longlabel": "Työhakemusten asetukset"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "gdprcompliance": {
+            "label": "GDPR-yhteensopivuus",
+            "longlabel": "GDPR-yhteensopivuus"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "profilexing": {
+            "label": "Xing profiili",
+            "longlabel": "Xing profiili"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "proficiency_level": {
+            "label": "Taitotaso",
+            "longlabel": "Taitotaso"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "sms_opt_out": {
+            "label": "Tekstiviestien käytöstä poistaminen",
+            "longlabel": "Tekstiviestien käytöstä poistaminen"
+        }
+    },
+    "meetings": {
+        "meeting_date": {
+            "label": "Kokouspäivä",
+            "longlabel": "Kokouspäivä"
+        },
+        "meeting_time": {
+            "label": "Kokousaika",
+            "longlabel": "Kokousaika"
+        },
+        "title": {
+            "label": "Otsikko",
+            "longlabel": "Kokouksen otsikko"
+        },
+        "status": {
+            "label": "Tila",
+            "longlabel": "Tila"
+        },
+        "relatedto": {
+            "label": "Liittyy",
+            "longlabel": "Liittyy"
+        },
+        "attendees": {
+            "label": "Osallistujat",
+            "longlabel": "Osallistujat"
+        },
+        "notetype": {
+            "label": "Kokouksen tyyppi",
+            "longlabel": "Kokouksen tyyppi"
+        },
+        "address": {
+            "label": "Kokouspaikka",
+            "longlabel": "Kokouspaikka"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "enddate": {
+            "label": "Eräpäivä",
+            "longlabel": "Eräpäivä"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "createdby": {
+            "label": "Lisännyt",
+            "longlabel": "Lisännyt "
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "description": {
+            "label": "Kuvaus",
+            "longlabel": "Kuvaus"
+        },
+        "collaborator": {
+            "label": "Yhteistyökumppani",
+            "longlabel": "Yhteistyökumppani"
+        },
+        "associations": {
+            "label": "Yhdistykset",
+            "longlabel": "Yhdistykset"
+        },
+        "id": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        }
+    },
+    "tasks": {
+        "title": {
+            "label": "Otsikko",
+            "longlabel": "Tehtävän nimi"
+        },
+        "status": {
+            "label": "Tila",
+            "longlabel": "Tila"
+        },
+        "relatedto": {
+            "label": "Liittyy",
+            "longlabel": "Liittyy"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "enddate": {
+            "label": "Eräpäivä",
+            "longlabel": "Eräpäivä"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "createdby": {
+            "label": "Lisännyt",
+            "longlabel": "Lisännyt "
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "description": {
+            "label": "Kuvaus",
+            "longlabel": "Kuvaus"
+        },
+        "collaborator": {
+            "label": "Yhteistyökumppani",
+            "longlabel": "Yhteistyökumppani"
+        },
+        "associations": {
+            "label": "Yhdistykset",
+            "longlabel": "Yhdistykset"
+        },
+        "id": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "notetype": {
+            "label": "Tehtävän tyyppi",
+            "longlabel": "Tehtävän tyyppi"
+        }
+    },
+    "target_reports": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "title": {
+            "label": "Kohteen nimi",
+            "longlabel": "Kohteen nimi"
+        },
+        "status": {
+            "label": "Tila",
+            "longlabel": "Tila"
+        },
+        "assignee_id": {
+            "label": "Assigned To",
+            "longlabel": "Assigned To"
+        },
+        "frequency": {
+            "label": "Taajuus",
+            "longlabel": "Taajuus"
+        },
+        "target_period": {
+            "label": "Tavoiteaika",
+            "longlabel": "Tavoiteaika"
+        },
+        "startdate": {
+            "label": "Aloituspäivä",
+            "longlabel": "Aloituspäivä"
+        },
+        "enddate": {
+            "label": "Loppupäivä",
+            "longlabel": "Loppupäivä"
+        },
+        "created_on": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "created_by": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "updated_on": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "updated_by": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "action": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        }
+    },
+    "invoices": {
+        "invoiceid": {
+            "label": "Laskun ID",
+            "longlabel": "Laskun ID"
+        },
+        "description": {
+            "label": "Kuvaus",
+            "longlabel": "Kuvaus"
+        },
+        "company": {
+            "label": "Yritys",
+            "longlabel": "Yritys"
+        },
+        "templateused": {
+            "label": "Käytetty malli",
+            "longlabel": "Käytetty malli"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "issuedon": {
+            "label": "Myönnetty",
+            "longlabel": "Myönnetty"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "totalamount": {
+            "label": "Kokonaismäärä",
+            "longlabel": "Kokonaismäärä"
+        },
+        "duedate": {
+            "label": "Eräpäivä",
+            "longlabel": "Eräpäivä"
+        },
+        "paidon": {
+            "label": "Maksettu",
+            "longlabel": "Maksettu"
+        },
+        "status": {
+            "label": "Tila",
+            "longlabel": "Tila"
+        },
+        "currency": {
+            "label": "Laskun valuutta",
+            "longlabel": "Laskun valuutta"
+        },
+        "contact": {
+            "label": "Yhteyshenkilön nimi",
+            "longlabel": "Yhteyshenkilön nimi"
+        },
+        "phone": {
+            "label": "Yhteyshenkilön puhelin",
+            "longlabel": "Yhteyshenkilön puhelin"
+        },
+        "associations": {
+            "label": "Yhdistykset",
+            "longlabel": "Yhdistykset"
+        },
+        "address": {
+            "label": "Yrityksen osoite",
+            "longlabel": "Yrityksen osoite"
+        },
+        "email": {
+            "label": "Yhteyshenkilön sähköpostiosoite",
+            "longlabel": "Yhteyshenkilön sähköpostiosoite"
+        }
+    },
+    "placements": {
+        "placementId": {
+            "label": "Sijoituksen tunnus",
+            "longlabel": "Sijoituksen tunnus"
+        },
+        "currency": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "associations": {
+            "label": "Yhdistykset",
+            "longlabel": "Yhdistykset"
+        },
+        "createdBy": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "createdOn": {
+            "label": "Created On",
+            "longlabel": "Created On"
+        },
+        "candidateName": {
+            "label": "Ehdokkaan nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "contactName": {
+            "label": "Yhteyshenkilön nimi",
+            "longlabel": "Yhteyshenkilön nimi"
+        },
+        "dealName": {
+            "label": "Sopimuksen nimi",
+            "longlabel": "Sopimuksen nimi"
+        },
+        "jobName": {
+            "label": "Työn nimi",
+            "longlabel": "Työn nimi"
+        },
+        "companyName": {
+            "label": "Yrityksen nimi",
+            "longlabel": "Yrityksen nimi"
+        },
+        "joiningDate": {
+            "label": "Liittymispäivä",
+            "longlabel": "Liittymispäivä"
+        }
+    },
+    "candidate_assigned_job": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Työn tunnus"
+        },
+        "name": {
+            "label": "Nimi",
+            "longlabel": "Työn nimi"
+        },
+        "candidatestatus": {
+            "label": "Palkkausvaihe & historia",
+            "longlabel": "Palkkausvaihe & historia"
+        },
+        "interview": {
+            "label": "Haastattelu",
+            "longlabel": "Haastattelu"
+        },
+        "share": {
+            "label": "Näkyvyys",
+            "longlabel": "Näkyvyys"
+        },
+        "jobstatus": {
+            "label": "Tila",
+            "longlabel": "Työn tila"
+        },
+        "jobstatuslabel": {
+            "label": "Tila",
+            "longlabel": "Työn tila"
+        },
+        "companyid": {
+            "label": "Yritys",
+            "longlabel": "Yritys"
+        },
+        "companyname": {
+            "label": "Yritys",
+            "longlabel": "Yrityksen nimi"
+        },
+        "contactid": {
+            "label": "Yhteystiedot",
+            "longlabel": "Yhteystiedot"
+        },
+        "salarytype": {
+            "label": "Palkkatyyppi",
+            "longlabel": "Palkkatyyppi"
+        },
+        "currencyid": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "collaborator": {
+            "label": "Yhteistyökumppani",
+            "longlabel": "Yhteistyökumppani"
+        },
+        "jobquestions": {
+            "label": "Työhakemuslomakkeen kysymykset",
+            "longlabel": "Työhakemuslomakkeen kysymykset"
+        },
+        "allowapply": {
+            "label": "Ota käyttöön työnhakulomake",
+            "longlabel": "Ota käyttöön työnhakulomake"
+        },
+        "description": {
+            "label": "Huomautus ehdokkaille",
+            "longlabel": "Huomautus ehdokkaille"
+        },
+        "address": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Koulutuksellinen pätevyys"
+        },
+        "qualification": {
+            "label": "Pätevyysmerkintä",
+            "longlabel": "Pätevyysmerkintä"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Koulutuksellinen erikoistuminen"
+        },
+        "detailfilename": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "jdtext": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "jdtextdetails": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "minexperienceinyears": {
+            "label": "Vähimmäiskokemus (vuotta)",
+            "longlabel": "Vähimmäiskokemus (vuotta)"
+        },
+        "maxexperienceinyears": {
+            "label": "Enimmäiskokemus (vuotta)",
+            "longlabel": "Enimmäiskokemus (vuotta)"
+        },
+        "annualsalarymin": {
+            "label": "Min. Palkka",
+            "longlabel": "Vähimmäispalkka"
+        },
+        "annualsalarymax": {
+            "label": "Max. Palkka",
+            "longlabel": "Enimmäispalkka"
+        },
+        "noofopenings": {
+            "label": "Avoimet työpaikat",
+            "longlabel": "Avointen työpaikkojen määrä"
+        },
+        "contactname": {
+            "label": "Yhteyshenkilön nimi",
+            "longlabel": "Yhteyshenkilön nimi"
+        },
+        "contactemail": {
+            "label": "Yhteyshenkilön sähköpostiosoite",
+            "longlabel": "Yhteyshenkilön sähköpostiosoite"
+        },
+        "contactnumber": {
+            "label": "Yhteystiedot",
+            "longlabel": "Yhteystiedot"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "createdby": {
+            "label": "Luonut",
+            "longlabel": "Luonut"
+        },
+        "creatorname": {
+            "label": "Luoja",
+            "longlabel": "Luojan nimi"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "updatedon": {
+            "label": "Vuokrausvaihe päivitetty",
+            "longlabel": "Vuokrausvaihe päivitetty"
+        },
+        "slug": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "jobpostingstatus": {
+            "label": "Toimet",
+            "longlabel": "Työpaikkailmoituksen tila"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "contactslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "companyslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "hiring_pipeline_id": {
+            "label": "Palkkausputki",
+            "longlabel": "Palkkausputki"
+        },
+        "job_skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "job_type": {
+            "label": "Työn tyyppi",
+            "longlabel": "Työn tyyppi"
+        },
+        "job_category": {
+            "label": "Työn luokka",
+            "longlabel": "Työn luokka"
+        },
+        "secondarycontactid": {
+            "label": "Toissijaiset yhteystiedot",
+            "longlabel": "Toissijaiset yhteystiedot"
+        },
+        "targetcompanies": {
+            "label": "Kohdeyritykset",
+            "longlabel": "Kohdeyritykset"
+        },
+        "remote": {
+            "label": "Työpaikan tyyppi",
+            "longlabel": "Työpaikan tyyppi"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Työhakemus ansioluettelo",
+            "longlabel": "Työhakemus ansioluettelo"
+        },
+        "assigned_job_coverletter": {
+            "label": "Työhakemus Saatekirje",
+            "longlabel": "Työhakemus Saatekirje"
+        },
+        "assigned_job_portfolio": {
+            "label": "Työhakemusportfolio",
+            "longlabel": "Työhakemusportfolio"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Työhakemustiedosto 1",
+            "longlabel": "Työhakemustiedosto 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Työhakemustiedosto 2",
+            "longlabel": "Työhakemustiedosto 2"
+        },
+        "postal_code": {
+            "label": "Postinumero",
+            "longlabel": "Postinumero"
+        },
+        "job_function": {
+            "label": "Työtehtävä",
+            "longlabel": "Työtehtävä"
+        },
+        "job_industry": {
+            "label": "Työala",
+            "longlabel": "Työala"
+        },
+        "updatedby": {
+            "label": "Vuokrausvaihe Päivitetty",
+            "longlabel": "Vuokrausvaihe Päivitetty"
+        }
+    },
+    "postal_code": {
+        "label": "Postinumero",
+        "longlabel": "Postinumero"
+    },
+    "timesheet": {
+        "timesheetId": {
+            "label": "Työaikataulun tunnus",
+            "longlabel": "Työaikataulun tunnus"
+        },
+        "timesheetPeriod": {
+            "label": "Työaikataulukauden jakso",
+            "longlabel": "Työaikataulukauden jakso"
+        },
+        "contractorName": {
+            "label": "Ehdokkaan nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "timesheetStatusId": {
+            "label": "Työaikataulun tila",
+            "longlabel": "Työaikataulun tila"
+        },
+        "timesheetStatus": {
+            "label": "Työaikataulun tila",
+            "longlabel": "Työaikataulun tila"
+        },
+        "jobName": {
+            "label": "Työn nimi",
+            "longlabel": "Työn nimi"
+        },
+        "dealName": {
+            "label": "Sopimuksen nimi",
+            "longlabel": "Sopimuksen nimi"
+        },
+        "jobDuration": {
+            "label": "Työn kesto",
+            "longlabel": "Työn kesto"
+        },
+        "totalWorkTime": {
+            "label": "Työtunnit yhteensä",
+            "longlabel": "Työtunnit yhteensä"
+        },
+        "totalOvertime": {
+            "label": "Ylityötunnit yhteensä",
+            "longlabel": "Ylityötunnit yhteensä"
+        },
+        "totalTime": {
+            "label": "Tuntia yhteensä",
+            "longlabel": "Tuntia yhteensä"
+        },
+        "billData": {
+            "label": "Laskun määrä",
+            "longlabel": "Laskun määrä"
+        },
+        "billAmount": {
+            "label": "Laskun määrä",
+            "longlabel": "Bill Data"
+        },
+        "payData": {
+            "label": "Maksun määrä",
+            "longlabel": "Maksun määrä"
+        },
+        "payAmount": {
+            "label": "Maksun määrä",
+            "longlabel": "Palkkatiedot"
+        },
+        "billRate": {
+            "label": "Laskun korko",
+            "longlabel": "Laskun korko"
+        },
+        "payRate": {
+            "label": "Palkka",
+            "longlabel": "Palkka"
+        },
+        "approvedBy": {
+            "label": "Työaikataulu Hyväksynyt",
+            "longlabel": "Työaikataulu Hyväksynyt"
+        },
+        "approver": {
+            "label": "Työaikataulu Hyväksynyt",
+            "longlabel": "Työaikataulu Hyväksynyt"
+        },
+        "approvers": {
+            "label": "Työaikataulujen hyväksyjät",
+            "longlabel": "Työaikataulujen hyväksyjät"
+        },
+        "billingStatusId": {
+            "label": "Laskun tila",
+            "longlabel": "Laskun tila"
+        },
+        "paymentStatusId": {
+            "label": "Palkkatilanne",
+            "longlabel": "Palkkatilanne"
+        },
+        "paymentDate": {
+            "label": "Maksupäivä",
+            "longlabel": "Maksupäivä"
+        },
+        "payoutNumber": {
+            "label": "Maksun numero",
+            "longlabel": "Maksun numero"
+        },
+        "billingDate": {
+            "label": "Laskutuspäivä",
+            "longlabel": "Laskutuspäivä"
+        },
+        "invoiceNumber": {
+            "label": "Laskun numero",
+            "longlabel": "Laskun numero"
+        },
+        "addedOn": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "addedBy": {
+            "label": "Lisännyt",
+            "longlabel": "Lisännyt"
+        },
+        "updatedOn": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "updatedBy": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "company": {
+            "label": "Yritys",
+            "longlabel": "Yritys"
+        },
+        "frequency": {
+            "label": "Taajuus",
+            "longlabel": "Taajuus"
+        },
+        "workDays": {
+            "label": "WorkDays",
+            "longlabel": "WorkDays"
+        },
+        "workHours": {
+            "label": "WorkHours",
+            "longlabel": "WorkHours"
+        },
+        "actions": {
+            "label": "Toimet",
+            "longlabel": "Toimet"
+        },
+        "action": {
+            "label": "Toiminta",
+            "longlabel": "Toiminta"
+        },
+        "billStatus": {
+            "label": "Laskun tila",
+            "longlabel": "Laskun tila"
+        },
+        "payStatus": {
+            "label": "Palkkatilanne",
+            "longlabel": "Palkkatilanne"
+        },
+        "invoiceCreatedOn": {
+            "label": "Lasku luotu",
+            "longlabel": "Lasku luotu"
+        },
+        "payoutPaidOn": {
+            "label": "Maksu Maksettu",
+            "longlabel": "Maksu Maksettu"
+        },
+        "companyname": {
+            "label": "Yrityksen nimi",
+            "longlabel": "Yrityksen nimi"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "gender": {
+            "label": "Sukupuoli",
+            "longlabel": "Sukupuoli"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "postalCode": {
+            "label": "Postinumero",
+            "longlabel": "Postinumero"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Facebook-profiili"
+        },
+        "title": {
+            "label": "Otsikko",
+            "longlabel": "Otsikko"
+        },
+        "birthDate": {
+            "label": "Syntymäaika",
+            "longlabel": "Syntymäaika"
+        },
+        "skills": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "profilexing": {
+            "label": "Xing profiili",
+            "longlabel": "Xing profiili"
+        },
+        "phone": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "name": {
+            "label": "Nimi",
+            "longlabel": "Nimi"
+        },
+        "fullAddress": {
+            "label": "Täydellinen osoite",
+            "longlabel": "Täydellinen osoite"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "currentOrganization": {
+            "label": "Nykyinen organisaatio",
+            "longlabel": "Nykyinen organisaatio"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Twitter-profiili"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin-profiili",
+            "longlabel": "Linkedin profiili"
+        },
+        "profilegithub": {
+            "label": "Github-profiili",
+            "longlabel": "Github-profiili"
+        },
+        "source": {
+            "label": "Lähde",
+            "longlabel": "Lähde"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "email": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "status": {
+            "label": "Tila",
+            "longlabel": "Tila"
+        },
+        "companyName": {
+            "label": "Yrityksen nimi",
+            "longlabel": "Yrityksen nimi"
+        },
+        "timesheetFrequency": {
+            "label": "Työaikataulun tiheys",
+            "longlabel": "Työaikataulun tiheys"
+        },
+        "expenseClaim": {
+            "label": "Kuluvaatimus",
+            "longlabel": "Kuluvaatimus"
+        },
+        "payCurrency": {
+            "label": "Maksuvaluutta",
+            "longlabel": "Maksuvaluutta"
+        },
+        "billCurrency": {
+            "label": "Laskun valuutta",
+            "longlabel": "Laskun valuutta"
+        },
+        "totalRegularHours": {
+            "label": "Säännöllisten työtuntien kokonaismäärä",
+            "longlabel": "Säännöllisten työtuntien kokonaismäärä"
+        }
+    },
+    "jobs_widget": {
+        "name": {
+            "label": "Työn nimi",
+            "longlabel": "Työn nimi"
+        },
+        "jobstatuslabel": {
+            "label": "Työn tila",
+            "longlabel": "Työn tila"
+        },
+        "assignedcandidatestatuscount": {
+            "label": "Ehdokkaiden putki",
+            "longlabel": "Ehdokkaiden putki"
+        },
+        "joinedcandidatestatuscount": {
+            "label": "Sijoitettu",
+            "longlabel": "Sijoitettu"
+        },
+        "detailfilename": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "contactname": {
+            "label": "Ota yhteyttä",
+            "longlabel": "Ota yhteyttä"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "srno": {
+            "label": "Tunnus",
+            "longlabel": "Työpaikan tunnus"
+        },
+        "archived": {
+            "label": "Arkistoitu",
+            "longlabel": "Arkistoitu"
+        },
+        "companyid": {
+            "label": "Yritys",
+            "longlabel": "Yritys"
+        },
+        "contactid": {
+            "label": "Yhteystiedot",
+            "longlabel": "Yhteystiedot"
+        },
+        "secondarycontactid": {
+            "label": "Varayhteyshenkilöt",
+            "longlabel": "Varayhteyshenkilöt"
+        },
+        "salarytype": {
+            "label": "Palkkatyyppi",
+            "longlabel": "Palkkatyyppi"
+        },
+        "currencyid": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "salaryrange": {
+            "label": "Palkkaluokka",
+            "longlabel": "Palkkaluokka"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "collaborator": {
+            "label": "Yhteistyökumppani",
+            "longlabel": "Yhteistyökumppani"
+        },
+        "jobquestions": {
+            "label": "Työhakemuslomakkeen kysymykset",
+            "longlabel": "Työhakemuslomakkeen kysymykset"
+        },
+        "allowapply": {
+            "label": "Ota työhakemuslomake käyttöön",
+            "longlabel": "Ota työhakemuslomake käyttöön"
+        },
+        "description": {
+            "label": "Huomautus hakijoille",
+            "longlabel": "Huomautus hakijoille"
+        },
+        "job_skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "address": {
+            "label": "Koko osoite",
+            "longlabel": "Koko osoite"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Koulutus"
+        },
+        "qualification": {
+            "label": "Pätevyystunnus",
+            "longlabel": "Pätevyystunnus"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Koulutusalan erikoistuminen"
+        },
+        "jdtext": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "jdtextdetails": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "minexperienceinyears": {
+            "label": "Vähimmäiskokemus (vuotta)",
+            "longlabel": "Vähimmäiskokemus (vuotta)"
+        },
+        "maxexperienceinyears": {
+            "label": "Kokemus (vuotta)",
+            "longlabel": "Kokemus (vuotta)"
+        },
+        "annualsalarymin": {
+            "label": "Vähimmäispalkka",
+            "longlabel": "Vähimmäispalkka"
+        },
+        "annualsalarymax": {
+            "label": "Enimmäispalkka",
+            "longlabel": "Enimmäispalkka"
+        },
+        "noofopenings": {
+            "label": "Aukioloajat",
+            "longlabel": "Avoimien paikkojen määrä"
+        },
+        "contactslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "companyslug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "contactemail": {
+            "label": "Yhteystiedot (sähköposti)",
+            "longlabel": "Yhteystiedot (sähköposti)"
+        },
+        "contactnumber": {
+            "label": "Puhelinnumero",
+            "longlabel": "Puhelinnumero"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "createdby": {
+            "label": "Luoja",
+            "longlabel": "Luoja"
+        },
+        "job_function": {
+            "label": "Työtehtävä",
+            "longlabel": "Työtehtävä"
+        },
+        "creatorname": {
+            "label": "Luoja",
+            "longlabel": "Tekijän nimi"
+        },
+        "createdon": {
+            "label": "Lisäyspäivä",
+            "longlabel": "Lisäyspäivä"
+        },
+        "updatedon": {
+            "label": "Päivämäärä",
+            "longlabel": "Päivämäärä"
+        },
+        "updatedby": {
+            "label": "Päivittäjä",
+            "longlabel": "Päivittäjä"
+        },
+        "jobpostingstatus": {
+            "label": "Toimenpiteet",
+            "longlabel": "Työpaikkailmoituksen tila"
+        },
+        "note": {
+            "label": "Huomautus",
+            "longlabel": "Huomautus"
+        },
+        "hiring_pipeline_id": {
+            "label": "Rekrytointiprosessi",
+            "longlabel": "Rekrytointiprosessi"
+        },
+        "hiring_pipeline_name": {
+            "label": "Rekrytointiprosessi",
+            "longlabel": "Rekrytointiprosessi"
+        },
+        "job_type": {
+            "label": "Työn tyyppi",
+            "longlabel": "Työn tyyppi"
+        },
+        "job_category": {
+            "label": "Työryhmä",
+            "longlabel": "Työryhmä"
+        },
+        "remote": {
+            "label": "Työpaikan sijainti",
+            "longlabel": "Työpaikan sijainti"
+        },
+        "hotlist": {
+            "label": "Suosikkilista",
+            "longlabel": "Suosikkilista"
+        },
+        "xml_feeds": {
+            "label": "XML-syötteet",
+            "longlabel": "XML-syötteet"
+        },
+        "targetcompanies": {
+            "label": "Kohdeyritykset",
+            "longlabel": "Kohdeyritykset"
+        },
+        "contactfirstname": {
+            "label": "Yhteyshenkilön etunimi",
+            "longlabel": "Yhteyshenkilön etunimi"
+        },
+        "contactlastname": {
+            "label": "Yhteyshenkilön sukunimi",
+            "longlabel": "Yhteyshenkilön sukunimi"
+        },
+        "postalcode": {
+            "label": "Postinumero",
+            "longlabel": "Postinumero"
+        },
+        "pay_rate": {
+            "label": "Palkkataso",
+            "longlabel": "Palkkataso"
+        },
+        "bill_rate": {
+            "label": "Laskutushinta",
+            "longlabel": "Laskutushinta"
+        },
+        "job_industry": {
+            "label": "Työala",
+            "longlabel": "Työala"
+        }
+    },
+    "list_of_candidates": {
+        "label": "Ehdokasluettelo",
+        "longlabel": "Ehdokasluettelo"
+    },
+    "job_candidate_pipeline": {
+        "candidatename": {
+            "label": "Ehdokkaan nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "detailfilename": {
+            "label": "Ansioluettelo",
+            "longlabel": "Ansioluettelo"
+        },
+        "hiring_stage_remark": {
+            "label": "Rekrytointivaihe ja huomautus",
+            "longlabel": "Rekrytointivaihe ja huomautus"
+        },
+        "visibility": {
+            "label": "Näkyvyys",
+            "longlabel": "Näkyvyys"
+        },
+        "job_specific_details": {
+            "label": "Työn yksityiskohdat",
+            "longlabel": "Työn yksityiskohdat"
+        },
+        "interview": {
+            "label": "Haastattelu",
+            "longlabel": "Haastattelu"
+        },
+        "timesheet": {
+            "label": "Työaikakirjanpito",
+            "longlabel": "Työaikakirjanpito"
+        },
+        "placement": {
+            "label": "Sijoitus",
+            "longlabel": "Sijoitus"
+        },
+        "phone": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "email": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "accountid": {
+            "label": "Tilinumero",
+            "longlabel": "Tilinumero"
+        },
+        "accountlogo": {
+            "label": "Tilin logo",
+            "longlabel": "Tilin logo"
+        },
+        "accounttitle": {
+            "label": "Tilin nimi",
+            "longlabel": "Tilin nimi"
+        },
+        "address": {
+            "label": "Koko osoite",
+            "longlabel": "Koko osoite"
+        },
+        "age": {
+            "label": "Ikä",
+            "longlabel": "Ehdokkaan ikä"
+        },
+        "authid": {
+            "label": "Käyttäjätunnus",
+            "longlabel": "Käyttäjätunnus"
+        },
+        "availablefrom": {
+            "label": "Saatavana",
+            "longlabel": "Saatavana"
+        },
+        "canaccess": {
+            "label": "Pääsee",
+            "longlabel": "Pääsee"
+        },
+        "candidate_company_city": {
+            "label": "Nykyinen organisaatio – Kaupunki",
+            "longlabel": "Nykyinen organisaatio – Kaupunki"
+        },
+        "candidate_company_logo": {
+            "label": "Nykyinen organisaatio – Logo",
+            "longlabel": "Nykyinen organisaatio – Logo"
+        },
+        "candidate_company_slug": {
+            "label": "Nykyinen organisaatio - Slug",
+            "longlabel": "Nykyinen organisaatio - Slug"
+        },
+        "candidatedob": {
+            "label": "Syntymäaika",
+            "longlabel": "Syntymäaika"
+        },
+        "candidateterms": {
+            "label": "Ehdokkaiden ehdot",
+            "longlabel": "Ehdokkaiden ehdot"
+        },
+        "city": {
+            "label": "Kaupunki",
+            "longlabel": "Kaupunki"
+        },
+        "contactnumber": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "country": {
+            "label": "Maa",
+            "longlabel": "Maa"
+        },
+        "createdby": {
+            "label": "Luoja",
+            "longlabel": "Luoja"
+        },
+        "createdbyname": {
+            "label": "Luonut: Nimi",
+            "longlabel": "Luonut: Nimi"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "currencycountry": {
+            "label": "Valuutta Maa",
+            "longlabel": "Valuutta Maa"
+        },
+        "currencyid": {
+            "label": "Valuutta",
+            "longlabel": "Valuutta"
+        },
+        "currentsalary": {
+            "label": "Nykyinen palkka",
+            "longlabel": "Nykyinen palkka"
+        },
+        "currentstatus": {
+            "label": "Työsuhteen laatu",
+            "longlabel": "Nykyinen työllisyystilanne"
+        },
+        "education_description": {
+            "label": "Koulutuksen kuvaus",
+            "longlabel": "Koulutuksen kuvaus"
+        },
+        "education_end_date": {
+            "label": "Koulutuksen päättymispäivä",
+            "longlabel": "Koulutuksen päättymispäivä"
+        },
+        "education_history": {
+            "label": "Koulutushistoria",
+            "longlabel": "Koulutushistoria"
+        },
+        "education_location": {
+            "label": "Koulutuspaikka",
+            "longlabel": "Koulutuspaikka"
+        },
+        "education_start_date": {
+            "label": "Koulutuksen alkamispäivä",
+            "longlabel": "Koulutuksen alkamispäivä"
+        },
+        "educational_qualification": {
+            "label": "Koulutus",
+            "longlabel": "Koulutus"
+        },
+        "educational_specialization": {
+            "label": "Koulutusalan erikoistuminen",
+            "longlabel": "Koulutusalan erikoistuminen"
+        },
+        "eeocompliance": {
+            "label": "Tasa-arvo- ja yhdenvertaisuusmääräysten noudattaminen",
+            "longlabel": "Tasa-arvo- ja yhdenvertaisuusmääräysten noudattaminen"
+        },
+        "email_opt_out": {
+            "label": "Peruuta tilaus",
+            "longlabel": "Peruuta tilaus"
+        },
+        "emailid": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "employment_type": {
+            "label": "Työsuhteen tyyppi",
+            "longlabel": "Työsuhteen tyyppi"
+        },
+        "firstname": {
+            "label": "Etunimi",
+            "longlabel": "Hakijan etunimi"
+        },
+        "gdprcompliance": {
+            "label": "GDPR-vaatimustenmukaisuus",
+            "longlabel": "GDPR-vaatimustenmukaisuus"
+        },
+        "genderid": {
+            "label": "Sukupuoli",
+            "longlabel": "Sukupuoli"
+        },
+        "grade": {
+            "label": "Arvosana",
+            "longlabel": "Arvosana"
+        },
+        "hotlist": {
+            "label": "Suosikkilista",
+            "longlabel": "Suosikkilista"
+        },
+        "id": {
+            "label": "Tunnus",
+            "longlabel": "Tunnus"
+        },
+        "industry_id": {
+            "label": "Toimiala",
+            "longlabel": "Toimiala"
+        },
+        "institute_name": {
+            "label": "Koulun/oppilaitoksen nimi",
+            "longlabel": "Koulun/oppilaitoksen nimi"
+        },
+        "is_currently_working": {
+            "label": "Työskentelee parhaillaan",
+            "longlabel": "Työskentelee parhaillaan"
+        },
+        "jobapplicationsettings": {
+            "label": "Työhakemusten asetukset",
+            "longlabel": "Työhakemusten asetukset"
+        },
+        "languageskills": {
+            "label": "Kieli",
+            "longlabel": "Kielitaito"
+        },
+        "last_calllog_created_on": {
+            "label": "Viimeisten puheluiden loki lisätty",
+            "longlabel": "Viimeisten puheluiden loki lisätty"
+        },
+        "last_communication_method": {
+            "label": "Viimeisin viestityyppi",
+            "longlabel": "Viimeisin viestityyppi"
+        },
+        "last_communication_timestamp": {
+            "label": "Viimeisin viesti",
+            "longlabel": "Viimeisin viesti"
+        },
+        "last_email_sent_on": {
+            "label": "Viimeisin lähetetty sähköposti",
+            "longlabel": "Viimeisin lähetetty sähköposti"
+        },
+        "last_meeting_created_on": {
+            "label": "Viimeisin kokous lisätty",
+            "longlabel": "Viimeisin kokous lisätty"
+        },
+        "last_message_sent_on": {
+            "label": "Viimeisin lähetetty LinkedIn-viesti",
+            "longlabel": "Viimeisin lähetetty LinkedIn-viesti"
+        },
+        "last_sms_sent_on": {
+            "label": "Viimeisin lähetetty tekstiviesti",
+            "longlabel": "Viimeisin lähetetty tekstiviesti"
+        },
+        "lastname": {
+            "label": "Sukunimi",
+            "longlabel": "Ehdokkaan sukunimi"
+        },
+        "lastorganisation": {
+            "label": "Nykyinen organisaatio",
+            "longlabel": "Nykyinen organisaatio"
+        },
+        "locality": {
+            "label": "Paikkakunta",
+            "longlabel": "Paikkakunta"
+        },
+        "noticeperiod": {
+            "label": "Irtisanomisaika",
+            "longlabel": "Irtisanomisaika (päivää)"
+        },
+        "off_limit_status": {
+            "label": "Kielletyn alueen tila",
+            "longlabel": "Kielletty tila"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "ownerslug": {
+            "label": "Omistajan tunnus",
+            "longlabel": "Omistajan tunnus"
+        },
+        "position": {
+            "label": "Otsikko",
+            "longlabel": "Otsikko / Tehtävä"
+        },
+        "postal_code": {
+            "label": "Postinumero",
+            "longlabel": "Postinumero"
+        },
+        "proficiency_level": {
+            "label": "Taitotaso",
+            "longlabel": "Taitotaso"
+        },
+        "profilefacebook": {
+            "label": "Facebook-profiili",
+            "longlabel": "Facebook-profiili"
+        },
+        "profilegithub": {
+            "label": "GitHub-profiili",
+            "longlabel": "GitHub-profiili"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn-profiili",
+            "longlabel": "LinkedIn-profiili"
+        },
+        "profilepic": {
+            "label": "Profiilikuva",
+            "longlabel": "Profiilikuva"
+        },
+        "profiletwitter": {
+            "label": "Twitter-profiili",
+            "longlabel": "Twitter-profiili"
+        },
+        "profilexing": {
+            "label": "Xing-profiili",
+            "longlabel": "Xing-profiili"
+        },
+        "qualification": {
+            "label": "Pätevyystunnus",
+            "longlabel": "Pätevyystunnus"
+        },
+        "qualificationid": {
+            "label": "Pätevyys",
+            "longlabel": "Koulutus"
+        },
+        "relevantexperience": {
+            "label": "Asiaankuuluva työkokemus",
+            "longlabel": "Asiaankuuluva työkokemus"
+        },
+        "requestresumelinkstatus": {
+            "label": "Tarkista ansioluettelon linkin tila",
+            "longlabel": "Tarkista ansioluettelon linkin tila"
+        },
+        "resume": {
+            "label": "Ansioluettelo",
+            "longlabel": "Ansioluettelo"
+        },
+        "resumeaddedon": {
+            "label": "CV lisätty",
+            "longlabel": "CV lisätty"
+        },
+        "resumefilename": {
+            "label": "Ansioluettelo",
+            "longlabel": "Ansioluettelo"
+        },
+        "resumetext": {
+            "label": "Ansioluettelon teksti",
+            "longlabel": "Ansioluettelon teksti"
+        },
+        "resumeupdatedon": {
+            "label": "Ehdokas on päivittänyt profiilinsa",
+            "longlabel": "Ehdokas on päivittänyt profiilinsa"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profiilipyyntö lähetetty",
+            "longlabel": "Profiilipyyntö lähetetty"
+        },
+        "salary": {
+            "label": "Palkka",
+            "longlabel": "Palkka"
+        },
+        "salaryexpectation": {
+            "label": "Palkkatoiveet",
+            "longlabel": "Palkkatoiveet"
+        },
+        "salarytype": {
+            "label": "Palkkatyyppi",
+            "longlabel": "Palkkatyyppi"
+        },
+        "skill": {
+            "label": "Taidot",
+            "longlabel": "Taidot"
+        },
+        "slug": {
+            "label": "Etana",
+            "longlabel": "Etana"
+        },
+        "source": {
+            "label": "Lähde",
+            "longlabel": "Lähde"
+        },
+        "specialization": {
+            "label": "Erikoistuminen",
+            "longlabel": "Koulutusalan erikoistuminen"
+        },
+        "srno": {
+            "label": "Tunnus",
+            "longlabel": "Hakijan tunnus"
+        },
+        "state": {
+            "label": "Valtio",
+            "longlabel": "Valtio"
+        },
+        "summary": {
+            "label": "Yhteenveto",
+            "longlabel": "Yhteenveto"
+        },
+        "symbol": {
+            "label": "Symboli",
+            "longlabel": "Symboli"
+        },
+        "title": {
+            "label": "Työasento",
+            "longlabel": "Työasento"
+        },
+        "unavailable": {
+            "label": "Saatavuus",
+            "longlabel": "Saatavuus"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "willingtorelocate": {
+            "label": "Valmis muuttamaan",
+            "longlabel": "Valmis muuttamaan"
+        },
+        "work_company_name": {
+            "label": "Yrityksen nimi",
+            "longlabel": "Yrityksen nimi"
+        },
+        "work_description": {
+            "label": "Työnkuvaus",
+            "longlabel": "Työnkuvaus"
+        },
+        "work_end_date": {
+            "label": "Työn päättymispäivä",
+            "longlabel": "Työn päättymispäivä"
+        },
+        "work_history": {
+            "label": "Työkokemus",
+            "longlabel": "Työkokemus"
+        },
+        "work_location": {
+            "label": "Työpaikka",
+            "longlabel": "Työpaikka"
+        },
+        "work_start_date": {
+            "label": "Työn alkamispäivä",
+            "longlabel": "Työn alkamispäivä"
+        },
+        "workexpyr": {
+            "label": "Kokemus yhteensä",
+            "longlabel": "Kokemus yhteensä"
+        }
+    },
+    "entity_related_deals": {
+        "accountid": {
+            "label": "Tilinumero",
+            "longlabel": "Tilinumero"
+        },
+        "archived": {
+            "label": "Arkistoitu",
+            "longlabel": "Arkistoitu"
+        },
+        "candidatename": {
+            "label": "Ehdokas",
+            "longlabel": "Ehdokas"
+        },
+        "candidateslug": {
+            "label": "hakijanimi",
+            "longlabel": "hakijanimi"
+        },
+        "candidatetitle": {
+            "label": "Otsikko",
+            "longlabel": "Otsikko / Tehtävä"
+        },
+        "closedate": {
+            "label": "Hakuaika päättyy",
+            "longlabel": "Hakuaika päättyy"
+        },
+        "collaborator": {
+            "label": "Yhteistyökumppani",
+            "longlabel": "Yhteistyökumppani"
+        },
+        "companyname": {
+            "label": "Yritys",
+            "longlabel": "Yrityksen nimi"
+        },
+        "companyslug": {
+            "label": "yrityksen-tunniste",
+            "longlabel": "yrityksen-tunniste"
+        },
+        "createdby": {
+            "label": "Luoja",
+            "longlabel": "Luoja"
+        },
+        "createdbyname": {
+            "label": "Luonut: Nimi",
+            "longlabel": "Luonut: Nimi"
+        },
+        "createdon": {
+            "label": "Lisätty",
+            "longlabel": "Lisätty"
+        },
+        "dealpercentagevalue": {
+            "label": "Kaupan painotettu arvo",
+            "longlabel": "Kaupan painotettu arvo"
+        },
+        "dealstage": {
+            "label": "Näyttämö",
+            "longlabel": "Näyttämö"
+        },
+        "dealstagelabel": {
+            "label": "Näyttämö",
+            "longlabel": "Näyttämö"
+        },
+        "dealtype": {
+            "label": "Kaupan tyyppi",
+            "longlabel": "Kaupan tyyppi"
+        },
+        "dealtypelabel": {
+            "label": "Kaupan tyyppi",
+            "longlabel": "Kaupan tyyppi"
+        },
+        "dealvalue": {
+            "label": "Kaupan arvo",
+            "longlabel": "Kaupan arvo"
+        },
+        "id": {
+            "label": "Tunnus",
+            "longlabel": "Tunnus"
+        },
+        "jobname": {
+            "label": "Työpaikka",
+            "longlabel": "Työnimike"
+        },
+        "jobslug": {
+            "label": "työpaikan tunnus",
+            "longlabel": "työpaikan tunnus"
+        },
+        "name": {
+            "label": "Nimi",
+            "longlabel": "Tarjouksen nimi"
+        },
+        "ownerid": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        },
+        "ownername": {
+            "label": "Omistajan nimi",
+            "longlabel": "Omistajan nimi"
+        },
+        "ownerslug": {
+            "label": "Omistajan tunnus",
+            "longlabel": "Omistajan tunnus"
+        },
+        "percentage": {
+            "label": "Lavan paino",
+            "longlabel": "Lavan paino"
+        },
+        "relatedcandidate": {
+            "label": "Hakijan tunnus",
+            "longlabel": "Hakijan tunnus"
+        },
+        "relatedcompany": {
+            "label": "Yritystunnus",
+            "longlabel": "Yritystunnus"
+        },
+        "relatedcontact": {
+            "label": "Yhteystiedot",
+            "longlabel": "Yhteystiedot"
+        },
+        "relatedjob": {
+            "label": "Työnumero",
+            "longlabel": "Työnumero"
+        },
+        "slug": {
+            "label": "Toimenpiteet",
+            "longlabel": "Etana"
+        },
+        "splitdealvalue": {
+            "label": "Jaettu kaupan summa",
+            "longlabel": "Jaettu kaupan summa"
+        },
+        "srno": {
+            "label": "Tunnus",
+            "longlabel": "Kaupan tunnus"
+        },
+        "updatedby": {
+            "label": "Päivittäjä",
+            "longlabel": "Päivittäjä"
+        },
+        "updatedbyname": {
+            "label": "Päivitetty nimen mukaan",
+            "longlabel": "Päivitetty nimen mukaan"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "website": {
+            "label": "Verkkosivusto",
+            "longlabel": "Verkkosivusto"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Painotettu jakosumma",
+            "longlabel": "Painotettu jakosumma"
+        }
+    },
+    "hotlist_widget": {
+        "name": {
+            "label": "Suosikkilistan nimi",
+            "longlabel": "Suosikkilistan nimi"
+        },
+        "createdOn": {
+            "label": "Luotu",
+            "longlabel": "Luotu"
+        },
+        "updatedOn": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "ownerId": {
+            "label": "Omistaja",
+            "longlabel": "Omistaja"
+        }
+    },
+    "executive_search_report": {
+        "report_title": {
+            "label": "Raportin nimi",
+            "longlabel": "Raportin nimi"
+        },
+        "created_by": {
+            "label": "Luoja",
+            "longlabel": "Luoja"
+        },
+        "updated_by": {
+            "label": "Muokannut",
+            "longlabel": "Muokannut"
+        },
+        "updated_on": {
+            "label": "Muokattu",
+            "longlabel": "Muokattu"
+        }
+    },
+    "pitch_candidate": {
+        "name": {
+            "label": "Ehdokkaan nimi",
+            "longlabel": "Ehdokkaan nimi"
+        },
+        "pitchStage": {
+            "label": "Esittelyvaihe ja kommentti",
+            "longlabel": "Esittelyvaihe ja kommentti"
+        },
+        "phone": {
+            "label": "Puhelin",
+            "longlabel": "Puhelin"
+        },
+        "email": {
+            "label": "Sähköposti",
+            "longlabel": "Sähköposti"
+        },
+        "resumefilename": {
+            "label": "Ansioluettelo",
+            "longlabel": "Ansioluettelo"
+        },
+        "contactName": {
+            "label": "Ota yhteyttä Pitchediin",
+            "longlabel": "Ota yhteyttä Pitchediin"
+        },
+        "createdByName": {
+            "label": "Esittäjä:",
+            "longlabel": "Esittäjä:"
+        },
+        "createdOn": {
+            "label": "Esitelty",
+            "longlabel": "Esitelty"
+        },
+        "candidateTitle": {
+            "label": "Ehdokkaan nimi",
+            "longlabel": "Hakijan titteli / tehtävä"
+        },
+        "last_communication_timestamp": {
+            "label": "Ehdokkaan viimeisin yhteydenotto",
+            "longlabel": "Ehdokkaan viimeisin yhteydenotto"
+        }
+    },
+    "candidate_history": {
+        "id": {
+            "label": "Tunnus",
+            "longlabel": "Tunnus"
+        },
+        "name": {
+            "label": "Nimi",
+            "longlabel": "Nimi"
+        },
+        "updatedby": {
+            "label": "Päivittäjä",
+            "longlabel": "Päivittäjä"
+        },
+        "updatedon": {
+            "label": "Päivitetty",
+            "longlabel": "Päivitetty"
+        },
+        "candidatestatus": {
+            "label": "Rekrytointivaihe ja historia",
+            "longlabel": "Rekrytointivaihe ja historia"
+        },
+        "companycontactname": {
+            "label": "Yrityksen yhteystiedot",
+            "longlabel": "Yrityksen yhteystiedot"
+        }
+    },
+    "pitch_contact": {
+        "name": {
+            "label": "Yhteyshenkilö",
+            "longlabel": "Yhteyshenkilö"
+        },
+        "email": {
+            "label": "Sähköposti",
+            "longlabel": "Yhteyshenkilön sähköpostiosoite"
+        },
+        "phone": {
+            "label": "Puhelin",
+            "longlabel": "Puhelinnumero"
+        },
+        "pitchStage": {
+            "label": "Esittelyvaihe ja kommentti",
+            "longlabel": "Esittelyvaihe ja kommentti"
+        },
+        "companyName": {
+            "label": "Yritys",
+            "longlabel": "Yrityksen nimi"
+        },
+        "createdByName": {
+            "label": "Esittäjä:",
+            "longlabel": "Esittäjä:"
+        },
+        "createdOn": {
+            "label": "Esitelty",
+            "longlabel": "Esitelty"
+        },
+        "contactTitle": {
+            "label": "Yhteystiedot",
+            "longlabel": "Yhteystiedot"
+        },
+        "last_communication_timestamp": {
+            "label": "Yhteystiedot Viimeisin viesti",
+            "longlabel": "Yhteystiedot Viimeisin viesti"
+        }
+    }
+}

@@ -1,0 +1,339 @@
+pipeline {
+    agent {
+        label 'agent-java21'
+    }
+
+    environment {
+        SONAR_TOKEN = credentials('sonar-token')
+        CHANNEL_ID = "C073YKH0Q8P"
+        // Define the region and other necessary environment variables for AWS CodeArtifact
+        AWS_REGION = 'ap-south-1'
+        DOMAIN = 'recruitcrm'
+        DOMAIN_OWNER = '004468257635'
+        JAVA_PACKAGES_CODEARTIFACT_REPOSITORY_DOMAIN = 'recruitcrm'
+        JAVA_PACKAGES_CODEARTIFACT_REPOSITORY_ID = 'java-packages'
+        AWS_CODEARTIFACT_REPOSITORY_USERNAME = 'aws'
+        JAVA_PACKAGES_CODEARTIFACT_REPOSITORY_URL = 'https://recruitcrm-004468257635.d.codeartifact.ap-south-1.amazonaws.com/maven/java-packages/'
+
+    }
+
+    parameters {
+        string(name: 'accountId', defaultValue: '459515', description: 'application-test.properties')
+        string(name: 'userId', defaultValue: '459515', description: 'application-test.properties')
+    }
+
+    stages {
+        stage('Update Branches') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'git-cli-credential', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_TOKEN')]) {
+                    sh("""
+                        git config --global credential.helper 'store --file=.git/credentials'
+                        echo "https://$GIT_USERNAME:$GIT_TOKEN@github.com" > .git/credentials
+                        git fetch origin +refs/heads/*:refs/remotes/origin/*
+                    """)
+                }
+            }
+        }
+        stage('Environment Preparation') {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
+                AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+                DB_HOST_READER = credentials('alphas-db-host-reader')
+                DB_HOST_WRITER = credentials('alphas-db-host-writer')
+                DB_USERNAME = credentials('alphas-db-username')
+                DB_PASSWORD = credentials('alphas-db-password')
+                DB_DATABASE = credentials('alphas-db-database')
+                JWT_SECRET_KEY = credentials('alphas-albatross-jwt-secret-key')
+            }
+            steps {
+                script {
+                    withEnv(['PATH+VIRTUAL_ENV=/opt/env/bin']) {
+                        sh "pip install boto3"
+                        sh "python3 ./scripts/create_environment.py"
+                    }
+
+                    def propertiesList = [
+                            "account-id=${params.accountId}",
+                            "user-id=${params.userId}"
+                    ]
+                    def applicationTestProperties = propertiesList.join('\n') + '\n'
+                    writeFile file: 'src/test/resources/application-test.properties', text: applicationTestProperties
+                }
+            }
+        }
+
+        stage('Inject AWS Credentials') {
+            steps {
+                script {
+                    // Use withCredentials to load AWS credentials into environment variables
+                    withCredentials([aws(credentialsId: 'candidate-revamp-pipeline-aws-access')]) {
+                        // Set credentials as global environment variables
+                        env.AWS_ACCESS_KEY_ID = "${AWS_ACCESS_KEY_ID}"
+                        env.AWS_SECRET_ACCESS_KEY = "${AWS_SECRET_ACCESS_KEY}"
+                    }
+                }
+                script {
+                    // Fetch the token and inject it into the environment
+                    env.CODEARTIFACT_AUTH_TOKEN = sh(
+                            script: """
+                        aws codeartifact get-authorization-token \
+                            --domain $DOMAIN \
+                            --domain-owner $DOMAIN_OWNER \
+                            --region $AWS_REGION \
+                            --query authorizationToken \
+                            --output text
+                        """,
+                            returnStdout: true
+                    ).trim()
+                }
+            }
+        }
+
+        stage('Execute Tests') {
+            steps {
+                sh "mvn -version"
+                sh "cat src/main/resources/application.properties"
+                sh "cat src/test/resources/application-test.properties"
+                sh "mvn -s settings.xml \
+                        --batch-mode clean test \
+                        surefire-report:report-only \
+                        jacoco:report \
+                        -Dsentry.maven.plugin.skip=true \
+                        -Dmaven.test.failure.ignore=true"
+            }
+        }
+        stage('Publish Test Results') {
+            steps {
+                script {
+                    // Publish the JUnit test results
+                    junit '**/target/surefire-reports/TEST-*.xml'
+
+                    // Check the result of the tests and store it in an environment variable
+                    def testResult = currentBuild.result ?: 'SUCCESS'
+                    echo "Test result is: ${testResult}"
+                    env.TEST_RESULT_STATUS = testResult
+                }
+            }
+            post {
+                success {
+                    script {
+                        def buildUrl = env.BUILD_URL.replaceAll("http://jenkins-ci:8080", "http://jenkins-ci.recruitcrm.net:8080")
+                        slackSend(
+                                channel: "${CHANNEL_ID}",
+                                color: "good",
+                                message: "JUnit tests passed! See the test report at ${buildUrl}"
+                        )
+                    }
+                }
+                failure {
+                    script {
+                        def buildUrl = env.BUILD_URL.replaceAll("http://jenkins-ci:8080", "http://jenkins-ci.recruitcrm.net:8080")
+                        slackSend(
+                                channel: "${CHANNEL_ID}",
+                                color: "danger",
+                                message: "JUnit tests failed. See the test report at ${buildUrl}"
+                        )
+                    }
+                }
+            }
+        }
+        stage('PR Analysis') {
+            when {
+                expression {
+                    if (env.CHANGE_ID != null) {
+                        def validChangeTarget = ["main", "dev", "cse-bug-release"].contains(env.CHANGE_TARGET)
+                        def validBaseBranchPrefixes = ['feature-', 'bugfix-', 'bugfix-cse', 'bug-hotfix-', 'enhancement-', 'refactor-']
+                        // TODO: Remove the true condition once all the current PRs are merged
+                        def validChangeBranch = validBaseBranchPrefixes.any { env.CHANGE_BRANCH.startsWith(it) } || true
+                        return validChangeTarget && validChangeBranch
+                    }
+                    return false
+                }
+            }
+            steps {
+                script {
+                    def pullRequestId = env.CHANGE_ID
+                    def pullRequestBranch = env.CHANGE_BRANCH
+                    def baseBranch = env.CHANGE_TARGET
+                    withSonarQubeEnv('default_env') {
+                        sh "mvn -s settings.xml \
+                                --batch-mode \
+                                sonar:sonar \
+                                -Dsonar.pullrequest.key=${pullRequestId} \
+                                -Dsonar.pullrequest.branch=${pullRequestBranch} \
+                                -Dsonar.pullrequest.base=${baseBranch} \
+                                -Dmaven.test.skip=true \
+                                -Dsentry.maven.plugin.skip=true"
+                    }
+                }
+            }
+        }
+        stage('Branch Analysis') {
+            when {
+                expression {
+                    def validPrefixes = ['feature-', 'bugfix-', 'bugfix-cse', 'bug-hotfix-', 'enhancement-', 'refactor-']
+                    def validBranches = ['main', 'dev', 'cse-bug-release']
+                    def validBranch = validPrefixes.any { env.BRANCH_NAME.startsWith(it) } || validBranches.contains(env.BRANCH_NAME)
+                    return validBranch
+                }
+            }
+            steps {
+                script {
+                    def currentBranch = env.BRANCH_NAME
+                    def targetBranch = 'dev'
+                    // https://stackoverflow.com/questions/73883883/jenkinsfile-switch-case-with-contains-is-throwing-cpscallableinvocation-error
+                    // We are only handling the cases where the target branch is not dev. Rest will go to dev anyway
+                    if (currentBranch.startsWith('bugfix-cse')) {
+                        targetBranch = 'cse-bug-release'
+                    } else if (currentBranch.startsWith('bug-hotfix')) {
+                        targetBranch = 'main'
+                    }
+                    withSonarQubeEnv('default_env') {
+                        sh "mvn -s settings.xml \
+                                --batch-mode \
+                                sonar:sonar \
+                                -Dsonar.branch.name=${currentBranch} \
+                                -Dsonar.branch.target=${targetBranch} \
+                                -Dmaven.test.skip=true \
+                                -Dsentry.maven.plugin.skip=true"
+                    }
+                }
+            }
+        }
+        stage('Send Test Report') {
+            steps {
+                script {
+                    env.COMMIT_MESSAGE = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim()
+                }
+
+                sh "zip -r scan.zip target/site/"
+                // Change here for new repository
+                slackUploadFile(
+                        filePath: "scan.zip",
+                        credentialId: "slack-bot-token",
+                        channel: "${CHANNEL_ID}",
+                        initialComment: """
+*REPOSITORY_NAME:* recruitcrm-candidate-microservice,
+*BRANCH_NAME:* ${env.BRANCH_NAME},
+*COMMIT_URL:* https://github.com/Workforce-Cloud-Tech/recruitcrm-candidate-microservice/commit/${env.GIT_COMMIT},
+*COMMIT_MESSAGE:* ${env.COMMIT_MESSAGE}
+"""
+                )
+            }
+        }
+        stage('Check Test Status') {
+            steps {
+                script {
+                    // Fail the pipeline if tests were not successful
+                    if (env.TEST_RESULT_STATUS == 'UNSTABLE' || env.TEST_RESULT_STATUS == 'FAILURE') {
+//                        error("Tests did not pass 100%. Failing the pipeline.")
+                    }
+                }
+            }
+        }
+
+        stage('Determine Build Type') {
+            steps {
+                script {
+                    // Check if it's a branch push or PR
+                    if (env.CHANGE_ID) {
+                        // If it's a PR, print a message but do not build
+                        echo "This is a Pull Request. No build triggered."
+                    } else {
+                        // It's a branch push, check if it's the main or dev branch
+                        if (env.BRANCH_NAME == 'main') {
+                            env.ARTIFACT_BUILD_ENVIRONMENT = 'production'
+                            echo "This is a branch push to 'main'. Building production artifact."
+                        } else if (env.BRANCH_NAME == 'dev') {
+                            env.ARTIFACT_BUILD_ENVIRONMENT = 'development'
+                            echo "This is a branch push to 'dev'. Building development artifact."
+                        } else {
+                            // For unrecognized branches, log a message and skip the build
+                            env.ARTIFACT_BUILD_ENVIRONMENT = 'none'
+                            echo "Branch '${env.BRANCH_NAME}' is not recognized for builds. Skipping build process."
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Check Environment') {
+            steps {
+                script {
+                    if (!env.ARTIFACT_BUILD_ENVIRONMENT) {
+                        error "Error: ARTIFACT_BUILD_ENVIRONMENT variable is not set."
+                    }
+                }
+            }
+        }
+
+        stage('Build Artifact') {
+            when {
+                expression {
+                    return env.ARTIFACT_BUILD_ENVIRONMENT == 'production' || env.ARTIFACT_BUILD_ENVIRONMENT == 'development'
+                }
+            }
+            steps {
+                script {
+                    if (ARTIFACT_BUILD_ENVIRONMENT == 'production') {
+                        buildProduction()
+                    } else if (ARTIFACT_BUILD_ENVIRONMENT == 'development') {
+                        buildDevelopment()
+                    } else {
+                        error "Error: Invalid ARTIFACT_BUILD_ENVIRONMENT value. Must be 'production' or 'development'."
+                    }
+                }
+            }
+            post {
+                failure {
+                    echo "Build failed."
+                }
+                success {
+                    echo "Build succeeded."
+                }
+            }
+        }
+    }
+}
+
+def buildProduction() {
+    try {
+        echo "Starting production build..."
+        sh 'mvn -s settings.xml --batch-mode versions:set -DremoveSnapshot=true'
+        sh 'mvn -s settings.xml --batch-mode versions:use-releases -DfailIfNotReplaced=true'
+
+        def CURRENT_ARTIFACT_VERSION = sh(script: 'mvn -s settings.xml help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true).trim()
+
+        def VERSION_EXISTS = sh(script: """
+            aws codeartifact describe-package-version \
+            --region ${env.AWS_REGION} \
+            --domain ${env.JAVA_PACKAGES_CODEARTIFACT_REPOSITORY_DOMAIN} \
+            --repository ${env.JAVA_PACKAGES_CODEARTIFACT_REPOSITORY_ID} \
+            --format maven \
+            --package "candidate-microservice" \
+            --namespace "io.recruitcrm.microservice" \
+            --package-version ${CURRENT_ARTIFACT_VERSION} \
+            --query 'packageVersion.version' \
+            --output text 2>/dev/null
+        """, returnStatus: true)
+
+        if (VERSION_EXISTS != 0) {
+            echo "Version does not exist. Proceeding with upload..."
+            sh 'mvn -s settings.xml --batch-mode -Dmaven.test.skip=true -Dsentry.maven.plugin.skip=true clean package deploy'
+        } else {
+            echo "Version already exists. Skipping upload."
+        }
+
+    } catch (Exception e) {
+        error "Build failed with profile: production"
+    }
+}
+
+def buildDevelopment() {
+    try {
+        echo "Starting development build..."
+        sh 'mvn -s settings.xml --batch-mode -Dmaven.test.skip=true -Dsentry.maven.plugin.skip=true clean package deploy'
+    } catch (Exception e) {
+        error "Build failed with profile: development"
+    }
+}

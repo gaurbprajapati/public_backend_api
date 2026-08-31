@@ -1,0 +1,100 @@
+receivers:
+  hostmetrics:
+    collection_interval: 60s
+    scrapers:
+      cpu: {}
+      disk:
+        exclude:
+          devices:
+            - ^loop.*$
+          match_type: regexp
+        metrics:
+          system.disk.io:
+            enabled: false
+          system.disk.merged:
+            enabled: false
+          system.disk.operation_time:
+            enabled: false
+          system.disk.operations:
+            enabled: false
+          system.disk.pending_operations:
+            enabled: false
+          system.disk.weighted_io_time:
+            enabled: false
+      filesystem:
+        exclude_devices:
+          devices:
+            - ^/dev/loop.*$
+          match_type: regexp
+        metrics:
+          system.filesystem.inodes.usage:
+            enabled: false
+      memory: {}
+      network:
+        metrics:
+          system.network.connections:
+            enabled: false
+          system.network.dropped:
+            enabled: false
+          system.network.errors:
+            enabled: false
+          system.network.packets:
+            enabled: false
+      process:
+        exclude:
+          names:
+            - ^(irq|ksoftirqd|kworker|idle_inject|cpuhp|migration)/.*$
+            - ^(systemd|rcu_|nvme-).*$ 
+          match_type: regexp
+        metrics:
+          process.disk.io:
+            enabled: false
+          process.memory.virtual:
+            enabled: false
+        mute_process_name_error: true
+        mute_process_cgroup_error: true
+        mute_process_exe_error: true
+        mute_process_io_error: true
+        mute_process_user_error: true
+
+processors:
+  batch: {}
+  resourcedetection:
+    detectors:
+      - system
+    system:
+      hostname_sources: ["os"]
+
+exporters:
+  debug:
+    verbosity: detailed
+    sampling_initial: 5
+    sampling_thereafter: 1
+
+  otlphttp:
+    metrics_endpoint: ${CUBEAPM_INFRA_URL}
+    retry_on_failure:
+      enabled: false
+
+service:
+  pipelines:
+    metrics:
+      receivers:
+        - hostmetrics
+      processors:
+        - batch
+        - resourcedetection
+      exporters:
+        - otlphttp
+        # - debug
+
+  telemetry:
+    logs:
+      level: debug
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: "localhost"
+                port: 8888

@@ -1,0 +1,420 @@
+# Controller Unit Test Cases Rules
+
+## Overview
+This document defines the standards and patterns for writing unit test cases for REST controllers in the timesheet microservice. These rules ensure consistency, maintainability, and comprehensive test coverage across all controller tests.
+
+## Test Class Structure
+
+### 1. Test Class Declaration
+```java
+@SpringBootTest(classes = TimesheetApplication.class)
+class [Controller]Tests {
+    // Test implementation
+}
+```
+
+### 2. Mock Dependencies
+```java
+@MockBean
+private I[Service] [service];
+
+@MockBean
+private APIResponder apiResponder;
+
+@InjectMocks
+private [Controller] [controller];
+```
+
+### 3. Setup Method
+```java
+@BeforeEach
+void setUp() {
+    this.[controller] = new [Controller](this.[service], this.apiResponder);
+}
+```
+
+## Test Method Patterns
+
+### 1. Test Method Structure
+```java
+@Test
+@DisplayName("Descriptive test name describing the scenario")
+void test[MethodName][Scenario][ExpectedResult]() {
+    // Arrange
+    [RequestDto] requestObject = new [RequestDto]();
+    [ResponseDto] expectedData = new [ResponseDto]();
+    APINormalResponse<[ResponseDto]> expectedResponse = new APINormalResponse<>(expectedData);
+    ResponseEntity<APINormalResponse<[ResponseDto]>> expectedResponseEntity =
+        new ResponseEntity<>(expectedResponse, HttpStatus.OK);
+
+    // Mock service calls
+    Mockito.when(this.[service].[method](requestObject)).thenReturn(expectedData);
+    Mockito.when(this.apiResponder.respond(expectedData, "Success message"))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].[method](requestObject);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).[method](requestObject);
+    Mockito.verify(this.apiResponder).respond(expectedData, "Success message");
+}
+```
+
+### 2. Test Naming Conventions
+- **Test Class**: `[Controller]Tests`
+- **Test Method**: `test[MethodName][Scenario][ExpectedResult]()`
+- **Display Name**: Descriptive sentence explaining what the test does
+- **Naming Style**: Use PascalCase for scenario and expected result parts (no underscores)
+
+### 3. Test Method Sections
+- **Arrange**: Setup test data, mocks, and expectations
+- **Act**: Execute the method under test
+- **Assert**: Verify the results and mock interactions
+
+## Request/Response Patterns
+
+### 1. GET Operations
+```java
+@Test
+@DisplayName("Get [entity] by id successfully")
+void testGet[Entity]ByIdValidIdReturnsEntity() {
+    // Arrange
+    Integer entityId = 1;
+    [Entity]ResponseDto expectedEntity = new [Entity]ResponseDto();
+    APINormalResponse<[Entity]ResponseDto> expectedResponse = new APINormalResponse<>(expectedEntity);
+    ResponseEntity<APINormalResponse<[Entity]ResponseDto>> expectedResponseEntity =
+        new ResponseEntity<>(expectedResponse, HttpStatus.OK);
+
+    Mockito.when(this.[service].get[Entity]ById(entityId)).thenReturn(expectedEntity);
+    Mockito.when(this.apiResponder.respond(expectedEntity, "[Entity] fetched successfully"))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].get[Entity]ById(entityId);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).get[Entity]ById(entityId);
+    Mockito.verify(this.apiResponder).respond(expectedEntity, "[Entity] fetched successfully");
+}
+```
+
+### 2. POST Operations (Create)
+```java
+@Test
+@DisplayName("Create [entity] successfully")
+void testCreate[Entity]ValidRequestCreatesEntity() {
+    // Arrange
+    [Entity]RequestDto requestObject = new [Entity]RequestDto();
+    [Entity]ResponseDto expectedEntity = new [Entity]ResponseDto();
+    APINormalResponse<[Entity]ResponseDto> expectedResponse = new APINormalResponse<>(expectedEntity);
+    ResponseEntity<APINormalResponse<[Entity]ResponseDto>> expectedResponseEntity =
+        new ResponseEntity<>(expectedResponse, HttpStatus.OK);
+
+    Mockito.when(this.[service].create[Entity](requestObject)).thenReturn(expectedEntity);
+    Mockito.when(this.apiResponder.respond(expectedEntity, "[Entity] created successfully"))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].create[Entity](requestObject);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).create[Entity](requestObject);
+    Mockito.verify(this.apiResponder).respond(expectedEntity, "[Entity] created successfully");
+}
+```
+
+### 3. PUT Operations (Update)
+```java
+@Test
+@DisplayName("Update [entity] successfully")
+void testUpdate[Entity]ValidRequestUpdatesEntity() {
+    // Arrange
+    Integer entityId = 1;
+    [Entity]RequestDto requestObject = new [Entity]RequestDto();
+    [Entity]ResponseDto expectedEntity = new [Entity]ResponseDto();
+    APINormalResponse<[Entity]ResponseDto> expectedResponse = new APINormalResponse<>(expectedEntity);
+    ResponseEntity<APINormalResponse<[Entity]ResponseDto>> expectedResponseEntity =
+        new ResponseEntity<>(expectedResponse, HttpStatus.OK);
+
+    Mockito.when(this.[service].update[Entity](entityId, requestObject)).thenReturn(expectedEntity);
+    Mockito.when(this.apiResponder.respond(expectedEntity, "[Entity] updated successfully"))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].update[Entity](entityId, requestObject);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).update[Entity](entityId, requestObject);
+    Mockito.verify(this.apiResponder).respond(expectedEntity, "[Entity] updated successfully");
+}
+```
+
+### 4. DELETE Operations
+```java
+@Test
+@DisplayName("Delete [entity] successfully")
+void testDelete[Entity]ValidIdDeletesEntity() {
+    // Arrange
+    Integer entityId = 1;
+    APINormalResponse<Void> expectedResponse = new APINormalResponse<>(null);
+    ResponseEntity<APINormalResponse<Void>> expectedResponseEntity =
+        new ResponseEntity<>(expectedResponse, HttpStatus.OK);
+
+    Mockito.doNothing().when(this.[service]).delete[Entity](entityId);
+    Mockito.when(this.apiResponder.<Void>respond(null, "[Entity] deleted successfully"))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].delete[Entity](entityId);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).delete[Entity](entityId);
+    Mockito.verify(this.apiResponder).respond(null, "[Entity] deleted successfully");
+}
+```
+
+### 5. Search Operations
+```java
+@Test
+@DisplayName("Search [entities] successfully")
+void testSearch[Entities]ValidCriteriaReturnsEntities() {
+    // Arrange
+    SearchRequestDto searchDto = new SearchRequestDto();
+    List<[Entity]ResponseDto> expectedEntities = Arrays.asList(
+        new [Entity]ResponseDto(), new [Entity]ResponseDto());
+    APINormalResponse<List<[Entity]ResponseDto>> expectedResponse =
+        new APINormalResponse<>(expectedEntities);
+    ResponseEntity<APINormalResponse<List<[Entity]ResponseDto>>> expectedResponseEntity =
+        new ResponseEntity<>(expectedResponse, HttpStatus.OK);
+
+    Mockito.when(this.[service].search[Entities](searchDto, 0, 20)).thenReturn(expectedEntities);
+    Mockito.when(this.apiResponder.respond(expectedEntities, "[Entities] fetched successfully"))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].search[Entities](searchDto, 0, 20);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).search[Entities](searchDto, 0, 20);
+    Mockito.verify(this.apiResponder).respond(expectedEntities, "[Entities] fetched successfully");
+}
+```
+
+### 6. Bulk Operations
+```java
+@Test
+@DisplayName("Bulk [operation] [entities] successfully")
+void testBulk[Operation][Entities]ValidRequestProcesses[Entities]() {
+    // Arrange
+    Bulk[Operation]RequestDto requestObject = new Bulk[Operation]RequestDto();
+    requestObject.setIds(Arrays.asList(1, 2, 3));
+    Bulk[Operation]ResponseDto expectedResult = new Bulk[Operation]ResponseDto();
+    APINormalResponse<Bulk[Operation]ResponseDto> expectedResponse =
+        new APINormalResponse<>(expectedResult);
+    ResponseEntity<APINormalResponse<Bulk[Operation]ResponseDto>> expectedResponseEntity =
+        new ResponseEntity<>(expectedResponse, HttpStatus.OK);
+
+    Mockito.when(this.[service].bulk[Operation][Entities](requestObject.getIds()))
+        .thenReturn(expectedResult);
+    Mockito.when(this.apiResponder.respond(expectedResult, "[Entities] [operation] completed successfully"))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].bulk[Operation][Entities](requestObject);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).bulk[Operation][Entities](requestObject.getIds());
+    Mockito.verify(this.apiResponder).respond(expectedResult, "[Entities] [operation] completed successfully");
+}
+```
+
+## Mock Setup Patterns
+
+### 1. Service Method Mocking
+```java
+// For methods returning data
+Mockito.when(this.[service].[method](parameters)).thenReturn(expectedData);
+
+// For void methods
+Mockito.doNothing().when(this.[service]).[method](parameters);
+
+// For methods throwing exceptions
+Mockito.when(this.[service].[method](parameters))
+    .thenThrow(new [Exception]("Error message"));
+```
+
+### 2. APIResponder Mocking
+```java
+// For successful responses with data
+Mockito.when(this.apiResponder.respond(expectedData, "Success message"))
+    .thenReturn(expectedResponseEntity);
+
+// For successful responses without data (void) - MUST use <Void> generic type
+Mockito.when(this.apiResponder.<Void>respond(null, "Success message"))
+    .thenReturn(expectedResponseEntity);
+
+// For error responses
+Mockito.when(this.apiResponder.respondWithError("Error message", HttpStatus.BAD_REQUEST))
+    .thenReturn(errorResponseEntity);
+```
+
+**CRITICAL**: Always use `<Void>` generic type casting when mocking void responses:
+- ✅ **Correct**: `this.apiResponder.<Void>respond(null, "message")`
+- ❌ **Incorrect**: `this.apiResponder.respond(null, "message")`
+
+## Assertion Patterns
+
+### 1. Response Verification
+```java
+// Verify response entity
+assertThat(response).isEqualTo(expectedResponseEntity);
+
+// Verify response status
+assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+// Verify response body
+assertThat(response.getBody()).isEqualTo(expectedResponse);
+```
+
+### 2. Mock Verification
+```java
+// Verify service method calls
+Mockito.verify(this.[service]).[method](parameters);
+
+// Verify API responder calls
+Mockito.verify(this.apiResponder).respond(expectedData, "Success message");
+
+// Verify method called with specific parameters
+Mockito.verify(this.[service]).[method](eq(expectedParameter));
+
+// Verify method never called
+Mockito.verify(this.[service], never()).[method](any());
+```
+
+## Test Data Creation
+
+### 1. Request DTO Creation
+```java
+// Simple request DTO
+[Entity]RequestDto requestObject = new [Entity]RequestDto();
+requestObject.setField1("value1");
+requestObject.setField2("value2");
+
+// Request DTO with collections
+BulkRequestDto requestObject = new BulkRequestDto();
+requestObject.setIds(Arrays.asList(1, 2, 3));
+```
+
+### 2. Response DTO Creation
+```java
+// Simple response DTO
+[Entity]ResponseDto expectedEntity = new [Entity]ResponseDto();
+expectedEntity.setId(1);
+expectedEntity.setName("Test Entity");
+
+// List response DTO
+List<[Entity]ResponseDto> expectedEntities = Arrays.asList(
+    new [Entity]ResponseDto(), new [Entity]ResponseDto());
+```
+
+## Error Handling Test Patterns
+
+### 1. Exception Testing
+```java
+@Test
+@DisplayName("Handle [exception] when [scenario]")
+void test[Method][Scenario]Handles[Exception]() {
+    // Arrange
+    [RequestDto] requestObject = new [RequestDto]();
+    String errorMessage = "Error occurred";
+    APIErrorResponse expectedError = new APIErrorResponse("ERROR", errorMessage, null);
+    ResponseEntity<APIErrorResponse> expectedResponseEntity =
+        new ResponseEntity<>(expectedError, HttpStatus.BAD_REQUEST);
+
+    Mockito.when(this.[service].[method](requestObject))
+        .thenThrow(new [Exception](errorMessage));
+    Mockito.when(this.apiResponder.respondWithError(errorMessage, HttpStatus.BAD_REQUEST))
+        .thenReturn(expectedResponseEntity);
+
+    // Act
+    ResponseEntity<?> response = this.[controller].[method](requestObject);
+
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).[method](requestObject);
+    Mockito.verify(this.apiResponder).respondWithError(errorMessage, HttpStatus.BAD_REQUEST);
+}
+```
+
+## Best Practices
+
+### 1. Test Organization
+- Group related tests in the same test class
+- Use descriptive test names and display names
+- Follow the AAA pattern (Arrange, Act, Assert)
+- Keep tests independent and isolated
+
+### 2. Mock Usage
+- Mock all external dependencies
+- Use `@MockBean` for Spring components
+- Verify important mock interactions
+- Don't over-verify trivial interactions
+
+### 3. Test Data
+- Use realistic test data
+- Create helper methods for complex test data
+- Use constants for repeated values
+- Keep test data minimal but sufficient
+
+### 4. Assertions
+- Use AssertJ for fluent assertions
+- Test both positive and negative scenarios
+- Verify response structure and content
+- Check HTTP status codes
+
+### 5. Coverage
+- Test all public controller methods
+- Test different input scenarios
+- Test error handling paths
+- Test edge cases and boundary conditions
+
+## Common Patterns Summary
+
+### 1. Standard Test Structure
+```java
+@Test
+@DisplayName("Clear description of what is being tested")
+void testMethodNameScenarioExpectedResult() {
+    // Arrange - Setup test data and mocks
+    // Act - Execute the method under test
+    // Assert - Verify results and interactions
+}
+```
+
+### 2. Mock Verification Pattern
+```java
+// Verify service interaction
+Mockito.verify(this.[service]).[method](expectedParameters);
+
+// Verify API responder interaction
+Mockito.verify(this.apiResponder).respond(expectedData, "Expected message");
+```
+
+### 3. Response Assertion Pattern
+```java
+// Verify complete response
+assertThat(response).isEqualTo(expectedResponseEntity);
+
+// Additional specific assertions if needed
+assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+```
+
+These rules ensure consistent, maintainable, and comprehensive controller unit tests across the timesheet microservice.

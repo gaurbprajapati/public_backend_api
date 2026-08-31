@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WeeklyOvertimeDetailsJsonSchema",
+  "type": "object",
+  "properties": {
+    "hours": { "type": "integer" },
+    "pay_rate_multiplier": { "type": ["number", "null"] },
+    "bill_rate_multiplier": { "type": ["number", "null"] },
+    "pay_amount": { "type": "number" },
+    "bill_amount": { "type": "number" }
+  },
+  "required": [
+    "hours",
+    "pay_amount",
+    "bill_amount"
+  ],
+  "additionalProperties": false
+}

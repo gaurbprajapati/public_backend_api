@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BreakIntervalJsonSchema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "integer" },
+      "breakStartTime": { "type": "integer" },
+      "breakEndTime": { "type": "integer" }
+    },
+    "required": [
+      "id",
+      "breakStartTime",
+      "breakEndTime"
+    ],
+    "additionalProperties": false
+  }
+}

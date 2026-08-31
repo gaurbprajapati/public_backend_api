@@ -1,0 +1,4406 @@
+{
+    "candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ID do candidato"
+        },
+        "candidatename": {
+            "label": "Nome",
+            "longlabel": "Nome do candidato"
+        },
+        "firstname": {
+            "label": "Primeiro nome",
+            "longlabel": "Nome próprio do candidato"
+        },
+        "lastname": {
+            "label": "Sobrenome",
+            "longlabel": "Sobrenome do candidato"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "genderid": {
+            "label": "Género",
+            "longlabel": "Género"
+        },
+        "contactnumber": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "candidatedob": {
+            "label": "Data de Nascimento",
+            "longlabel": "Data de nascimento"
+        },
+        "age": {
+            "label": "Idade",
+            "longlabel": "Idade do candidato"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Qualificação educacional"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização Educativa"
+        },
+        "workexpyr": {
+            "label": "Experiência Total",
+            "longlabel": "Experiência Total"
+        },
+        "relevantexperience": {
+            "label": "Experiência Relevante",
+            "longlabel": "Experiência Relevante"
+        },
+        "resumetext": {
+            "label": "Resumir Texto",
+            "longlabel": "Resumir Texto"
+        },
+        "currentsalary": {
+            "label": "Salário Atual",
+            "longlabel": "Salário Atual"
+        },
+        "resume": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumefilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "lastorganisation": {
+            "label": "Organização Atual",
+            "longlabel": "Organização Atual"
+        },
+        "skill": {
+            "label": "Habilidades",
+            "longlabel": "Habilidades"
+        },
+        "willingtorelocate": {
+            "label": "Disposto a mudar de local",
+            "longlabel": "Disposto a mudar de local"
+        },
+        "salaryexpectation": {
+            "label": "Expectativa Salarial",
+            "longlabel": "Expectativa Salarial"
+        },
+        "position": {
+            "label": "Título",
+            "longlabel": "Título / Posição"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "currencyid": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "currencycountry": {
+            "label": "Moeda País",
+            "longlabel": "Moeda País"
+        },
+        "symbol": {
+            "label": "Símbolo",
+            "longlabel": "Símbolo"
+        },
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownerslug": {
+            "label": "Dono da lesma",
+            "longlabel": "Dono da lesma"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "canaccess": {
+            "label": "Pode aceder",
+            "longlabel": "Pode aceder"
+        },
+        "profilepic": {
+            "label": "Foto do perfil",
+            "longlabel": "Foto do perfil"
+        },
+        "deleted": {
+            "label": "Eliminado",
+            "longlabel": "Eliminado"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "resumeupdatedon": {
+            "label": "Perfil Atualizado por Candidato em",
+            "longlabel": "Perfil Atualizado por Candidato em"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Pedido de Perfil Enviado",
+            "longlabel": "Pedido de Perfil Enviado"
+        },
+        "requestresumelinkstatus": {
+            "label": "Pedir estado do Link de Currículo",
+            "longlabel": "Pedir estado do Link de Currículo"
+        },
+        "resumeaddedon": {
+            "label": "Currículo Adicionado",
+            "longlabel": "Currículo Adicionado"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil do Facebook"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil no Twitter"
+        },
+        "profilelinkedin": {
+            "label": "Perfil Linkedin",
+            "longlabel": "Perfil Linkedin"
+        },
+        "profilegithub": {
+            "label": "Perfil de Github",
+            "longlabel": "Perfil de Github"
+        },
+        "source": {
+            "label": "Fonte",
+            "longlabel": "Fonte"
+        },
+        "createdbyname": {
+            "label": "Criado por nome",
+            "longlabel": "Criado por nome"
+        },
+        "qualification": {
+            "label": "Etiqueta de Qualificação",
+            "longlabel": "Etiqueta de Qualificação"
+        },
+        "currentstatus": {
+            "label": "Situação Profissional Atual",
+            "longlabel": "Situação Profissional Atual"
+        },
+        "noticeperiod": {
+            "label": "Período de aviso",
+            "longlabel": "Período de aviso (Dias)"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdon": {
+            "label": "Adicionado",
+            "longlabel": "Adicionado"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "availablefrom": {
+            "label": "Disponível em",
+            "longlabel": "Disponível em"
+        },
+        "salarytype": {
+            "label": "Tipo de salário",
+            "longlabel": "Tipo de salário"
+        },
+        "languageskills": {
+            "label": "Idioma",
+            "longlabel": "Habilidades linguísticas"
+        },
+        "accountlogo": {
+            "label": "Logótipo da conta",
+            "longlabel": "Logótipo da conta"
+        },
+        "accounttitle": {
+            "label": "Título da conta",
+            "longlabel": "Título da conta"
+        },
+        "candidateterms": {
+            "label": "Termos do Candidato",
+            "longlabel": "Termos do Candidato"
+        },
+        "jobapplicationsettings": {
+            "label": "Definições das aplicações de trabalho",
+            "longlabel": "Definições das aplicações de trabalho"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "gdprcompliance": {
+            "label": "Compromisso GDPR",
+            "longlabel": "Compromisso GDPR"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota"
+        },
+        "profilexing": {
+            "label": "Perfil Xing",
+            "longlabel": "Perfil Xing"
+        },
+        "email_opt_out": {
+            "label": "Optar por não participar",
+            "longlabel": "Optar por não participar"
+        },
+        "proficiency_level": {
+            "label": "Nível de proficiência",
+            "longlabel": "Nível de proficiência"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "work_history": {
+            "label": "Histórico de trabalho",
+            "longlabel": "Histórico de trabalho"
+        },
+        "title": {
+            "label": "Posição de trabalho",
+            "longlabel": "Posição de trabalho"
+        },
+        "work_company_name": {
+            "label": "Nome da empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "employment_type": {
+            "label": "Tipo de emprego",
+            "longlabel": "Tipo de emprego"
+        },
+        "industry_id": {
+            "label": "Tipo de indústria",
+            "longlabel": "Tipo de indústria"
+        },
+        "work_location": {
+            "label": "Local de trabalho",
+            "longlabel": "Local de trabalho"
+        },
+        "salary": {
+            "label": "Salário",
+            "longlabel": "Salário"
+        },
+        "is_currently_working": {
+            "label": "Trabalhando Atualmente",
+            "longlabel": "Trabalhando Atualmente"
+        },
+        "work_start_date": {
+            "label": "Data de início dos trabalhos",
+            "longlabel": "Data de início dos trabalhos"
+        },
+        "work_end_date": {
+            "label": "Data de fim do trabalho",
+            "longlabel": "Data de fim do trabalho"
+        },
+        "work_description": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "education_history": {
+            "label": "História da Educação",
+            "longlabel": "História da Educação"
+        },
+        "institute_name": {
+            "label": "Nome da escola/faculdade",
+            "longlabel": "Nome da escola/faculdade"
+        },
+        "educational_qualification": {
+            "label": "Qualificações académicas",
+            "longlabel": "Qualificações académicas"
+        },
+        "educational_specialization": {
+            "label": "Especialização em educação",
+            "longlabel": "Especialização em educação"
+        },
+        "grade": {
+            "label": "Grau",
+            "longlabel": "Grau"
+        },
+        "education_location": {
+            "label": "Localização da formação",
+            "longlabel": "Localização da formação"
+        },
+        "education_start_date": {
+            "label": "Data de início da formação",
+            "longlabel": "Data de início da formação"
+        },
+        "education_end_date": {
+            "label": "Educação Data final",
+            "longlabel": "Educação Data final"
+        },
+        "education_description": {
+            "label": "Descrição do ensino",
+            "longlabel": "Descrição do ensino"
+        },
+        "summary": {
+            "label": "Resumo",
+            "longlabel": "Resumo"
+        },
+        "unavailable": {
+            "label": "Disponibilidade",
+            "longlabel": "Disponibilidade"
+        },
+        "off_limit_status": {
+            "label": "Estado fora do limite",
+            "longlabel": "Estado fora do limite"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Registo da última chamada adicionado",
+            "longlabel": "Registo da última chamada adicionado"
+        },
+        "last_sms_sent_on": {
+            "label": "Último SMS enviado em",
+            "longlabel": "Último SMS enviado em"
+        },
+        "last_email_sent_on": {
+            "label": "Último e-mail enviado em",
+            "longlabel": "Último e-mail enviado em"
+        },
+        "last_communication_timestamp": {
+            "label": "Última comunicação",
+            "longlabel": "Última comunicação"
+        },
+        "last_communication_method": {
+            "label": "Último tipo de comunicação",
+            "longlabel": "Último tipo de comunicação"
+        },
+        "contact_linked": {
+            "label": "Contacto-ligado",
+            "longlabel": "Contacto-ligado"
+        },
+        "last_meeting_created_on": {
+            "label": "Última reunião adicionada",
+            "longlabel": "Última reunião adicionada"
+        },
+        "last_message_sent_on": {
+            "label": "Última mensagem do LinkedIn enviada em",
+            "longlabel": "Última mensagem do LinkedIn enviada em"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        }
+    },
+    "assigned_candidates": {
+        "jobslug": {
+            "label": "Vaga",
+            "longlabel": "Lesma do Trabalho"
+        },
+        "jobid": {
+            "label": "Vaga",
+            "longlabel": "Vaga"
+        },
+        "jobname": {
+            "label": "Vaga",
+            "longlabel": "Vaga"
+        },
+        "candidateid": {
+            "label": "Candidato",
+            "longlabel": "Candidato"
+        },
+        "candidatename": {
+            "label": "Candidato",
+            "longlabel": "Candidato"
+        },
+        "firstname": {
+            "label": "Primeiro nome",
+            "longlabel": "Primeiro nome"
+        },
+        "lastname": {
+            "label": "Sobrenome",
+            "longlabel": "Sobrenome"
+        },
+        "lastorganisation": {
+            "label": "Organização Atual",
+            "longlabel": "Organização Atual"
+        },
+        "resumetext": {
+            "label": "Resumir Texto",
+            "longlabel": "Resumir Texto"
+        },
+        "resume": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumefilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "candidatestatusid": {
+            "label": "Fase de Contratação",
+            "longlabel": "Você pode alterar a fase de contratação de um candidato e registrar comentários clicando na fase de contração atual de um candidato"
+        },
+        "candidatestatus": {
+            "label": "Fase de Contratação",
+            "longlabel": "Você pode alterar a fase de contratação de um candidato e registrar comentários clicando na fase de contração atual de um candidato"
+        },
+        "remark": {
+            "label": "Observação",
+            "longlabel": "Observação"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "contactnumber": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "currentsalary": {
+            "label": "Salário Atual",
+            "longlabel": "Salário Atual"
+        },
+        "salaryexpectation": {
+            "label": "Expectativa Salarial",
+            "longlabel": "Expectativa Salarial"
+        },
+        "noticeperiod": {
+            "label": "Período de aviso",
+            "longlabel": "Período de aviso (Dias)"
+        },
+        "candidatedob": {
+            "label": "Data de Nascimento",
+            "longlabel": "Data de nascimento do candidato"
+        },
+        "genderid": {
+            "label": "Género",
+            "longlabel": "Género"
+        },
+        "age": {
+            "label": "Idade",
+            "longlabel": "Idade do candidato"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Qualificação"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização"
+        },
+        "workexpyr": {
+            "label": "Experiência Total",
+            "longlabel": "Experiência Total"
+        },
+        "relevantexperience": {
+            "label": "Experiência Relevante",
+            "longlabel": "Experiência Relevante"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "availablefrom": {
+            "label": "Disponível em",
+            "longlabel": "Disponível em"
+        },
+        "position": {
+            "label": "Título",
+            "longlabel": "Título / Posição"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil do Facebook"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil no Twitter"
+        },
+        "profilelinkedin": {
+            "label": "Perfil Linkedin",
+            "longlabel": "Perfil Linkedin"
+        },
+        "profilegithub": {
+            "label": "Perfil de Github",
+            "longlabel": "Perfil de Github"
+        },
+        "share": {
+            "label": "Visibilidade",
+            "longlabel": "Visibilidade"
+        },
+        "id": {
+            "label": "Perguntas dos candidatos",
+            "longlabel": "Perguntas dos candidatos"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "source": {
+            "label": "Fonte",
+            "longlabel": "Fonte"
+        },
+        "createdon": {
+            "label": "Adicionado",
+            "longlabel": "Adicionado"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "profilexing": {
+            "label": "Perfil Xing",
+            "longlabel": "Perfil Xing"
+        },
+        "email_opt_out": {
+            "label": "Optar por não participar",
+            "longlabel": "Optar por não participar"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "unavailable": {
+            "label": "Disponibilidade",
+            "longlabel": "Disponibilidade"
+        },
+        "summary": {
+            "label": "Resumo",
+            "longlabel": "Resumo"
+        },
+        "jobstatus": {
+            "label": "Estado do emprego",
+            "longlabel": "Estado do emprego"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Pedido de perfil enviado em",
+            "longlabel": "Pedido de perfil enviado em"
+        },
+        "willingtorelocate": {
+            "label": "Disposto a mudar de residência",
+            "longlabel": "Disposto a mudar de residência"
+        },
+        "currentstatus": {
+            "label": "Situação Profissional",
+            "longlabel": "Situação Profissional"
+        },
+        "languageskills": {
+            "label": "Língua",
+            "longlabel": "Língua"
+        },
+        "skill": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Currículo de candidatura a emprego",
+            "longlabel": "Currículo de candidatura a emprego"
+        },
+        "assigned_job_coverletter": {
+            "label": "Carta de apresentação de candidatura a emprego",
+            "longlabel": "Carta de apresentação de candidatura a emprego"
+        },
+        "assigned_job_portfolio": {
+            "label": "Portfolio de candidaturas a emprego",
+            "longlabel": "Portfolio de candidaturas a emprego"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Ficheiro de candidatura a emprego 1",
+            "longlabel": "Ficheiro de candidatura a emprego 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Ficheiro de candidatura a emprego 2",
+            "longlabel": "Ficheiro de candidatura a emprego 2"
+        },
+        "work_history": {
+            "label": "Histórico de trabalho",
+            "longlabel": "Histórico de trabalho"
+        },
+        "education_history": {
+            "label": "História da Educação",
+            "longlabel": "História da Educação"
+        },
+        "companyname": {
+            "label": "Nome da empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "job_type": {
+            "label": "Tipo de emprego",
+            "longlabel": "Tipo de emprego"
+        },
+        "job_category": {
+            "label": "Categoria profissional",
+            "longlabel": "Categoria profissional"
+        },
+        "resumeupdatedon": {
+            "label": "Perfil atualizado pelo candidato em",
+            "longlabel": "Perfil atualizado pelo candidato em"
+        },
+        "requestresumelinkstatus": {
+            "label": "Pedir o estado da ligação do currículo",
+            "longlabel": "Pedir o estado da ligação do currículo"
+        },
+        "resumeaddedon": {
+            "label": "Currículo adicionado em",
+            "longlabel": "Currículo adicionado em"
+        },
+        "off_limit_status": {
+            "label": "Estado fora do limite",
+            "longlabel": "Estado fora do limite"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Registo da última chamada adicionado",
+            "longlabel": "Registo da última chamada adicionado"
+        },
+        "last_sms_sent_on": {
+            "label": "Último SMS enviado em",
+            "longlabel": "Último SMS enviado em"
+        },
+        "last_email_sent_on": {
+            "label": "Último e-mail enviado em",
+            "longlabel": "Último e-mail enviado em"
+        },
+        "last_communication_timestamp": {
+            "label": "Última comunicação",
+            "longlabel": "Última comunicação"
+        },
+        "last_communication_method": {
+            "label": "Último tipo de comunicação",
+            "longlabel": "Último tipo de comunicação"
+        },
+        "remote": {
+            "label": "Tipo de local de trabalho",
+            "longlabel": "Tipo de local de trabalho"
+        },
+        "last_meeting_created_on": {
+            "label": "Última reunião adicionada",
+            "longlabel": "Última reunião adicionada"
+        },
+        "last_message_sent_on": {
+            "label": "Última mensagem do LinkedIn enviada em",
+            "longlabel": "Última mensagem do LinkedIn enviada em"
+        },
+        "timesheet_setting": {
+            "label": "Folha de ponto",
+            "longlabel": "Folha de ponto"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ID do candidato"
+        },
+        "updatedby": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "job_function": {
+            "label": "Função",
+            "longlabel": "Função"
+        },
+        "job_industry": {
+            "label": "Setor de atividade",
+            "longlabel": "Setor de atividade"
+        },
+        "placement_id": {
+            "label": "Colocação",
+            "longlabel": "Colocação"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        }
+    },
+    "companies": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Identificação da empresa"
+        },
+        "companyname": {
+            "label": "Nome da empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo da empresa"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade da empresa"
+        },
+        "industryid": {
+            "label": "Indústria",
+            "longlabel": "Empresa Indústria"
+        },
+        "industry": {
+            "label": "Indústria",
+            "longlabel": "Empresa Indústria"
+        },
+        "website": {
+            "label": "‘Website’",
+            "longlabel": "‘Website’"
+        },
+        "totalopenjob": {
+            "label": "Vagas em aberto",
+            "longlabel": "Total de Vagas Abertas"
+        },
+        "totalclosedjob": {
+            "label": "Vagas Fechadas",
+            "longlabel": "Total de Vagas Fechadas"
+        },
+        "totalonholdjob": {
+            "label": "Vagas em espera",
+            "longlabel": "Vagas em espera"
+        },
+        "totalcanceledjob": {
+            "label": "Vagas canceladas",
+            "longlabel": "Vagas canceladas"
+        },
+        "logo": {
+            "label": "Logótipo",
+            "longlabel": "Logótipo da empresa"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil da empresa no Facebook"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil da empresa no Twitter"
+        },
+        "profilelinkedin": {
+            "label": "Perfil Linkedin",
+            "longlabel": "Perfil da empresa no Linkedin"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "creatorname": {
+            "label": "Nome do Criador",
+            "longlabel": "Nome do Criador"
+        },
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "deleted": {
+            "label": "Eliminado",
+            "longlabel": "Eliminado"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdon": {
+            "label": "Adicionado",
+            "longlabel": "Adicionado"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "updatedby": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota da empresa"
+        },
+        "aboutcompany": {
+            "label": "Sobre a Empresa",
+            "longlabel": "Sobre a Empresa"
+        },
+        "parentcompanyname": {
+            "label": "Empresa-mãe",
+            "longlabel": "Nome da Empresa-mãe"
+        },
+        "off_limit_status": {
+            "label": "Estado fora do limite",
+            "longlabel": "Estado fora do limite"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade da empresa"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado da empresa"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "Empresa País"
+        },
+        "postal_code": {
+            "label": "Código Postal",
+            "longlabel": "Código postal da empresa"
+        },
+        "last_meeting_created_on": {
+            "label": "Última reunião adicionada",
+            "longlabel": "Última reunião adicionada"
+        },
+        "linkedin_id": {
+            "label": "ID da empresa no LinkedIn",
+            "longlabel": "ID da empresa no LinkedIn"
+        },
+        "monster_board_company_name": {
+            "label": "Empresa Monster Board",
+            "longlabel": "Empresa Monster Board"
+        },
+        "indeed_opted_out": {
+            "label": "De facto, optou por não participar",
+            "longlabel": "De facto, optou por não participar"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        }
+    },
+    "contacts": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Identificação de contato"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Identificação de contato"
+        },
+        "name": {
+            "label": "Nome",
+            "longlabel": "Nome de contato"
+        },
+        "firstname": {
+            "label": "Primeiro nome",
+            "longlabel": "Contactar o primeiro nome"
+        },
+        "lastname": {
+            "label": "Sobrenome",
+            "longlabel": "Último nome de contato"
+        },
+        "stageid": {
+            "label": "Palco",
+            "longlabel": "Estágio de contato"
+        },
+        "stage": {
+            "label": "Palco",
+            "longlabel": "Estágio de contato"
+        },
+        "companyid": {
+            "label": "Empresa",
+            "longlabel": "Empresa"
+        },
+        "companyslug": {
+            "label": "Comapany Slug",
+            "longlabel": "Empresa Slug"
+        },
+        "companyname": {
+            "label": "Empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "email": {
+            "label": "Email",
+            "longlabel": "Endereço de e-mail de contato"
+        },
+        "contactnumber": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo de contato"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade de contato"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownerslug": {
+            "label": "Dono da lesma",
+            "longlabel": "Dono da lesma"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Contactar a URL do perfil do Facebook"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Contactar o URL do perfil do Twitter"
+        },
+        "profilelinkedin": {
+            "label": "Perfil Linkedin",
+            "longlabel": "Contato Linkedin Perfil URL"
+        },
+        "designation": {
+            "label": "Título",
+            "longlabel": "Título"
+        },
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "canaccess": {
+            "label": "Pode aceder",
+            "longlabel": "Pode aceder"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdbyname": {
+            "label": "Criado por nome",
+            "longlabel": "Criado por nome"
+        },
+        "createdon": {
+            "label": "Adicionado",
+            "longlabel": "Adicionado"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "deleted": {
+            "label": "Eliminado",
+            "longlabel": "Eliminado"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota de contato"
+        },
+        "photo": {
+            "label": "Foto do perfil",
+            "longlabel": "Foto do perfil"
+        },
+        "company_accountid": {
+            "label": "Empresa - ID da conta",
+            "longlabel": "Empresa - ID da conta"
+        },
+        "company_address": {
+            "label": "Empresa - Endereço completo",
+            "longlabel": "Empresa - Endereço completo"
+        },
+        "company_city": {
+            "label": "Empresa - Cidade",
+            "longlabel": "Empresa - Cidade"
+        },
+        "company_companyname": {
+            "label": "Empresa - Nome",
+            "longlabel": "Empresa - Nome"
+        },
+        "company_parentcompanyname": {
+            "label": "Empresa - Empresa-Mãe",
+            "longlabel": "Empresa - Nome da Empresa-mãe"
+        },
+        "company_createdby": {
+            "label": "Empresa - Criada por",
+            "longlabel": "Empresa - Criada por"
+        },
+        "company_createdon": {
+            "label": "Empresa - Adicionado",
+            "longlabel": "Empresa - Adicionado"
+        },
+        "company_creatorname": {
+            "label": "Empresa - Nome do Criador",
+            "longlabel": "Empresa - Nome do Criador"
+        },
+        "company_deleted": {
+            "label": "Empresa - Eliminado",
+            "longlabel": "Empresa - Eliminado"
+        },
+        "company_id": {
+            "label": "Empresa - Id",
+            "longlabel": "Empresa - Id"
+        },
+        "company_industry": {
+            "label": "Empresa - Indústria",
+            "longlabel": "Empresa - Indústria"
+        },
+        "company_industryid": {
+            "label": "Empresa - Indústria",
+            "longlabel": "Empresa - Indústria"
+        },
+        "company_logo": {
+            "label": "Empresa - Logótipo",
+            "longlabel": "Empresa - Logótipo"
+        },
+        "company_note": {
+            "label": "Empresa - Nota",
+            "longlabel": "Empresa - Nota"
+        },
+        "company_ownerid": {
+            "label": "Empresa - Proprietário",
+            "longlabel": "Empresa - Nome do Proprietário"
+        },
+        "company_ownername": {
+            "label": "Empresa - Nome do Proprietário",
+            "longlabel": "Empresa - Nome do Proprietário"
+        },
+        "company_profilefacebook": {
+            "label": "Empresa - Perfil Facebook",
+            "longlabel": "Empresa - Perfil Facebook"
+        },
+        "company_profilelinkedin": {
+            "label": "Empresa - Perfil Linkedin",
+            "longlabel": "Empresa - Perfil Linkedin"
+        },
+        "company_profiletwitter": {
+            "label": "Empresa - Perfil no Twitter",
+            "longlabel": "Empresa - Perfil no Twitter"
+        },
+        "company_slug": {
+            "label": "Empresa - Acções",
+            "longlabel": "Empresa - Acções"
+        },
+        "company_srno": {
+            "label": "Empresa - ID",
+            "longlabel": "Empresa - ID"
+        },
+        "company_totalcanceledjob": {
+            "label": "Empresa - Vagas canceladas",
+            "longlabel": "Empresa - Vagas canceladas"
+        },
+        "company_totalclosedjob": {
+            "label": "Empresa - Vagas fechadas",
+            "longlabel": "Empresa - Total de Vagas Fechadas"
+        },
+        "company_totalonholdjob": {
+            "label": "Empresa - Vagas em espera",
+            "longlabel": "Empresa - Vagas em espera"
+        },
+        "company_totalopenjob": {
+            "label": "Empresa - Vagas em aberto",
+            "longlabel": "Empresa - Total de Vagas Abertas"
+        },
+        "company_updatedby": {
+            "label": "Empresa - Atualizado por",
+            "longlabel": "Empresa - Atualizado por"
+        },
+        "company_updatedon": {
+            "label": "Empresa - Atualizado em",
+            "longlabel": "Empresa - Atualizado em"
+        },
+        "company_website": {
+            "label": "Empresa - Website",
+            "longlabel": "Empresa - Website"
+        },
+        "parentcompanyname": {
+            "label": "Empresa - Empresa-Mãe",
+            "longlabel": "Empresa - Nome da Empresa-mãe"
+        },
+        "profilexing": {
+            "label": "Perfil Xing",
+            "longlabel": "Contato Xing URL de perfil"
+        },
+        "off_limit_status": {
+            "label": "Estado fora do limite",
+            "longlabel": "Estado fora do limite"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Registo da última chamada adicionado",
+            "longlabel": "Registo da última chamada adicionado"
+        },
+        "last_sms_sent_on": {
+            "label": "Último SMS enviado em",
+            "longlabel": "Último SMS enviado em"
+        },
+        "last_email_sent_on": {
+            "label": "Último e-mail enviado em",
+            "longlabel": "Último e-mail enviado em"
+        },
+        "last_communication_timestamp": {
+            "label": "Última comunicação",
+            "longlabel": "Última comunicação"
+        },
+        "last_communication_method": {
+            "label": "Último tipo de comunicação",
+            "longlabel": "Último tipo de comunicação"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado de contacto"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País de contacto"
+        },
+        "postal_code": {
+            "label": "Código Postal",
+            "longlabel": "Código postal de contacto"
+        },
+        "company_locality": {
+            "label": "Empresa - Localidade",
+            "longlabel": "Empresa - Localidade"
+        },
+        "company_state": {
+            "label": "Empresa - Estado",
+            "longlabel": "Empresa - Estado"
+        },
+        "company_country": {
+            "label": "Empresa - País",
+            "longlabel": "Empresa - País"
+        },
+        "company_postal_code": {
+            "label": "Empresa - Código Postal",
+            "longlabel": "Empresa - Código Postal"
+        },
+        "last_meeting_created_on": {
+            "label": "Última reunião adicionada",
+            "longlabel": "Última reunião adicionada"
+        },
+        "last_message_sent_on": {
+            "label": "Última mensagem do LinkedIn enviada em",
+            "longlabel": "Última mensagem do LinkedIn enviada em"
+        },
+        "company_linkedin_id": {
+            "label": "Empresa - LinkedIn ID",
+            "longlabel": "Empresa - LinkedIn ID"
+        },
+        "company_monster_board_company_name": {
+            "label": "Empresa - Monster Board Company",
+            "longlabel": "Empresa - Monster Board Company"
+        },
+        "company_indeed_opted_out": {
+            "label": "Empresa - Indeed Optou por Não Participar",
+            "longlabel": "Empresa - Indeed Optou por Não Participar"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        }
+    },
+    "jobs": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ID do vaga"
+        },
+        "name": {
+            "label": "Nome",
+            "longlabel": "Título do trabalho"
+        },
+        "jobstatus": {
+            "label": "Estado",
+            "longlabel": "Situação laboral"
+        },
+        "jobstatuslabel": {
+            "label": "Estado",
+            "longlabel": "Situação laboral"
+        },
+        "companyid": {
+            "label": "Empresa",
+            "longlabel": "Empresa"
+        },
+        "companyname": {
+            "label": "Empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "contactid": {
+            "label": "Contactos",
+            "longlabel": "Contactos"
+        },
+        "salarytype": {
+            "label": "Tipo de salário",
+            "longlabel": "Tipo de salário"
+        },
+        "currencyid": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "collaborator": {
+            "label": "Colaborador",
+            "longlabel": "Colaborador"
+        },
+        "jobquestions": {
+            "label": "Perguntas sobre o formulário de candidatura a emprego",
+            "longlabel": "Perguntas sobre o formulário de candidatura a emprego"
+        },
+        "allowapply": {
+            "label": "Ativar o formulário de candidatura a emprego",
+            "longlabel": "Ativar o formulário de candidatura a emprego"
+        },
+        "description": {
+            "label": "Nota Para os Candidatos",
+            "longlabel": "Nota Para os Candidatos"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Qualificação educacional"
+        },
+        "qualification": {
+            "label": "Etiqueta de Qualificação",
+            "longlabel": "Etiqueta de Qualificação"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização Educativa"
+        },
+        "detailfilename": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "jdtext": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "jdtextdetails": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "minexperienceinyears": {
+            "label": "Experiência mínima (anos)",
+            "longlabel": "Experiência mínima (anos)"
+        },
+        "maxexperienceinyears": {
+            "label": "Experiência máxima (anos)",
+            "longlabel": "Experiência máxima (anos)"
+        },
+        "annualsalarymin": {
+            "label": "Min. Salário",
+            "longlabel": "Salário Mínimo"
+        },
+        "annualsalarymax": {
+            "label": "Máx. Salário",
+            "longlabel": "Salário Máximo"
+        },
+        "noofopenings": {
+            "label": "Aberturas",
+            "longlabel": "Número de aberturas"
+        },
+        "contactname": {
+            "label": "Nome de contato",
+            "longlabel": "Nome de contato"
+        },
+        "contactemail": {
+            "label": "Email de contato",
+            "longlabel": "Email de contato"
+        },
+        "contactnumber": {
+            "label": "Número de contato",
+            "longlabel": "Número de contato"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "creatorname": {
+            "label": "Criador",
+            "longlabel": "Nome do Criador"
+        },
+        "createdon": {
+            "label": "Data adicionada",
+            "longlabel": "Data adicionada"
+        },
+        "updatedon": {
+            "label": "Data de Atualização",
+            "longlabel": "Data de Atualização"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "jobpostingstatus": {
+            "label": "Acções",
+            "longlabel": "Estado do anúncio de vaga"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota"
+        },
+        "contactslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "companyslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "hiring_pipeline_id": {
+            "label": "Contratação de Pipeline",
+            "longlabel": "Contratação de Pipeline"
+        },
+        "job_skill": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "job_type": {
+            "label": "Tipo de emprego",
+            "longlabel": "Tipo de emprego"
+        },
+        "job_category": {
+            "label": "Categoria profissional",
+            "longlabel": "Categoria profissional"
+        },
+        "secondarycontactid": {
+            "label": "Contactos secundários",
+            "longlabel": "Contactos secundários"
+        },
+        "targetcompanies": {
+            "label": "Empresas-alvo",
+            "longlabel": "Empresas-alvo"
+        },
+        "remote": {
+            "label": "Tipo de local de trabalho",
+            "longlabel": "Tipo de local de trabalho"
+        },
+        "rate_type": {
+            "label": "Tipo de taxa",
+            "longlabel": "Tipo de taxa"
+        },
+        "pay_rate": {
+            "label": "Taxa de pagamento",
+            "longlabel": "Taxa de pagamento"
+        },
+        "bill_rate": {
+            "label": "Taxa de faturação",
+            "longlabel": "Taxa de faturação"
+        },
+        "job_function": {
+            "label": "Função",
+            "longlabel": "Função"
+        },
+        "job_industry": {
+            "label": "Setor de atividade",
+            "longlabel": "Setor de atividade"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        },
+        "salaryrange": {
+            "label": "Faixa salarial",
+            "longlabel": "Faixa salarial"
+        }
+    },
+    "deals": {
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Identificação do negócio"
+        },
+        "name": {
+            "label": "Nome",
+            "longlabel": "Nome do negócio"
+        },
+        "dealstage": {
+            "label": "Palco",
+            "longlabel": "Palco"
+        },
+        "dealstagelabel": {
+            "label": "Palco",
+            "longlabel": "Palco"
+        },
+        "percentage": {
+            "label": "Peso do palco",
+            "longlabel": "Peso do palco"
+        },
+        "dealvalue": {
+            "label": "Montante do negócio",
+            "longlabel": "Montante do negócio"
+        },
+        "dealpercentagevalue": {
+            "label": "Quantia ponderada do negócio",
+            "longlabel": "Quantia ponderada do negócio"
+        },
+        "dealtype": {
+            "label": "Tipo de negócio",
+            "longlabel": "Tipo de negócio"
+        },
+        "archived": {
+            "label": "Arquivado",
+            "longlabel": "Arquivado"
+        },
+        "dealtypelabel": {
+            "label": "Tipo de negócio",
+            "longlabel": "Tipo de negócio"
+        },
+        "closedate": {
+            "label": "Data de fecho",
+            "longlabel": "Data de fecho"
+        },
+        "relatedcompany": {
+            "label": "Empresa",
+            "longlabel": "Empresa"
+        },
+        "relatedcontact": {
+            "label": "Contato",
+            "longlabel": "Contato"
+        },
+        "companyname": {
+            "label": "Empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "website": {
+            "label": "‘Website’",
+            "longlabel": "‘Website’"
+        },
+        "relatedjob": {
+            "label": "Emprego",
+            "longlabel": "Emprego"
+        },
+        "jobname": {
+            "label": "Vaga",
+            "longlabel": "Nome do trabalho"
+        },
+        "jobcity": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "relatedcandidate": {
+            "label": "Candidato",
+            "longlabel": "Candidato"
+        },
+        "candidatename": {
+            "label": "Nome do candidato",
+            "longlabel": "Nome do candidato"
+        },
+        "candidatetitle": {
+            "label": "Título",
+            "longlabel": "Título / Posição"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "ownerslug": {
+            "label": "Dono da lesma",
+            "longlabel": "Dono da lesma"
+        },
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdon": {
+            "label": "Adicionado",
+            "longlabel": "Adicionado"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "updatedby": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "createdbyname": {
+            "label": "Criado por nome",
+            "longlabel": "Criado por nome"
+        },
+        "updatedbyname": {
+            "label": "Atualizado por nome",
+            "longlabel": "Atualizado por nome"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "companyslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "jobslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "candidateslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "collaborator": {
+            "label": "Colaborador",
+            "longlabel": "Colaborador"
+        },
+        "splitdealvalue": {
+            "label": "Montante da transação dividida",
+            "longlabel": "Montante da transação dividida"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Montante da transação de divisão ponderada",
+            "longlabel": "Montante da transação de divisão ponderada"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        }
+    },
+    "reports_assigned_candidates": {
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "age": {
+            "label": "Idade",
+            "longlabel": "Idade do candidato"
+        },
+        "availablefrom": {
+            "label": "Disponível em",
+            "longlabel": "Disponível em"
+        },
+        "candidatedob": {
+            "label": "Data de Nascimento",
+            "longlabel": "Data de nascimento do candidato"
+        },
+        "candidateid": {
+            "label": "Candidato",
+            "longlabel": "Candidato"
+        },
+        "candidatename": {
+            "label": "Candidato",
+            "longlabel": "Candidato"
+        },
+        "candidatestatus": {
+            "label": "Fase de Contratação",
+            "longlabel": "Você pode alterar a fase de contratação de um candidato e registrar comentários clicando na fase de contração atual de um candidato"
+        },
+        "candidatestatusid": {
+            "label": "Fase de Contratação",
+            "longlabel": "Você pode alterar a fase de contratação de um candidato e registrar comentários clicando na fase de contração atual de um candidato"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "contactnumber": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "createdon": {
+            "label": "Adicionado",
+            "longlabel": "Adicionado"
+        },
+        "currentsalary": {
+            "label": "Salário Atual",
+            "longlabel": "Salário Atual"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "firstname": {
+            "label": "Primeiro nome",
+            "longlabel": "Primeiro nome"
+        },
+        "genderid": {
+            "label": "Género",
+            "longlabel": "Género"
+        },
+        "id": {
+            "label": "Perguntas dos candidatos",
+            "longlabel": "Perguntas dos candidatos"
+        },
+        "jobid": {
+            "label": "Vaga",
+            "longlabel": "Vaga"
+        },
+        "jobname": {
+            "label": "Vaga",
+            "longlabel": "Vaga"
+        },
+        "jobslug": {
+            "label": "Vaga",
+            "longlabel": "Lesma do Trabalho"
+        },
+        "lastname": {
+            "label": "Sobrenome",
+            "longlabel": "Sobrenome"
+        },
+        "lastorganisation": {
+            "label": "Organização Atual",
+            "longlabel": "Organização Atual"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "noticeperiod": {
+            "label": "Período de aviso",
+            "longlabel": "Período de aviso (Dias)"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "position": {
+            "label": "Título",
+            "longlabel": "Título / Posição"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil do Facebook"
+        },
+        "profilegithub": {
+            "label": "Perfil de Github",
+            "longlabel": "Perfil de Github"
+        },
+        "profilelinkedin": {
+            "label": "Perfil Linkedin",
+            "longlabel": "Perfil Linkedin"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil no Twitter"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Qualificação"
+        },
+        "relevantexperience": {
+            "label": "Experiência Relevante",
+            "longlabel": "Experiência Relevante"
+        },
+        "remark": {
+            "label": "Observação",
+            "longlabel": "Observação"
+        },
+        "resume": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumefilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumetext": {
+            "label": "Resumir Texto",
+            "longlabel": "Resumir Texto"
+        },
+        "salaryexpectation": {
+            "label": "Expectativa Salarial",
+            "longlabel": "Expectativa Salarial"
+        },
+        "share": {
+            "label": "Visibilidade",
+            "longlabel": "Visibilidade"
+        },
+        "source": {
+            "label": "Fonte",
+            "longlabel": "Fonte"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "workexpyr": {
+            "label": "Experiência Total",
+            "longlabel": "Experiência Total"
+        },
+        "currenthiringstage": {
+            "label": "Fase de Contratação Atual",
+            "longlabel": "Fase de Contratação Atual"
+        },
+        "assignedby": {
+            "label": "Atribuído por",
+            "longlabel": "Atribuído por"
+        },
+        "stagedate": {
+            "label": "Data do Estágio",
+            "longlabel": "Data do Estágio"
+        },
+        "companyname": {
+            "label": "Empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "companycontactname": {
+            "label": "Nome do contato profissional",
+            "longlabel": "Nome do contato profissional"
+        },
+        "jobownername": {
+            "label": "Nome do Proprietário do Vaga",
+            "longlabel": "Nome do Proprietário do Vaga"
+        },
+        "profilexing": {
+            "label": "Perfil Xing",
+            "longlabel": "Perfil Xing"
+        },
+        "email_opt_out": {
+            "label": "Optar por não participar",
+            "longlabel": "Optar por não participar"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "job_srno": {
+            "label": "ID do emprego",
+            "longlabel": "ID do emprego"
+        },
+        "jobstatus": {
+            "label": "Estado do emprego",
+            "longlabel": "Estado do emprego"
+        },
+        "unavailable": {
+            "label": "Disponibilidade",
+            "longlabel": "Não disponível"
+        },
+        "summary": {
+            "label": "Resumo",
+            "longlabel": "Resumo"
+        },
+        "skill": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "work_history": {
+            "label": "Histórico de trabalho",
+            "longlabel": "Histórico de trabalho"
+        },
+        "education_history": {
+            "label": "História da Educação",
+            "longlabel": "História da Educação"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Currículo de candidatura a emprego",
+            "longlabel": "Currículo de candidatura a emprego"
+        },
+        "hotlist": {
+            "label": "Lista de favoritos",
+            "longlabel": "Lista de favoritos"
+        },
+        "assigned_job_coverletter": {
+            "label": "Carta de apresentação de candidatura a emprego",
+            "longlabel": "Carta de apresentação de candidatura a emprego"
+        },
+        "assigned_job_portfolio": {
+            "label": "Portfolio de candidaturas a emprego",
+            "longlabel": "Portfolio de candidaturas a emprego"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Ficheiro de candidatura a emprego 1",
+            "longlabel": "Ficheiro de candidatura a emprego 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Ficheiro de candidatura a emprego 2",
+            "longlabel": "Ficheiro de candidatura a emprego 2"
+        },
+        "job_type": {
+            "label": "Tipo de emprego",
+            "longlabel": "Tipo de emprego"
+        },
+        "job_category": {
+            "label": "Categoria profissional",
+            "longlabel": "Categoria profissional"
+        },
+        "resumeupdatedon": {
+            "label": "Perfil atualizado pelo candidato em",
+            "longlabel": "Perfil atualizado pelo candidato em"
+        },
+        "requestresumelinkstatus": {
+            "label": "Pedir o estado da ligação do currículo",
+            "longlabel": "Pedir o estado da ligação do currículo"
+        },
+        "resumeaddedon": {
+            "label": "Currículo adicionado em",
+            "longlabel": "Currículo adicionado em"
+        },
+        "contactemail": {
+            "label": "Email de contato do emprego",
+            "longlabel": "Email de contato"
+        },
+        "off_limit_status": {
+            "label": "Estado fora do limite",
+            "longlabel": "Estado fora do limite"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "remote": {
+            "label": "Tipo de local de trabalho",
+            "longlabel": "Tipo de local de trabalho"
+        },
+        "last_calllog_created_on": {
+            "label": "Registo da última chamada adicionado",
+            "longlabel": "Registo da última chamada adicionado"
+        },
+        "last_sms_sent_on": {
+            "label": "Último SMS enviado em",
+            "longlabel": "Último SMS enviado em"
+        },
+        "last_email_sent_on": {
+            "label": "Último e-mail enviado em",
+            "longlabel": "Último e-mail enviado em"
+        },
+        "last_communication_timestamp": {
+            "label": "Última comunicação",
+            "longlabel": "Última comunicação"
+        },
+        "last_communication_method": {
+            "label": "Último tipo de comunicação",
+            "longlabel": "Último tipo de comunicação"
+        },
+        "last_meeting_created_on": {
+            "label": "Última reunião adicionada",
+            "longlabel": "Última reunião adicionada"
+        },
+        "last_message_sent_on": {
+            "label": "Última mensagem do LinkedIn enviada em",
+            "longlabel": "Última mensagem do LinkedIn enviada em"
+        },
+        "job_function": {
+            "label": "Função",
+            "longlabel": "Função"
+        },
+        "job_industry": {
+            "label": "Setor de atividade",
+            "longlabel": "Setor de atividade"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        }
+    },
+    "reports_pitch_candidates": {
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "accountlogo": {
+            "label": "Logótipo da conta",
+            "longlabel": "Logótipo da conta"
+        },
+        "accounttitle": {
+            "label": "Título da conta",
+            "longlabel": "Título da conta"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "age": {
+            "label": "Idade",
+            "longlabel": "Idade do candidato"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "availablefrom": {
+            "label": "Disponível em",
+            "longlabel": "Disponível em"
+        },
+        "canaccess": {
+            "label": "Pode aceder",
+            "longlabel": "Pode aceder"
+        },
+        "candidatedob": {
+            "label": "Data de Nascimento",
+            "longlabel": "Data de nascimento"
+        },
+        "candidatename": {
+            "label": "Nome",
+            "longlabel": "Nome do candidato"
+        },
+        "candidateterms": {
+            "label": "Termos do Candidato",
+            "longlabel": "Termos do Candidato"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "contactnumber": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdbyname": {
+            "label": "Criado por nome",
+            "longlabel": "Criado por nome"
+        },
+        "createdon": {
+            "label": "Adicionado",
+            "longlabel": "Adicionado"
+        },
+        "currencycountry": {
+            "label": "Moeda País",
+            "longlabel": "Moeda País"
+        },
+        "currencyid": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "currentsalary": {
+            "label": "Salário Atual",
+            "longlabel": "Salário Atual"
+        },
+        "currentstatus": {
+            "label": "Situação Profissional",
+            "longlabel": "Situação Profissional Atual"
+        },
+        "deleted": {
+            "label": "Eliminado",
+            "longlabel": "Eliminado"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "firstname": {
+            "label": "Primeiro nome",
+            "longlabel": "Nome próprio do candidato"
+        },
+        "gdprcompliance": {
+            "label": "Compromisso GDPR",
+            "longlabel": "Compromisso GDPR"
+        },
+        "genderid": {
+            "label": "Género",
+            "longlabel": "Género"
+        },
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "jobapplicationsettings": {
+            "label": "Definições das aplicações de trabalho",
+            "longlabel": "Definições das aplicações de trabalho"
+        },
+        "languageskills": {
+            "label": "Idioma",
+            "longlabel": "Habilidades linguísticas"
+        },
+        "lastname": {
+            "label": "Sobrenome",
+            "longlabel": "Sobrenome do candidato"
+        },
+        "lastorganisation": {
+            "label": "Organização Atual",
+            "longlabel": "Organização Atual"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota"
+        },
+        "noticeperiod": {
+            "label": "Período de aviso",
+            "longlabel": "Período de aviso (Dias)"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do Proprietário",
+            "longlabel": "Nome do Proprietário"
+        },
+        "ownerslug": {
+            "label": "Dono da lesma",
+            "longlabel": "Dono da lesma"
+        },
+        "position": {
+            "label": "Título",
+            "longlabel": "Título / Posição"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil do Facebook"
+        },
+        "profilegithub": {
+            "label": "Perfil de Github",
+            "longlabel": "Perfil de Github"
+        },
+        "profilelinkedin": {
+            "label": "Perfil Linkedin",
+            "longlabel": "Perfil Linkedin"
+        },
+        "profilepic": {
+            "label": "Foto do perfil",
+            "longlabel": "Foto do perfil"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil no Twitter"
+        },
+        "qualification": {
+            "label": "Etiqueta de Qualificação",
+            "longlabel": "Etiqueta de Qualificação"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Qualificação educacional"
+        },
+        "relevantexperience": {
+            "label": "Experiência Relevante",
+            "longlabel": "Experiência Relevante"
+        },
+        "requestresumelinkstatus": {
+            "label": "Pedir estado do Link de Currículo",
+            "longlabel": "Pedir estado do Link de Currículo"
+        },
+        "resume": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumeaddedon": {
+            "label": "Currículo Adicionado",
+            "longlabel": "Currículo Adicionado"
+        },
+        "resumefilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumetext": {
+            "label": "Resumir Texto",
+            "longlabel": "Resumir Texto"
+        },
+        "resumeupdatedon": {
+            "label": "Perfil Atualizado por Candidato em",
+            "longlabel": "Perfil Atualizado por Candidato em"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Pedido de Perfil Enviado",
+            "longlabel": "Pedido de Perfil Enviado"
+        },
+        "salaryexpectation": {
+            "label": "Expectativa Salarial",
+            "longlabel": "Expectativa Salarial"
+        },
+        "salarytype": {
+            "label": "Tipo de salário",
+            "longlabel": "Tipo de salário"
+        },
+        "skill": {
+            "label": "Habilidades",
+            "longlabel": "Habilidades"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Lesma"
+        },
+        "source": {
+            "label": "Fonte",
+            "longlabel": "Fonte"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização Educativa"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ID do candidato"
+        },
+        "symbol": {
+            "label": "Símbolo",
+            "longlabel": "Símbolo"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "willingtorelocate": {
+            "label": "Disposto a mudar de local",
+            "longlabel": "Disposto a mudar de local"
+        },
+        "workexpyr": {
+            "label": "Experiência Total",
+            "longlabel": "Experiência Total"
+        },
+        "stagedate": {
+            "label": "Data do Estágio",
+            "longlabel": "Data do Estágio"
+        },
+        "pitchedcontactname": {
+            "label": "Pitched To",
+            "longlabel": "Pitched To"
+        },
+        "profilexing": {
+            "label": "Perfil Xing",
+            "longlabel": "Perfil Xing"
+        },
+        "email_opt_out": {
+            "label": "Optar por não participar",
+            "longlabel": "Optar por não participar"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "off_limit_status": {
+            "label": "Estado fora do limite",
+            "longlabel": "Estado fora do limite"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Registo da última chamada adicionado",
+            "longlabel": "Registo da última chamada adicionado"
+        },
+        "last_sms_sent_on": {
+            "label": "Último SMS enviado em",
+            "longlabel": "Último SMS enviado em"
+        },
+        "last_email_sent_on": {
+            "label": "Último e-mail enviado em",
+            "longlabel": "Último e-mail enviado em"
+        },
+        "last_communication_timestamp": {
+            "label": "Última comunicação",
+            "longlabel": "Última comunicação"
+        },
+        "last_communication_method": {
+            "label": "Último tipo de comunicação",
+            "longlabel": "Último tipo de comunicação"
+        },
+        "last_meeting_created_on": {
+            "label": "Última reunião adicionada",
+            "longlabel": "Última reunião adicionada"
+        },
+        "last_message_sent_on": {
+            "label": "Última mensagem do LinkedIn enviada em",
+            "longlabel": "Última mensagem do LinkedIn enviada em"
+        },
+        "last_note_created_on": {
+            "label": "Última nota adicionada",
+            "longlabel": "Última nota adicionada"
+        }
+    },
+    "company_candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ID do candidato"
+        },
+        "candidatename": {
+            "label": "Nome",
+            "longlabel": "Nome do candidato"
+        },
+        "firstname": {
+            "label": "Nome próprio",
+            "longlabel": "Nome próprio do candidato"
+        },
+        "lastname": {
+            "label": "Apelido",
+            "longlabel": "Apelido do candidato"
+        },
+        "emailid": {
+            "label": "Correio eletrónico",
+            "longlabel": "Correio eletrónico"
+        },
+        "genderid": {
+            "label": "Género",
+            "longlabel": "Género"
+        },
+        "contactnumber": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "candidatedob": {
+            "label": "Data de nascimento",
+            "longlabel": "Data de nascimento"
+        },
+        "age": {
+            "label": "Idade",
+            "longlabel": "Idade do candidato"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Qualificações académicas"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização em educação"
+        },
+        "workexpyr": {
+            "label": "Experiência total",
+            "longlabel": "Experiência total"
+        },
+        "relevantexperience": {
+            "label": "Experiência relevante",
+            "longlabel": "Experiência relevante"
+        },
+        "resumetext": {
+            "label": "Texto do currículo",
+            "longlabel": "Texto do currículo"
+        },
+        "currentsalary": {
+            "label": "Salário Atual",
+            "longlabel": "Salário Atual"
+        },
+        "resume": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumefilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "lastorganisation": {
+            "label": "Organização Atual",
+            "longlabel": "Organização Atual"
+        },
+        "skill": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "willingtorelocate": {
+            "label": "Disposto a mudar de residência",
+            "longlabel": "Disposto a mudar de residência"
+        },
+        "salaryexpectation": {
+            "label": "Expectativa salarial",
+            "longlabel": "Expectativa salarial"
+        },
+        "position": {
+            "label": "Título",
+            "longlabel": "Título / Cargo"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "currencyid": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "currencycountry": {
+            "label": "Moeda País",
+            "longlabel": "Moeda País"
+        },
+        "symbol": {
+            "label": "Símbolo",
+            "longlabel": "Símbolo"
+        },
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownerslug": {
+            "label": "Proprietário Lesma",
+            "longlabel": "Proprietário Lesma"
+        },
+        "ownername": {
+            "label": "Nome do proprietário",
+            "longlabel": "Nome do proprietário"
+        },
+        "canaccess": {
+            "label": "Pode aceder",
+            "longlabel": "Pode aceder"
+        },
+        "profilepic": {
+            "label": "Imagem de perfil",
+            "longlabel": "Imagem de perfil"
+        },
+        "deleted": {
+            "label": "Eliminado",
+            "longlabel": "Eliminado"
+        },
+        "authid": {
+            "label": "ID de autenticação",
+            "longlabel": "ID de autenticação"
+        },
+        "resumeupdatedon": {
+            "label": "Perfil atualizado pelo candidato em",
+            "longlabel": "Perfil atualizado pelo candidato em"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Pedido de perfil enviado em",
+            "longlabel": "Pedido de perfil enviado em"
+        },
+        "requestresumelinkstatus": {
+            "label": "Pedir o estado da ligação do currículo",
+            "longlabel": "Pedir o estado da ligação do currículo"
+        },
+        "resumeaddedon": {
+            "label": "Currículo adicionado em",
+            "longlabel": "Currículo adicionado em"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil do Facebook"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil no Twitter"
+        },
+        "profilelinkedin": {
+            "label": "Perfil no Linkedin",
+            "longlabel": "Perfil no Linkedin"
+        },
+        "profilegithub": {
+            "label": "Perfil do Github",
+            "longlabel": "Perfil do Github"
+        },
+        "source": {
+            "label": "Fonte",
+            "longlabel": "Fonte"
+        },
+        "createdbyname": {
+            "label": "Criado por nome",
+            "longlabel": "Criado por nome"
+        },
+        "qualification": {
+            "label": "Etiqueta de qualificação",
+            "longlabel": "Etiqueta de qualificação"
+        },
+        "currentstatus": {
+            "label": "Situação Profissional",
+            "longlabel": "Situação Atual de Emprego"
+        },
+        "noticeperiod": {
+            "label": "Período de pré-aviso",
+            "longlabel": "Prazo de pré-aviso (dias)"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdon": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "availablefrom": {
+            "label": "Disponível a partir de",
+            "longlabel": "Disponível a partir de"
+        },
+        "salarytype": {
+            "label": "Tipo de salário",
+            "longlabel": "Tipo de salário"
+        },
+        "languageskills": {
+            "label": "Língua",
+            "longlabel": "Competências linguísticas"
+        },
+        "accountlogo": {
+            "label": "Logótipo da conta",
+            "longlabel": "Logótipo da conta"
+        },
+        "accounttitle": {
+            "label": "Título da conta",
+            "longlabel": "Título da conta"
+        },
+        "candidateterms": {
+            "label": "Termos de candidatura",
+            "longlabel": "Termos de candidatura"
+        },
+        "jobapplicationsettings": {
+            "label": "Definições das candidaturas a emprego",
+            "longlabel": "Definições das candidaturas a emprego"
+        },
+        "eeocompliance": {
+            "label": "Compromisso EEO",
+            "longlabel": "Compromisso EEO"
+        },
+        "gdprcompliance": {
+            "label": "Compromisso com o RGPD",
+            "longlabel": "Compromisso com o RGPD"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota"
+        },
+        "profilexing": {
+            "label": "Perfil Xing",
+            "longlabel": "Perfil Xing"
+        },
+        "email_opt_out": {
+            "label": "Optar por não participar",
+            "longlabel": "Optar por não participar"
+        },
+        "proficiency_level": {
+            "label": "Nível de proficiência",
+            "longlabel": "Nível de proficiência"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        }
+    },
+    "meetings": {
+        "meeting_date": {
+            "label": "Data da reunião",
+            "longlabel": "Data da reunião"
+        },
+        "meeting_time": {
+            "label": "Hora da reunião",
+            "longlabel": "Hora da reunião"
+        },
+        "title": {
+            "label": "Título",
+            "longlabel": "Título da reunião"
+        },
+        "status": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "relatedto": {
+            "label": "Relacionado a",
+            "longlabel": "Relacionado a"
+        },
+        "attendees": {
+            "label": "Participantes",
+            "longlabel": "Participantes"
+        },
+        "notetype": {
+            "label": "Tipo de reunião",
+            "longlabel": "Tipo de reunião"
+        },
+        "address": {
+            "label": "Local de encontro",
+            "longlabel": "Local de encontro"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "enddate": {
+            "label": "Data de vencimento",
+            "longlabel": "Data de vencimento"
+        },
+        "createdon": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "createdby": {
+            "label": "Adicionado por",
+            "longlabel": "Adicionado por "
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "description": {
+            "label": "Descrição",
+            "longlabel": "Descrição"
+        },
+        "collaborator": {
+            "label": "Colaborador",
+            "longlabel": "Colaborador"
+        },
+        "associations": {
+            "label": "Associações",
+            "longlabel": "Associações"
+        },
+        "id": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        }
+    },
+    "tasks": {
+        "title": {
+            "label": "Título",
+            "longlabel": "Título da tarefa"
+        },
+        "status": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "relatedto": {
+            "label": "Relacionado a",
+            "longlabel": "Relacionado a"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "enddate": {
+            "label": "Data de vencimento",
+            "longlabel": "Data de vencimento"
+        },
+        "createdon": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "createdby": {
+            "label": "Adicionado por",
+            "longlabel": "Adicionado por "
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "description": {
+            "label": "Descrição",
+            "longlabel": "Descrição"
+        },
+        "collaborator": {
+            "label": "Colaborador",
+            "longlabel": "Colaborador"
+        },
+        "associations": {
+            "label": "Associações",
+            "longlabel": "Associações"
+        },
+        "id": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "notetype": {
+            "label": "Tipo de tarefa",
+            "longlabel": "Tipo de tarefa"
+        }
+    },
+    "target_reports": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "title": {
+            "label": "Nome do alvo",
+            "longlabel": "Nome do alvo"
+        },
+        "status": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "assignee_id": {
+            "label": "Atribuído a",
+            "longlabel": "Atribuído a"
+        },
+        "frequency": {
+            "label": "Frequência",
+            "longlabel": "Frequência"
+        },
+        "target_period": {
+            "label": "Período de objetivo",
+            "longlabel": "Período de objetivo"
+        },
+        "startdate": {
+            "label": "Data de início",
+            "longlabel": "Data de início"
+        },
+        "enddate": {
+            "label": "Data final",
+            "longlabel": "Data final"
+        },
+        "created_on": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "created_by": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "updated_on": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "updated_by": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "action": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        }
+    },
+    "invoices": {
+        "invoiceid": {
+            "label": "ID da fatura",
+            "longlabel": "ID da fatura"
+        },
+        "description": {
+            "label": "Descrição",
+            "longlabel": "Descrição"
+        },
+        "company": {
+            "label": "Empresa",
+            "longlabel": "Empresa"
+        },
+        "templateused": {
+            "label": "Modelo utilizado",
+            "longlabel": "Modelo utilizado"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdon": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "issuedon": {
+            "label": "Emitido em",
+            "longlabel": "Emitido em"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "totalamount": {
+            "label": "Montante total",
+            "longlabel": "Montante total"
+        },
+        "duedate": {
+            "label": "Data de vencimento",
+            "longlabel": "Data de vencimento"
+        },
+        "paidon": {
+            "label": "Pago em",
+            "longlabel": "Pago em"
+        },
+        "status": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "currency": {
+            "label": "Moeda da fatura",
+            "longlabel": "Moeda da fatura"
+        },
+        "contact": {
+            "label": "Nome do contacto",
+            "longlabel": "Nome do contacto"
+        },
+        "phone": {
+            "label": "Telefone de contacto",
+            "longlabel": "Telefone de contacto"
+        },
+        "associations": {
+            "label": "Associações",
+            "longlabel": "Associações"
+        },
+        "address": {
+            "label": "Endereço da empresa",
+            "longlabel": "Endereço da empresa"
+        },
+        "email": {
+            "label": "E-mail de contacto",
+            "longlabel": "E-mail de contacto"
+        }
+    },
+    "placements": {
+        "placementId": {
+            "label": "ID de colocação",
+            "longlabel": "ID de colocação"
+        },
+        "currency": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "associations": {
+            "label": "Associações",
+            "longlabel": "Associações"
+        },
+        "createdBy": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdOn": {
+            "label": "Criado em",
+            "longlabel": "Criado em"
+        },
+        "candidateName": {
+            "label": "Nome do candidato",
+            "longlabel": "Nome do candidato"
+        },
+        "contactName": {
+            "label": "Nome do contacto",
+            "longlabel": "Nome do contacto"
+        },
+        "dealName": {
+            "label": "Nome do negócio",
+            "longlabel": "Nome do negócio"
+        },
+        "jobName": {
+            "label": "Nome do emprego",
+            "longlabel": "Nome do emprego"
+        },
+        "companyName": {
+            "label": "Nome da empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "joiningDate": {
+            "label": "Data de adesão",
+            "longlabel": "Data de adesão"
+        }
+    },
+    "candidate_assigned_job": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ID do emprego"
+        },
+        "name": {
+            "label": "Nome",
+            "longlabel": "Nome do emprego"
+        },
+        "candidatestatus": {
+            "label": "Fase e história da contratação",
+            "longlabel": "Fase e história da contratação"
+        },
+        "interview": {
+            "label": "Entrevista",
+            "longlabel": "Entrevista"
+        },
+        "share": {
+            "label": "Visibilidade",
+            "longlabel": "Visibilidade"
+        },
+        "jobstatus": {
+            "label": "Estado",
+            "longlabel": "Estado do emprego"
+        },
+        "jobstatuslabel": {
+            "label": "Estado",
+            "longlabel": "Estado do emprego"
+        },
+        "companyid": {
+            "label": "Empresa",
+            "longlabel": "Empresa"
+        },
+        "companyname": {
+            "label": "Empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "contactid": {
+            "label": "Contactos",
+            "longlabel": "Contactos"
+        },
+        "salarytype": {
+            "label": "Tipo de salário",
+            "longlabel": "Tipo de salário"
+        },
+        "currencyid": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "collaborator": {
+            "label": "Colaborador",
+            "longlabel": "Colaborador"
+        },
+        "jobquestions": {
+            "label": "Perguntas sobre o formulário de candidatura a emprego",
+            "longlabel": "Perguntas sobre o formulário de candidatura a emprego"
+        },
+        "allowapply": {
+            "label": "Ativar o formulário de candidatura a emprego",
+            "longlabel": "Ativar o formulário de candidatura a emprego"
+        },
+        "description": {
+            "label": "Nota para os candidatos",
+            "longlabel": "Nota para os candidatos"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Qualificações académicas"
+        },
+        "qualification": {
+            "label": "Etiqueta de qualificação",
+            "longlabel": "Etiqueta de qualificação"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização em educação"
+        },
+        "detailfilename": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "jdtext": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "jdtextdetails": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "minexperienceinyears": {
+            "label": "Experiência mínima (anos)",
+            "longlabel": "Experiência mínima (anos)"
+        },
+        "maxexperienceinyears": {
+            "label": "Experiência máxima (anos)",
+            "longlabel": "Experiência máxima (anos)"
+        },
+        "annualsalarymin": {
+            "label": "Mínimo. Salário",
+            "longlabel": "Salário mínimo"
+        },
+        "annualsalarymax": {
+            "label": "Máximo. Salário",
+            "longlabel": "Salário máximo"
+        },
+        "noofopenings": {
+            "label": "Aberturas",
+            "longlabel": "Número de vagas"
+        },
+        "contactname": {
+            "label": "Nome do contacto",
+            "longlabel": "Nome do contacto"
+        },
+        "contactemail": {
+            "label": "E-mail de contacto",
+            "longlabel": "E-mail de contacto"
+        },
+        "contactnumber": {
+            "label": "Número de contacto",
+            "longlabel": "Número de contacto"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do proprietário",
+            "longlabel": "Nome do proprietário"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "creatorname": {
+            "label": "Criador",
+            "longlabel": "Nome do criador"
+        },
+        "createdon": {
+            "label": "Data de adição",
+            "longlabel": "Data de adição"
+        },
+        "updatedon": {
+            "label": "Fase de contratação actualizada em",
+            "longlabel": "Fase de contratação actualizada em"
+        },
+        "slug": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "jobpostingstatus": {
+            "label": "Acções",
+            "longlabel": "Estado do anúncio de emprego"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota"
+        },
+        "contactslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "companyslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "hiring_pipeline_id": {
+            "label": "Pipeline de contratação",
+            "longlabel": "Pipeline de contratação"
+        },
+        "job_skill": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "job_type": {
+            "label": "Tipo de emprego",
+            "longlabel": "Tipo de emprego"
+        },
+        "job_category": {
+            "label": "Categoria profissional",
+            "longlabel": "Categoria profissional"
+        },
+        "secondarycontactid": {
+            "label": "Contactos secundários",
+            "longlabel": "Contactos secundários"
+        },
+        "targetcompanies": {
+            "label": "Empresas-alvo",
+            "longlabel": "Empresas-alvo"
+        },
+        "remote": {
+            "label": "Tipo de local de trabalho",
+            "longlabel": "Tipo de local de trabalho"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Currículo de candidatura a emprego",
+            "longlabel": "Currículo de candidatura a emprego"
+        },
+        "assigned_job_coverletter": {
+            "label": "Carta de apresentação de candidatura a emprego",
+            "longlabel": "Carta de apresentação de candidatura a emprego"
+        },
+        "assigned_job_portfolio": {
+            "label": "Portfolio de candidaturas a emprego",
+            "longlabel": "Portfolio de candidaturas a emprego"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Ficheiro de candidatura a emprego 1",
+            "longlabel": "Ficheiro de candidatura a emprego 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Ficheiro de candidatura a emprego 2",
+            "longlabel": "Ficheiro de candidatura a emprego 2"
+        },
+        "postal_code": {
+            "label": "Código Postal",
+            "longlabel": "Código Postal"
+        },
+        "job_function": {
+            "label": "Função",
+            "longlabel": "Função"
+        },
+        "job_industry": {
+            "label": "Setor de atividade",
+            "longlabel": "Setor de atividade"
+        },
+        "updatedby": {
+            "label": "Fase de contratação Atualizado por",
+            "longlabel": "Fase de contratação Atualizado por"
+        }
+    },
+    "postal_code": {
+        "label": "Código Postal",
+        "longlabel": "Código Postal"
+    },
+    "timesheet": {
+        "timesheetId": {
+            "label": "ID da folha de tempos",
+            "longlabel": "ID da folha de tempos"
+        },
+        "timesheetPeriod": {
+            "label": "Período da folha de horas",
+            "longlabel": "Período da folha de horas"
+        },
+        "contractorName": {
+            "label": "Nome do candidato",
+            "longlabel": "Nome do candidato"
+        },
+        "timesheetStatusId": {
+            "label": "Estado da folha de horas",
+            "longlabel": "Estado da folha de horas"
+        },
+        "timesheetStatus": {
+            "label": "Estado da folha de horas",
+            "longlabel": "Estado da folha de horas"
+        },
+        "jobName": {
+            "label": "Nome do emprego",
+            "longlabel": "Nome do emprego"
+        },
+        "dealName": {
+            "label": "Nome do negócio",
+            "longlabel": "Nome do negócio"
+        },
+        "jobDuration": {
+            "label": "Duração do trabalho",
+            "longlabel": "Duração do trabalho"
+        },
+        "totalWorkTime": {
+            "label": "Total de horas de trabalho",
+            "longlabel": "Total de horas de trabalho"
+        },
+        "totalOvertime": {
+            "label": "Total de horas extraordinárias",
+            "longlabel": "Total de horas extraordinárias"
+        },
+        "totalTime": {
+            "label": "Total de horas",
+            "longlabel": "Total de horas"
+        },
+        "billData": {
+            "label": "Montante da fatura",
+            "longlabel": "Montante da fatura"
+        },
+        "billAmount": {
+            "label": "Montante da fatura",
+            "longlabel": "Dados de faturação"
+        },
+        "payData": {
+            "label": "Montante do pagamento",
+            "longlabel": "Montante do pagamento"
+        },
+        "payAmount": {
+            "label": "Montante do pagamento",
+            "longlabel": "Dados salariais"
+        },
+        "billRate": {
+            "label": "Taxa de faturação",
+            "longlabel": "Taxa de faturação"
+        },
+        "payRate": {
+            "label": "Taxa de pagamento",
+            "longlabel": "Taxa de pagamento"
+        },
+        "approvedBy": {
+            "label": "Folha de presença aprovada por",
+            "longlabel": "Folha de presença aprovada por"
+        },
+        "approver": {
+            "label": "Folha de presença aprovada por",
+            "longlabel": "Folha de presença aprovada por"
+        },
+        "approvers": {
+            "label": "Aprovadores de folhas de horas",
+            "longlabel": "Aprovadores de folhas de horas"
+        },
+        "billingStatusId": {
+            "label": "Estado do projeto de lei",
+            "longlabel": "Estado do projeto de lei"
+        },
+        "paymentStatusId": {
+            "label": "Situação salarial",
+            "longlabel": "Situação salarial"
+        },
+        "paymentDate": {
+            "label": "Data de pagamento",
+            "longlabel": "Data de pagamento"
+        },
+        "payoutNumber": {
+            "label": "Número de pagamento",
+            "longlabel": "Número de pagamento"
+        },
+        "billingDate": {
+            "label": "Data de faturação",
+            "longlabel": "Data de faturação"
+        },
+        "invoiceNumber": {
+            "label": "Número da fatura",
+            "longlabel": "Número da fatura"
+        },
+        "addedOn": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "addedBy": {
+            "label": "Adicionado por",
+            "longlabel": "Adicionado por"
+        },
+        "updatedOn": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "updatedBy": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "company": {
+            "label": "Empresa",
+            "longlabel": "Empresa"
+        },
+        "frequency": {
+            "label": "Frequência",
+            "longlabel": "Frequência"
+        },
+        "workDays": {
+            "label": "Dias de trabalho",
+            "longlabel": "Dias de trabalho"
+        },
+        "workHours": {
+            "label": "Horas de trabalho",
+            "longlabel": "Horas de trabalho"
+        },
+        "actions": {
+            "label": "Acções",
+            "longlabel": "Acções"
+        },
+        "action": {
+            "label": "Ação",
+            "longlabel": "Ação"
+        },
+        "billStatus": {
+            "label": "Estado do projeto de lei",
+            "longlabel": "Estado do projeto de lei"
+        },
+        "payStatus": {
+            "label": "Situação salarial",
+            "longlabel": "Situação salarial"
+        },
+        "invoiceCreatedOn": {
+            "label": "Fatura criada em",
+            "longlabel": "Fatura criada em"
+        },
+        "payoutPaidOn": {
+            "label": "Pagamento Pago em",
+            "longlabel": "Pagamento Pago em"
+        },
+        "companyname": {
+            "label": "Nome da empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "gender": {
+            "label": "Género",
+            "longlabel": "Género"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "postalCode": {
+            "label": "Código Postal",
+            "longlabel": "Código Postal"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil do Facebook"
+        },
+        "title": {
+            "label": "Título",
+            "longlabel": "Título"
+        },
+        "birthDate": {
+            "label": "Data de nascimento",
+            "longlabel": "Data de nascimento"
+        },
+        "skills": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "profilexing": {
+            "label": "Perfil Xing",
+            "longlabel": "Perfil Xing"
+        },
+        "phone": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "name": {
+            "label": "Nome",
+            "longlabel": "Nome"
+        },
+        "fullAddress": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "currentOrganization": {
+            "label": "Organização atual",
+            "longlabel": "Organização atual"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil no Twitter"
+        },
+        "profilelinkedin": {
+            "label": "Perfil no Linkedin",
+            "longlabel": "Perfil no Linkedin"
+        },
+        "profilegithub": {
+            "label": "Perfil do Github",
+            "longlabel": "Perfil do Github"
+        },
+        "source": {
+            "label": "Fonte",
+            "longlabel": "Fonte"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "email": {
+            "label": "Correio eletrónico",
+            "longlabel": "Correio eletrónico"
+        },
+        "status": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "companyName": {
+            "label": "Nome da empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "timesheetFrequency": {
+            "label": "Frequência da folha de presença",
+            "longlabel": "Frequência da folha de presença"
+        },
+        "expenseClaim": {
+            "label": "Pedido de reembolso de despesas",
+            "longlabel": "Pedido de reembolso de despesas"
+        },
+        "payCurrency": {
+            "label": "Moeda de pagamento",
+            "longlabel": "Moeda de pagamento"
+        },
+        "billCurrency": {
+            "label": "Moeda em notas",
+            "longlabel": "Moeda em notas"
+        },
+        "totalRegularHours": {
+            "label": "Total de horas normais",
+            "longlabel": "Total de horas normais"
+        }
+    },
+    "jobs_widget": {
+        "name": {
+            "label": "Nome do emprego",
+            "longlabel": "Nome do emprego"
+        },
+        "jobstatuslabel": {
+            "label": "Estado do emprego",
+            "longlabel": "Estado do emprego"
+        },
+        "assignedcandidatestatuscount": {
+            "label": "Pipeline de candidatos",
+            "longlabel": "Pipeline de candidatos"
+        },
+        "joinedcandidatestatuscount": {
+            "label": "Colocado",
+            "longlabel": "Colocado"
+        },
+        "detailfilename": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "contactname": {
+            "label": "Contacto",
+            "longlabel": "Contacto"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Referência da vaga"
+        },
+        "archived": {
+            "label": "Arquivado",
+            "longlabel": "Arquivado"
+        },
+        "companyid": {
+            "label": "Empresa",
+            "longlabel": "Empresa"
+        },
+        "contactid": {
+            "label": "Contactos",
+            "longlabel": "Contactos"
+        },
+        "secondarycontactid": {
+            "label": "Contactos secundários",
+            "longlabel": "Contactos secundários"
+        },
+        "salarytype": {
+            "label": "Tipo de salário",
+            "longlabel": "Tipo de salário"
+        },
+        "currencyid": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "salaryrange": {
+            "label": "Faixa salarial",
+            "longlabel": "Faixa salarial"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "collaborator": {
+            "label": "Colaborador",
+            "longlabel": "Colaborador"
+        },
+        "jobquestions": {
+            "label": "Perguntas do formulário de candidatura",
+            "longlabel": "Perguntas do formulário de candidatura"
+        },
+        "allowapply": {
+            "label": "Ativar o formulário de candidatura",
+            "longlabel": "Ativar o formulário de candidatura"
+        },
+        "description": {
+            "label": "Nota para os candidatos",
+            "longlabel": "Nota para os candidatos"
+        },
+        "job_skill": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Formação académica"
+        },
+        "qualification": {
+            "label": "Rótulo de certificação",
+            "longlabel": "Rótulo de certificação"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização em Educação"
+        },
+        "jdtext": {
+            "label": "Descrição da função",
+            "longlabel": "Descrição da função"
+        },
+        "jdtextdetails": {
+            "label": "Descrição da função",
+            "longlabel": "Descrição da função"
+        },
+        "minexperienceinyears": {
+            "label": "Experiência mínima (anos)",
+            "longlabel": "Experiência mínima (anos)"
+        },
+        "maxexperienceinyears": {
+            "label": "Experiência máxima (anos)",
+            "longlabel": "Experiência máxima (anos)"
+        },
+        "annualsalarymin": {
+            "label": "Salário mínimo",
+            "longlabel": "Salário mínimo"
+        },
+        "annualsalarymax": {
+            "label": "Salário máximo",
+            "longlabel": "Salário máximo"
+        },
+        "noofopenings": {
+            "label": "Vagas",
+            "longlabel": "Número de vagas"
+        },
+        "contactslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "companyslug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "contactemail": {
+            "label": "E-mail de contacto",
+            "longlabel": "E-mail de contacto"
+        },
+        "contactnumber": {
+            "label": "Número de contacto",
+            "longlabel": "Número de contacto"
+        },
+        "ownername": {
+            "label": "Nome do proprietário",
+            "longlabel": "Nome do proprietário"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "job_function": {
+            "label": "Função",
+            "longlabel": "Função"
+        },
+        "creatorname": {
+            "label": "Criador",
+            "longlabel": "Nome do criador"
+        },
+        "createdon": {
+            "label": "Data de adição",
+            "longlabel": "Data de adição"
+        },
+        "updatedon": {
+            "label": "Data de atualização",
+            "longlabel": "Data de atualização"
+        },
+        "updatedby": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "jobpostingstatus": {
+            "label": "Ações",
+            "longlabel": "Estado da oferta de emprego"
+        },
+        "note": {
+            "label": "Nota",
+            "longlabel": "Nota"
+        },
+        "hiring_pipeline_id": {
+            "label": "Processo de recrutamento",
+            "longlabel": "Processo de recrutamento"
+        },
+        "hiring_pipeline_name": {
+            "label": "Processo de recrutamento",
+            "longlabel": "Processo de recrutamento"
+        },
+        "job_type": {
+            "label": "Tipo de emprego",
+            "longlabel": "Tipo de emprego"
+        },
+        "job_category": {
+            "label": "Categoria do cargo",
+            "longlabel": "Categoria do cargo"
+        },
+        "remote": {
+            "label": "Tipo de local de trabalho",
+            "longlabel": "Tipo de local de trabalho"
+        },
+        "hotlist": {
+            "label": "Lista de favoritos",
+            "longlabel": "Lista de favoritos"
+        },
+        "xml_feeds": {
+            "label": "Feeds XML",
+            "longlabel": "Feeds XML"
+        },
+        "targetcompanies": {
+            "label": "Empresas-alvo",
+            "longlabel": "Empresas-alvo"
+        },
+        "contactfirstname": {
+            "label": "Nome próprio",
+            "longlabel": "Nome próprio"
+        },
+        "contactlastname": {
+            "label": "Apelido de contacto",
+            "longlabel": "Apelido de contacto"
+        },
+        "postalcode": {
+            "label": "Código postal",
+            "longlabel": "Código postal"
+        },
+        "pay_rate": {
+            "label": "Taxa de remuneração",
+            "longlabel": "Taxa de remuneração"
+        },
+        "bill_rate": {
+            "label": "Taxa de faturação",
+            "longlabel": "Taxa de faturação"
+        },
+        "job_industry": {
+            "label": "Setor de atividade",
+            "longlabel": "Setor de atividade"
+        }
+    },
+    "list_of_candidates": {
+        "label": "Lista de candidatos",
+        "longlabel": "Lista de candidatos"
+    },
+    "job_candidate_pipeline": {
+        "candidatename": {
+            "label": "Nome do candidato",
+            "longlabel": "Nome do candidato"
+        },
+        "detailfilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "hiring_stage_remark": {
+            "label": "Fase do processo de recrutamento e observações",
+            "longlabel": "Fase do processo de recrutamento e observações"
+        },
+        "visibility": {
+            "label": "Visibilidade",
+            "longlabel": "Visibilidade"
+        },
+        "job_specific_details": {
+            "label": "Detalhes específicos do cargo",
+            "longlabel": "Detalhes específicos do cargo"
+        },
+        "interview": {
+            "label": "Entrevista",
+            "longlabel": "Entrevista"
+        },
+        "timesheet": {
+            "label": "Folha de ponto",
+            "longlabel": "Folha de ponto"
+        },
+        "placement": {
+            "label": "Colocação",
+            "longlabel": "Colocação"
+        },
+        "phone": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "accountlogo": {
+            "label": "Logótipo da conta",
+            "longlabel": "Logótipo da conta"
+        },
+        "accounttitle": {
+            "label": "Nome da conta",
+            "longlabel": "Nome da conta"
+        },
+        "address": {
+            "label": "Endereço completo",
+            "longlabel": "Endereço completo"
+        },
+        "age": {
+            "label": "Idade",
+            "longlabel": "Idade do candidato"
+        },
+        "authid": {
+            "label": "ID de autenticação",
+            "longlabel": "ID de autenticação"
+        },
+        "availablefrom": {
+            "label": "Disponível a partir de",
+            "longlabel": "Disponível a partir de"
+        },
+        "canaccess": {
+            "label": "Pode aceder",
+            "longlabel": "Pode aceder"
+        },
+        "candidate_company_city": {
+            "label": "Organização atual - Cidade",
+            "longlabel": "Organização atual - Cidade"
+        },
+        "candidate_company_logo": {
+            "label": "Organização atual - Logótipo",
+            "longlabel": "Organização atual - Logótipo"
+        },
+        "candidate_company_slug": {
+            "label": "Organização atual - Slug",
+            "longlabel": "Organização atual - Slug"
+        },
+        "candidatedob": {
+            "label": "Data de nascimento",
+            "longlabel": "Data de nascimento"
+        },
+        "candidateterms": {
+            "label": "Condições de candidatura",
+            "longlabel": "Condições de candidatura"
+        },
+        "city": {
+            "label": "Cidade",
+            "longlabel": "Cidade"
+        },
+        "contactnumber": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "country": {
+            "label": "País",
+            "longlabel": "País"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdbyname": {
+            "label": "Criado por Nome",
+            "longlabel": "Criado por Nome"
+        },
+        "createdon": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "currencycountry": {
+            "label": "Moeda País",
+            "longlabel": "Moeda País"
+        },
+        "currencyid": {
+            "label": "Moeda",
+            "longlabel": "Moeda"
+        },
+        "currentsalary": {
+            "label": "Salário atual",
+            "longlabel": "Salário atual"
+        },
+        "currentstatus": {
+            "label": "Situação profissional",
+            "longlabel": "Situação profissional atual"
+        },
+        "education_description": {
+            "label": "Descrição da formação",
+            "longlabel": "Descrição da formação"
+        },
+        "education_end_date": {
+            "label": "Data de conclusão da formação",
+            "longlabel": "Data de conclusão da formação"
+        },
+        "education_history": {
+            "label": "Percurso académico",
+            "longlabel": "Percurso académico"
+        },
+        "education_location": {
+            "label": "Formação académica",
+            "longlabel": "Formação académica"
+        },
+        "education_start_date": {
+            "label": "Data de início da formação",
+            "longlabel": "Data de início da formação"
+        },
+        "educational_qualification": {
+            "label": "Formação académica",
+            "longlabel": "Formação académica"
+        },
+        "educational_specialization": {
+            "label": "Especialização em Educação",
+            "longlabel": "Especialização em Educação"
+        },
+        "eeocompliance": {
+            "label": "Conformidade com a igualdade de oportunidades no emprego",
+            "longlabel": "Conformidade com a igualdade de oportunidades no emprego"
+        },
+        "email_opt_out": {
+            "label": "Exclusão",
+            "longlabel": "Exclusão"
+        },
+        "emailid": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "employment_type": {
+            "label": "Tipo de emprego",
+            "longlabel": "Tipo de emprego"
+        },
+        "firstname": {
+            "label": "Nome",
+            "longlabel": "Nome do candidato"
+        },
+        "gdprcompliance": {
+            "label": "Conformidade com o RGPD",
+            "longlabel": "Conformidade com o RGPD"
+        },
+        "genderid": {
+            "label": "Género",
+            "longlabel": "Género"
+        },
+        "grade": {
+            "label": "Nota",
+            "longlabel": "Nota"
+        },
+        "hotlist": {
+            "label": "Lista de favoritos",
+            "longlabel": "Lista de favoritos"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "industry_id": {
+            "label": "Tipo de setor",
+            "longlabel": "Tipo de setor"
+        },
+        "institute_name": {
+            "label": "Nome da escola/faculdade",
+            "longlabel": "Nome da escola/faculdade"
+        },
+        "is_currently_working": {
+            "label": "Atualmente em curso",
+            "longlabel": "Atualmente em curso"
+        },
+        "jobapplicationsettings": {
+            "label": "Definições de candidaturas a empregos",
+            "longlabel": "Definições de candidaturas a empregos"
+        },
+        "languageskills": {
+            "label": "Idioma",
+            "longlabel": "Competências linguísticas"
+        },
+        "last_calllog_created_on": {
+            "label": "Registo de últimas chamadas adicionado",
+            "longlabel": "Registo de últimas chamadas adicionado"
+        },
+        "last_communication_method": {
+            "label": "Último tipo de comunicação",
+            "longlabel": "Último tipo de comunicação"
+        },
+        "last_communication_timestamp": {
+            "label": "Última comunicação",
+            "longlabel": "Última comunicação"
+        },
+        "last_email_sent_on": {
+            "label": "Último e-mail enviado em",
+            "longlabel": "Último e-mail enviado em"
+        },
+        "last_meeting_created_on": {
+            "label": "Última reunião adicionada",
+            "longlabel": "Última reunião adicionada"
+        },
+        "last_message_sent_on": {
+            "label": "Última mensagem enviada no LinkedIn em",
+            "longlabel": "Última mensagem enviada no LinkedIn em"
+        },
+        "last_sms_sent_on": {
+            "label": "Última mensagem SMS enviada em",
+            "longlabel": "Última mensagem SMS enviada em"
+        },
+        "lastname": {
+            "label": "Apelido",
+            "longlabel": "Apelido do candidato"
+        },
+        "lastorganisation": {
+            "label": "Organização atual",
+            "longlabel": "Organização atual"
+        },
+        "locality": {
+            "label": "Localidade",
+            "longlabel": "Localidade"
+        },
+        "noticeperiod": {
+            "label": "Prazo de pré-aviso",
+            "longlabel": "Período de pré-aviso (dias)"
+        },
+        "off_limit_status": {
+            "label": "Estado \"Fora de Serviço\"",
+            "longlabel": "Estado \"Fora de Serviço\""
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do proprietário",
+            "longlabel": "Nome do proprietário"
+        },
+        "ownerslug": {
+            "label": "Identificador do proprietário",
+            "longlabel": "Identificador do proprietário"
+        },
+        "position": {
+            "label": "Título",
+            "longlabel": "Cargo / Função"
+        },
+        "postal_code": {
+            "label": "Código postal",
+            "longlabel": "Código postal"
+        },
+        "proficiency_level": {
+            "label": "Nível de proficiência",
+            "longlabel": "Nível de proficiência"
+        },
+        "profilefacebook": {
+            "label": "Perfil do Facebook",
+            "longlabel": "Perfil do Facebook"
+        },
+        "profilegithub": {
+            "label": "Perfil no GitHub",
+            "longlabel": "Perfil no GitHub"
+        },
+        "profilelinkedin": {
+            "label": "Perfil no LinkedIn",
+            "longlabel": "Perfil no LinkedIn"
+        },
+        "profilepic": {
+            "label": "Foto de perfil",
+            "longlabel": "Foto de perfil"
+        },
+        "profiletwitter": {
+            "label": "Perfil no Twitter",
+            "longlabel": "Perfil no Twitter"
+        },
+        "profilexing": {
+            "label": "Perfil no Xing",
+            "longlabel": "Perfil no Xing"
+        },
+        "qualification": {
+            "label": "Rótulo de certificação",
+            "longlabel": "Rótulo de certificação"
+        },
+        "qualificationid": {
+            "label": "Qualificação",
+            "longlabel": "Formação académica"
+        },
+        "relevantexperience": {
+            "label": "Experiência relevante",
+            "longlabel": "Experiência relevante"
+        },
+        "requestresumelinkstatus": {
+            "label": "Verificar o estado do link do currículo",
+            "longlabel": "Verificar o estado do link do currículo"
+        },
+        "resume": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumeaddedon": {
+            "label": "Currículo adicionado em",
+            "longlabel": "Currículo adicionado em"
+        },
+        "resumefilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "resumetext": {
+            "label": "Texto do currículo",
+            "longlabel": "Texto do currículo"
+        },
+        "resumeupdatedon": {
+            "label": "Perfil atualizado pelo candidato em",
+            "longlabel": "Perfil atualizado pelo candidato em"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Pedido de perfil enviado em",
+            "longlabel": "Pedido de perfil enviado em"
+        },
+        "salary": {
+            "label": "Salário",
+            "longlabel": "Salário"
+        },
+        "salaryexpectation": {
+            "label": "Expectativas salariais",
+            "longlabel": "Expectativas salariais"
+        },
+        "salarytype": {
+            "label": "Tipo de salário",
+            "longlabel": "Tipo de salário"
+        },
+        "skill": {
+            "label": "Competências",
+            "longlabel": "Competências"
+        },
+        "slug": {
+            "label": "Lesma",
+            "longlabel": "Lesma"
+        },
+        "source": {
+            "label": "Fonte",
+            "longlabel": "Fonte"
+        },
+        "specialization": {
+            "label": "Especialização",
+            "longlabel": "Especialização em Educação"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "N.º de identificação do candidato"
+        },
+        "state": {
+            "label": "Estado",
+            "longlabel": "Estado"
+        },
+        "summary": {
+            "label": "Resumo",
+            "longlabel": "Resumo"
+        },
+        "symbol": {
+            "label": "Símbolo",
+            "longlabel": "Símbolo"
+        },
+        "title": {
+            "label": "Cargo",
+            "longlabel": "Cargo"
+        },
+        "unavailable": {
+            "label": "Disponibilidade",
+            "longlabel": "Disponibilidade"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "willingtorelocate": {
+            "label": "Disponível para mudar de cidade",
+            "longlabel": "Disponível para mudar de cidade"
+        },
+        "work_company_name": {
+            "label": "Nome da empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "work_description": {
+            "label": "Descrição do trabalho",
+            "longlabel": "Descrição do trabalho"
+        },
+        "work_end_date": {
+            "label": "Data de término do trabalho",
+            "longlabel": "Data de término do trabalho"
+        },
+        "work_history": {
+            "label": "Experiência profissional",
+            "longlabel": "Experiência profissional"
+        },
+        "work_location": {
+            "label": "Local de trabalho",
+            "longlabel": "Local de trabalho"
+        },
+        "work_start_date": {
+            "label": "Data de início do trabalho",
+            "longlabel": "Data de início do trabalho"
+        },
+        "workexpyr": {
+            "label": "Experiência total",
+            "longlabel": "Experiência total"
+        }
+    },
+    "entity_related_deals": {
+        "accountid": {
+            "label": "ID da conta",
+            "longlabel": "ID da conta"
+        },
+        "archived": {
+            "label": "Arquivado",
+            "longlabel": "Arquivado"
+        },
+        "candidatename": {
+            "label": "Candidato",
+            "longlabel": "Candidato"
+        },
+        "candidateslug": {
+            "label": "candidato",
+            "longlabel": "candidato"
+        },
+        "candidatetitle": {
+            "label": "Título",
+            "longlabel": "Cargo / Função"
+        },
+        "closedate": {
+            "label": "Data de encerramento",
+            "longlabel": "Data de encerramento"
+        },
+        "collaborator": {
+            "label": "Colaborador",
+            "longlabel": "Colaborador"
+        },
+        "companyname": {
+            "label": "Empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "companyslug": {
+            "label": "identificador da empresa",
+            "longlabel": "identificador da empresa"
+        },
+        "createdby": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "createdbyname": {
+            "label": "Criado por Nome",
+            "longlabel": "Criado por Nome"
+        },
+        "createdon": {
+            "label": "Adicionado em",
+            "longlabel": "Adicionado em"
+        },
+        "dealpercentagevalue": {
+            "label": "Valor ponderado da transação",
+            "longlabel": "Valor ponderado da transação"
+        },
+        "dealstage": {
+            "label": "Palco",
+            "longlabel": "Palco"
+        },
+        "dealstagelabel": {
+            "label": "Palco",
+            "longlabel": "Palco"
+        },
+        "dealtype": {
+            "label": "Tipo de negócio",
+            "longlabel": "Tipo de negócio"
+        },
+        "dealtypelabel": {
+            "label": "Tipo de negócio",
+            "longlabel": "Tipo de negócio"
+        },
+        "dealvalue": {
+            "label": "Valor da transação",
+            "longlabel": "Valor da transação"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "jobname": {
+            "label": "Emprego",
+            "longlabel": "Nome do cargo"
+        },
+        "jobslug": {
+            "label": "jobslug",
+            "longlabel": "jobslug"
+        },
+        "name": {
+            "label": "Nome",
+            "longlabel": "Nome da oferta"
+        },
+        "ownerid": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        },
+        "ownername": {
+            "label": "Nome do proprietário",
+            "longlabel": "Nome do proprietário"
+        },
+        "ownerslug": {
+            "label": "Identificador do proprietário",
+            "longlabel": "Identificador do proprietário"
+        },
+        "percentage": {
+            "label": "Peso da etapa",
+            "longlabel": "Peso da etapa"
+        },
+        "relatedcandidate": {
+            "label": "N.º de identificação do candidato",
+            "longlabel": "N.º de identificação do candidato"
+        },
+        "relatedcompany": {
+            "label": "Número de identificação da empresa",
+            "longlabel": "Número de identificação da empresa"
+        },
+        "relatedcontact": {
+            "label": "Contacto",
+            "longlabel": "Contacto"
+        },
+        "relatedjob": {
+            "label": "N.º do trabalho",
+            "longlabel": "N.º do trabalho"
+        },
+        "slug": {
+            "label": "Ações",
+            "longlabel": "Lesma"
+        },
+        "splitdealvalue": {
+            "label": "Valor da transação dividida",
+            "longlabel": "Valor da transação dividida"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ID da transação"
+        },
+        "updatedby": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "updatedbyname": {
+            "label": "Atualizado por nome",
+            "longlabel": "Atualizado por nome"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "website": {
+            "label": "Site",
+            "longlabel": "Site"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Valor ponderado da divisão da transação",
+            "longlabel": "Valor ponderado da divisão da transação"
+        }
+    },
+    "hotlist_widget": {
+        "name": {
+            "label": "Nome da lista de favoritos",
+            "longlabel": "Nome da lista de favoritos"
+        },
+        "createdOn": {
+            "label": "Data de criação",
+            "longlabel": "Data de criação"
+        },
+        "updatedOn": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "ownerId": {
+            "label": "Proprietário",
+            "longlabel": "Proprietário"
+        }
+    },
+    "executive_search_report": {
+        "report_title": {
+            "label": "Nome do relatório",
+            "longlabel": "Nome do relatório"
+        },
+        "created_by": {
+            "label": "Criado por",
+            "longlabel": "Criado por"
+        },
+        "updated_by": {
+            "label": "Modificado por",
+            "longlabel": "Modificado por"
+        },
+        "updated_on": {
+            "label": "Modificado em",
+            "longlabel": "Modificado em"
+        }
+    },
+    "pitch_candidate": {
+        "name": {
+            "label": "Nome do candidato",
+            "longlabel": "Nome do candidato"
+        },
+        "pitchStage": {
+            "label": "Apresentação e comentários",
+            "longlabel": "Apresentação e comentários"
+        },
+        "phone": {
+            "label": "Telefone",
+            "longlabel": "Telefone"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "E-mail"
+        },
+        "resumefilename": {
+            "label": "Currículo",
+            "longlabel": "Currículo"
+        },
+        "contactName": {
+            "label": "Contacto direto",
+            "longlabel": "Contacto direto"
+        },
+        "createdByName": {
+            "label": "Apresentado por",
+            "longlabel": "Apresentado por"
+        },
+        "createdOn": {
+            "label": "Apresentado",
+            "longlabel": "Apresentado"
+        },
+        "candidateTitle": {
+            "label": "Título do candidato",
+            "longlabel": "Título / Função do candidato"
+        },
+        "last_communication_timestamp": {
+            "label": "Última comunicação do candidato",
+            "longlabel": "Última comunicação do candidato"
+        }
+    },
+    "candidate_history": {
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "name": {
+            "label": "Nome",
+            "longlabel": "Nome"
+        },
+        "updatedby": {
+            "label": "Atualizado por",
+            "longlabel": "Atualizado por"
+        },
+        "updatedon": {
+            "label": "Atualizado em",
+            "longlabel": "Atualizado em"
+        },
+        "candidatestatus": {
+            "label": "Fase de contratação e histórico",
+            "longlabel": "Fase de contratação e histórico"
+        },
+        "companycontactname": {
+            "label": "Contacto da empresa",
+            "longlabel": "Contacto da empresa"
+        }
+    },
+    "pitch_contact": {
+        "name": {
+            "label": "Nome do contacto",
+            "longlabel": "Nome do contacto"
+        },
+        "email": {
+            "label": "E-mail",
+            "longlabel": "Endereço de e-mail para contacto"
+        },
+        "phone": {
+            "label": "Telefone",
+            "longlabel": "Número de contacto"
+        },
+        "pitchStage": {
+            "label": "Apresentação e comentários",
+            "longlabel": "Apresentação e comentários"
+        },
+        "companyName": {
+            "label": "Empresa",
+            "longlabel": "Nome da empresa"
+        },
+        "createdByName": {
+            "label": "Apresentado por",
+            "longlabel": "Apresentado por"
+        },
+        "createdOn": {
+            "label": "Apresentado",
+            "longlabel": "Apresentado"
+        },
+        "contactTitle": {
+            "label": "Título do contacto",
+            "longlabel": "Título do contacto"
+        },
+        "last_communication_timestamp": {
+            "label": "Contacto Última comunicação",
+            "longlabel": "Contacto Última comunicação"
+        }
+    }
+}

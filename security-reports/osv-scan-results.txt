@@ -1,0 +1,5 @@
+Starting filesystem walk for root: /
+Scanned /Users/tusharrai/Desktop/services and packages/contract-staffing-timesheet-microservice/package-lock.json file and found 434 packages
+End status: 0 dirs visited, 1 inodes visited, 1 Extract calls, 4.748208ms elapsed, 4.749ms wall time
+
+No issues found

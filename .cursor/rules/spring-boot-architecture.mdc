@@ -1,0 +1,235 @@
+---
+description: Defines the architectural patterns and best practices for a Spring Boot application.
+alwaysApply: false
+---
+# Spring Boot Architecture Patterns
+
+## Project Structure
+
+### Package Organization
+```
+src/main/java/io/recruitcrm/microservice/timesheet/
+├── controllers/          # REST controllers
+├── services/            # Business logic services
+├── repositories/        # Data access layer
+├── dto/                 # Data Transfer Objects
+├── exceptions/          # Custom exceptions
+├── responses/           # API response handling
+├── configuration/       # Spring configuration
+├── helpers/             # Utility classes
+└── rule_engine/         # Business rule processing
+```
+
+## Controller Layer
+
+### Standard Controller Pattern
+```java
+@Validated
+@RestController
+@RequestMapping("/v1/resource")
+@RequiredArgsConstructor
+public class ResourceController {
+    
+    private final IResourceService resourceService;
+    private final IAPIResponder apiResponder;
+    
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@Validated @RequestBody CreateRequestDto request) {
+        try {
+            ResourceResponseDto result = this.resourceService.create(request);
+            return this.apiResponder.respond(result, "Resource created successfully");
+        }
+        catch (Exception ex) {
+            return this.apiResponder.respondWithError(ex, APIResponseType.ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
+```
+
+### Response Handling
+- Use [APIResponder.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIResponder.java) for consistent responses
+- Always wrap responses in `ResponseEntity<?>`
+- Use try-catch blocks for exception handling
+- Return structured API responses
+
+## Service Layer
+
+### Service Interface Pattern
+```java
+public interface IResourceService {
+    ResourceResponseDto create(CreateRequestDto request);
+    ResourceResponseDto update(Integer id, UpdateRequestDto request);
+    void delete(Integer id);
+}
+```
+
+### Service Implementation Pattern
+```java
+@Service
+public class ResourceService implements IResourceService {
+    
+    private final IResourceRepository resourceRepository;
+    private final ResourceMapper resourceMapper;
+    
+    @Override
+    @Transactional
+    public ResourceResponseDto create(CreateRequestDto request) {
+        // Business logic implementation
+        Resource entity = this.resourceMapper.toEntity(request);
+        Resource saved = this.resourceRepository.save(entity);
+        return this.resourceMapper.toDto(saved);
+    }
+}
+```
+
+## DTO Patterns
+
+### Request DTOs
+```java
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateRequestDto {
+    
+    @NotNull(message = "Field cannot be null")
+    @Size(min = 1, max = 100, message = "Field must be between 1 and 100 characters")
+    private String field;
+    
+    @Builder.Default
+    private Boolean optionalField = false;
+}
+```
+
+### Response DTOs
+```java
+public record ResourceResponseDto(
+    Integer id,
+    String name,
+    String status,
+    LocalDateTime createdAt
+) {}
+```
+
+### Record DTOs for Simple Data
+```java
+public record BulkRequestDto(List<Integer> ids) {
+    public BulkRequestDto {
+        if (ids == null || ids.isEmpty()) {
+            throw new IllegalArgumentException("IDs list cannot be null or empty");
+        }
+    }
+}
+```
+
+## Repository Layer
+
+### JPA Repository Pattern
+```java
+@Repository
+public interface ResourceJpaRepository extends JpaRepository<Resource, Integer> {
+    
+    @Query("SELECT r FROM Resource r WHERE r.accountId = :accountId")
+    List<Resource> findByAccountId(@Param("accountId") Integer accountId);
+    
+    @EntityGraph(attributePaths = {"relatedEntity"})
+    Optional<Resource> findByIdAndAccountId(Integer id, Integer accountId);
+}
+```
+
+## Exception Handling
+
+### Global Exception Handler
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiResponse<?>> handleResourceNotFound(ResourceNotFoundException ex) {
+        return GlobalExceptionHandler.errorResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler(ValidationErrorException.class)
+    public ResponseEntity<ApiResponse<?>> handleValidationError(ValidationErrorException ex) {
+        return GlobalExceptionHandler.errorResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+}
+```
+
+## Dependency Injection
+
+### Constructor Injection (Preferred)
+```java
+@RequiredArgsConstructor
+public class ServiceImpl {
+    private final Repository repository;
+    private final Mapper mapper;
+}
+```
+
+### Field Injection (Avoid)
+```java
+@Service
+public class ServiceImpl {
+    @Autowired
+    private Repository repository; // Avoid this pattern
+}
+```
+
+## Transaction Management
+
+### Service Layer Transactions
+```java
+@Override
+@Transactional
+@WriterRoute  // For write operations
+public ResponseDto method(RequestDto request) {
+    // Transactional business logic
+}
+```
+
+## Configuration
+
+### Application Properties
+- Use [application.properties](mdc:src/main/resources/application.properties) for configuration
+- Use profiles for environment-specific settings
+- Externalize sensitive configuration
+
+## Testing
+
+### Controller Tests
+```java
+@WebMvcTest(ResourceController.class)
+class ResourceControllerTest {
+    
+    @MockBean
+    private IResourceService resourceService;
+    
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @Test
+    void shouldCreateResource() throws Exception {
+        // Test implementation
+    }
+}
+```
+
+## Key Files Reference
+- [TimesheetApplication.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/TimesheetApplication.java) - Main application class
+- [GlobalExceptionHandler.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/exceptions/handlers/GlobalExceptionHandler.java) - Exception handling
+- [APIResponder.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIResponder.java) - Response formatting
+
+
+
+- [GlobalExceptionHandler.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/exceptions/handlers/GlobalExceptionHandler.java) - Exception handling
+- [APIResponder.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIResponder.java) - Response formatting
+
+
+
+
+
+- [GlobalExceptionHandler.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/exceptions/handlers/GlobalExceptionHandler.java) - Exception handling
+- [APIResponder.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIResponder.java) - Response formatting
+
+

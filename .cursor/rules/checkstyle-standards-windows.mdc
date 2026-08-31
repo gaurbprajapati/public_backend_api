@@ -1,0 +1,290 @@
+---
+description: Checkstyle standards for Windows development.
+globs:
+  - "**/*.java"
+alwaysApply: false
+---
+
+# Checkstyle Standards for Windows
+
+## Code Formatting Requirements
+
+### Instance Variable References
+- **RequireThis**: Always use `this.` prefix for instance variables
+- **Example**: `this.accessControlChecker.allows(...)` instead of `accessControlChecker.allows(...)`
+- **Example**: `this.logger.logInfo(...)` instead of `logger.logInfo(...)`
+
+### Lambda Expressions
+- **SpringLambda**: Always use parentheses around lambda parameters
+- **Correct**: `(parameter) -> { ... }`
+- **Incorrect**: `parameter -> { ... }`
+- **Correct**: `(item) -> item.isAllowed()` instead of `item -> item.isAllowed()`
+
+### Method References
+- **Avoid**: Method references in filter operations
+- **Use**: Lambda expressions instead
+- **Correct**: `(item) -> item.isAllowed()` instead of `BulkPermissionCheckResult.BulkPermissionCheckResultItem::isAllowed`
+
+## Comment Formatting
+
+### Multiline Comments
+- **Use**: `/** */` for multiline comments
+- **Avoid**: Inline comments for complex explanations
+- **Example**:
+```java
+/**
+ * This demonstrates how to check if a user has permission to view a specific
+ * timesheet. The AccessControlChecker will automatically load the required candidate
+ * and job data and perform the permission validation.
+ */
+```
+
+### Inline Comments
+- **Use**: Only for simple, single-line explanations
+- **Example**: `// Create the bulk request`
+
+## Common Checkstyle Errors to Avoid
+
+### RequireThis Errors
+- Missing `this.` prefix for instance variables
+- Affects: `accessControlChecker`, `logger`, `apiResponder`, etc.
+
+### SpringLambda Errors
+- Missing parentheses in lambda parameters
+- Method references instead of lambda expressions
+
+### Other Common Issues
+- Missing import statements
+- Incorrect indentation
+- Missing whitespace around operators
+
+## Files Following These Standards
+- [AccessControlCheckerExample.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/examples/AccessControlCheckerExample.java)
+- [AccessControlTestController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/access_control/AccessControlTestController.java)
+
+## Validation Commands (Windows/PowerShell)
+```powershell
+# Run checkstyle validation
+mvn checkstyle:check
+
+# Fix common issues before committing
+mvn checkstyle:check "-Dcheckstyle.failOnViolation=false"
+```
+
+## Windows-Specific Considerations
+
+### File Path Handling
+- **Use**: Forward slashes (`/`) in Java code for cross-platform compatibility
+- **Avoid**: Backslashes (`\`) in string literals
+- **Correct**: `"src/main/java/package/Class.java"`
+- **Incorrect**: `"src\\main\\java\\package\\Class.java"`
+
+### Line Endings
+- **Use**: LF (Unix) line endings in source code
+- **Configure**: Git to handle line ending conversion automatically
+- **Git Config**: `git config --global core.autocrlf true`
+
+### Character Encoding
+- **Use**: UTF-8 encoding for all source files
+- **IDE Settings**: Ensure IDE is configured for UTF-8
+- **Maven Settings**: Add to `pom.xml`:
+```xml
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+</properties>
+```
+
+## PowerShell-Compatible Maven Commands
+
+### Advanced Checkstyle Commands
+```powershell
+# Run checkstyle with specific configuration
+mvn checkstyle:check "-Dcheckstyle.config.location=`"custom-checkstyle.xml`""
+
+# Run checkstyle and continue on violations
+mvn checkstyle:check "-Dcheckstyle.failOnViolation=false" "-Dcheckstyle.maxAllowedViolations=100"
+
+# Run checkstyle with custom properties
+mvn checkstyle:check "-Dcheckstyle.config.location=`"custom-checkstyle.xml`"" "-Dcheckstyle.output.format=html"
+```
+
+### Integration with Build Process
+```powershell
+# Clean, compile, and run checkstyle
+mvn clean compile checkstyle:check
+
+# Full build with checkstyle validation
+mvn clean compile test package checkstyle:check
+
+# Build with checkstyle but skip on violations
+mvn clean install "-Dcheckstyle.failOnViolation=false"
+```
+
+### Checkstyle with Test Execution
+```powershell
+# Run checkstyle and tests together
+mvn checkstyle:check test
+
+# Run checkstyle, tests, and package
+mvn checkstyle:check test package "-Dmaven.test.failure.ignore=true"
+
+# Run specific tests with checkstyle
+mvn checkstyle:check test "-Dtest=`"*RuleTests`"" "-DfailIfNoTests=false"
+```
+
+## Windows-Specific Validation Scripts
+
+### PowerShell Scripts for Checkstyle
+```powershell
+# PowerShell script to run checkstyle with proper escaping
+Write-Host "Running checkstyle validation..."
+mvn checkstyle:check "-Dcheckstyle.failOnViolation=false" "-Dcheckstyle.output.format=html"
+
+# PowerShell script with error handling
+try {
+    mvn checkstyle:check "-Dcheckstyle.failOnViolation=false"
+    Write-Host "Checkstyle validation completed successfully"
+} catch {
+    Write-Host "Checkstyle validation failed: $($_.Exception.Message)"
+}
+```
+
+### Batch File Alternative
+```batch
+@echo off
+REM Windows batch file for checkstyle
+echo Running checkstyle validation...
+mvn checkstyle:check -Dcheckstyle.failOnViolation=false
+if %ERRORLEVEL% NEQ 0 (
+    echo Checkstyle validation failed
+    exit /b 1
+)
+echo Checkstyle validation completed successfully
+```
+
+## IDE Integration for Windows
+
+### IntelliJ IDEA Settings
+- **File Encoding**: UTF-8
+- **Line Separators**: Unix and OS X (\n)
+- **Checkstyle Plugin**: Install and configure checkstyle plugin
+- **Import Settings**: Use project-specific checkstyle configuration
+
+### Eclipse Settings
+- **Text File Encoding**: UTF-8
+- **New Text File Line Delimiter**: Unix
+- **Checkstyle Plugin**: Install checkstyle plugin
+- **Project Settings**: Configure checkstyle nature
+
+### VS Code Settings
+- **Files: Eol**: \n (LF)
+- **Files: Encoding**: utf8
+- **Java Extension**: Configure checkstyle integration
+- **Workspace Settings**: Set UTF-8 encoding
+
+## Troubleshooting Windows-Specific Issues
+
+### Common PowerShell Issues
+1. **Execution Policy**: Set execution policy to allow script execution
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+
+2. **Path Issues**: Use proper path escaping in PowerShell
+   ```powershell
+   # Correct
+   mvn checkstyle:check "-Dcheckstyle.config.location=`"C:\path\to\checkstyle.xml`""
+   
+   # Incorrect
+   mvn checkstyle:check -Dcheckstyle.config.location="C:\path\to\checkstyle.xml"
+   ```
+
+3. **Character Encoding**: Ensure PowerShell uses UTF-8
+   ```powershell
+   [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+   ```
+
+### Maven Configuration Issues
+1. **Settings.xml**: Configure Maven settings for Windows
+   ```xml
+   <settings>
+     <localRepository>C:\Users\%USERNAME%\.m2\repository</localRepository>
+   </settings>
+   ```
+
+2. **Environment Variables**: Set proper Maven environment variables
+   ```powershell
+   $env:MAVEN_OPTS = "-Xmx2048m -XX:MaxPermSize=512m"
+   ```
+
+## Performance Optimization for Windows
+
+### Parallel Builds
+```powershell
+# Use parallel builds for faster execution
+mvn checkstyle:check "-T 1C"
+
+# Parallel builds with specific thread count
+mvn checkstyle:check "-T 4"
+```
+
+### Memory Optimization
+```powershell
+# Increase Maven memory for large projects
+mvn checkstyle:check "-Xmx4096m"
+
+# Set Maven options for better performance
+$env:MAVEN_OPTS = "-Xmx4096m -XX:+UseG1GC"
+mvn checkstyle:check
+```
+
+## CI/CD Integration for Windows
+
+### Jenkins Pipeline (Windows Agent)
+```groovy
+pipeline {
+    agent { label 'windows' }
+    stages {
+        stage('Checkstyle') {
+            steps {
+                bat 'mvn checkstyle:check -Dcheckstyle.failOnViolation=false'
+            }
+        }
+    }
+}
+```
+
+### GitHub Actions (Windows Runner)
+```yaml
+- name: Run Checkstyle on Windows
+  runs-on: windows-latest
+  steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - name: Run Checkstyle
+      run: mvn checkstyle:check "-Dcheckstyle.failOnViolation=false"
+```
+
+## Summary
+
+### Key Windows-Specific Requirements
+1. **Use PowerShell-compatible Maven commands** with proper escaping
+2. **Maintain UTF-8 encoding** for all source files
+3. **Use forward slashes** in file paths for cross-platform compatibility
+4. **Configure line endings** to use LF (Unix style)
+5. **Set proper execution policies** for PowerShell scripts
+
+### Best Practices
+1. **Always test Maven commands** in PowerShell before providing them
+2. **Use backticks (`)** to escape quotes in PowerShell strings
+3. **Configure IDE settings** for consistent encoding and line endings
+4. **Use parallel builds** for better performance on Windows
+5. **Set up proper CI/CD** integration for Windows environments
+
+4. **Use parallel builds** for better performance on Windows
+5. **Set up proper CI/CD** integration for Windows environments

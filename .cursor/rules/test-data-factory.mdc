@@ -1,0 +1,583 @@
+# Test Data Factory Rules
+
+## Overview
+This document defines the standards and patterns for creating test data factories in the timesheet microservice. Test data factories provide centralized, reusable methods for creating consistent test data across all test classes.
+
+## STRICT ENFORCEMENT: Mandatory Factory Usage [ZERO TOLERANCE]
+
+**RULE**: ALL test data creation — DTOs, entities, constants, IDs, messages, API response wrappers — MUST be done exclusively through `[Entity]TestDataFactory` classes in the `testdata` package. No exceptions.
+
+### Forbidden Patterns — AUTOMATIC REJECTION
+- **NO private helper methods** in test classes that create DTOs, entities, or any test objects (e.g., `private Timesheet createTimesheetEntity(...)`)
+- **NO inline object construction** in test methods using `new Entity()` followed by setters — use a factory method instead
+- **NO hardcoded test constants** (IDs, strings, numbers) in test classes — define them as `getDefault[FieldName]()` in the factory
+
+### Required Workflow
+1. **Before writing any test**, check if the needed factory methods already exist in the relevant `[Entity]TestDataFactory`
+2. **If a factory method is missing**, add it to the factory FIRST, then use it in the test
+3. **If a test needs a variant** (e.g., entity with null field), add a parameterized or variant factory method (e.g., `createTimesheetSettingEntity(Boolean isEnabled)`)
+4. **Never duplicate** — if two test classes need the same entity, it MUST come from one shared factory method
+
+### Enforcement Examples
+
+**FORBIDDEN — private helper in test class:**
+```java
+// ❌ REJECTED: This belongs in the factory, not the test class
+private Timesheet createTimesheetEntity(Integer timesheetId) {
+    Timesheet timesheet = new Timesheet();
+    timesheet.setId(timesheetId);
+    timesheet.setAccountId(this.accountId);
+    return timesheet;
+}
+```
+
+**REQUIRED — factory method usage:**
+```java
+// ✅ CORRECT: Use factory method
+Timesheet timesheet = ReimbursementTestDataFactory.createTimesheetEntity(timesheetId);
+```
+
+**FORBIDDEN — inline construction in test method:**
+```java
+// ❌ REJECTED: Inline entity creation in test
+@Test
+void testSomething() {
+    Timesheet timesheet = new Timesheet();
+    timesheet.setId(1);
+    timesheet.setAccountId(1);
+    // ...
+}
+```
+
+**REQUIRED — factory method in test method:**
+```java
+// ✅ CORRECT: All data from factory
+@Test
+void testSomething() {
+    Timesheet timesheet = TimesheetTestDataFactory.createTimesheetEntity();
+    // ...
+}
+```
+
+### Pre-Commit Validation
+Before committing any test code, verify:
+- [ ] **ZERO private helper methods** in test classes that create test objects
+- [ ] **ZERO inline `new Entity()` / `new Dto()`** calls in test methods (unless wrapped by a factory method)
+- [ ] **ZERO hardcoded test IDs or strings** — all come from `getDefault[FieldName]()` or `Messages.*`
+- [ ] **ALL new test data needs** are fulfilled by adding methods to the factory, not the test class
+
+**VIOLATION CONSEQUENCE**: Any test class containing private helper methods for test data creation, inline entity/DTO construction, or hardcoded constants will be rejected and must be refactored to use the factory.
+
+## Factory Naming Convention
+
+### 1. Factory Class Naming
+- **Pattern**: `[Entity]TestDataFactory`
+- **Examples**:
+  - `TimesheetTestDataFactory`
+  - `TimeLogTestDataFactory`
+  - `InvoiceTestDataFactory`
+  - `TimesheetSettingTestDataFactory`
+
+### 2. Package Structure
+```
+src/test/java/io/recruitcrm/microservice/timesheet/testdata/
+├── TimesheetTestDataFactory.java
+├── TimeLogTestDataFactory.java
+├── InvoiceTestDataFactory.java
+└── TimesheetSettingTestDataFactory.java
+```
+
+## Factory Class Structure
+
+### 1. Class Declaration
+```java
+/**
+ * Test data factory for [Entity]-related test objects.
+ * Provides factory methods to create consistent test data across all [entity] tests.
+ */
+public class [Entity]TestDataFactory {
+
+    // Private constructor to prevent instantiation
+    private [Entity]TestDataFactory() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+}
+```
+
+### 2. Method Categories
+Organize methods into logical sections:
+1. **Request DTOs** - Input data for API calls
+2. **Response DTOs** - Expected response data
+3. **API Response Entities** - Complete ResponseEntity objects
+4. **Test IDs and Constants** - Reusable test values
+
+## Method Naming Conventions
+
+### 1. Basic Factory Methods
+```java
+// Pattern: create[EntityType][OptionalVariant]()
+public static CreateTimesheetRequestBodyDto createTimesheetRequest()
+public static TimesheetResponseBodyDto createTimesheetResponse()
+public static List<TimesheetResponseBodyDto> createTimesheetResponseList()
+```
+
+### 2. Variant Factory Methods
+```java
+// Pattern: create[EntityType][Variant]()
+public static CreateBulkTimesheetRequestBodyDto createBulkTimesheetRequestWithEmptyContractors()
+public static DeleteTimesheetsRequestBodyDto createDeleteTimesheetsRequestWithEmptyIds()
+public static List<TimesheetListResponseBodyDto> createEmptyTimesheetListResponseList()
+```
+
+### 3. Parameterized Factory Methods
+```java
+// Pattern: create[EntityType](parameters)
+public static CreateBulkTimesheetRequestBodyDto createBulkTimesheetRequest(List<Integer> contractorIds)
+public static PaginationRequestBodyDto createPaginationRequest(Integer page, Integer size)
+public static DeleteTimesheetsRequestBodyDto createDeleteTimesheetsRequest(List<Integer> timesheetIds)
+```
+
+### 4. Getter Methods for Constants
+```java
+// Pattern: getDefault[FieldName]()
+public static Integer getDefaultJobId()
+public static Integer getDefaultTimesheetId()
+public static String getDefaultContractorName()
+```
+
+## Factory Method Patterns
+
+### 1. Request DTO Factory Methods
+```java
+/**
+ * Creates a [Entity]RequestDto with default test data
+ */
+public static [Entity]RequestDto create[Entity]Request() {
+    [Entity]RequestDto request = new [Entity]RequestDto();
+    request.setField1(getDefaultValue1());
+    request.setField2(getDefaultValue2());
+    return request;
+}
+
+/**
+ * Creates a [Entity]RequestDto with custom parameters
+ */
+public static [Entity]RequestDto create[Entity]Request([Type] customParam) {
+    [Entity]RequestDto request = new [Entity]RequestDto();
+    request.setField1(customParam);
+    request.setField2(getDefaultValue2());
+    return request;
+}
+
+/**
+ * Creates a [Entity]RequestDto with [specific scenario]
+ */
+public static [Entity]RequestDto create[Entity]Request[Scenario]() {
+    [Entity]RequestDto request = new [Entity]RequestDto();
+    request.setField1(getScenarioSpecificValue());
+    return request;
+}
+```
+
+### 2. Response DTO Factory Methods
+```java
+/**
+ * Creates a [Entity]ResponseDto with default test data
+ */
+public static [Entity]ResponseDto create[Entity]Response() {
+    [Entity]ResponseDto response = new [Entity]ResponseDto();
+    response.setId(getDefaultId());
+    response.setName(getDefaultName());
+    return response;
+}
+
+/**
+ * Creates a list of [Entity]ResponseDto with default test data
+ */
+public static List<[Entity]ResponseDto> create[Entity]ResponseList() {
+    return Arrays.asList(
+        create[Entity]Response(),
+        create[Entity]Response()
+    );
+}
+
+/**
+ * Creates an empty list of [Entity]ResponseDto
+ */
+public static List<[Entity]ResponseDto> createEmpty[Entity]ResponseList() {
+    return Arrays.asList();
+}
+```
+
+### 3. API Response Entity Factory Methods
+```java
+/**
+ * Creates a successful void ResponseEntity for [entity] operations
+ */
+public static ResponseEntity<APINormalResponse<Void>> createVoidSuccessResponse() {
+    APINormalResponse<Void> response = new APINormalResponse<>(null);
+    return new ResponseEntity<>(response, HttpStatus.OK);
+}
+
+/**
+ * Creates a successful ResponseEntity for [Entity]ResponseDto
+ */
+public static ResponseEntity<APINormalResponse<[Entity]ResponseDto>> create[Entity]SuccessResponse(
+        [Entity]ResponseDto data) {
+    APINormalResponse<[Entity]ResponseDto> response = new APINormalResponse<>(data);
+    return new ResponseEntity<>(response, HttpStatus.OK);
+}
+
+/**
+ * Creates a successful ResponseEntity for List<[Entity]ResponseDto>
+ */
+public static ResponseEntity<APINormalResponse<List<[Entity]ResponseDto>>> create[Entity]ListSuccessResponse(
+        List<[Entity]ResponseDto> data) {
+    APINormalResponse<List<[Entity]ResponseDto>> response = new APINormalResponse<>(data);
+    return new ResponseEntity<>(response, HttpStatus.OK);
+}
+```
+
+### 4. Constants and Messages
+```java
+/**
+ * Default test IDs
+ */
+public static Integer getDefault[Entity]Id() {
+    return 1;
+}
+
+/**
+ * Success messages as constants
+ */
+public static class Messages {
+    public static final String [ENTITY]_CREATED_SUCCESSFULLY = "[Entity] created successfully";
+    public static final String [ENTITY]_UPDATED_SUCCESSFULLY = "[Entity] updated successfully";
+    public static final String [ENTITY]_DELETED_SUCCESSFULLY = "[Entity] deleted successfully";
+    public static final String [ENTITY]_FETCHED_SUCCESSFULLY = "[Entity] fetched successfully";
+}
+```
+
+## Best Practices
+
+### 1. Factory Organization
+- Group related methods together using comments
+- Use consistent method ordering (Request DTOs → Response DTOs → API Responses → Constants)
+- Provide both default and parameterized versions of factory methods
+- Include variant methods for edge cases (empty lists, null values, etc.)
+
+### 2. Method Documentation
+- Always include JavaDoc comments for factory methods
+- Describe what the method creates and any special characteristics
+- Document parameters and their purpose
+- Use consistent documentation patterns across all factory methods
+
+### 3. Data Consistency
+- Use realistic test data that represents actual business scenarios
+- Maintain relationships between related objects (e.g., valid IDs, consistent dates)
+- Provide both valid and invalid data scenarios for negative testing
+- Use constants for commonly used test values
+
+### 4. Reusability
+- Create methods that can be used across multiple test classes
+- Avoid test-specific logic in factory methods
+- Provide flexible parameterized methods for customization
+- Keep factory methods focused on data creation, not test logic
+
+### 5. Maintainability
+- Use private constructor to prevent instantiation
+- Keep factory methods static for easy access
+- Group related constants in inner classes
+- Follow consistent naming patterns for easy discovery
+
+## Usage in Test Classes
+
+### 1. Import Factory
+```java
+import static io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory.*;
+```
+
+### 2. Use Factory Methods in Tests
+```java
+@Test
+@DisplayName("Create timesheet successfully")
+void testCreateTimesheetValidRequestCreatesTimesheet() {
+    // Arrange
+    Integer jobId = getDefaultJobId();
+    CreateTimesheetRequestBodyDto request = createTimesheetRequest();
+    TimesheetResponseBodyDto expectedResponse = createTimesheetResponse();
+    ResponseEntity<APINormalResponse<TimesheetResponseDto>> expectedEntity = 
+        createTimesheetSuccessResponse(expectedResponse);
+    
+    // Mock setup
+    Mockito.when(this.timesheetService.createTimesheet(jobId, request))
+        .thenReturn(expectedResponse);
+    Mockito.when(this.apiResponder.respond(expectedResponse, Messages.TIMESHEET_CREATED_SUCCESSFULLY))
+        .thenReturn(expectedEntity);
+    
+    // Act & Assert
+    // ... test execution
+}
+```
+
+### 3. Test Class Structure with Factory
+```java
+@SpringBootTest(classes = TimesheetApplication.class)
+class TimesheetControllerTests {
+
+    @MockBean
+    private TimesheetService timesheetService;
+
+    @MockBean
+    private APIResponder apiResponder;
+
+    @InjectMocks
+    private TimesheetController timesheetController;
+
+    @Test
+    @DisplayName("Test description")
+    void testMethodNameScenarioExpectedResult() {
+        // Arrange - Use factory methods
+        Integer entityId = getDefaultTimesheetId();
+        RequestDto request = createTimesheetRequest();
+        ResponseDto expectedResponse = createTimesheetResponse();
+        ResponseEntity<APINormalResponse<ResponseDto>> expectedEntity = 
+            createTimesheetSuccessResponse(expectedResponse);
+        
+        // Mock setup
+        Mockito.when(this.service.method(entityId, request)).thenReturn(expectedResponse);
+        Mockito.when(this.apiResponder.respond(expectedResponse, Messages.SUCCESS_MESSAGE))
+            .thenReturn(expectedEntity);
+        
+        // Act
+        ResponseEntity<?> response = this.controller.method(entityId, request);
+        
+        // Assert
+        assertThat(response).isEqualTo(expectedEntity);
+        Mockito.verify(this.service).method(entityId, request);
+        Mockito.verify(this.apiResponder).respond(expectedResponse, Messages.SUCCESS_MESSAGE);
+    }
+}
+```
+
+## Factory Examples by Entity Type
+
+### 1. Timesheet Factory
+```java
+public class TimesheetTestDataFactory {
+    // Request DTOs
+    public static CreateTimesheetRequestBodyDto createTimesheetRequest()
+    public static CreateBulkTimesheetRequestBodyDto createBulkTimesheetRequest()
+    public static DeleteTimesheetsRequestBodyDto createDeleteTimesheetsRequest()
+    
+    // Response DTOs
+    public static TimesheetResponseBodyDto createTimesheetResponse()
+    public static TimesheetListResponseBodyDto createTimesheetListResponse()
+    public static TimesheetStatusHistoryResponseBodyDto createTimesheetStatusHistoryResponse()
+    
+    // API Responses
+    public static ResponseEntity<APINormalResponse<Void>> createVoidSuccessResponse()
+    public static ResponseEntity<APINormalResponse<TimesheetResponseBodyDto>> createTimesheetSuccessResponse()
+}
+```
+
+### 2. TimeLog Factory
+```java
+public class TimeLogTestDataFactory {
+    // Request DTOs
+    public static CreateTimeLogRequestBodyDto createTimeLogRequest()
+    public static UpdateTimeLogRequestBodyDto createUpdateTimeLogRequest()
+    
+    // Response DTOs
+    public static TimeLogResponseBodyDto createTimeLogResponse()
+    public static List<TimeLogResponseBodyDto> createTimeLogResponseList()
+    
+    // Constants
+    public static Integer getDefaultTimeLogId()
+    public static LocalDateTime getDefaultStartTime()
+    public static LocalDateTime getDefaultEndTime()
+}
+```
+
+## Error Prevention
+
+### 1. Common Mistakes to Avoid
+- ❌ Creating test-specific factory methods
+- ❌ Including test logic in factory methods
+- ❌ Using hardcoded values without constants
+- ❌ Creating inconsistent method names
+- ❌ Missing JavaDoc documentation
+
+### 2. Validation Checklist
+- ✅ Factory class follows naming convention
+- ✅ Private constructor prevents instantiation
+- ✅ Methods are static and well-documented
+- ✅ Consistent method naming patterns
+- ✅ Logical grouping of methods
+- ✅ Constants defined for reusable values
+- ✅ Both default and parameterized versions available
+- ✅ Edge case variants provided
+
+## Checkstyle Compliance
+
+### 1. Critical Checkstyle Rules
+
+#### InnerTypeLast Rule [MANDATORY]
+**Rule**: Inner classes (like Messages class) MUST be placed at the end of the file, after all fields, constructors, and methods.
+
+**MANDATORY ORDER:**
+1. Fields (if any)
+2. Constructor (private)
+3. All Methods (factory methods, getters, etc.)
+4. **Inner Types (MUST BE LAST)**
+
+**❌ CHECKSTYLE VIOLATION:**
+```java
+public final class TestDataFactory {
+    private TestDataFactory() { }
+    public static class Messages { } // ❌ WRONG - Inner type too early
+    public static Object create() { } // ❌ Method after inner type
+}
+```
+
+**✅ CORRECT PATTERN:**
+```java
+public final class TestDataFactory {
+    private TestDataFactory() { }
+    public static Object create() { } // ✅ Methods first
+    // ===== Message Constants (Inner Types Must Be Last) =====
+    public static final class Messages { } // ✅ Inner type at end
+}
+```
+
+#### FinalClass Rule [MANDATORY]
+**Rule**: Inner classes MUST be declared as final.
+
+**❌ VIOLATION:**
+```java
+public static class Messages {  // ❌ Missing final modifier
+    public static final String SUCCESS = "Success";
+    private Messages() { }
+}
+```
+
+**✅ CORRECT:**
+```java
+public static final class Messages {  // ✅ MUST BE FINAL
+    public static final String SUCCESS = "Success";
+    private Messages() { }
+}
+```
+
+#### RequireThis Rule [MANDATORY]
+**Rule**: Use `this.` prefix for instance variables (when applicable).
+
+**❌ VIOLATION:**
+```java
+variableName = value;  // ❌ Missing this.
+```
+
+**✅ CORRECT:**
+```java
+this.variableName = value;  // ✅ Use this. prefix
+```
+
+### 2. Factory Class Structure Compliance
+
+#### Mandatory Structure Order
+```java
+/**
+ * Test data factory for [Entity]-related test objects.
+ */
+public final class [Entity]TestDataFactory {
+    
+    // 1. Constructor (private) - MANDATORY FIRST
+    private [Entity]TestDataFactory() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+    
+    // 2. All Factory Methods - MUST BE BEFORE INNER TYPES
+    public static RequestDto createRequest() { 
+        return new RequestDto(getDefaultProperty1(), getDefaultProperty2()); 
+    }
+    
+    public static ResponseDto createResponse() { 
+        return new ResponseDto(getDefaultId(), getDefaultName()); 
+    }
+    
+    public static Integer getDefaultId() { 
+        return 1; 
+    }
+    
+    // 3. Inner Types (MUST BE LAST AND FINAL) - CHECKSTYLE COMPLIANT
+    
+    /**
+     * Message constants for test assertions. Note: Inner types must be placed at the end
+     * to comply with InnerTypeLast checkstyle rule.
+     */
+    public static final class Messages {  // ✅ MUST BE FINAL - CHECKSTYLE COMPLIANCE
+        
+        public static final String SUCCESS_MESSAGE = "Operation completed successfully";
+        public static final String ERROR_MESSAGE = "Operation failed";
+        
+        /**
+         * Private constructor to prevent instantiation.
+         */
+        private Messages() {
+            // Messages class - prevent instantiation
+        }
+    }
+}
+```
+
+### 3. Pre-Commit Checkstyle Validation
+
+#### Mandatory Checklist
+Before committing any TestDataFactory code, verify:
+- [ ] Messages class declared as `public static final class Messages` (FinalClass compliance)
+- [ ] All inner types placed at the end of the file (InnerTypeLast compliance)
+- [ ] Constructor is private and throws UnsupportedOperationException
+- [ ] All methods are public static
+- [ ] Comprehensive JavaDoc documentation
+- [ ] Proper import statements
+- [ ] No embedded factory classes in test files
+
+#### Common Checkstyle Violations to Avoid
+1. **InnerTypeLast [CRITICAL]**: Inner types before methods
+   - **Error**: `Init blocks, constructors, fields and methods should be before inner types. [InnerTypeLast]`
+   - **Fix**: Move all inner classes to the end after methods
+
+2. **FinalClass [CRITICAL]**: Non-final inner classes
+   - **Error**: `Class Messages should be declared as final. [FinalClass]`
+   - **Fix**: Add `final` modifier to inner classes
+
+3. **RequireThis [WHEN APPLICABLE]**: Missing `this.` prefix
+   - **Error**: `Reference to instance variable needs "this.". [RequireThis]`
+   - **Fix**: Use `this.variableName` instead of `variableName`
+
+### 4. Automatic Validation Commands
+
+Run these commands before committing:
+```bash
+# Check for checkstyle violations
+mvn checkstyle:check
+
+# Generate checkstyle report
+mvn checkstyle:checkstyle
+```
+
+### 5. IDE Configuration
+
+Configure your IDE to:
+- Highlight checkstyle violations in real-time
+- Auto-format code according to project checkstyle rules
+- Show warnings for InnerTypeLast and FinalClass violations
+- Enforce proper ordering of class members
+
+These checkstyle rules ensure code quality, consistency, and maintainability while preventing common violations that could cause build failures.
+
+These rules ensure consistent, maintainable, and reusable test data factories across the timesheet microservice.
+description:
+globs:
+alwaysApply: false
+---

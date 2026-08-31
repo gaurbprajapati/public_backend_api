@@ -1,0 +1,627 @@
+---
+description: This rule file must be applied when writing unit test cases for controller classes, ensuring proper method naming, checkstyle compliance, and thorough coverage of all response paths, logic branches, and controller methods.
+alwaysApply: false
+---
+# Controller Unit Test Cases Rules
+
+## Overview
+This document defines the standards and patterns for writing unit test cases for REST controllers in the timesheet microservice. These rules ensure consistency, maintainability, and comprehensive test coverage across all controller tests.
+
+## Core Testing Principle
+**COVERAGE-DRIVEN TESTING**: Write the minimum number of test cases required to achieve 100% code coverage. Do not write test cases based on assumptions or edge cases that don't exist in the actual controller code.
+
+### Coverage Analysis Guidelines
+Before writing test cases, analyze the controller method to identify:
+1. **Branches**: if/else statements, switch cases, ternary operators
+2. **Loops**: for, while, do-while loops
+3. **Exception handling**: try-catch blocks
+4. **Method calls**: Ensure all method calls are covered
+5. **Return paths**: All possible return statements
+
+### Minimal Test Strategy
+- **Simple Linear Methods**: Only ONE test case needed if no branching exists
+- **Methods with Branching**: One test case per branch/path
+- **Methods with Exception Handling**: One test case for success + one per exception type
+- **No Assumption-Based Tests**: Don't test scenarios that don't exist in the code
+
+## Related Rules
+- **[Test Data Factory Rules](mdc:.cursor/rules/test-data-factory.mdc)** [STRICT]: ALL test data creation in controller tests MUST use factory methods from `[Entity]TestDataFactory`. NEVER create private helper methods in test classes for constructing entities or DTOs. NEVER use inline `new Entity()` followed by setters in test methods. If a factory method is missing, add it to the factory first. See the test-data-factory rules for full enforcement details.
+
+## Test Class Structure
+
+### 1. Test Class Declaration
+```java
+@ExtendWith(MockitoExtension.class)
+class [Controller]Tests {
+    // Test implementation
+}
+```
+
+**CRITICAL**: Use `@ExtendWith(MockitoExtension.class)` instead of `@SpringBootTest` to avoid SonarQube deprecation warnings. This provides pure unit testing without Spring context overhead.
+
+### 2. Mock Dependencies
+```java
+@Mock
+private [Service] [service];
+
+@Mock
+private APIResponder apiResponder;
+
+@InjectMocks
+private [Controller] [controller];
+```
+
+**CRITICAL**: Use `@Mock` instead of `@MockBean` when using `@ExtendWith(MockitoExtension.class)`. This avoids SonarQube deprecation warnings and follows best practices for unit testing.
+
+### 3. Setup Method
+```java
+@BeforeEach
+void setUp() {
+    // @InjectMocks handles dependency injection automatically
+}
+```
+
+**CRITICAL**: When using `@InjectMocks`, manual constructor calls are not needed as Mockito handles dependency injection automatically.
+
+### 4. Factory Import and Location
+**Test Data Factory Package Location**:
+```java
+package io.recruitcrm.microservice.timesheet.testdata;
+```
+
+**Factory Import Pattern**:
+```java
+import io.recruitcrm.microservice.timesheet.testdata.[Entity]TestDataFactory;
+```
+
+**CRITICAL**: Avoid static imports for factory methods and constants:
+- ✅ **Correct**: `import io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory;`
+- ✅ **Correct**: `import io.recruitcrm.microservice.timesheet.testdata.EntityColumnTestDataFactory;`
+- ❌ **Incorrect**: `import static io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory.*;`
+- ❌ **Incorrect**: `import static io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory.Messages;`
+
+**Usage Pattern**:
+```java
+// Use class name prefix for all factory calls
+Integer jobId = TimesheetTestDataFactory.getDefaultJobId();
+CreateTimesheetRequestBodyDto request = TimesheetTestDataFactory.createTimesheetRequest();
+String message = TimesheetTestDataFactory.Messages.TIMESHEET_CREATED_SUCCESSFULLY;
+String entity = EntityColumnTestDataFactory.createEntityParameter();
+```
+
+## Test Method Patterns
+
+### 1. Test Method Structure with Factory
+```java
+@Test
+@DisplayName("Descriptive test name describing the scenario")
+void test[MethodName][Scenario][ExpectedResult]() {
+    // Arrange - Use factory methods
+    Integer entityId = [Entity]TestDataFactory.getDefault[Entity]Id();
+    [RequestDto] requestObject = [Entity]TestDataFactory.create[Entity]Request();
+    [ResponseDto] expectedData = [Entity]TestDataFactory.create[Entity]Response();
+    ResponseEntity<APINormalResponse<[ResponseDto]>> expectedResponseEntity = 
+        [Entity]TestDataFactory.create[Entity]SuccessResponse(expectedData);
+    
+    // Mock service calls
+    Mockito.when(this.[service].[method](entityId, requestObject)).thenReturn(expectedData);
+    Mockito.when(this.apiResponder.respond(eq(expectedData), eq([Entity]TestDataFactory.Messages.[ENTITY]_SUCCESS_MESSAGE), eq(APIResponseType.SUCCESS), eq(HttpStatus.OK)))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].[method](entityId, requestObject);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).[method](entityId, requestObject);
+    Mockito.verify(this.apiResponder).respond(expectedData, [Entity]TestDataFactory.Messages.[ENTITY]_SUCCESS_MESSAGE, APIResponseType.SUCCESS, HttpStatus.OK);
+}
+```
+
+### 2. Test Naming Conventions
+- **Test Class**: `[Controller]Tests`
+- **Test Method**: `test[MethodName][Scenario][ExpectedResult]()`
+- **Display Name**: Descriptive sentence explaining what the test does
+- **Naming Style**: Use PascalCase for scenario and expected result parts (no underscores)
+
+**MANDATORY NAMING RULES:**
+- ✅ **CORRECT**: `testGetEntityByIdValidIdReturnsEntity()`
+- ✅ **CORRECT**: `testCreateEntityValidRequestCreatesEntity()`
+- ✅ **CORRECT**: `testUpdateEntityValidRequestUpdatesEntity()`
+- ❌ **FORBIDDEN**: `testGetEntityById_ValidId_ReturnsEntity()` (no underscores)
+- ❌ **FORBIDDEN**: `testCreateEntity_validRequest_createsEntity()` (no underscores, use PascalCase)
+- ❌ **FORBIDDEN**: `testUpdateEntityValidRequestUpdatesEntity()` (this is actually correct)
+
+**CRITICAL**: Method names must use PascalCase throughout with NO underscores separating parts.
+
+### 3. Test Method Sections
+- **Arrange**: Setup test data using factory methods, mocks, and expectations
+- **Act**: Execute the method under test
+- **Assert**: Verify the results and mock interactions
+
+### 4. Method Naming Validation Checklist
+Before creating any test method, ensure:
+- [ ] Method name starts with `test`
+- [ ] Method name uses PascalCase throughout (no underscores)
+- [ ] Method name follows pattern: `test[MethodName][Scenario][ExpectedResult]`
+- [ ] Scenario part describes the input condition
+- [ ] ExpectedResult part describes the expected outcome
+- [ ] No underscores anywhere in the method name
+- [ ] All words in scenario and result are capitalized (PascalCase)
+
+## Request/Response Patterns with Factory
+
+### 1. GET Operations
+```java
+@Test
+@DisplayName("Get [entity] by id successfully")
+void testGet[Entity]ByIdValidIdReturnsEntity() {
+    // Arrange
+    Integer entityId = getDefault[Entity]Id();
+    [Entity]ResponseDto expectedEntity = create[Entity]Response();
+    ResponseEntity<APINormalResponse<[Entity]ResponseDto>> expectedResponseEntity = 
+        create[Entity]SuccessResponse(expectedEntity);
+    
+    Mockito.when(this.[service].get[Entity]ById(entityId)).thenReturn(expectedEntity);
+    Mockito.when(this.apiResponder.respond(eq(expectedEntity), eq(Messages.[ENTITY]_FETCHED_SUCCESSFULLY), eq(APIResponseType.SUCCESS), eq(HttpStatus.OK)))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].get[Entity]ById(entityId);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).get[Entity]ById(entityId);
+    Mockito.verify(this.apiResponder).respond(expectedEntity, Messages.[ENTITY]_FETCHED_SUCCESSFULLY, APIResponseType.SUCCESS, HttpStatus.OK);
+}
+```
+
+### 2. POST Operations (Create)
+```java
+@Test
+@DisplayName("Create [entity] successfully")
+void testCreate[Entity]ValidRequestCreatesEntity() {
+    // Arrange
+    [Entity]RequestDto requestObject = create[Entity]Request();
+    [Entity]ResponseDto expectedEntity = create[Entity]Response();
+    ResponseEntity<APINormalResponse<[Entity]ResponseDto>> expectedResponseEntity = 
+        create[Entity]SuccessResponse(expectedEntity);
+    
+    Mockito.when(this.[service].create[Entity](requestObject)).thenReturn(expectedEntity);
+    Mockito.when(this.apiResponder.respond(eq(expectedEntity), eq(Messages.[ENTITY]_CREATED_SUCCESSFULLY), eq(APIResponseType.SUCCESS), eq(HttpStatus.CREATED)))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].create[Entity](requestObject);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).create[Entity](requestObject);
+    Mockito.verify(this.apiResponder).respond(expectedEntity, Messages.[ENTITY]_CREATED_SUCCESSFULLY, APIResponseType.SUCCESS, HttpStatus.CREATED);
+}
+```
+
+### 3. PUT Operations (Update)
+```java
+@Test
+@DisplayName("Update [entity] successfully")
+void testUpdate[Entity]ValidRequestUpdatesEntity() {
+    // Arrange
+    Integer entityId = getDefault[Entity]Id();
+    [Entity]RequestDto requestObject = create[Entity]Request();
+    [Entity]ResponseDto expectedEntity = create[Entity]Response();
+    ResponseEntity<APINormalResponse<[Entity]ResponseDto>> expectedResponseEntity = 
+        create[Entity]SuccessResponse(expectedEntity);
+    
+    Mockito.when(this.[service].update[Entity](entityId, requestObject)).thenReturn(expectedEntity);
+    Mockito.when(this.apiResponder.respond(eq(expectedEntity), eq(Messages.[ENTITY]_UPDATED_SUCCESSFULLY), eq(APIResponseType.SUCCESS), eq(HttpStatus.OK)))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].update[Entity](entityId, requestObject);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).update[Entity](entityId, requestObject);
+    Mockito.verify(this.apiResponder).respond(expectedEntity, Messages.[ENTITY]_UPDATED_SUCCESSFULLY, APIResponseType.SUCCESS, HttpStatus.OK);
+}
+```
+
+### 4. DELETE Operations
+```java
+@Test
+@DisplayName("Delete [entity] successfully")
+void testDelete[Entity]ValidIdDeletesEntity() {
+    // Arrange
+    Integer entityId = getDefault[Entity]Id();
+    ResponseEntity<APINormalResponse<Void>> expectedResponseEntity = createVoidSuccessResponse();
+    
+    Mockito.doNothing().when(this.[service]).delete[Entity](entityId);
+    Mockito.when(this.apiResponder.<Void>respond(null, Messages.[ENTITY]_DELETED_SUCCESSFULLY, APIResponseType.SUCCESS, HttpStatus.OK))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].delete[Entity](entityId);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).delete[Entity](entityId);
+    Mockito.verify(this.apiResponder).<Void>respond(null, Messages.[ENTITY]_DELETED_SUCCESSFULLY, APIResponseType.SUCCESS, HttpStatus.OK);
+}
+```
+
+### 5. Search Operations
+```java
+@Test
+@DisplayName("Search [entities] successfully")
+void testSearch[Entities]ValidCriteriaReturnsEntities() {
+    // Arrange
+    SearchRequestBodyDto searchDto = createSearchRequest();
+    PaginationRequestBodyDto paginationDto = createPaginationRequest();
+    List<[Entity]ResponseDto> expectedEntities = create[Entity]ResponseList();
+    ResponseEntity<APINormalResponse<List<[Entity]ResponseDto>>> expectedResponseEntity = 
+        create[Entity]ListSuccessResponse(expectedEntities);
+    
+    Mockito.when(this.[service].search[Entities](searchDto, paginationDto.toPageable()))
+        .thenReturn(expectedEntities);
+    Mockito.when(this.apiResponder.respond(eq(expectedEntities), eq(Messages.[ENTITIES]_FETCHED_SUCCESSFULLY), eq(APIResponseType.SUCCESS), eq(HttpStatus.OK)))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].search[Entities](searchDto, paginationDto);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).search[Entities](searchDto, paginationDto.toPageable());
+    Mockito.verify(this.apiResponder).respond(expectedEntities, Messages.[ENTITIES]_FETCHED_SUCCESSFULLY, APIResponseType.SUCCESS, HttpStatus.OK);
+}
+```
+
+### 6. Bulk Operations
+```java
+@Test
+@DisplayName("Bulk [operation] [entities] successfully")
+void testBulk[Operation][Entities]ValidRequestProcesses[Entities]() {
+    // Arrange
+    Bulk[Operation]RequestDto requestObject = createBulk[Operation][Entities]Request();
+    Bulk[Operation]ResponseDto expectedResult = createBulk[Operation][Entities]Response();
+    ResponseEntity<APINormalResponse<Bulk[Operation]ResponseDto>> expectedResponseEntity = 
+        createBulk[Operation][Entities]SuccessResponse(expectedResult);
+    
+    Mockito.when(this.[service].bulk[Operation][Entities](requestObject.getIds()))
+        .thenReturn(expectedResult);
+    Mockito.when(this.apiResponder.respond(eq(expectedResult), eq(Messages.[ENTITIES]_[OPERATION]_COMPLETED_SUCCESSFULLY), eq(APIResponseType.SUCCESS), eq(HttpStatus.OK)))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].bulk[Operation][Entities](requestObject);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).bulk[Operation][Entities](requestObject.getIds());
+    Mockito.verify(this.apiResponder).respond(expectedResult, Messages.[ENTITIES]_[OPERATION]_COMPLETED_SUCCESSFULLY, APIResponseType.SUCCESS, HttpStatus.OK);
+}
+```
+
+## Mock Setup Patterns
+
+### 1. Service Method Mocking
+```java
+// For methods returning data
+Mockito.when(this.[service].[method](parameters)).thenReturn(expectedData);
+
+// For void methods
+Mockito.doNothing().when(this.[service]).[method](parameters);
+
+// For methods throwing exceptions
+Mockito.when(this.[service].[method](parameters))
+    .thenThrow(new [Exception]("Error message"));
+```
+
+### 2. APIResponder Mocking
+**CRITICAL**: Controllers use the 4-parameter version of `apiResponder.respond()` method. Tests must match the exact method signature used in the controller.
+
+```java
+// For successful responses with data (when service returns data)
+Mockito.when(this.apiResponder.respond(eq(expectedData), eq(Messages.SUCCESS_MESSAGE), eq(APIResponseType.SUCCESS), eq(HttpStatus.OK)))
+    .thenReturn(expectedResponseEntity);
+
+// For successful responses without data (when service returns void) - MUST use <Void> generic type
+Mockito.when(this.apiResponder.<Void>respond(null, Messages.SUCCESS_MESSAGE, APIResponseType.SUCCESS, HttpStatus.CREATED))
+    .thenReturn(expectedResponseEntity);
+
+// For error responses
+Mockito.when(this.apiResponder.respondWithError("Error message", HttpStatus.BAD_REQUEST))
+    .thenReturn(errorResponseEntity);
+```
+
+**CRITICAL**: Use correct 4-parameter pattern based on controller implementation:
+- ✅ **Service returns data**: `this.apiResponder.respond(data, "message", APIResponseType.SUCCESS, HttpStatus.OK)` (4 parameters)
+- ✅ **Service returns void**: `this.apiResponder.<Void>respond(null, "message", APIResponseType.SUCCESS, HttpStatus.CREATED)` (4 parameters with <Void> generic)
+- ❌ **Incorrect**: `this.apiResponder.respond(data, "message")` (2 parameters - doesn't match controller)
+- ❌ **Incorrect**: `this.apiResponder.respond(null, "message")` (2 parameters - doesn't match controller)
+
+**HTTP Status Codes by Operation**:
+- **CREATE operations**: `HttpStatus.CREATED` (201)
+- **GET/UPDATE/DELETE operations**: `HttpStatus.OK` (200)
+- **CLONE operations**: `HttpStatus.CREATED` (201)
+
+**Required Imports for 4-Parameter Pattern**:
+```java
+import io.recruitcrm.microservice.timesheet.responses.APIResponseType;
+import org.springframework.http.HttpStatus;
+```
+
+## Assertion Patterns
+
+### 1. Response Verification
+```java
+// Verify response entity
+assertThat(response).isEqualTo(expectedResponseEntity);
+
+// Verify response status
+assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+// Verify response body
+assertThat(response.getBody()).isEqualTo(expectedResponse);
+```
+
+### 2. Mock Verification
+```java
+// Verify service method calls
+Mockito.verify(this.[service]).[method](parameters);
+
+// Verify API responder calls (4-parameter version)
+Mockito.verify(this.apiResponder).respond(expectedData, Messages.SUCCESS_MESSAGE, APIResponseType.SUCCESS, HttpStatus.OK);
+
+// Verify API responder calls for void operations (with <Void> generic)
+Mockito.verify(this.apiResponder).<Void>respond(null, Messages.SUCCESS_MESSAGE, APIResponseType.SUCCESS, HttpStatus.CREATED);
+
+// Verify method called with specific parameters
+Mockito.verify(this.[service]).[method](eq(expectedParameter));
+
+// Verify method never called
+Mockito.verify(this.[service], never()).[method](any());
+```
+
+## Test Data Creation with Factory
+
+### 1. Request DTO Creation
+```java
+// Use factory methods instead of manual creation
+[Entity]RequestDto requestObject = create[Entity]Request();
+BulkRequestDto requestObject = createBulk[Entity]Request();
+SearchRequestBodyDto searchDto = createSearchRequest();
+PaginationRequestBodyDto paginationDto = createPaginationRequest();
+```
+
+### 2. Response DTO Creation
+```java
+// Use factory methods instead of manual creation
+[Entity]ResponseDto expectedEntity = create[Entity]Response();
+List<[Entity]ResponseDto> expectedEntities = create[Entity]ResponseList();
+List<[Entity]ResponseDto> emptyEntities = createEmpty[Entity]ResponseList();
+```
+
+### 3. API Response Creation
+```java
+// Use factory methods for consistent responses
+ResponseEntity<APINormalResponse<Void>> voidResponse = createVoidSuccessResponse();
+ResponseEntity<APINormalResponse<[Entity]ResponseDto>> entityResponse = 
+    create[Entity]SuccessResponse(expectedEntity);
+ResponseEntity<APINormalResponse<List<[Entity]ResponseDto>>> listResponse = 
+    create[Entity]ListSuccessResponse(expectedEntities);
+```
+
+### 4. Test Constants
+```java
+// Use factory constants instead of hardcoded values
+Integer entityId = getDefault[Entity]Id();
+Integer jobId = getDefaultJobId();
+String successMessage = Messages.[ENTITY]_CREATED_SUCCESSFULLY;
+```
+
+## Error Handling Test Patterns
+
+### 1. Exception Testing
+```java
+@Test
+@DisplayName("Handle [exception] when [scenario]")
+void test[Method][Scenario]Handles[Exception]() {
+    // Arrange
+    [RequestDto] requestObject = create[Entity]Request();
+    String errorMessage = "Error occurred";
+    APIErrorResponse expectedError = new APIErrorResponse("ERROR", errorMessage, null);
+    ResponseEntity<APIErrorResponse> expectedResponseEntity = 
+        new ResponseEntity<>(expectedError, HttpStatus.BAD_REQUEST);
+    
+    Mockito.when(this.[service].[method](requestObject))
+        .thenThrow(new [Exception](errorMessage));
+    Mockito.when(this.apiResponder.respondWithError(errorMessage, HttpStatus.BAD_REQUEST))
+        .thenReturn(expectedResponseEntity);
+    
+    // Act
+    ResponseEntity<?> response = this.[controller].[method](requestObject);
+    
+    // Assert
+    assertThat(response).isEqualTo(expectedResponseEntity);
+    Mockito.verify(this.[service]).[method](requestObject);
+    Mockito.verify(this.apiResponder).respondWithError(errorMessage, HttpStatus.BAD_REQUEST);
+}
+```
+
+## Import Rules
+
+### 1. Factory Import Rules
+- **MANDATORY**: Use regular imports for factory classes
+- **FORBIDDEN**: Static imports for factory methods and constants
+- **REASON**: Follows Spring Boot checkstyle rules and improves code readability
+
+```java
+// ✅ CORRECT - Regular import
+import io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory;
+
+// ❌ FORBIDDEN - Static imports
+import static io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory.*;
+import static io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory.Messages;
+import static io.recruitcrm.microservice.timesheet.testdata.TimesheetTestDataFactory.createTimesheetRequest;
+```
+
+### 2. Usage Pattern
+```java
+// ✅ CORRECT - Use class name prefix
+Integer jobId = TimesheetTestDataFactory.getDefaultJobId();
+CreateTimesheetRequestBodyDto request = TimesheetTestDataFactory.createTimesheetRequest();
+String message = TimesheetTestDataFactory.Messages.TIMESHEET_CREATED_SUCCESSFULLY;
+
+// ❌ FORBIDDEN - Direct method calls
+Integer jobId = getDefaultJobId();
+CreateTimesheetRequestBodyDto request = createTimesheetRequest();
+String message = Messages.TIMESHEET_CREATED_SUCCESSFULLY;
+```
+
+## Best Practices
+
+### 1. Test Organization
+- Group related tests in the same test class
+- Use descriptive test names and display names
+- Follow the AAA pattern (Arrange, Act, Assert)
+- Keep tests independent and isolated
+- **Use factory methods for all test data creation**
+- **AVOID static imports for factory methods and constants**
+
+### 2. Mock Usage
+- Mock all external dependencies
+- Use `@Mock` for pure unit testing (recommended)
+- Verify important mock interactions
+- Don't over-verify trivial interactions
+- **Use factory constants for success messages**
+
+### 3. Test Data
+- **Use factory methods instead of manual test data creation**
+- Create helper methods for complex test data
+- Use constants for repeated values
+- Keep test data minimal but sufficient
+- **Avoid hardcoded values in test methods**
+
+### 4. Assertions
+- Use AssertJ for fluent assertions
+- Test both positive and negative scenarios
+- Verify response structure and content
+- Check HTTP status codes
+- **Use factory methods for expected responses**
+
+### 5. Coverage
+- **PRIORITY**: Achieve 100% code coverage with minimum test cases
+- Test all public controller methods
+- Test only existing branches/paths in the code
+- Test only existing error handling paths
+- **AVOID**: Assumption-based edge cases that don't exist in controller logic
+- **AVOID**: Testing service layer logic (that's service layer's responsibility)
+- **AVOID**: Testing framework behavior (Spring validation, etc.)
+
+## Common Patterns Summary
+
+### 1. Standard Test Structure with Factory
+```java
+@Test
+@DisplayName("Clear description of what is being tested")
+void testMethodNameScenarioExpectedResult() {
+    // Arrange - Use factory methods for all test data
+    Integer entityId = getDefault[Entity]Id();
+    RequestDto request = create[Entity]Request();
+    ResponseDto expectedResponse = create[Entity]Response();
+    ResponseEntity<APINormalResponse<ResponseDto>> expectedEntity = 
+        create[Entity]SuccessResponse(expectedResponse);
+    
+    // Mock setup
+    Mockito.when(this.service.method(entityId, request)).thenReturn(expectedResponse);
+    Mockito.when(this.apiResponder.respond(expectedResponse, Messages.SUCCESS_MESSAGE))
+        .thenReturn(expectedEntity);
+    
+    // Act - Execute the method under test
+    ResponseEntity<?> response = this.controller.method(entityId, request);
+    
+    // Assert - Verify results and interactions
+    assertThat(response).isEqualTo(expectedEntity);
+    Mockito.verify(this.service).method(entityId, request);
+    Mockito.verify(this.apiResponder).respond(expectedResponse, Messages.SUCCESS_MESSAGE);
+}
+```
+
+### 2. Mock Verification Pattern
+```java
+// Verify service interaction
+Mockito.verify(this.[service]).[method](expectedParameters);
+
+// Verify API responder interaction with factory constants
+Mockito.verify(this.apiResponder).respond(expectedData, Messages.SUCCESS_MESSAGE);
+```
+
+### 3. Response Assertion Pattern
+```java
+// Verify complete response using factory methods
+assertThat(response).isEqualTo(expectedResponseEntity);
+
+// Additional specific assertions if needed
+assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+```
+
+### 4. Factory Import Pattern
+```java
+// Import factory class (NOT static imports)
+import io.recruitcrm.microservice.timesheet.testdata.[Entity]TestDataFactory;
+```
+
+## Complete Test Class Example
+
+```java
+@ExtendWith(MockitoExtension.class)
+class TimesheetControllerTests {
+
+    @Mock
+    private TimesheetService timesheetService;
+
+    @Mock
+    private APIResponder apiResponder;
+
+    @InjectMocks
+    private TimesheetController timesheetController;
+
+    @BeforeEach
+    void setUp() {
+        // @InjectMocks handles dependency injection automatically
+    }
+
+    @Test
+    @DisplayName("Create timesheet successfully")
+    void testCreateTimesheetValidRequestCreatesTimesheet() {
+        // Arrange - Use factory methods
+        Integer jobId = getDefaultJobId();
+        CreateTimesheetRequestBodyDto request = createTimesheetRequest();
+        TimesheetResponseBodyDto expectedResponse = createTimesheetResponse();
+        ResponseEntity<APINormalResponse<TimesheetResponseDto>> expectedEntity = 
+            createTimesheetSuccessResponse(expectedResponse);
+        
+        // Mock setup
+        Mockito.when(this.timesheetService.createTimesheet(jobId, request))
+            .thenReturn(expectedResponse);
+        Mockito.when(this.apiResponder.respond(expectedResponse, Messages.TIMESHEET_CREATED_SUCCESSFULLY))
+            .thenReturn(expectedEntity);
+        
+        // Act
+        ResponseEntity<?> response = this.timesheetController.createTimesheet(jobId, request);
+        
+        // Assert
+        assertThat(response).isEqualTo(expectedEntity);
+        Mockito.verify(this.timesheetService).createTimesheet(jobId, request);
+        Mockito.verify(this.apiResponder).respond(expectedResponse, Messages.TIMESHEET_CREATED_SUCCESSFULLY);
+    }
+}
+```
+
+These rules ensure consistent, maintainable, and comprehensive controller unit tests across the timesheet microservice using test data factories.
+description:
+globs:
+alwaysApply: false
+---

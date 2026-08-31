@@ -1,0 +1,211 @@
+---
+title: TimeLog Mocking Patterns and Test Setup
+description: This guide covers proper TimeLog mock setup for rule engine tests, addressing common issues with range-based vs duration-based time logs, unnecessary stubbing, and test reliability.
+alwaysApply: false
+---
+
+# TimeLog Mocking Patterns and Test Setup
+
+## Overview
+This guide covers proper TimeLog mock setup for rule engine tests, addressing common issues with range-based vs duration-based time logs, unnecessary stubbing, and test reliability.
+
+## TimeLog Types and Mock Setup
+
+### Range-Based TimeLog Setup
+Range-based time logs use `workStartTime` and `workEndTime` fields. For mocking:
+
+```java
+// Correct setup for range-based TimeLog
+@Mock
+private TimeLog timeLog;
+
+@BeforeEach
+void setUp() {
+    // Essential: Set workTime to null to make it range-based
+    given(this.timeLog.getWorkTime()).willReturn(null);
+    
+    // Set the range times
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+    
+    // Other required fields
+    given(this.timeLog.getId()).willReturn(1);
+    given(this.timeLog.getDate()).willReturn(LocalDate.of(2023, 12, 21));
+}
+```
+
+### Duration-Based TimeLog Setup
+Duration-based time logs use `workTime` field. For mocking:
+
+```java
+// Correct setup for duration-based TimeLog
+@Mock
+private TimeLog timeLog;
+
+@BeforeEach
+void setUp() {
+    // Essential: Set workTime to a non-null duration
+    given(this.timeLog.getWorkTime()).willReturn(Duration.ofHours(8));
+    
+    // Range times are not used for duration-based logs
+    // given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0)); // UNNECESSARY
+    // given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0)); // UNNECESSARY
+    
+    // Other required fields
+    given(this.timeLog.getId()).willReturn(1);
+    given(this.timeLog.getDate()).willReturn(LocalDate.of(2023, 12, 21));
+}
+```
+
+## Alternative: Using Real TimeLog Objects
+
+For better test reliability, consider using real `TimeLog` objects instead of mocks:
+
+```java
+// Preferred approach for simple test cases
+private TimeLog createRangeBasedTimeLog() {
+    TimeLog timeLog = new TimeLog();
+    timeLog.setId(1);
+    timeLog.setDate(LocalDate.of(2023, 12, 21));
+    timeLog.setWorkTime(null); // Range-based
+    timeLog.setWorkStartTime(LocalTime.of(9, 0));
+    timeLog.setWorkEndTime(LocalTime.of(17, 0));
+    return timeLog;
+}
+
+private TimeLog createDurationBasedTimeLog() {
+    TimeLog timeLog = new TimeLog();
+    timeLog.setId(1);
+    timeLog.setDate(LocalDate.of(2023, 12, 21));
+    timeLog.setWorkTime(Duration.ofHours(8)); // Duration-based
+    return timeLog;
+}
+```
+
+## Common Issues and Solutions
+
+### 1. Unnecessary Stubbing Warnings
+**Problem**: Mockito warns about unused stubs
+```java
+// INCORRECT - Setting up unused methods
+given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+// Test only uses getWorkTime() - other stubs are unnecessary
+```
+
+**Solution**: Only stub methods that are actually used in the test
+```java
+// CORRECT - Only stub what's needed
+given(this.timeLog.getWorkTime()).willReturn(Duration.ofHours(8));
+// Remove unused stubs for getWorkStartTime() and getWorkEndTime()
+```
+
+### 2. NullPointerException in TimeHelper Methods
+**Problem**: `TimeHelper.getEffectiveStartTime()` or `TimeHelper.getEffectiveEndTime()` throw NPE
+```java
+// INCORRECT - Missing getWorkTime() stub
+given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+// Missing: given(this.timeLog.getWorkTime()).willReturn(null);
+```
+
+**Solution**: Always stub `getWorkTime()` to determine TimeLog type
+```java
+// CORRECT - Always set workTime to determine type
+given(this.timeLog.getWorkTime()).willReturn(null); // Range-based
+given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+```
+
+### 3. Incorrect Test Assertions
+**Problem**: Tests expect certain behavior but get different results due to improper mock setup
+
+**Solution**: Understand the TimeLog type and set up mocks accordingly
+```java
+@Test
+void testRangeBasedTimeLog() {
+    // Setup for range-based TimeLog
+    given(this.timeLog.getWorkTime()).willReturn(null);
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+    
+    // Test logic that uses range-based calculations
+    RangeSet<LocalTime> result = resolver.resolveTimeRange(context);
+    
+    // Assertions based on range-based behavior
+    assertThat(result.isEmpty()).isFalse();
+}
+```
+
+## Test Helper Methods
+
+### Create Reusable Mock Setup Methods
+```java
+public class TimeLogTestHelper {
+    
+    public static void setupRangeBasedTimeLog(TimeLog timeLog) {
+        given(timeLog.getWorkTime()).willReturn(null);
+        given(timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+        given(timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+        given(timeLog.getId()).willReturn(1);
+        given(timeLog.getDate()).willReturn(LocalDate.of(2023, 12, 21));
+    }
+    
+    public static void setupDurationBasedTimeLog(TimeLog timeLog) {
+        given(timeLog.getWorkTime()).willReturn(Duration.ofHours(8));
+        given(timeLog.getId()).willReturn(1);
+        given(timeLog.getDate()).willReturn(LocalDate.of(2023, 12, 21));
+    }
+}
+```
+
+### Usage in Tests
+```java
+@BeforeEach
+void setUp() {
+    TimeLogTestHelper.setupRangeBasedTimeLog(this.timeLog);
+}
+```
+
+## Best Practices
+
+### 1. Always Determine TimeLog Type
+- **Rule**: Always stub `getWorkTime()` first to determine if TimeLog is range-based or duration-based
+- **Range-based**: `given(timeLog.getWorkTime()).willReturn(null);`
+- **Duration-based**: `given(timeLog.getWorkTime()).willReturn(Duration.ofHours(8));`
+
+### 2. Avoid Unnecessary Stubbing
+- **Rule**: Only stub methods that are actually used in the test execution path
+- **Check**: Use Mockito's strict stubbing to catch unnecessary stubs
+- **Remove**: Unused stubs that cause warnings
+
+### 3. Use Real Objects When Possible
+- **Preference**: Use real `TimeLog` objects for simple test cases
+- **Fallback**: Use mocks only when complex behavior simulation is needed
+- **Benefit**: Real objects eliminate mock setup issues
+
+### 4. Test Both TimeLog Types
+- **Coverage**: Test both range-based and duration-based scenarios
+- **Validation**: Ensure rules work correctly with both TimeLog types
+- **Edge Cases**: Test edge cases like zero duration, null times, etc.
+
+## Files Following These Patterns
+- [RangeBasedBeforeShiftRuleTimeRangeResolverTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/range_based/RangeBasedBeforeShiftRuleTimeRangeResolverTests.java)
+- [BaseDailyOvertimeRuleTimeRangeResolverTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/BaseDailyOvertimeRuleTimeRangeResolverTests.java)
+- [TimeHelperTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/utils/TimeHelperTests.java)
+
+## Validation Commands
+```bash
+# Run tests with strict stubbing to catch unnecessary stubs
+mvn test -Dtest=*TimeRangeResolverTests
+
+# Run specific test class
+mvn test -Dtest=RangeBasedAfterShiftRuleTimeRangeResolverTests
+
+# Check for Mockito warnings
+mvn test | grep -i "unnecessary stubbing"
+```
+
+# Check for Mockito warnings
+mvn test | grep -i "unnecessary stubbing"
+```

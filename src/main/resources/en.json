@@ -1,0 +1,4406 @@
+{
+    "candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Candidate ID"
+        },
+        "candidatename": {
+            "label": "Name",
+            "longlabel": "Candidate Name"
+        },
+        "firstname": {
+            "label": "First Name",
+            "longlabel": "Candidate First Name"
+        },
+        "lastname": {
+            "label": "Last Name",
+            "longlabel": "Candidate Last Name"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "genderid": {
+            "label": "Gender",
+            "longlabel": "Gender"
+        },
+        "contactnumber": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "candidatedob": {
+            "label": "Birth Date",
+            "longlabel": "Date Of Birth"
+        },
+        "age": {
+            "label": "Age",
+            "longlabel": "Candidate Age"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "workexpyr": {
+            "label": "Total Experience",
+            "longlabel": "Total Experience"
+        },
+        "relevantexperience": {
+            "label": "Relevant Experience",
+            "longlabel": "Relevant Experience"
+        },
+        "resumetext": {
+            "label": "Resume Text",
+            "longlabel": "Resume Text"
+        },
+        "currentsalary": {
+            "label": "Current Salary",
+            "longlabel": "Current Salary"
+        },
+        "resume": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumefilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "lastorganisation": {
+            "label": "Current Organization",
+            "longlabel": "Current Organization"
+        },
+        "skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "willingtorelocate": {
+            "label": "Willing to Relocate",
+            "longlabel": "Willing to Relocate"
+        },
+        "salaryexpectation": {
+            "label": "Salary Expectation",
+            "longlabel": "Salary Expectation"
+        },
+        "position": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "currencyid": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "currencycountry": {
+            "label": "Currency Country",
+            "longlabel": "Currency Country"
+        },
+        "symbol": {
+            "label": "Symbol",
+            "longlabel": "Symbol"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownerslug": {
+            "label": "Owner Slug",
+            "longlabel": "Owner Slug"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "canaccess": {
+            "label": "Can Access",
+            "longlabel": "Can Access"
+        },
+        "profilepic": {
+            "label": "Profile Picture",
+            "longlabel": "Profile Picture"
+        },
+        "deleted": {
+            "label": "Deleted",
+            "longlabel": "Deleted"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "resumeupdatedon": {
+            "label": "Profile Updated By Candidate On",
+            "longlabel": "Profile Updated By Candidate On"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profile Request Sent On",
+            "longlabel": "Profile Request Sent On"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Link Status",
+            "longlabel": "Request Resume Link Status"
+        },
+        "resumeaddedon": {
+            "label": "Resume Added On",
+            "longlabel": "Resume Added On"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Facebook Profile"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Twitter Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Linkedin Profile"
+        },
+        "profilegithub": {
+            "label": "Github Profile",
+            "longlabel": "Github Profile"
+        },
+        "source": {
+            "label": "Source",
+            "longlabel": "Source"
+        },
+        "createdbyname": {
+            "label": "Created By Name",
+            "longlabel": "Created By Name"
+        },
+        "qualification": {
+            "label": "Qualification Label",
+            "longlabel": "Qualification Label"
+        },
+        "currentstatus": {
+            "label": "Employment Status",
+            "longlabel": "Current Employment Status"
+        },
+        "noticeperiod": {
+            "label": "Notice Period",
+            "longlabel": "Notice Period (Days)"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "availablefrom": {
+            "label": "Available From",
+            "longlabel": "Available From"
+        },
+        "salarytype": {
+            "label": "Salary Type",
+            "longlabel": "Salary Type"
+        },
+        "languageskills": {
+            "label": "Language",
+            "longlabel": "Language Skills"
+        },
+        "accountlogo": {
+            "label": "Account Logo",
+            "longlabel": "Account Logo"
+        },
+        "accounttitle": {
+            "label": "Account Title",
+            "longlabel": "Account Title"
+        },
+        "candidateterms": {
+            "label": "Candidate Terms",
+            "longlabel": "Candidate Terms"
+        },
+        "jobapplicationsettings": {
+            "label": "Job Applications Settings",
+            "longlabel": "Job Applications Settings"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "gdprcompliance": {
+            "label": "GDPR Compiance",
+            "longlabel": "GDPR Compiance"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Note"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Xing Profile"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "proficiency_level": {
+            "label": "Proficiency Level",
+            "longlabel": "Proficiency Level"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "work_history": {
+            "label": "Work History",
+            "longlabel": "Work History"
+        },
+        "title": {
+            "label": "Work Position",
+            "longlabel": "Work Position"
+        },
+        "work_company_name": {
+            "label": "Company Name",
+            "longlabel": "Company Name"
+        },
+        "employment_type": {
+            "label": "Employment Type",
+            "longlabel": "Employment Type"
+        },
+        "industry_id": {
+            "label": "Industry Type",
+            "longlabel": "Industry Type"
+        },
+        "work_location": {
+            "label": "Work Location",
+            "longlabel": "Work Location"
+        },
+        "salary": {
+            "label": "Salary",
+            "longlabel": "Salary"
+        },
+        "is_currently_working": {
+            "label": "Currently Working",
+            "longlabel": "Currently Working"
+        },
+        "work_start_date": {
+            "label": "Work Start Date",
+            "longlabel": "Work Start Date"
+        },
+        "work_end_date": {
+            "label": "Work End Date",
+            "longlabel": "Work End Date"
+        },
+        "work_description": {
+            "label": "Work Description",
+            "longlabel": "Work Description"
+        },
+        "education_history": {
+            "label": "Education History",
+            "longlabel": "Education History"
+        },
+        "institute_name": {
+            "label": "School/College Name",
+            "longlabel": "School/College Name"
+        },
+        "educational_qualification": {
+            "label": "Educational Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "educational_specialization": {
+            "label": "Educational Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "grade": {
+            "label": "Grade",
+            "longlabel": "Grade"
+        },
+        "education_location": {
+            "label": "Education Location",
+            "longlabel": "Education Location"
+        },
+        "education_start_date": {
+            "label": "Education Start Date",
+            "longlabel": "Education Start Date"
+        },
+        "education_end_date": {
+            "label": "Education End Date",
+            "longlabel": "Education End Date"
+        },
+        "education_description": {
+            "label": "Education Description",
+            "longlabel": "Education Description"
+        },
+        "summary": {
+            "label": "Summary",
+            "longlabel": "Summary"
+        },
+        "unavailable": {
+            "label": "Availability",
+            "longlabel": "Availability"
+        },
+        "off_limit_status": {
+            "label": "Off-Limit Status",
+            "longlabel": "Off-Limit Status"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Last Call Log Added",
+            "longlabel": "Last Call Log Added"
+        },
+        "last_sms_sent_on": {
+            "label": "Last SMS Sent On",
+            "longlabel": "Last SMS Sent On"
+        },
+        "last_email_sent_on": {
+            "label": "Last Email Sent On",
+            "longlabel": "Last Email Sent On"
+        },
+        "last_communication_timestamp": {
+            "label": "Last Communication",
+            "longlabel": "Last Communication"
+        },
+        "last_communication_method": {
+            "label": "Last Comm Type",
+            "longlabel": "Last Comm Type"
+        },
+        "contact_linked": {
+            "label": "Contact-Linked",
+            "longlabel": "Contact-Linked"
+        },
+        "last_meeting_created_on": {
+            "label": "Last Meeting Added",
+            "longlabel": "Last Meeting Added"
+        },
+        "last_message_sent_on": {
+            "label": "Last LinkedIn Message Sent On",
+            "longlabel": "Last LinkedIn Message Sent On"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        }
+    },
+    "assigned_candidates": {
+        "jobslug": {
+            "label": "Job",
+            "longlabel": "Job Slug"
+        },
+        "jobid": {
+            "label": "Job",
+            "longlabel": "Job"
+        },
+        "jobname": {
+            "label": "Job",
+            "longlabel": "Job"
+        },
+        "candidateid": {
+            "label": "Candidate",
+            "longlabel": "Candidate"
+        },
+        "candidatename": {
+            "label": "Candidate",
+            "longlabel": "Candidate"
+        },
+        "firstname": {
+            "label": "First Name",
+            "longlabel": "First Name"
+        },
+        "lastname": {
+            "label": "Last Name",
+            "longlabel": "Last Name"
+        },
+        "lastorganisation": {
+            "label": "Current Organization",
+            "longlabel": "Current Organization"
+        },
+        "resumetext": {
+            "label": "Resume Text",
+            "longlabel": "Resume Text"
+        },
+        "resume": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumefilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "candidatestatusid": {
+            "label": "Hiring Stage",
+            "longlabel": "You can change the hiring stage of a candidate & submit feedback by clicking on a candidate's current hiring stage"
+        },
+        "candidatestatus": {
+            "label": "Hiring Stage",
+            "longlabel": "You can change the hiring stage of a candidate & submit feedback by clicking on a candidate's current hiring stage"
+        },
+        "remark": {
+            "label": "Remark",
+            "longlabel": "Remark"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "contactnumber": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "currentsalary": {
+            "label": "Current Salary",
+            "longlabel": "Current Salary"
+        },
+        "salaryexpectation": {
+            "label": "Salary Expectation",
+            "longlabel": "Salary Expectation"
+        },
+        "noticeperiod": {
+            "label": "Notice Period",
+            "longlabel": "Notice Period (Days)"
+        },
+        "candidatedob": {
+            "label": "Birth Date",
+            "longlabel": "Candidate Birth Date"
+        },
+        "genderid": {
+            "label": "Gender",
+            "longlabel": "Gender"
+        },
+        "age": {
+            "label": "Age",
+            "longlabel": "Candidate Age"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Qualification"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Specialization"
+        },
+        "workexpyr": {
+            "label": "Total Experience",
+            "longlabel": "Total Experience"
+        },
+        "relevantexperience": {
+            "label": "Relevant Experience",
+            "longlabel": "Relevant Experience"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "availablefrom": {
+            "label": "Available From",
+            "longlabel": "Available From"
+        },
+        "position": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Facebook Profile"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Twitter Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Linkedin Profile"
+        },
+        "profilegithub": {
+            "label": "Github Profile",
+            "longlabel": "Github Profile"
+        },
+        "share": {
+            "label": "Visibility",
+            "longlabel": "Visibility"
+        },
+        "id": {
+            "label": "Candidate Questions",
+            "longlabel": "Candidate Questions"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "source": {
+            "label": "Source",
+            "longlabel": "Source"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Xing Profile"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "unavailable": {
+            "label": "Availability",
+            "longlabel": "Availability"
+        },
+        "summary": {
+            "label": "Summary",
+            "longlabel": "Summary"
+        },
+        "jobstatus": {
+            "label": "Job Status",
+            "longlabel": "Job Status"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profile Request Sent On",
+            "longlabel": "Profile Request Sent On"
+        },
+        "willingtorelocate": {
+            "label": "Willing to Relocate",
+            "longlabel": "Willing to Relocate"
+        },
+        "currentstatus": {
+            "label": "Employment Status",
+            "longlabel": "Employment Status"
+        },
+        "languageskills": {
+            "label": "Language",
+            "longlabel": "Language"
+        },
+        "skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Job Application Resume",
+            "longlabel": "Job Application Resume"
+        },
+        "assigned_job_coverletter": {
+            "label": "Job Application Cover letter",
+            "longlabel": "Job Application Cover letter"
+        },
+        "assigned_job_portfolio": {
+            "label": "Job Application Portfolio",
+            "longlabel": "Job Application Portfolio"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Job Application File 1",
+            "longlabel": "Job Application File 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Job Application File 2",
+            "longlabel": "Job Application File 2"
+        },
+        "work_history": {
+            "label": "Work History",
+            "longlabel": "Work History"
+        },
+        "education_history": {
+            "label": "Education History",
+            "longlabel": "Education History"
+        },
+        "companyname": {
+            "label": "Company Name",
+            "longlabel": "Company Name"
+        },
+        "job_type": {
+            "label": "Job Type",
+            "longlabel": "Job Type"
+        },
+        "job_category": {
+            "label": "Job Category",
+            "longlabel": "Job Category"
+        },
+        "resumeupdatedon": {
+            "label": "Profile Updated By Candidate On",
+            "longlabel": "Profile Updated By Candidate On"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Link Status",
+            "longlabel": "Request Resume Link Status"
+        },
+        "resumeaddedon": {
+            "label": "Resume Added On",
+            "longlabel": "Resume Added On"
+        },
+        "off_limit_status": {
+            "label": "Off-Limit Status",
+            "longlabel": "Off-Limit Status"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Last Call Log Added",
+            "longlabel": "Last Call Log Added"
+        },
+        "last_sms_sent_on": {
+            "label": "Last SMS Sent On",
+            "longlabel": "Last SMS Sent On"
+        },
+        "last_email_sent_on": {
+            "label": "Last Email Sent On",
+            "longlabel": "Last Email Sent On"
+        },
+        "last_communication_timestamp": {
+            "label": "Last Communication",
+            "longlabel": "Last Communication"
+        },
+        "last_communication_method": {
+            "label": "Last Comm Type",
+            "longlabel": "Last Comm Type"
+        },
+        "remote": {
+            "label": "Job Location Type",
+            "longlabel": "Job Location Type"
+        },
+        "last_meeting_created_on": {
+            "label": "Last Meeting Added",
+            "longlabel": "Last Meeting Added"
+        },
+        "last_message_sent_on": {
+            "label": "Last LinkedIn Message Sent On",
+            "longlabel": "Last LinkedIn Message Sent On"
+        },
+        "timesheet_setting": {
+            "label": "Timesheet",
+            "longlabel": "Timesheet"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Candidate ID"
+        },
+        "updatedby": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "job_function": {
+            "label": "Job Function",
+            "longlabel": "Job Function"
+        },
+        "job_industry": {
+            "label": "Job Industry",
+            "longlabel": "Job Industry"
+        },
+        "placement_id": {
+            "label": "Placement",
+            "longlabel": "Placement"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        }
+    },
+    "companies": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Company ID"
+        },
+        "companyname": {
+            "label": "Company Name",
+            "longlabel": "Company Name"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Company Full Address"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "Company City"
+        },
+        "industryid": {
+            "label": "Industry",
+            "longlabel": "Company Industry"
+        },
+        "industry": {
+            "label": "Industry",
+            "longlabel": "Company Industry"
+        },
+        "website": {
+            "label": "Website",
+            "longlabel": "Website"
+        },
+        "totalopenjob": {
+            "label": "Open Jobs",
+            "longlabel": "Total Open Jobs"
+        },
+        "totalclosedjob": {
+            "label": "Closed Jobs",
+            "longlabel": "Total Closed Jobs"
+        },
+        "totalonholdjob": {
+            "label": "On Hold Jobs",
+            "longlabel": "On Hold Jobs"
+        },
+        "totalcanceledjob": {
+            "label": "Cancelled Jobs",
+            "longlabel": "Cancelled Jobs"
+        },
+        "logo": {
+            "label": "Logo",
+            "longlabel": "Company Logo"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner Name"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Company Facebook Profile"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Company Twitter Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Company Linkedin Profile"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "creatorname": {
+            "label": "Creater Name",
+            "longlabel": "Creater Name"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "deleted": {
+            "label": "Deleted",
+            "longlabel": "Deleted"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "updatedby": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Company Note"
+        },
+        "aboutcompany": {
+            "label": "About Company",
+            "longlabel": "About Company"
+        },
+        "parentcompanyname": {
+            "label": "Parent Company",
+            "longlabel": "Parent Company Name"
+        },
+        "off_limit_status": {
+            "label": "Off-Limit Status",
+            "longlabel": "Off-Limit Status"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Company Locality"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "Company State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Company Country"
+        },
+        "postal_code": {
+            "label": "Postal Code",
+            "longlabel": "Company Postal Code"
+        },
+        "last_meeting_created_on": {
+            "label": "Last Meeting Added",
+            "longlabel": "Last Meeting Added"
+        },
+        "linkedin_id": {
+            "label": "LinkedIn Company ID",
+            "longlabel": "LinkedIn Company ID"
+        },
+        "monster_board_company_name": {
+            "label": "Monster Board Company",
+            "longlabel": "Monster Board Company"
+        },
+        "indeed_opted_out": {
+            "label": "Indeed Opted Out",
+            "longlabel": "Indeed Opted Out"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        }
+    },
+    "contacts": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Contact ID"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Contact ID"
+        },
+        "name": {
+            "label": "Name",
+            "longlabel": "Contact Name"
+        },
+        "firstname": {
+            "label": "First Name",
+            "longlabel": "Contact First Name"
+        },
+        "lastname": {
+            "label": "Last Name",
+            "longlabel": "Contact Last Name"
+        },
+        "stageid": {
+            "label": "Stage",
+            "longlabel": "Contact Stage"
+        },
+        "stage": {
+            "label": "Stage",
+            "longlabel": "Contact Stage"
+        },
+        "companyid": {
+            "label": "Company",
+            "longlabel": "Company"
+        },
+        "companyslug": {
+            "label": "Comapany Slug",
+            "longlabel": "Company Slug"
+        },
+        "companyname": {
+            "label": "Company",
+            "longlabel": "Company Name"
+        },
+        "email": {
+            "label": "Email",
+            "longlabel": "Contact Email Address"
+        },
+        "contactnumber": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Contact Full Address"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "Contact City"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownerslug": {
+            "label": "Owner Slug",
+            "longlabel": "Owner Slug"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Contact Facebook Profile URL"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Contact Twitter Profile URL"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Contact Linkedin Profile URL"
+        },
+        "designation": {
+            "label": "Title",
+            "longlabel": "Title"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "canaccess": {
+            "label": "Can Access",
+            "longlabel": "Can Access"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdbyname": {
+            "label": "Created By Name",
+            "longlabel": "Created By Name"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "deleted": {
+            "label": "Deleted",
+            "longlabel": "Deleted"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Contact Note"
+        },
+        "photo": {
+            "label": "Profile Picture",
+            "longlabel": "Profile Picture"
+        },
+        "company_accountid": {
+            "label": "Company - Account ID",
+            "longlabel": "Company - Account ID"
+        },
+        "company_address": {
+            "label": "Company - Full Address",
+            "longlabel": "Company - Full Address"
+        },
+        "company_city": {
+            "label": "Company - City",
+            "longlabel": "Company - City"
+        },
+        "company_companyname": {
+            "label": "Company - Name",
+            "longlabel": "Company - Name"
+        },
+        "company_parentcompanyname": {
+            "label": "Company - Parent Company",
+            "longlabel": "Company - Parent Company Name"
+        },
+        "company_createdby": {
+            "label": "Company - Created By",
+            "longlabel": "Company - Created By"
+        },
+        "company_createdon": {
+            "label": "Company - Added On",
+            "longlabel": "Company - Added On"
+        },
+        "company_creatorname": {
+            "label": "Company - Creator Name",
+            "longlabel": "Company - Creator Name"
+        },
+        "company_deleted": {
+            "label": "Company - Deleted",
+            "longlabel": "Company - Deleted"
+        },
+        "company_id": {
+            "label": "Company - Id",
+            "longlabel": "Company - Id"
+        },
+        "company_industry": {
+            "label": "Company - Industry",
+            "longlabel": "Company - Industry"
+        },
+        "company_industryid": {
+            "label": "Company - Industry",
+            "longlabel": "Company - Industry"
+        },
+        "company_logo": {
+            "label": "Company - Logo",
+            "longlabel": "Company - Logo"
+        },
+        "company_note": {
+            "label": "Company - Note",
+            "longlabel": "Company - Note"
+        },
+        "company_ownerid": {
+            "label": "Company - Owner",
+            "longlabel": "Company - Owner Name"
+        },
+        "company_ownername": {
+            "label": "Company - Owner Name",
+            "longlabel": "Company - Owner Name"
+        },
+        "company_profilefacebook": {
+            "label": "Company - Facebook Profile",
+            "longlabel": "Company - Facebook Profile"
+        },
+        "company_profilelinkedin": {
+            "label": "Company - Linkedin Profile",
+            "longlabel": "Company - Linkedin Profile"
+        },
+        "company_profiletwitter": {
+            "label": "Company - Twitter Profile",
+            "longlabel": "Company - Twitter Profile"
+        },
+        "company_slug": {
+            "label": "Company - Actions",
+            "longlabel": "Company - Actions"
+        },
+        "company_srno": {
+            "label": "Company - ID",
+            "longlabel": "Company - ID"
+        },
+        "company_totalcanceledjob": {
+            "label": "Company - Cancelled Jobs",
+            "longlabel": "Company - Cancelled Jobs"
+        },
+        "company_totalclosedjob": {
+            "label": "Company - Closed Jobs",
+            "longlabel": "Company - Total Closed Jobs"
+        },
+        "company_totalonholdjob": {
+            "label": "Company - On Hold Jobs",
+            "longlabel": "Company - On Hold Jobs"
+        },
+        "company_totalopenjob": {
+            "label": "Company - Open Jobs",
+            "longlabel": "Company - Total Open Jobs"
+        },
+        "company_updatedby": {
+            "label": "Company - Updated By",
+            "longlabel": "Company - Updated By"
+        },
+        "company_updatedon": {
+            "label": "Company - Updated On",
+            "longlabel": "Company - Updated On"
+        },
+        "company_website": {
+            "label": "Company - Website",
+            "longlabel": "Company - Website"
+        },
+        "parentcompanyname": {
+            "label": "Company - Parent Company",
+            "longlabel": "Company - Parent Company Name"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Contact Xing Profile URL"
+        },
+        "off_limit_status": {
+            "label": "Off-Limit Status",
+            "longlabel": "Off-Limit Status"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Last Call Log Added",
+            "longlabel": "Last Call Log Added"
+        },
+        "last_sms_sent_on": {
+            "label": "Last SMS Sent On",
+            "longlabel": "Last SMS Sent On"
+        },
+        "last_email_sent_on": {
+            "label": "Last Email Sent On",
+            "longlabel": "Last Email Sent On"
+        },
+        "last_communication_timestamp": {
+            "label": "Last Communication",
+            "longlabel": "Last Communication"
+        },
+        "last_communication_method": {
+            "label": "Last Comm Type",
+            "longlabel": "Last Comm Type"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "Contact State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Contact Country"
+        },
+        "postal_code": {
+            "label": "Postal Code",
+            "longlabel": "Contact Postal Code"
+        },
+        "company_locality": {
+            "label": "Company - Locality",
+            "longlabel": "Company - Locality"
+        },
+        "company_state": {
+            "label": "Company - State",
+            "longlabel": "Company - State"
+        },
+        "company_country": {
+            "label": "Company - Country",
+            "longlabel": "Company - Country"
+        },
+        "company_postal_code": {
+            "label": "Company - Postal Code",
+            "longlabel": "Company - Postal Code"
+        },
+        "last_meeting_created_on": {
+            "label": "Last Meeting Added",
+            "longlabel": "Last Meeting Added"
+        },
+        "last_message_sent_on": {
+            "label": "Last LinkedIn Message Sent On",
+            "longlabel": "Last LinkedIn Message Sent On"
+        },
+        "company_linkedin_id": {
+            "label": "Company - LinkedIn ID",
+            "longlabel": "Company - LinkedIn ID"
+        },
+        "company_monster_board_company_name": {
+            "label": "Company - Monster Board Company",
+            "longlabel": "Company - Monster Board Company"
+        },
+        "company_indeed_opted_out": {
+            "label": "Company - Indeed Opted Out",
+            "longlabel": "Company - Indeed Opted Out"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        }
+    },
+    "jobs": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Job ID"
+        },
+        "name": {
+            "label": "Name",
+            "longlabel": "Job Title"
+        },
+        "jobstatus": {
+            "label": "Status",
+            "longlabel": "Job Status"
+        },
+        "jobstatuslabel": {
+            "label": "Status",
+            "longlabel": "Job Status"
+        },
+        "companyid": {
+            "label": "Company",
+            "longlabel": "Company"
+        },
+        "companyname": {
+            "label": "Company",
+            "longlabel": "Company Name"
+        },
+        "contactid": {
+            "label": "Contacts",
+            "longlabel": "Contacts"
+        },
+        "salarytype": {
+            "label": "Salary Type",
+            "longlabel": "Salary Type"
+        },
+        "currencyid": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "collaborator": {
+            "label": "Collaborator",
+            "longlabel": "Collaborator"
+        },
+        "jobquestions": {
+            "label": "Job Application Form Questions",
+            "longlabel": "Job Application Form Questions"
+        },
+        "allowapply": {
+            "label": "Enable Job Application Form",
+            "longlabel": "Enable Job Application Form"
+        },
+        "description": {
+            "label": "Note For Candidates",
+            "longlabel": "Note For Candidates"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "qualification": {
+            "label": "Qualification Label",
+            "longlabel": "Qualification Label"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "detailfilename": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "jdtext": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "jdtextdetails": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "minexperienceinyears": {
+            "label": "Minimum Experience (Years)",
+            "longlabel": "Minimum Experience (Years)"
+        },
+        "maxexperienceinyears": {
+            "label": "Maximum Experience (Years)",
+            "longlabel": "Maximum Experience (Years)"
+        },
+        "annualsalarymin": {
+            "label": "Min. Salary",
+            "longlabel": "Minimum Salary"
+        },
+        "annualsalarymax": {
+            "label": "Max. Salary",
+            "longlabel": "Maximum Salary"
+        },
+        "noofopenings": {
+            "label": "Openings",
+            "longlabel": "Number Of Openings"
+        },
+        "contactname": {
+            "label": "Contact Name",
+            "longlabel": "Contact Name"
+        },
+        "contactemail": {
+            "label": "Contact Email",
+            "longlabel": "Contact Email"
+        },
+        "contactnumber": {
+            "label": "Contact Number",
+            "longlabel": "Contact Number"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "creatorname": {
+            "label": "Creator",
+            "longlabel": "Creator Name"
+        },
+        "createdon": {
+            "label": "Date Added",
+            "longlabel": "Date Added"
+        },
+        "updatedon": {
+            "label": "Date Updated",
+            "longlabel": "Date Updated"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "jobpostingstatus": {
+            "label": "Actions",
+            "longlabel": "Job Posting Status"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Note"
+        },
+        "contactslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "companyslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "hiring_pipeline_id": {
+            "label": "Hiring Pipeline",
+            "longlabel": "Hiring Pipeline"
+        },
+        "job_skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "job_type": {
+            "label": "Job Type",
+            "longlabel": "Job Type"
+        },
+        "job_category": {
+            "label": "Job Category",
+            "longlabel": "Job Category"
+        },
+        "secondarycontactid": {
+            "label": "Secondary Contacts",
+            "longlabel": "Secondary Contacts"
+        },
+        "targetcompanies": {
+            "label": "Target Companies",
+            "longlabel": "Target Companies"
+        },
+        "remote": {
+            "label": "Job Location Type",
+            "longlabel": "Job Location Type"
+        },
+        "rate_type": {
+            "label": "Rate Type",
+            "longlabel": "Rate Type"
+        },
+        "pay_rate": {
+            "label": "Pay Rate",
+            "longlabel": "Pay Rate"
+        },
+        "bill_rate": {
+            "label": "Bill Rate",
+            "longlabel": "Bill Rate"
+        },
+        "job_function": {
+            "label": "Job Function",
+            "longlabel": "Job Function"
+        },
+        "job_industry": {
+            "label": "Job Industry",
+            "longlabel": "Job Industry"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        },
+        "salaryrange": {
+            "label": "Salary Range",
+            "longlabel": "Salary Range"
+        }
+    },
+    "deals": {
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Deal ID"
+        },
+        "name": {
+            "label": "Name",
+            "longlabel": "Deal Name"
+        },
+        "dealstage": {
+            "label": "Stage",
+            "longlabel": "Stage"
+        },
+        "dealstagelabel": {
+            "label": "Stage",
+            "longlabel": "Stage"
+        },
+        "percentage": {
+            "label": "Stage Weight",
+            "longlabel": "Stage Weight"
+        },
+        "dealvalue": {
+            "label": "Deal Amount",
+            "longlabel": "Deal Amount"
+        },
+        "dealpercentagevalue": {
+            "label": "Weighted Deal Amount",
+            "longlabel": "Weighted Deal Amount"
+        },
+        "dealtype": {
+            "label": "Deal Type",
+            "longlabel": "Deal Type"
+        },
+        "archived": {
+            "label": "Archieved",
+            "longlabel": "Archieved"
+        },
+        "dealtypelabel": {
+            "label": "Deal Type",
+            "longlabel": "Deal Type"
+        },
+        "closedate": {
+            "label": "Close Date",
+            "longlabel": "Close Date"
+        },
+        "relatedcompany": {
+            "label": "Company",
+            "longlabel": "Company"
+        },
+        "relatedcontact": {
+            "label": "Contact",
+            "longlabel": "Contact"
+        },
+        "companyname": {
+            "label": "Company",
+            "longlabel": "Company Name"
+        },
+        "website": {
+            "label": "Website",
+            "longlabel": "Website"
+        },
+        "relatedjob": {
+            "label": "Job",
+            "longlabel": "Job"
+        },
+        "jobname": {
+            "label": "Job",
+            "longlabel": "Job Name"
+        },
+        "jobcity": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "relatedcandidate": {
+            "label": "Candidate",
+            "longlabel": "Candidate"
+        },
+        "candidatename": {
+            "label": "Candidate Name",
+            "longlabel": "Candidate Name"
+        },
+        "candidatetitle": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "ownerslug": {
+            "label": "Owner Slug",
+            "longlabel": "Owner Slug"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "updatedby": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "createdbyname": {
+            "label": "Created By Name",
+            "longlabel": "Created By Name"
+        },
+        "updatedbyname": {
+            "label": "Updated By Name",
+            "longlabel": "Updated By Name"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "companyslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "jobslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "candidateslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "collaborator": {
+            "label": "Collaborator",
+            "longlabel": "Collaborator"
+        },
+        "splitdealvalue": {
+            "label": "Split Deal Amount",
+            "longlabel": "Split Deal Amount"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Weighted Split Deal Amount",
+            "longlabel": "Weighted Split Deal Amount"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        }
+    },
+    "reports_assigned_candidates": {
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "age": {
+            "label": "Age",
+            "longlabel": "Candidate Age"
+        },
+        "availablefrom": {
+            "label": "Available From",
+            "longlabel": "Available From"
+        },
+        "candidatedob": {
+            "label": "Birth Date",
+            "longlabel": "Candidate Birth Date"
+        },
+        "candidateid": {
+            "label": "Candidate",
+            "longlabel": "Candidate"
+        },
+        "candidatename": {
+            "label": "Candidate",
+            "longlabel": "Candidate"
+        },
+        "candidatestatus": {
+            "label": "Hiring Stage",
+            "longlabel": "You can change the hiring stage of a candidate & submit feedback by clicking on a candidate's current hiring stage"
+        },
+        "candidatestatusid": {
+            "label": "Hiring Stage",
+            "longlabel": "You can change the hiring stage of a candidate & submit feedback by clicking on a candidate's current hiring stage"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "contactnumber": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "currentsalary": {
+            "label": "Current Salary",
+            "longlabel": "Current Salary"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "firstname": {
+            "label": "First Name",
+            "longlabel": "First Name"
+        },
+        "genderid": {
+            "label": "Gender",
+            "longlabel": "Gender"
+        },
+        "id": {
+            "label": "Candidate Questions",
+            "longlabel": "Candidate Questions"
+        },
+        "jobid": {
+            "label": "Job",
+            "longlabel": "Job"
+        },
+        "jobname": {
+            "label": "Job",
+            "longlabel": "Job"
+        },
+        "jobslug": {
+            "label": "Job",
+            "longlabel": "Job Slug"
+        },
+        "lastname": {
+            "label": "Last Name",
+            "longlabel": "Last Name"
+        },
+        "lastorganisation": {
+            "label": "Current Organization",
+            "longlabel": "Current Organization"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "noticeperiod": {
+            "label": "Notice Period",
+            "longlabel": "Notice Period (Days)"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "position": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Facebook Profile"
+        },
+        "profilegithub": {
+            "label": "Github Profile",
+            "longlabel": "Github Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Linkedin Profile"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Twitter Profile"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Qualification"
+        },
+        "relevantexperience": {
+            "label": "Relevant Experience",
+            "longlabel": "Relevant Experience"
+        },
+        "remark": {
+            "label": "Remark",
+            "longlabel": "Remark"
+        },
+        "resume": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumefilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumetext": {
+            "label": "Resume Text",
+            "longlabel": "Resume Text"
+        },
+        "salaryexpectation": {
+            "label": "Salary Expectation",
+            "longlabel": "Salary Expectation"
+        },
+        "share": {
+            "label": "Visibility",
+            "longlabel": "Visibility"
+        },
+        "source": {
+            "label": "Source",
+            "longlabel": "Source"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Specialization"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "workexpyr": {
+            "label": "Total Experience",
+            "longlabel": "Total Experience"
+        },
+        "currenthiringstage": {
+            "label": "Current Hiring Stage",
+            "longlabel": "Current Hiring Stage"
+        },
+        "assignedby": {
+            "label": "Assigned By",
+            "longlabel": "Assigned By"
+        },
+        "stagedate": {
+            "label": "Stage Date",
+            "longlabel": "Stage Date"
+        },
+        "companyname": {
+            "label": "Company",
+            "longlabel": "Company Name"
+        },
+        "companycontactname": {
+            "label": "Job Contact Name",
+            "longlabel": "Job Contact Name"
+        },
+        "jobownername": {
+            "label": "Job Owner Name",
+            "longlabel": "Job Owner Name"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Xing Profile"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "job_srno": {
+            "label": "Job ID",
+            "longlabel": "Job ID"
+        },
+        "jobstatus": {
+            "label": "Job Status",
+            "longlabel": "Job Status"
+        },
+        "unavailable": {
+            "label": "Unavailable",
+            "longlabel": "Unavailable"
+        },
+        "summary": {
+            "label": "Summary",
+            "longlabel": "Summary"
+        },
+        "skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "work_history": {
+            "label": "Work History",
+            "longlabel": "Work History"
+        },
+        "education_history": {
+            "label": "Education History",
+            "longlabel": "Education History"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Job Application Resume",
+            "longlabel": "Job Application Resume"
+        },
+        "hotlist": {
+            "label": "Hotlist",
+            "longlabel": "Hotlist"
+        },
+        "assigned_job_coverletter": {
+            "label": "Job Application Cover letter",
+            "longlabel": "Job Application Cover letter"
+        },
+        "assigned_job_portfolio": {
+            "label": "Job Application Portfolio",
+            "longlabel": "Job Application Portfolio"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Job Application File 1",
+            "longlabel": "Job Application File 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Job Application File 2",
+            "longlabel": "Job Application File 2"
+        },
+        "job_type": {
+            "label": "Job Type",
+            "longlabel": "Job Type"
+        },
+        "job_category": {
+            "label": "Job Category",
+            "longlabel": "Job Category"
+        },
+        "resumeupdatedon": {
+            "label": "Profile Updated By Candidate On",
+            "longlabel": "Profile Updated By Candidate On"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Link Status",
+            "longlabel": "Request Resume Link Status"
+        },
+        "resumeaddedon": {
+            "label": "Resume Added On",
+            "longlabel": "Resume Added On"
+        },
+        "contactemail": {
+            "label": "Job Contact Email",
+            "longlabel": "Job Contact Email"
+        },
+        "off_limit_status": {
+            "label": "Off-Limit Status",
+            "longlabel": "Off-Limit Status"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "remote": {
+            "label": "Job Location Type",
+            "longlabel": "Job Location Type"
+        },
+        "last_calllog_created_on": {
+            "label": "Last Call Log Added",
+            "longlabel": "Last Call Log Added"
+        },
+        "last_sms_sent_on": {
+            "label": "Last SMS Sent On",
+            "longlabel": "Last SMS Sent On"
+        },
+        "last_email_sent_on": {
+            "label": "Last Email Sent On",
+            "longlabel": "Last Email Sent On"
+        },
+        "last_communication_timestamp": {
+            "label": "Last Communication",
+            "longlabel": "Last Communication"
+        },
+        "last_communication_method": {
+            "label": "Last Comm Type",
+            "longlabel": "Last Comm Type"
+        },
+        "last_meeting_created_on": {
+            "label": "Last Meeting Added",
+            "longlabel": "Last Meeting Added"
+        },
+        "last_message_sent_on": {
+            "label": "Last LinkedIn Message Sent On",
+            "longlabel": "Last LinkedIn Message Sent On"
+        },
+        "job_function": {
+            "label": "Job Function",
+            "longlabel": "Job Function"
+        },
+        "job_industry": {
+            "label": "Job Industry",
+            "longlabel": "Job Industry"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        }
+    },
+    "reports_pitch_candidates": {
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "accountlogo": {
+            "label": "Account Logo",
+            "longlabel": "Account Logo"
+        },
+        "accounttitle": {
+            "label": "Account Title",
+            "longlabel": "Account Title"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "age": {
+            "label": "Age",
+            "longlabel": "Candidate Age"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "availablefrom": {
+            "label": "Available From",
+            "longlabel": "Available From"
+        },
+        "canaccess": {
+            "label": "Can Access",
+            "longlabel": "Can Access"
+        },
+        "candidatedob": {
+            "label": "Birth Date",
+            "longlabel": "Date Of Birth"
+        },
+        "candidatename": {
+            "label": "Name",
+            "longlabel": "Candidate Name"
+        },
+        "candidateterms": {
+            "label": "Candidate Terms",
+            "longlabel": "Candidate Terms"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "contactnumber": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdbyname": {
+            "label": "Created By Name",
+            "longlabel": "Created By Name"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "currencycountry": {
+            "label": "Currency Country",
+            "longlabel": "Currency Country"
+        },
+        "currencyid": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "currentsalary": {
+            "label": "Current Salary",
+            "longlabel": "Current Salary"
+        },
+        "currentstatus": {
+            "label": "Employment Status",
+            "longlabel": "Current Employment Status"
+        },
+        "deleted": {
+            "label": "Deleted",
+            "longlabel": "Deleted"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "firstname": {
+            "label": "First Name",
+            "longlabel": "Candidate First Name"
+        },
+        "gdprcompliance": {
+            "label": "GDPR Compiance",
+            "longlabel": "GDPR Compiance"
+        },
+        "genderid": {
+            "label": "Gender",
+            "longlabel": "Gender"
+        },
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "jobapplicationsettings": {
+            "label": "Job Applications Settings",
+            "longlabel": "Job Applications Settings"
+        },
+        "languageskills": {
+            "label": "Language",
+            "longlabel": "Language Skills"
+        },
+        "lastname": {
+            "label": "Last Name",
+            "longlabel": "Candidate Last Name"
+        },
+        "lastorganisation": {
+            "label": "Current Organization",
+            "longlabel": "Current Organization"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Note"
+        },
+        "noticeperiod": {
+            "label": "Notice Period",
+            "longlabel": "Notice Period (Days)"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "ownerslug": {
+            "label": "Owner Slug",
+            "longlabel": "Owner Slug"
+        },
+        "position": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Facebook Profile"
+        },
+        "profilegithub": {
+            "label": "Github Profile",
+            "longlabel": "Github Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Linkedin Profile"
+        },
+        "profilepic": {
+            "label": "Profile Picture",
+            "longlabel": "Profile Picture"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Twitter Profile"
+        },
+        "qualification": {
+            "label": "Qualification Label",
+            "longlabel": "Qualification Label"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "relevantexperience": {
+            "label": "Relevant Experience",
+            "longlabel": "Relevant Experience"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Link Status",
+            "longlabel": "Request Resume Link Status"
+        },
+        "resume": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumeaddedon": {
+            "label": "Resume Added On",
+            "longlabel": "Resume Added On"
+        },
+        "resumefilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumetext": {
+            "label": "Resume Text",
+            "longlabel": "Resume Text"
+        },
+        "resumeupdatedon": {
+            "label": "Profile Updated By Candidate On",
+            "longlabel": "Profile Updated By Candidate On"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profile Request Sent On",
+            "longlabel": "Profile Request Sent On"
+        },
+        "salaryexpectation": {
+            "label": "Salary Expectation",
+            "longlabel": "Salary Expectation"
+        },
+        "salarytype": {
+            "label": "Salary Type",
+            "longlabel": "Salary Type"
+        },
+        "skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Slug"
+        },
+        "source": {
+            "label": "Source",
+            "longlabel": "Source"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Candidate ID"
+        },
+        "symbol": {
+            "label": "Symbol",
+            "longlabel": "Symbol"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "willingtorelocate": {
+            "label": "Willing to Relocate",
+            "longlabel": "Willing to Relocate"
+        },
+        "workexpyr": {
+            "label": "Total Experience",
+            "longlabel": "Total Experience"
+        },
+        "stagedate": {
+            "label": "Stage Date",
+            "longlabel": "Stage Date"
+        },
+        "pitchedcontactname": {
+            "label": "Pitched To",
+            "longlabel": "Pitched To"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Xing Profile"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "off_limit_status": {
+            "label": "Off-Limit Status",
+            "longlabel": "Off-Limit Status"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        },
+        "last_calllog_created_on": {
+            "label": "Last Call Log Added",
+            "longlabel": "Last Call Log Added"
+        },
+        "last_sms_sent_on": {
+            "label": "Last SMS Sent On",
+            "longlabel": "Last SMS Sent On"
+        },
+        "last_email_sent_on": {
+            "label": "Last Email Sent On",
+            "longlabel": "Last Email Sent On"
+        },
+        "last_communication_timestamp": {
+            "label": "Last Communication",
+            "longlabel": "Last Communication"
+        },
+        "last_communication_method": {
+            "label": "Last Comm Type",
+            "longlabel": "Last Comm Type"
+        },
+        "last_meeting_created_on": {
+            "label": "Last Meeting Added",
+            "longlabel": "Last Meeting Added"
+        },
+        "last_message_sent_on": {
+            "label": "Last LinkedIn Message Sent On",
+            "longlabel": "Last LinkedIn Message Sent On"
+        },
+        "last_note_created_on": {
+            "label": "Last Note Added",
+            "longlabel": "Last Note Added"
+        }
+    },
+    "company_candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Candidate ID"
+        },
+        "candidatename": {
+            "label": "Name",
+            "longlabel": "Candidate Name"
+        },
+        "firstname": {
+            "label": "First Name",
+            "longlabel": "Candidate First Name"
+        },
+        "lastname": {
+            "label": "Last Name",
+            "longlabel": "Candidate Last Name"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "genderid": {
+            "label": "Gender",
+            "longlabel": "Gender"
+        },
+        "contactnumber": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "candidatedob": {
+            "label": "Birth Date",
+            "longlabel": "Date Of Birth"
+        },
+        "age": {
+            "label": "Age",
+            "longlabel": "Candidate Age"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "workexpyr": {
+            "label": "Total Experience",
+            "longlabel": "Total Experience"
+        },
+        "relevantexperience": {
+            "label": "Relevant Experience",
+            "longlabel": "Relevant Experience"
+        },
+        "resumetext": {
+            "label": "Resume Text",
+            "longlabel": "Resume Text"
+        },
+        "currentsalary": {
+            "label": "Current Salary",
+            "longlabel": "Current Salary"
+        },
+        "resume": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumefilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "lastorganisation": {
+            "label": "Current Organization",
+            "longlabel": "Current Organization"
+        },
+        "skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "willingtorelocate": {
+            "label": "Willing to Relocate",
+            "longlabel": "Willing to Relocate"
+        },
+        "salaryexpectation": {
+            "label": "Salary Expectation",
+            "longlabel": "Salary Expectation"
+        },
+        "position": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "currencyid": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "currencycountry": {
+            "label": "Currency Country",
+            "longlabel": "Currency Country"
+        },
+        "symbol": {
+            "label": "Symbol",
+            "longlabel": "Symbol"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownerslug": {
+            "label": "Owner Slug",
+            "longlabel": "Owner Slug"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "canaccess": {
+            "label": "Can Access",
+            "longlabel": "Can Access"
+        },
+        "profilepic": {
+            "label": "Profile Picture",
+            "longlabel": "Profile Picture"
+        },
+        "deleted": {
+            "label": "Deleted",
+            "longlabel": "Deleted"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "resumeupdatedon": {
+            "label": "Profile Updated By Candidate On",
+            "longlabel": "Profile Updated By Candidate On"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profile Request Sent On",
+            "longlabel": "Profile Request Sent On"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Link Status",
+            "longlabel": "Request Resume Link Status"
+        },
+        "resumeaddedon": {
+            "label": "Resume Added On",
+            "longlabel": "Resume Added On"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Facebook Profile"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Twitter Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Linkedin Profile"
+        },
+        "profilegithub": {
+            "label": "Github Profile",
+            "longlabel": "Github Profile"
+        },
+        "source": {
+            "label": "Source",
+            "longlabel": "Source"
+        },
+        "createdbyname": {
+            "label": "Created By Name",
+            "longlabel": "Created By Name"
+        },
+        "qualification": {
+            "label": "Qualification Label",
+            "longlabel": "Qualification Label"
+        },
+        "currentstatus": {
+            "label": "Employment Status",
+            "longlabel": "Current Employment Status"
+        },
+        "noticeperiod": {
+            "label": "Notice Period",
+            "longlabel": "Notice Period (Days)"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "availablefrom": {
+            "label": "Available From",
+            "longlabel": "Available From"
+        },
+        "salarytype": {
+            "label": "Salary Type",
+            "longlabel": "Salary Type"
+        },
+        "languageskills": {
+            "label": "Language",
+            "longlabel": "Language Skills"
+        },
+        "accountlogo": {
+            "label": "Account Logo",
+            "longlabel": "Account Logo"
+        },
+        "accounttitle": {
+            "label": "Account Title",
+            "longlabel": "Account Title"
+        },
+        "candidateterms": {
+            "label": "Candidate Terms",
+            "longlabel": "Candidate Terms"
+        },
+        "jobapplicationsettings": {
+            "label": "Job Applications Settings",
+            "longlabel": "Job Applications Settings"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "gdprcompliance": {
+            "label": "GDPR Compiance",
+            "longlabel": "GDPR Compiance"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Note"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Xing Profile"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "proficiency_level": {
+            "label": "Proficiency Level",
+            "longlabel": "Proficiency Level"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "sms_opt_out": {
+            "label": "SMS Opt-out",
+            "longlabel": "SMS Opt-out"
+        }
+    },
+    "meetings": {
+        "meeting_date": {
+            "label": "Meeting Date",
+            "longlabel": "Meeting Date"
+        },
+        "meeting_time": {
+            "label": "Meeting Time",
+            "longlabel": "Meeting Time"
+        },
+        "title": {
+            "label": "Title",
+            "longlabel": "Meeting Title"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "relatedto": {
+            "label": "Related To",
+            "longlabel": "Related To"
+        },
+        "attendees": {
+            "label": "Attendees",
+            "longlabel": "Attendees"
+        },
+        "notetype": {
+            "label": "Meeting Type",
+            "longlabel": "Meeting Type"
+        },
+        "address": {
+            "label": "Meeting Place",
+            "longlabel": "Meeting Place"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "enddate": {
+            "label": "Due date",
+            "longlabel": "Due date"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "createdby": {
+            "label": "Added By",
+            "longlabel": "Added By "
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "description": {
+            "label": "Description",
+            "longlabel": "Description"
+        },
+        "collaborator": {
+            "label": "Collaborator",
+            "longlabel": "Collaborator"
+        },
+        "associations": {
+            "label": "Associations",
+            "longlabel": "Associations"
+        },
+        "id": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        }
+    },
+    "tasks": {
+        "title": {
+            "label": "Title",
+            "longlabel": "Task Title"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "relatedto": {
+            "label": "Related To",
+            "longlabel": "Related To"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "enddate": {
+            "label": "Due date",
+            "longlabel": "Due date"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "createdby": {
+            "label": "Added By",
+            "longlabel": "Added By "
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "description": {
+            "label": "Description",
+            "longlabel": "Description"
+        },
+        "collaborator": {
+            "label": "Collaborator",
+            "longlabel": "Collaborator"
+        },
+        "associations": {
+            "label": "Associations",
+            "longlabel": "Associations"
+        },
+        "id": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "notetype": {
+            "label": "Task Type",
+            "longlabel": "Task Type"
+        }
+    },
+    "target_reports": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "title": {
+            "label": "Target Name",
+            "longlabel": "Target Name"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "assignee_id": {
+            "label": "Assigned To",
+            "longlabel": "Assigned To"
+        },
+        "frequency": {
+            "label": "Frequency",
+            "longlabel": "Frequency"
+        },
+        "target_period": {
+            "label": "Target Period",
+            "longlabel": "Target Period"
+        },
+        "startdate": {
+            "label": "Start Date",
+            "longlabel": "Start Date"
+        },
+        "enddate": {
+            "label": "End Date",
+            "longlabel": "End Date"
+        },
+        "created_on": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "created_by": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "updated_on": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "updated_by": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "action": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        }
+    },
+    "invoices": {
+        "invoiceid": {
+            "label": "Invoice ID",
+            "longlabel": "Invoice ID"
+        },
+        "description": {
+            "label": "Description",
+            "longlabel": "Description"
+        },
+        "company": {
+            "label": "Company",
+            "longlabel": "Company"
+        },
+        "templateused": {
+            "label": "Template Used",
+            "longlabel": "Template Used"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "issuedon": {
+            "label": "Issued On",
+            "longlabel": "Issued On"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "totalamount": {
+            "label": "Total Amount",
+            "longlabel": "Total Amount"
+        },
+        "duedate": {
+            "label": "Due Date",
+            "longlabel": "Due Date"
+        },
+        "paidon": {
+            "label": "Paid On",
+            "longlabel": "Paid On"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "currency": {
+            "label": "Invoice Currency",
+            "longlabel": "Invoice Currency"
+        },
+        "contact": {
+            "label": "Contact Name",
+            "longlabel": "Contact Name"
+        },
+        "phone": {
+            "label": "Contact Phone",
+            "longlabel": "Contact Phone"
+        },
+        "associations": {
+            "label": "Associations",
+            "longlabel": "Associations"
+        },
+        "address": {
+            "label": "Company Address",
+            "longlabel": "Company Address"
+        },
+        "email": {
+            "label": "Contact Email",
+            "longlabel": "Contact Email"
+        }
+    },
+    "placements": {
+        "placementId": {
+            "label": "Placement ID",
+            "longlabel": "Placement ID"
+        },
+        "currency": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "associations": {
+            "label": "Associations",
+            "longlabel": "Associations"
+        },
+        "createdBy": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdOn": {
+            "label": "Created On",
+            "longlabel": "Created On"
+        },
+        "candidateName": {
+            "label": "Candidate Name",
+            "longlabel": "Candidate Name"
+        },
+        "contactName": {
+            "label": "Contact Name",
+            "longlabel": "Contact Name"
+        },
+        "dealName": {
+            "label": "Deal Name",
+            "longlabel": "Deal Name"
+        },
+        "jobName": {
+            "label": "Job Name",
+            "longlabel": "Job Name"
+        },
+        "companyName": {
+            "label": "Company Name",
+            "longlabel": "Company Name"
+        },
+        "joiningDate": {
+            "label": "Joining Date",
+            "longlabel": "Joining Date"
+        }
+    },
+    "candidate_assigned_job": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Job ID"
+        },
+        "name": {
+            "label": "Name",
+            "longlabel": "Job Name"
+        },
+        "candidatestatus": {
+            "label": "Hiring Stage & History",
+            "longlabel": "Hiring Stage & History"
+        },
+        "interview": {
+            "label": "Interview",
+            "longlabel": "Interview"
+        },
+        "share": {
+            "label": "Visibility",
+            "longlabel": "Visibility"
+        },
+        "jobstatus": {
+            "label": "Status",
+            "longlabel": "Job Status"
+        },
+        "jobstatuslabel": {
+            "label": "Status",
+            "longlabel": "Job Status"
+        },
+        "companyid": {
+            "label": "Company",
+            "longlabel": "Company"
+        },
+        "companyname": {
+            "label": "Company",
+            "longlabel": "Company Name"
+        },
+        "contactid": {
+            "label": "Contacts",
+            "longlabel": "Contacts"
+        },
+        "salarytype": {
+            "label": "Salary Type",
+            "longlabel": "Salary Type"
+        },
+        "currencyid": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "collaborator": {
+            "label": "Collaborator",
+            "longlabel": "Collaborator"
+        },
+        "jobquestions": {
+            "label": "Job Application Form Questions",
+            "longlabel": "Job Application Form Questions"
+        },
+        "allowapply": {
+            "label": "Enable Job Application Form",
+            "longlabel": "Enable Job Application Form"
+        },
+        "description": {
+            "label": "Note For Candidates",
+            "longlabel": "Note For Candidates"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "qualification": {
+            "label": "Qualification Label",
+            "longlabel": "Qualification Label"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "detailfilename": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "jdtext": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "jdtextdetails": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "minexperienceinyears": {
+            "label": "Minimum Experience (Years)",
+            "longlabel": "Minimum Experience (Years)"
+        },
+        "maxexperienceinyears": {
+            "label": "Maximum Experience (Years)",
+            "longlabel": "Maximum Experience (Years)"
+        },
+        "annualsalarymin": {
+            "label": "Min. Salary",
+            "longlabel": "Minimum Salary"
+        },
+        "annualsalarymax": {
+            "label": "Max. Salary",
+            "longlabel": "Maximum Salary"
+        },
+        "noofopenings": {
+            "label": "Openings",
+            "longlabel": "Number Of Openings"
+        },
+        "contactname": {
+            "label": "Contact Name",
+            "longlabel": "Contact Name"
+        },
+        "contactemail": {
+            "label": "Contact Email",
+            "longlabel": "Contact Email"
+        },
+        "contactnumber": {
+            "label": "Contact Number",
+            "longlabel": "Contact Number"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "creatorname": {
+            "label": "Creator",
+            "longlabel": "Creator Name"
+        },
+        "createdon": {
+            "label": "Date Added",
+            "longlabel": "Date Added"
+        },
+        "updatedon": {
+            "label": "Hiring Stage Updated On",
+            "longlabel": "Hiring Stage Updated On"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "jobpostingstatus": {
+            "label": "Actions",
+            "longlabel": "Job Posting Status"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Note"
+        },
+        "contactslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "companyslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "hiring_pipeline_id": {
+            "label": "Hiring Pipeline",
+            "longlabel": "Hiring Pipeline"
+        },
+        "job_skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "job_type": {
+            "label": "Job Type",
+            "longlabel": "Job Type"
+        },
+        "job_category": {
+            "label": "Job Category",
+            "longlabel": "Job Category"
+        },
+        "secondarycontactid": {
+            "label": "Secondary Contacts",
+            "longlabel": "Secondary Contacts"
+        },
+        "targetcompanies": {
+            "label": "Target Companies",
+            "longlabel": "Target Companies"
+        },
+        "remote": {
+            "label": "Job Location Type",
+            "longlabel": "Job Location Type"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "Job Application Resume",
+            "longlabel": "Job Application Resume"
+        },
+        "assigned_job_coverletter": {
+            "label": "Job Application Cover letter",
+            "longlabel": "Job Application Cover letter"
+        },
+        "assigned_job_portfolio": {
+            "label": "Job Application Portfolio",
+            "longlabel": "Job Application Portfolio"
+        },
+        "assigned_job_other_file_1": {
+            "label": "Job Application File 1",
+            "longlabel": "Job Application File 1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "Job Application File 2",
+            "longlabel": "Job Application File 2"
+        },
+        "postal_code": {
+            "label": "Postal Code",
+            "longlabel": "Postal Code"
+        },
+        "job_function": {
+            "label": "Job Function",
+            "longlabel": "Job Function"
+        },
+        "job_industry": {
+            "label": "Job Industry",
+            "longlabel": "Job Industry"
+        },
+        "updatedby": {
+            "label": "Hiring Stage Updated By",
+            "longlabel": "Hiring Stage Updated By"
+        }
+    },
+    "postal_code": {
+        "label": "Postal Code",
+        "longlabel": "Postal Code"
+    },
+    "timesheet": {
+        "timesheetId": {
+            "label": "Timesheet Id",
+            "longlabel": "Timesheet Id"
+        },
+        "timesheetPeriod": {
+            "label": "Timesheet Period",
+            "longlabel": "Timesheet Period"
+        },
+        "contractorName": {
+            "label": "Contractor Name",
+            "longlabel": "Contractor Name"
+        },
+        "timesheetStatusId": {
+            "label": "Timesheet Status",
+            "longlabel": "Timesheet Status"
+        },
+        "timesheetStatus": {
+            "label": "Timesheet Status",
+            "longlabel": "Timesheet Status"
+        },
+        "jobName": {
+            "label": "Job Name",
+            "longlabel": "Job Name"
+        },
+        "dealName": {
+            "label": "Deal Name",
+            "longlabel": "Deal Name"
+        },
+        "jobDuration": {
+            "label": "Job Duration",
+            "longlabel": "Job Duration"
+        },
+        "totalWorkTime": {
+            "label": "Total Work Hours",
+            "longlabel": "Total Work Hours"
+        },
+        "totalOvertime": {
+            "label": "Total Overtime Hours",
+            "longlabel": "Total Overtime Hours"
+        },
+        "totalTime": {
+            "label": "Total Hours",
+            "longlabel": "Total Hours"
+        },
+        "billData": {
+            "label": "Bill Amount",
+            "longlabel": "Bill Amount"
+        },
+        "billAmount": {
+            "label": "Bill Amount",
+            "longlabel": "Bill Data"
+        },
+        "payData": {
+            "label": "Pay Amount",
+            "longlabel": "Pay Amount"
+        },
+        "payAmount": {
+            "label": "Pay Amount",
+            "longlabel": "Pay Data"
+        },
+        "billRate": {
+            "label": "Bill Rate",
+            "longlabel": "Bill Rate"
+        },
+        "payRate": {
+            "label": "Pay Rate",
+            "longlabel": "Pay Rate"
+        },
+        "approvedBy": {
+            "label": "Timesheet Approved By",
+            "longlabel": "Timesheet Approved By"
+        },
+        "approver": {
+            "label": "Timesheet Approved  By",
+            "longlabel": "Timesheet Approved  By"
+        },
+        "approvers": {
+            "label": "Timesheet Approvers",
+            "longlabel": "Timesheet Approvers"
+        },
+        "billingStatusId": {
+            "label": "Bill Status",
+            "longlabel": "Bill Status"
+        },
+        "paymentStatusId": {
+            "label": "Pay Status",
+            "longlabel": "Pay Status"
+        },
+        "paymentDate": {
+            "label": "Payout Date",
+            "longlabel": "Payout Date"
+        },
+        "payoutNumber": {
+            "label": "Payout Number",
+            "longlabel": "Payout Number"
+        },
+        "billingDate": {
+            "label": "Billing Date",
+            "longlabel": "Billing Date"
+        },
+        "invoiceNumber": {
+            "label": "Invoice Number",
+            "longlabel": "Invoice Number"
+        },
+        "addedOn": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "addedBy": {
+            "label": "Added By",
+            "longlabel": "Added By"
+        },
+        "updatedOn": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "updatedBy": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "company": {
+            "label": "Company",
+            "longlabel": "Company"
+        },
+        "frequency": {
+            "label": "Frequency",
+            "longlabel": "Frequency"
+        },
+        "workDays": {
+            "label": "WorkDays",
+            "longlabel": "WorkDays"
+        },
+        "workHours": {
+            "label": "WorkHours",
+            "longlabel": "WorkHours"
+        },
+        "actions": {
+            "label": "Actions",
+            "longlabel": "Actions"
+        },
+        "action": {
+            "label": "Action",
+            "longlabel": "Action"
+        },
+        "billStatus": {
+            "label": "Bill Status",
+            "longlabel": "Bill Status"
+        },
+        "payStatus": {
+            "label": "Pay Status",
+            "longlabel": "Pay Status"
+        },
+        "invoiceCreatedOn": {
+            "label": "Invoice Created On",
+            "longlabel": "Invoice Created On"
+        },
+        "payoutPaidOn": {
+            "label": "Payout Paid On",
+            "longlabel": "Payout Paid On"
+        },
+        "companyname": {
+            "label": "Company Name",
+            "longlabel": "Company Name"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "gender": {
+            "label": "Gender",
+            "longlabel": "Gender"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "postalCode": {
+            "label": "Postal Code",
+            "longlabel": "Postal Code"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Facebook Profile"
+        },
+        "title": {
+            "label": "Title",
+            "longlabel": "Title"
+        },
+        "birthDate": {
+            "label": "Birth Date",
+            "longlabel": "Birth Date"
+        },
+        "skills": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Xing Profile"
+        },
+        "phone": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "name": {
+            "label": "Name",
+            "longlabel": "Name"
+        },
+        "fullAddress": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "currentOrganization": {
+            "label": "Current Organization",
+            "longlabel": "Current Organization"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Twitter Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Linkedin Profile"
+        },
+        "profilegithub": {
+            "label": "Github Profile",
+            "longlabel": "Github Profile"
+        },
+        "source": {
+            "label": "Source",
+            "longlabel": "Source"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "email": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "status": {
+            "label": "Status",
+            "longlabel": "Status"
+        },
+        "companyName": {
+            "label": "Company Name",
+            "longlabel": "Company Name"
+        },
+        "timesheetFrequency": {
+            "label": "Timesheet Frequency",
+            "longlabel": "Timesheet Frequency"
+        },
+        "expenseClaim": {
+            "label": "Expense Claim",
+            "longlabel": "Expense Claim"
+        },
+        "payCurrency": {
+            "label": "Pay Currency",
+            "longlabel": "Pay Currency"
+        },
+        "billCurrency": {
+            "label": "Bill Currency",
+            "longlabel": "Bill Currency"
+        },
+        "totalRegularHours": {
+            "label": "Total Regular Hours",
+            "longlabel": "Total Regular Hours"
+        }
+    },
+    "jobs_widget": {
+        "name": {
+            "label": "Job Name",
+            "longlabel": "Job Name"
+        },
+        "jobstatuslabel": {
+            "label": "Job Status",
+            "longlabel": "Job Status"
+        },
+        "assignedcandidatestatuscount": {
+            "label": "Candidate Pipeline",
+            "longlabel": "Candidate Pipeline"
+        },
+        "joinedcandidatestatuscount": {
+            "label": "Placed",
+            "longlabel": "Placed"
+        },
+        "detailfilename": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "contactname": {
+            "label": "Contact",
+            "longlabel": "Contact"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Job ID"
+        },
+        "archived": {
+            "label": "Archieved",
+            "longlabel": "Archieved"
+        },
+        "companyid": {
+            "label": "Company",
+            "longlabel": "Company"
+        },
+        "contactid": {
+            "label": "Contacts",
+            "longlabel": "Contacts"
+        },
+        "secondarycontactid": {
+            "label": "Secondary Contacts",
+            "longlabel": "Secondary Contacts"
+        },
+        "salarytype": {
+            "label": "Salary Type",
+            "longlabel": "Salary Type"
+        },
+        "currencyid": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "salaryrange": {
+            "label": "Salary Range",
+            "longlabel": "Salary Range"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "collaborator": {
+            "label": "Collaborator",
+            "longlabel": "Collaborator"
+        },
+        "jobquestions": {
+            "label": "Job Application Form Questions",
+            "longlabel": "Job Application Form Questions"
+        },
+        "allowapply": {
+            "label": "Enable Job Application Form",
+            "longlabel": "Enable Job Application Form"
+        },
+        "description": {
+            "label": "Note For Candidates",
+            "longlabel": "Note For Candidates"
+        },
+        "job_skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "qualification": {
+            "label": "Qualification Label",
+            "longlabel": "Qualification Label"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "jdtext": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "jdtextdetails": {
+            "label": "Job Description",
+            "longlabel": "Job Description"
+        },
+        "minexperienceinyears": {
+            "label": "Minimum Experience (Years)",
+            "longlabel": "Minimum Experience (Years)"
+        },
+        "maxexperienceinyears": {
+            "label": "Maximum Experience (Years)",
+            "longlabel": "Maximum Experience (Years)"
+        },
+        "annualsalarymin": {
+            "label": "Min. Salary",
+            "longlabel": "Minimum Salary"
+        },
+        "annualsalarymax": {
+            "label": "Max. Salary",
+            "longlabel": "Maximum Salary"
+        },
+        "noofopenings": {
+            "label": "Openings",
+            "longlabel": "Number Of Openings"
+        },
+        "contactslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "companyslug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "contactemail": {
+            "label": "Contact Email",
+            "longlabel": "Contact Email"
+        },
+        "contactnumber": {
+            "label": "Contact Number",
+            "longlabel": "Contact Number"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "job_function": {
+            "label": "Job Function",
+            "longlabel": "Job Function"
+        },
+        "creatorname": {
+            "label": "Creator",
+            "longlabel": "Creator Name"
+        },
+        "createdon": {
+            "label": "Date Added",
+            "longlabel": "Date Added"
+        },
+        "updatedon": {
+            "label": "Date Updated",
+            "longlabel": "Date Updated"
+        },
+        "updatedby": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "jobpostingstatus": {
+            "label": "Actions",
+            "longlabel": "Job Posting Status"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Note"
+        },
+        "hiring_pipeline_id": {
+            "label": "Hiring Pipeline",
+            "longlabel": "Hiring Pipeline"
+        },
+        "hiring_pipeline_name": {
+            "label": "Hiring Pipeline",
+            "longlabel": "Hiring Pipeline"
+        },
+        "job_type": {
+            "label": "Job Type",
+            "longlabel": "Job Type"
+        },
+        "job_category": {
+            "label": "Job Category",
+            "longlabel": "Job Category"
+        },
+        "remote": {
+            "label": "Job Location Type",
+            "longlabel": "Job Location Type"
+        },
+        "hotlist": {
+            "label": "Hotlist",
+            "longlabel": "Hotlist"
+        },
+        "xml_feeds": {
+            "label": "XML Feeds",
+            "longlabel": "XML Feeds"
+        },
+        "targetcompanies": {
+            "label": "Target Companies",
+            "longlabel": "Target Companies"
+        },
+        "contactfirstname": {
+            "label": "Contact First Name",
+            "longlabel": "Contact First Name"
+        },
+        "contactlastname": {
+            "label": "Contact Last Name",
+            "longlabel": "Contact Last Name"
+        },
+        "postalcode": {
+            "label": "Postal Code",
+            "longlabel": "Postal Code"
+        },
+        "pay_rate": {
+            "label": "Pay Rate",
+            "longlabel": "Pay Rate"
+        },
+        "bill_rate": {
+            "label": "Bill Rate",
+            "longlabel": "Bill Rate"
+        },
+        "job_industry": {
+            "label": "Job Industry",
+            "longlabel": "Job Industry"
+        }
+    },
+    "list_of_candidates": {
+        "label": "List of Candidates",
+        "longlabel": "List of Candidates"
+    },
+    "job_candidate_pipeline": {
+        "candidatename": {
+            "label": "Candidate Name",
+            "longlabel": "Candidate Name"
+        },
+        "detailfilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "hiring_stage_remark": {
+            "label": "Hiring Stage & Remark",
+            "longlabel": "Hiring Stage & Remark"
+        },
+        "visibility": {
+            "label": "Visibility",
+            "longlabel": "Visibility"
+        },
+        "job_specific_details": {
+            "label": "Job Specific Details",
+            "longlabel": "Job Specific Details"
+        },
+        "interview": {
+            "label": "Interview",
+            "longlabel": "Interview"
+        },
+        "timesheet": {
+            "label": "Timesheet",
+            "longlabel": "Timesheet"
+        },
+        "placement": {
+            "label": "Placement",
+            "longlabel": "Placement"
+        },
+        "phone": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "email": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "accountlogo": {
+            "label": "Account Logo",
+            "longlabel": "Account Logo"
+        },
+        "accounttitle": {
+            "label": "Account Title",
+            "longlabel": "Account Title"
+        },
+        "address": {
+            "label": "Full Address",
+            "longlabel": "Full Address"
+        },
+        "age": {
+            "label": "Age",
+            "longlabel": "Candidate Age"
+        },
+        "authid": {
+            "label": "Auth ID",
+            "longlabel": "Auth ID"
+        },
+        "availablefrom": {
+            "label": "Available From",
+            "longlabel": "Available From"
+        },
+        "canaccess": {
+            "label": "Can Access",
+            "longlabel": "Can Access"
+        },
+        "candidate_company_city": {
+            "label": "Current Organisation - City",
+            "longlabel": "Current Organisation - City"
+        },
+        "candidate_company_logo": {
+            "label": "Current Organisation - Logo",
+            "longlabel": "Current Organisation - Logo"
+        },
+        "candidate_company_slug": {
+            "label": "Current Organisation - Slug",
+            "longlabel": "Current Organisation - Slug"
+        },
+        "candidatedob": {
+            "label": "Birth Date",
+            "longlabel": "Date Of Birth"
+        },
+        "candidateterms": {
+            "label": "Candidate Terms",
+            "longlabel": "Candidate Terms"
+        },
+        "city": {
+            "label": "City",
+            "longlabel": "City"
+        },
+        "contactnumber": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "country": {
+            "label": "Country",
+            "longlabel": "Country"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdbyname": {
+            "label": "Created By Name",
+            "longlabel": "Created By Name"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "currencycountry": {
+            "label": "Currency Country",
+            "longlabel": "Currency Country"
+        },
+        "currencyid": {
+            "label": "Currency",
+            "longlabel": "Currency"
+        },
+        "currentsalary": {
+            "label": "Current Salary",
+            "longlabel": "Current Salary"
+        },
+        "currentstatus": {
+            "label": "Employment Status",
+            "longlabel": "Current Employment Status"
+        },
+        "education_description": {
+            "label": "Education Description",
+            "longlabel": "Education Description"
+        },
+        "education_end_date": {
+            "label": "Education End Date",
+            "longlabel": "Education End Date"
+        },
+        "education_history": {
+            "label": "Education History",
+            "longlabel": "Education History"
+        },
+        "education_location": {
+            "label": "Education Location",
+            "longlabel": "Education Location"
+        },
+        "education_start_date": {
+            "label": "Education Start Date",
+            "longlabel": "Education Start Date"
+        },
+        "educational_qualification": {
+            "label": "Educational Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "educational_specialization": {
+            "label": "Educational Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "eeocompliance": {
+            "label": "EEO Compiance",
+            "longlabel": "EEO Compiance"
+        },
+        "email_opt_out": {
+            "label": "Opt-out",
+            "longlabel": "Opt-out"
+        },
+        "emailid": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "employment_type": {
+            "label": "Employment Type",
+            "longlabel": "Employment Type"
+        },
+        "firstname": {
+            "label": "First Name",
+            "longlabel": "Candidate First Name"
+        },
+        "gdprcompliance": {
+            "label": "GDPR Compiance",
+            "longlabel": "GDPR Compiance"
+        },
+        "genderid": {
+            "label": "Gender",
+            "longlabel": "Gender"
+        },
+        "grade": {
+            "label": "Grade",
+            "longlabel": "Grade"
+        },
+        "hotlist": {
+            "label": "Hotlist",
+            "longlabel": "Hotlist"
+        },
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "industry_id": {
+            "label": "Industry Type",
+            "longlabel": "Industry Type"
+        },
+        "institute_name": {
+            "label": "School/College Name",
+            "longlabel": "School/College Name"
+        },
+        "is_currently_working": {
+            "label": "Currently Working",
+            "longlabel": "Currently Working"
+        },
+        "jobapplicationsettings": {
+            "label": "Job Applications Settings",
+            "longlabel": "Job Applications Settings"
+        },
+        "languageskills": {
+            "label": "Language",
+            "longlabel": "Language Skills"
+        },
+        "last_calllog_created_on": {
+            "label": "Last Call Log Added",
+            "longlabel": "Last Call Log Added"
+        },
+        "last_communication_method": {
+            "label": "Last Comm Type",
+            "longlabel": "Last Comm Type"
+        },
+        "last_communication_timestamp": {
+            "label": "Last Communication",
+            "longlabel": "Last Communication"
+        },
+        "last_email_sent_on": {
+            "label": "Last Email Sent On",
+            "longlabel": "Last Email Sent On"
+        },
+        "last_meeting_created_on": {
+            "label": "Last Meeting Added",
+            "longlabel": "Last Meeting Added"
+        },
+        "last_message_sent_on": {
+            "label": "Last LinkedIn Message Sent On",
+            "longlabel": "Last LinkedIn Message Sent On"
+        },
+        "last_sms_sent_on": {
+            "label": "Last SMS Sent On",
+            "longlabel": "Last SMS Sent On"
+        },
+        "lastname": {
+            "label": "Last Name",
+            "longlabel": "Candidate Last Name"
+        },
+        "lastorganisation": {
+            "label": "Current Organization",
+            "longlabel": "Current Organization"
+        },
+        "locality": {
+            "label": "Locality",
+            "longlabel": "Locality"
+        },
+        "noticeperiod": {
+            "label": "Notice Period",
+            "longlabel": "Notice Period (Days)"
+        },
+        "off_limit_status": {
+            "label": "Off-Limit Status",
+            "longlabel": "Off-Limit Status"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "ownerslug": {
+            "label": "Owner Slug",
+            "longlabel": "Owner Slug"
+        },
+        "position": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "postal_code": {
+            "label": "Postal Code",
+            "longlabel": "Postal Code"
+        },
+        "proficiency_level": {
+            "label": "Proficiency Level",
+            "longlabel": "Proficiency Level"
+        },
+        "profilefacebook": {
+            "label": "Facebook Profile",
+            "longlabel": "Facebook Profile"
+        },
+        "profilegithub": {
+            "label": "Github Profile",
+            "longlabel": "Github Profile"
+        },
+        "profilelinkedin": {
+            "label": "Linkedin Profile",
+            "longlabel": "Linkedin Profile"
+        },
+        "profilepic": {
+            "label": "Profile Picture",
+            "longlabel": "Profile Picture"
+        },
+        "profiletwitter": {
+            "label": "Twitter Profile",
+            "longlabel": "Twitter Profile"
+        },
+        "profilexing": {
+            "label": "Xing Profile",
+            "longlabel": "Xing Profile"
+        },
+        "qualification": {
+            "label": "Qualification Label",
+            "longlabel": "Qualification Label"
+        },
+        "qualificationid": {
+            "label": "Qualification",
+            "longlabel": "Educational Qualification"
+        },
+        "relevantexperience": {
+            "label": "Relevant Experience",
+            "longlabel": "Relevant Experience"
+        },
+        "requestresumelinkstatus": {
+            "label": "Request Resume Link Status",
+            "longlabel": "Request Resume Link Status"
+        },
+        "resume": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumeaddedon": {
+            "label": "Resume Added On",
+            "longlabel": "Resume Added On"
+        },
+        "resumefilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "resumetext": {
+            "label": "Resume Text",
+            "longlabel": "Resume Text"
+        },
+        "resumeupdatedon": {
+            "label": "Profile Updated By Candidate On",
+            "longlabel": "Profile Updated By Candidate On"
+        },
+        "resumeupdaterequestedon": {
+            "label": "Profile Request Sent On",
+            "longlabel": "Profile Request Sent On"
+        },
+        "salary": {
+            "label": "Salary",
+            "longlabel": "Salary"
+        },
+        "salaryexpectation": {
+            "label": "Salary Expectation",
+            "longlabel": "Salary Expectation"
+        },
+        "salarytype": {
+            "label": "Salary Type",
+            "longlabel": "Salary Type"
+        },
+        "skill": {
+            "label": "Skills",
+            "longlabel": "Skills"
+        },
+        "slug": {
+            "label": "Slug",
+            "longlabel": "Slug"
+        },
+        "source": {
+            "label": "Source",
+            "longlabel": "Source"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "longlabel": "Educational Specialization"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Candidate ID"
+        },
+        "state": {
+            "label": "State",
+            "longlabel": "State"
+        },
+        "summary": {
+            "label": "Summary",
+            "longlabel": "Summary"
+        },
+        "symbol": {
+            "label": "Symbol",
+            "longlabel": "Symbol"
+        },
+        "title": {
+            "label": "Work Position",
+            "longlabel": "Work Position"
+        },
+        "unavailable": {
+            "label": "Availability",
+            "longlabel": "Availability"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "willingtorelocate": {
+            "label": "Willing to Relocate",
+            "longlabel": "Willing to Relocate"
+        },
+        "work_company_name": {
+            "label": "Company Name",
+            "longlabel": "Company Name"
+        },
+        "work_description": {
+            "label": "Work Description",
+            "longlabel": "Work Description"
+        },
+        "work_end_date": {
+            "label": "Work End Date",
+            "longlabel": "Work End Date"
+        },
+        "work_history": {
+            "label": "Work History",
+            "longlabel": "Work History"
+        },
+        "work_location": {
+            "label": "Work Location",
+            "longlabel": "Work Location"
+        },
+        "work_start_date": {
+            "label": "Work Start Date",
+            "longlabel": "Work Start Date"
+        },
+        "workexpyr": {
+            "label": "Total Experience",
+            "longlabel": "Total Experience"
+        }
+    },
+    "entity_related_deals": {
+        "accountid": {
+            "label": "Account ID",
+            "longlabel": "Account ID"
+        },
+        "archived": {
+            "label": "Archieved",
+            "longlabel": "Archieved"
+        },
+        "candidatename": {
+            "label": "Candidate",
+            "longlabel": "Candidate"
+        },
+        "candidateslug": {
+            "label": "candidateslug",
+            "longlabel": "candidateslug"
+        },
+        "candidatetitle": {
+            "label": "Title",
+            "longlabel": "Title / Position"
+        },
+        "closedate": {
+            "label": "Close Date",
+            "longlabel": "Close Date"
+        },
+        "collaborator": {
+            "label": "Collaborator",
+            "longlabel": "Collaborator"
+        },
+        "companyname": {
+            "label": "Company",
+            "longlabel": "Company Name"
+        },
+        "companyslug": {
+            "label": "companyslug",
+            "longlabel": "companyslug"
+        },
+        "createdby": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "createdbyname": {
+            "label": "Created By Name",
+            "longlabel": "Created By Name"
+        },
+        "createdon": {
+            "label": "Added On",
+            "longlabel": "Added On"
+        },
+        "dealpercentagevalue": {
+            "label": "Weighted Deal Amount",
+            "longlabel": "Weighted Deal Amount"
+        },
+        "dealstage": {
+            "label": "Stage",
+            "longlabel": "Stage"
+        },
+        "dealstagelabel": {
+            "label": "Stage",
+            "longlabel": "Stage"
+        },
+        "dealtype": {
+            "label": "Deal Type",
+            "longlabel": "Deal Type"
+        },
+        "dealtypelabel": {
+            "label": "Deal Type",
+            "longlabel": "Deal Type"
+        },
+        "dealvalue": {
+            "label": "Deal Amount",
+            "longlabel": "Deal Amount"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "jobname": {
+            "label": "Job",
+            "longlabel": "Job Name"
+        },
+        "jobslug": {
+            "label": "jobslug",
+            "longlabel": "jobslug"
+        },
+        "name": {
+            "label": "Name",
+            "longlabel": "Deal Name"
+        },
+        "ownerid": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        },
+        "ownername": {
+            "label": "Owner Name",
+            "longlabel": "Owner Name"
+        },
+        "ownerslug": {
+            "label": "Owner Slug",
+            "longlabel": "Owner Slug"
+        },
+        "percentage": {
+            "label": "Stage Weight",
+            "longlabel": "Stage Weight"
+        },
+        "relatedcandidate": {
+            "label": "Candidate Id",
+            "longlabel": "Candidate Id"
+        },
+        "relatedcompany": {
+            "label": "Company Id",
+            "longlabel": "Company Id"
+        },
+        "relatedcontact": {
+            "label": "Contact",
+            "longlabel": "Contact"
+        },
+        "relatedjob": {
+            "label": "Job Id",
+            "longlabel": "Job Id"
+        },
+        "slug": {
+            "label": "Actions",
+            "longlabel": "Slug"
+        },
+        "splitdealvalue": {
+            "label": "Split Deal Amount",
+            "longlabel": "Split Deal Amount"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "Deal ID"
+        },
+        "updatedby": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "updatedbyname": {
+            "label": "Updated By Name",
+            "longlabel": "Updated By Name"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "website": {
+            "label": "Website",
+            "longlabel": "Website"
+        },
+        "weightedsplitdealvalue": {
+            "label": "Weighted Split Deal Amount",
+            "longlabel": "Weighted Split Deal Amount"
+        }
+    },
+    "hotlist_widget": {
+        "name": {
+            "label": "Hotlist Name",
+            "longlabel": "Hotlist Name"
+        },
+        "createdOn": {
+            "label": "Created On",
+            "longlabel": "Created On"
+        },
+        "updatedOn": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "ownerId": {
+            "label": "Owner",
+            "longlabel": "Owner"
+        }
+    },
+    "executive_search_report": {
+        "report_title": {
+            "label": "Report Name",
+            "longlabel": "Report Name"
+        },
+        "created_by": {
+            "label": "Created By",
+            "longlabel": "Created By"
+        },
+        "updated_by": {
+            "label": "Modified By",
+            "longlabel": "Modified By"
+        },
+        "updated_on": {
+            "label": "Modified On",
+            "longlabel": "Modified On"
+        }
+    },
+    "pitch_candidate": {
+        "name": {
+            "label": "Candidate Name",
+            "longlabel": "Candidate Name"
+        },
+        "pitchStage": {
+            "label": "Pitch Stage & Remark",
+            "longlabel": "Pitch Stage & Remark"
+        },
+        "phone": {
+            "label": "Phone",
+            "longlabel": "Phone"
+        },
+        "email": {
+            "label": "Email",
+            "longlabel": "Email"
+        },
+        "resumefilename": {
+            "label": "Resume",
+            "longlabel": "Resume"
+        },
+        "contactName": {
+            "label": "Contact Pitched",
+            "longlabel": "Contact Pitched"
+        },
+        "createdByName": {
+            "label": "Pitched By",
+            "longlabel": "Pitched By"
+        },
+        "createdOn": {
+            "label": "Pitched On",
+            "longlabel": "Pitched On"
+        },
+        "candidateTitle": {
+            "label": "Candidate Title",
+            "longlabel": "Candidate Title / Position"
+        },
+        "last_communication_timestamp": {
+            "label": "Candidate Last Communication",
+            "longlabel": "Candidate Last Communication"
+        }
+    },
+    "candidate_history": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "name": {
+            "label": "Name",
+            "longlabel": "Name"
+        },
+        "updatedby": {
+            "label": "Updated By",
+            "longlabel": "Updated By"
+        },
+        "updatedon": {
+            "label": "Updated On",
+            "longlabel": "Updated On"
+        },
+        "candidatestatus": {
+            "label": "Hiring Stage & History",
+            "longlabel": "Hiring Stage & History"
+        },
+        "companycontactname": {
+            "label": "Company Contact",
+            "longlabel": "Company Contact"
+        }
+    },
+    "pitch_contact": {
+        "name": {
+            "label": "Contact Name",
+            "longlabel": "Contact Name"
+        },
+        "email": {
+            "label": "Email",
+            "longlabel": "Contact Email Address"
+        },
+        "phone": {
+            "label": "Phone",
+            "longlabel": "Contact Number"
+        },
+        "pitchStage": {
+            "label": "Pitch Stage & Remark",
+            "longlabel": "Pitch Stage & Remark"
+        },
+        "companyName": {
+            "label": "Company",
+            "longlabel": "Company Name"
+        },
+        "createdByName": {
+            "label": "Pitched By",
+            "longlabel": "Pitched By"
+        },
+        "createdOn": {
+            "label": "Pitched On",
+            "longlabel": "Pitched On"
+        },
+        "contactTitle": {
+            "label": "Contact Title",
+            "longlabel": "Contact Title"
+        },
+        "last_communication_timestamp": {
+            "label": "Contact Last Communication",
+            "longlabel": "Contact Last Communication"
+        }
+    }
+}

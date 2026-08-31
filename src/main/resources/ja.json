@@ -1,0 +1,4406 @@
+{
+    "candidates": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "身分証明書",
+            "longlabel": "候補者ID"
+        },
+        "candidatename": {
+            "label": "名前",
+            "longlabel": "候補者名"
+        },
+        "firstname": {
+            "label": "名前",
+            "longlabel": "候補者名"
+        },
+        "lastname": {
+            "label": "姓",
+            "longlabel": "候補者の姓"
+        },
+        "emailid": {
+            "label": "メール",
+            "longlabel": "メール"
+        },
+        "genderid": {
+            "label": "性別",
+            "longlabel": "性別"
+        },
+        "contactnumber": {
+            "label": "電話",
+            "longlabel": "電話"
+        },
+        "candidatedob": {
+            "label": "生年月日",
+            "longlabel": "生年月日"
+        },
+        "age": {
+            "label": "年齢",
+            "longlabel": "候補者の年齢"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "学歴"
+        },
+        "specialization": {
+            "label": "専門性",
+            "longlabel": "教育の専門性"
+        },
+        "workexpyr": {
+            "label": "経験年数",
+            "longlabel": "経験年数"
+        },
+        "relevantexperience": {
+            "label": "関連する経験",
+            "longlabel": "関連する経験"
+        },
+        "resumetext": {
+            "label": "履歴書テキスト",
+            "longlabel": "履歴書テキスト"
+        },
+        "currentsalary": {
+            "label": "現年収",
+            "longlabel": "現年収"
+        },
+        "resume": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "resumefilename": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "lastorganisation": {
+            "label": "現在の組織",
+            "longlabel": "現在の組織"
+        },
+        "skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "willingtorelocate": {
+            "label": "転居を希望",
+            "longlabel": "転居を希望"
+        },
+        "salaryexpectation": {
+            "label": "希望年収",
+            "longlabel": "希望年収"
+        },
+        "position": {
+            "label": "タイトル",
+            "longlabel": "役職名 / 役職"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "currencyid": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "currencycountry": {
+            "label": "通貨国",
+            "longlabel": "通貨国"
+        },
+        "symbol": {
+            "label": "シンボル",
+            "longlabel": "シンボル"
+        },
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownerslug": {
+            "label": "オーナースラッグ",
+            "longlabel": "オーナースラッグ"
+        },
+        "ownername": {
+            "label": "オーナー名",
+            "longlabel": "オーナー名"
+        },
+        "canaccess": {
+            "label": "アクセス",
+            "longlabel": "アクセス"
+        },
+        "profilepic": {
+            "label": "プロフィール写真",
+            "longlabel": "プロフィール写真"
+        },
+        "deleted": {
+            "label": "削除",
+            "longlabel": "削除"
+        },
+        "authid": {
+            "label": "認証ID",
+            "longlabel": "認証ID"
+        },
+        "resumeupdatedon": {
+            "label": "プロフィール更新日",
+            "longlabel": "プロフィール更新日"
+        },
+        "resumeupdaterequestedon": {
+            "label": "プロフィールリクエストの送信",
+            "longlabel": "プロフィールリクエストの送信"
+        },
+        "requestresumelinkstatus": {
+            "label": "レジュメリンクステータスのリクエスト",
+            "longlabel": "レジュメリンクステータスのリクエスト"
+        },
+        "resumeaddedon": {
+            "label": "レジュメ追加日",
+            "longlabel": "レジュメ追加日"
+        },
+        "profilefacebook": {
+            "label": "Facebookプロフィール",
+            "longlabel": "Facebookプロフィール"
+        },
+        "profiletwitter": {
+            "label": "Twitterプロフィール",
+            "longlabel": "Twitterプロフィール"
+        },
+        "profilelinkedin": {
+            "label": "LinekdInプロフィール",
+            "longlabel": "LinekdInプロフィール"
+        },
+        "profilegithub": {
+            "label": "Githubプロフィール",
+            "longlabel": "Githubプロフィール"
+        },
+        "source": {
+            "label": "ソース",
+            "longlabel": "ソース"
+        },
+        "createdbyname": {
+            "label": "作成者名",
+            "longlabel": "作成者名"
+        },
+        "qualification": {
+            "label": "資格ラベル",
+            "longlabel": "資格ラベル"
+        },
+        "currentstatus": {
+            "label": "雇用状況",
+            "longlabel": "現在の雇用状況"
+        },
+        "noticeperiod": {
+            "label": "退職通知期限",
+            "longlabel": "退職通知期限（日）"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdon": {
+            "label": "追加日",
+            "longlabel": "追加日"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "availablefrom": {
+            "label": "利用可能",
+            "longlabel": "利用可能"
+        },
+        "salarytype": {
+            "label": "給与タイプ",
+            "longlabel": "給与タイプ"
+        },
+        "languageskills": {
+            "label": "言語",
+            "longlabel": "語学力"
+        },
+        "accountlogo": {
+            "label": "アカウントロゴ",
+            "longlabel": "アカウントロゴ"
+        },
+        "accounttitle": {
+            "label": "口座名義",
+            "longlabel": "口座名義"
+        },
+        "candidateterms": {
+            "label": "候補者の条件",
+            "longlabel": "候補者の条件"
+        },
+        "jobapplicationsettings": {
+            "label": "求人応募の設定",
+            "longlabel": "求人応募の設定"
+        },
+        "eeocompliance": {
+            "label": "EEOコンプライアンス",
+            "longlabel": "EEOコンプライアンス"
+        },
+        "gdprcompliance": {
+            "label": "GDPRコンプライアンス",
+            "longlabel": "GDPRコンプライアンス"
+        },
+        "slug": {
+            "label": "アクション",
+            "longlabel": "アクション"
+        },
+        "note": {
+            "label": "メモ",
+            "longlabel": "メモ"
+        },
+        "profilexing": {
+            "label": "プロフィール(Xing)",
+            "longlabel": "プロフィール(Xing)"
+        },
+        "email_opt_out": {
+            "label": "不参加",
+            "longlabel": "不参加"
+        },
+        "proficiency_level": {
+            "label": "習得度",
+            "longlabel": "習得度"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国",
+            "longlabel": "国"
+        },
+        "work_history": {
+            "label": "職歴",
+            "longlabel": "職歴"
+        },
+        "title": {
+            "label": "勤務地",
+            "longlabel": "勤務地"
+        },
+        "work_company_name": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "employment_type": {
+            "label": "雇用形態",
+            "longlabel": "雇用形態"
+        },
+        "industry_id": {
+            "label": "業種",
+            "longlabel": "業種"
+        },
+        "work_location": {
+            "label": "勤務地",
+            "longlabel": "勤務地"
+        },
+        "salary": {
+            "label": "給与",
+            "longlabel": "給与"
+        },
+        "is_currently_working": {
+            "label": "現在作業中",
+            "longlabel": "現在作業中"
+        },
+        "work_start_date": {
+            "label": "作業開始日",
+            "longlabel": "作業開始日"
+        },
+        "work_end_date": {
+            "label": "作業終了日",
+            "longlabel": "作業終了日"
+        },
+        "work_description": {
+            "label": "作業内容",
+            "longlabel": "作業内容"
+        },
+        "education_history": {
+            "label": "教育史",
+            "longlabel": "教育史"
+        },
+        "institute_name": {
+            "label": "学校名/大学名",
+            "longlabel": "学校名/大学名"
+        },
+        "educational_qualification": {
+            "label": "学歴",
+            "longlabel": "学歴"
+        },
+        "educational_specialization": {
+            "label": "教育の専門性",
+            "longlabel": "教育の専門性"
+        },
+        "grade": {
+            "label": "グレード",
+            "longlabel": "グレード"
+        },
+        "education_location": {
+            "label": "教育機関所在地",
+            "longlabel": "教育機関所在地"
+        },
+        "education_start_date": {
+            "label": "教育開始日",
+            "longlabel": "教育開始日"
+        },
+        "education_end_date": {
+            "label": "教育終了日",
+            "longlabel": "教育終了日"
+        },
+        "education_description": {
+            "label": "教育内容",
+            "longlabel": "教育内容"
+        },
+        "summary": {
+            "label": "概要",
+            "longlabel": "概要"
+        },
+        "unavailable": {
+            "label": "空室状況",
+            "longlabel": "空室状況"
+        },
+        "off_limit_status": {
+            "label": "オフ・リミット・ステータス",
+            "longlabel": "オフ・リミット・ステータス"
+        },
+        "sms_opt_out": {
+            "label": "SMSオプトアウト",
+            "longlabel": "SMSオプトアウト"
+        },
+        "last_calllog_created_on": {
+            "label": "ラストコールログ追加",
+            "longlabel": "ラストコールログ追加"
+        },
+        "last_sms_sent_on": {
+            "label": "最後に送信されたSMS",
+            "longlabel": "最後に送信されたSMS"
+        },
+        "last_email_sent_on": {
+            "label": "最終送信日",
+            "longlabel": "最終送信日"
+        },
+        "last_communication_timestamp": {
+            "label": "最後のコミュニケーション",
+            "longlabel": "最後のコミュニケーション"
+        },
+        "last_communication_method": {
+            "label": "最後の通信タイプ",
+            "longlabel": "最後の通信タイプ"
+        },
+        "contact_linked": {
+            "label": "コンタクトリンク",
+            "longlabel": "コンタクトリンク"
+        },
+        "last_meeting_created_on": {
+            "label": "前回のミーティングを追加",
+            "longlabel": "前回のミーティングを追加"
+        },
+        "last_message_sent_on": {
+            "label": "LinkedInの最終メッセージ送信日",
+            "longlabel": "LinkedInの最終メッセージ送信日"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        }
+    },
+    "assigned_candidates": {
+        "jobslug": {
+            "label": "仕事",
+            "longlabel": "ジョブスラッグ"
+        },
+        "jobid": {
+            "label": "仕事",
+            "longlabel": "仕事"
+        },
+        "jobname": {
+            "label": "仕事",
+            "longlabel": "仕事"
+        },
+        "candidateid": {
+            "label": "候補者",
+            "longlabel": "候補者"
+        },
+        "candidatename": {
+            "label": "候補者",
+            "longlabel": "候補者"
+        },
+        "firstname": {
+            "label": "名",
+            "longlabel": "名"
+        },
+        "lastname": {
+            "label": "姓",
+            "longlabel": "姓"
+        },
+        "lastorganisation": {
+            "label": "現在の組織",
+            "longlabel": "現在の組織"
+        },
+        "resumetext": {
+            "label": "履歴書テキスト",
+            "longlabel": "履歴書テキスト"
+        },
+        "resume": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "resumefilename": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "candidatestatusid": {
+            "label": "採用ステージ",
+            "longlabel": "候補者の現在の採用ステージをクリックすることで、採用ステージを変更し、フィードバックを送信することができます。"
+        },
+        "candidatestatus": {
+            "label": "採用ステージ",
+            "longlabel": "候補者の現在の採用ステージをクリックすることで、採用ステージを変更し、フィードバックを送信することができます。"
+        },
+        "remark": {
+            "label": "備考",
+            "longlabel": "備考"
+        },
+        "emailid": {
+            "label": "メール",
+            "longlabel": "メール"
+        },
+        "contactnumber": {
+            "label": "電話",
+            "longlabel": "電話"
+        },
+        "currentsalary": {
+            "label": "現年収",
+            "longlabel": "現年収"
+        },
+        "salaryexpectation": {
+            "label": "希望年収",
+            "longlabel": "希望年収"
+        },
+        "noticeperiod": {
+            "label": "退職通知期限",
+            "longlabel": "退職通知期限（日）"
+        },
+        "candidatedob": {
+            "label": "生年月日",
+            "longlabel": "候補者の生年月日"
+        },
+        "genderid": {
+            "label": "性別",
+            "longlabel": "性別"
+        },
+        "age": {
+            "label": "年齢",
+            "longlabel": "候補者の年齢"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "資格"
+        },
+        "specialization": {
+            "label": "専門性",
+            "longlabel": "専門性"
+        },
+        "workexpyr": {
+            "label": "経験年数",
+            "longlabel": "経験年数"
+        },
+        "relevantexperience": {
+            "label": "関連する経験",
+            "longlabel": "関連する経験"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "availablefrom": {
+            "label": "利用可能",
+            "longlabel": "利用可能"
+        },
+        "position": {
+            "label": "タイトル",
+            "longlabel": "役職名 / 役職"
+        },
+        "profilefacebook": {
+            "label": "Facebookプロフィール",
+            "longlabel": "Facebookプロフィール"
+        },
+        "profiletwitter": {
+            "label": "Twitterプロフィール",
+            "longlabel": "Twitterプロフィール"
+        },
+        "profilelinkedin": {
+            "label": "LinekdInプロフィール",
+            "longlabel": "LinekdInプロフィール"
+        },
+        "profilegithub": {
+            "label": "Githubプロフィール",
+            "longlabel": "Githubプロフィール"
+        },
+        "share": {
+            "label": "視認性",
+            "longlabel": "視認性"
+        },
+        "id": {
+            "label": "候補者への質問",
+            "longlabel": "候補者への質問"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "オーナー名",
+            "longlabel": "オーナー名"
+        },
+        "source": {
+            "label": "ソース",
+            "longlabel": "ソース"
+        },
+        "createdon": {
+            "label": "追加日",
+            "longlabel": "追加日"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "profilexing": {
+            "label": "プロフィール(Xing)",
+            "longlabel": "プロフィール(Xing)"
+        },
+        "email_opt_out": {
+            "label": "不参加",
+            "longlabel": "不参加"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国",
+            "longlabel": "国"
+        },
+        "unavailable": {
+            "label": "空室状況",
+            "longlabel": "空室状況"
+        },
+        "summary": {
+            "label": "概要",
+            "longlabel": "概要"
+        },
+        "jobstatus": {
+            "label": "仕事の状況",
+            "longlabel": "仕事の状況"
+        },
+        "resumeupdaterequestedon": {
+            "label": "プロフィールリクエストの送信",
+            "longlabel": "プロフィールリクエストの送信"
+        },
+        "willingtorelocate": {
+            "label": "転居を希望",
+            "longlabel": "転居を希望"
+        },
+        "currentstatus": {
+            "label": "雇用状況",
+            "longlabel": "雇用状況"
+        },
+        "languageskills": {
+            "label": "言語",
+            "longlabel": "言語"
+        },
+        "skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "職務経歴書",
+            "longlabel": "職務経歴書"
+        },
+        "assigned_job_coverletter": {
+            "label": "求人応募のカバーレター",
+            "longlabel": "求人応募のカバーレター"
+        },
+        "assigned_job_portfolio": {
+            "label": "求人応募ポートフォリオ",
+            "longlabel": "求人応募ポートフォリオ"
+        },
+        "assigned_job_other_file_1": {
+            "label": "求人応募ファイル1",
+            "longlabel": "求人応募ファイル1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "求人応募ファイル2",
+            "longlabel": "求人応募ファイル2"
+        },
+        "work_history": {
+            "label": "職歴",
+            "longlabel": "職歴"
+        },
+        "education_history": {
+            "label": "教育史",
+            "longlabel": "教育史"
+        },
+        "companyname": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "job_type": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "job_category": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "resumeupdatedon": {
+            "label": "プロフィール更新日",
+            "longlabel": "プロフィール更新日"
+        },
+        "requestresumelinkstatus": {
+            "label": "レジュメ・リンク・ステータスのリクエスト",
+            "longlabel": "レジュメ・リンク・ステータスのリクエスト"
+        },
+        "resumeaddedon": {
+            "label": "レジュメ追加",
+            "longlabel": "レジュメ追加"
+        },
+        "off_limit_status": {
+            "label": "オフ・リミット・ステータス",
+            "longlabel": "オフ・リミット・ステータス"
+        },
+        "sms_opt_out": {
+            "label": "SMSオプトアウト",
+            "longlabel": "SMSオプトアウト"
+        },
+        "last_calllog_created_on": {
+            "label": "ラストコールログ追加",
+            "longlabel": "ラストコールログ追加"
+        },
+        "last_sms_sent_on": {
+            "label": "最後に送信されたSMS",
+            "longlabel": "最後に送信されたSMS"
+        },
+        "last_email_sent_on": {
+            "label": "最終送信日",
+            "longlabel": "最終送信日"
+        },
+        "last_communication_timestamp": {
+            "label": "最後のコミュニケーション",
+            "longlabel": "最後のコミュニケーション"
+        },
+        "last_communication_method": {
+            "label": "最後の通信タイプ",
+            "longlabel": "最後の通信タイプ"
+        },
+        "remote": {
+            "label": "勤務地タイプ",
+            "longlabel": "勤務地タイプ"
+        },
+        "last_meeting_created_on": {
+            "label": "前回のミーティングを追加",
+            "longlabel": "前回のミーティングを追加"
+        },
+        "last_message_sent_on": {
+            "label": "LinkedInの最終メッセージ送信日",
+            "longlabel": "LinkedInの最終メッセージ送信日"
+        },
+        "timesheet_setting": {
+            "label": "タイムシート",
+            "longlabel": "タイムシート"
+        },
+        "srno": {
+            "label": "身分証明書",
+            "longlabel": "候補者ID"
+        },
+        "updatedby": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "job_function": {
+            "label": "職能",
+            "longlabel": "職能"
+        },
+        "job_industry": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "placement_id": {
+            "label": "プレースメント",
+            "longlabel": "プレースメント"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        }
+    },
+    "companies": {
+        "id": {
+            "label": "Id",
+            "longlabel": "Id"
+        },
+        "srno": {
+            "label": "身分証明書",
+            "longlabel": "会社ID"
+        },
+        "companyname": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "会社住所"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "industryid": {
+            "label": "業界",
+            "longlabel": "業界"
+        },
+        "industry": {
+            "label": "業界",
+            "longlabel": "業界"
+        },
+        "website": {
+            "label": "ウェブサイト",
+            "longlabel": "ウェブサイト"
+        },
+        "totalopenjob": {
+            "label": "ジョブ(オープン)",
+            "longlabel": "合計(オープンしているジョブ)"
+        },
+        "totalclosedjob": {
+            "label": "ジョブ(クローズ）",
+            "longlabel": "合計(クローズしたジョブ)"
+        },
+        "totalonholdjob": {
+            "label": "保留中の求人",
+            "longlabel": "保留中の求人"
+        },
+        "totalcanceledjob": {
+            "label": "キャンセルされたジョブ",
+            "longlabel": "キャンセルされたジョブ"
+        },
+        "logo": {
+            "label": "ロゴ",
+            "longlabel": "会社ロゴ"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "profilefacebook": {
+            "label": "プロフィール(Facebook)",
+            "longlabel": "会社プロフィール(Facebook)"
+        },
+        "profiletwitter": {
+            "label": "プロフィール(Twitter)",
+            "longlabel": "会社概要"
+        },
+        "profilelinkedin": {
+            "label": "プロフィール(Linkedin)",
+            "longlabel": "会社概要"
+        },
+        "ownername": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "creatorname": {
+            "label": "作成者名",
+            "longlabel": "作成者"
+        },
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "deleted": {
+            "label": "削除",
+            "longlabel": "削除"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "updatedby": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "slug": {
+            "label": "アクション",
+            "longlabel": "アクション"
+        },
+        "note": {
+            "label": "ノート",
+            "longlabel": "カンパニーノート"
+        },
+        "aboutcompany": {
+            "label": "会社概要",
+            "longlabel": "会社概要"
+        },
+        "parentcompanyname": {
+            "label": "親会社",
+            "longlabel": "親会社名"
+        },
+        "off_limit_status": {
+            "label": "オフ・リミット・ステータス",
+            "longlabel": "オフ・リミット・ステータス"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "会社所在地"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "会社名"
+        },
+        "country": {
+            "label": "国名",
+            "longlabel": "国名"
+        },
+        "postal_code": {
+            "label": "郵便番号",
+            "longlabel": "会社郵便番号"
+        },
+        "last_meeting_created_on": {
+            "label": "前回のミーティングを追加",
+            "longlabel": "前回のミーティングを追加"
+        },
+        "linkedin_id": {
+            "label": "LinkedIn 企業ID",
+            "longlabel": "LinkedIn 企業ID"
+        },
+        "monster_board_company_name": {
+            "label": "モンスター・ボード・カンパニー",
+            "longlabel": "モンスター・ボード・カンパニー"
+        },
+        "indeed_opted_out": {
+            "label": "確かにオプトアウト",
+            "longlabel": "確かにオプトアウト"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        }
+    },
+    "contacts": {
+        "id": {
+            "label": "ID",
+            "longlabel": "コンタクトID"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "コンタクトID"
+        },
+        "name": {
+            "label": "名前",
+            "longlabel": "コンタクト　名前"
+        },
+        "firstname": {
+            "label": "コンタクト名前（名）",
+            "longlabel": "コンタクト名前（名）"
+        },
+        "lastname": {
+            "label": "名前（姓）",
+            "longlabel": "コンタクト名前（姓）"
+        },
+        "stageid": {
+            "label": "ステージ",
+            "longlabel": "コンタクトステージ"
+        },
+        "stage": {
+            "label": "ステージ",
+            "longlabel": "コンタクトステージ"
+        },
+        "companyid": {
+            "label": "会社",
+            "longlabel": "会社"
+        },
+        "companyslug": {
+            "label": "カンパニー・スラッグ",
+            "longlabel": "カンパニー・スラッグ"
+        },
+        "companyname": {
+            "label": "会社",
+            "longlabel": "会社名"
+        },
+        "email": {
+            "label": "メール",
+            "longlabel": "メール"
+        },
+        "contactnumber": {
+            "label": "電話番号",
+            "longlabel": "電話番号"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "連絡先住所"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownerslug": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "profilefacebook": {
+            "label": "プロフィール(Facebook)",
+            "longlabel": "プロフィールURL(Facebook)"
+        },
+        "profiletwitter": {
+            "label": "プロフィール(Twitter)",
+            "longlabel": "プロフィールURL(Twitter)"
+        },
+        "profilelinkedin": {
+            "label": "プロフィール(Linkedin)",
+            "longlabel": "プロフィールURL(Linkedin)"
+        },
+        "designation": {
+            "label": "タイトル",
+            "longlabel": "タイトル"
+        },
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "canaccess": {
+            "label": "アクセス",
+            "longlabel": "アクセス"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdbyname": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "deleted": {
+            "label": "削除",
+            "longlabel": "削除"
+        },
+        "slug": {
+            "label": "アクション",
+            "longlabel": "アクション"
+        },
+        "note": {
+            "label": "ノート",
+            "longlabel": "ノート(コンタクト)"
+        },
+        "photo": {
+            "label": "プロフィール写真",
+            "longlabel": "プロフィール写真"
+        },
+        "company_accountid": {
+            "label": "会社 - アカウントID",
+            "longlabel": "会社 - アカウントID"
+        },
+        "company_address": {
+            "label": "会社-住所",
+            "longlabel": "会社-住所"
+        },
+        "company_city": {
+            "label": "会社 - 都市",
+            "longlabel": "会社 - 都市"
+        },
+        "company_companyname": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "company_parentcompanyname": {
+            "label": "会社 - 親会社",
+            "longlabel": "会社 - 親会社名"
+        },
+        "company_createdby": {
+            "label": "会社 - 作成者",
+            "longlabel": "会社 - 作成者"
+        },
+        "company_createdon": {
+            "label": "会社-追加日",
+            "longlabel": "会社-追加日"
+        },
+        "company_creatorname": {
+            "label": "会社 - クリエイター名",
+            "longlabel": "会社 - クリエイター名"
+        },
+        "company_deleted": {
+            "label": "会社 - 削除",
+            "longlabel": "会社 - 削除"
+        },
+        "company_id": {
+            "label": "会社-ID",
+            "longlabel": "会社-ID"
+        },
+        "company_industry": {
+            "label": "会社 - 業界",
+            "longlabel": "企業 - 業界"
+        },
+        "company_industryid": {
+            "label": "会社 - 業界",
+            "longlabel": "会社 - 業界"
+        },
+        "company_logo": {
+            "label": "会社 - ロゴ",
+            "longlabel": "会社 - ロゴ"
+        },
+        "company_note": {
+            "label": "会社 - Note",
+            "longlabel": "会社 - Note"
+        },
+        "company_ownerid": {
+            "label": "会社 - オーナー",
+            "longlabel": "会社 - オーナー名"
+        },
+        "company_ownername": {
+            "label": "会社 - オーナー名",
+            "longlabel": "会社 - オーナー名"
+        },
+        "company_profilefacebook": {
+            "label": "会社 - Facebookプロフィール",
+            "longlabel": "会社 - Facebookプロフィール"
+        },
+        "company_profilelinkedin": {
+            "label": "会社 - Linkedinプロフィール",
+            "longlabel": "会社 - Linkedinプロフィール"
+        },
+        "company_profiletwitter": {
+            "label": "会社 - Twitterプロフィール",
+            "longlabel": "会社 - Twitterプロフィール"
+        },
+        "company_slug": {
+            "label": "会社 - アクション",
+            "longlabel": "会社 - アクション"
+        },
+        "company_srno": {
+            "label": "会社 - ID",
+            "longlabel": "会社 - ID"
+        },
+        "company_totalcanceledjob": {
+            "label": "会社 - キャンセルされた求人",
+            "longlabel": "会社 - キャンセルされた求人"
+        },
+        "company_totalclosedjob": {
+            "label": "会社 - 非公開求人",
+            "longlabel": "会社-合計(クローズしたジョブ)"
+        },
+        "company_totalonholdjob": {
+            "label": "Company - On Hold Jobs",
+            "longlabel": "Company - On Hold Jobs"
+        },
+        "company_totalopenjob": {
+            "label": "会社 - 公開求人",
+            "longlabel": "会社 - (合計)公開求人"
+        },
+        "company_updatedby": {
+            "label": "会社 - 更新者",
+            "longlabel": "会社 - 更新者"
+        },
+        "company_updatedon": {
+            "label": "会社 - 更新日",
+            "longlabel": "会社 - 更新日"
+        },
+        "company_website": {
+            "label": "会社 - ウェブサイト",
+            "longlabel": "会社 - ウェブサイト"
+        },
+        "parentcompanyname": {
+            "label": "会社 - 親会社",
+            "longlabel": "会社 - 親会社名"
+        },
+        "profilexing": {
+            "label": "プロフィール(Xing)",
+            "longlabel": "XingプロフィールURL"
+        },
+        "off_limit_status": {
+            "label": "オフ・リミット・ステータス",
+            "longlabel": "オフ・リミット・ステータス"
+        },
+        "sms_opt_out": {
+            "label": "SMSオプトアウト",
+            "longlabel": "SMSオプトアウト"
+        },
+        "last_calllog_created_on": {
+            "label": "ラストコールログ追加",
+            "longlabel": "ラストコールログ追加"
+        },
+        "last_sms_sent_on": {
+            "label": "最後に送信されたSMS",
+            "longlabel": "最後に送信されたSMS"
+        },
+        "last_email_sent_on": {
+            "label": "最終送信日",
+            "longlabel": "最終送信日"
+        },
+        "last_communication_timestamp": {
+            "label": "最後のコミュニケーション",
+            "longlabel": "最後のコミュニケーション"
+        },
+        "last_communication_method": {
+            "label": "最後の通信タイプ",
+            "longlabel": "最後の通信タイプ"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "連絡先"
+        },
+        "country": {
+            "label": "国名",
+            "longlabel": "連絡先"
+        },
+        "postal_code": {
+            "label": "郵便番号",
+            "longlabel": "連絡先郵便番号"
+        },
+        "company_locality": {
+            "label": "会社 - 地域",
+            "longlabel": "会社 - 地域"
+        },
+        "company_state": {
+            "label": "会社 - 州",
+            "longlabel": "会社 - 州"
+        },
+        "company_country": {
+            "label": "会社 - 国",
+            "longlabel": "会社 - 国"
+        },
+        "company_postal_code": {
+            "label": "会社名 - 郵便番号",
+            "longlabel": "会社名 - 郵便番号"
+        },
+        "last_meeting_created_on": {
+            "label": "前回のミーティングを追加",
+            "longlabel": "前回のミーティングを追加"
+        },
+        "last_message_sent_on": {
+            "label": "LinkedInの最終メッセージ送信日",
+            "longlabel": "LinkedInの最終メッセージ送信日"
+        },
+        "company_linkedin_id": {
+            "label": "会社名 - LinkedIn ID",
+            "longlabel": "会社名 - LinkedIn ID"
+        },
+        "company_monster_board_company_name": {
+            "label": "会社 - モンスター・ボード・カンパニー",
+            "longlabel": "会社 - モンスター・ボード・カンパニー"
+        },
+        "company_indeed_opted_out": {
+            "label": "会社 - Indeedはオプトアウト",
+            "longlabel": "会社 - Indeedはオプトアウト"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        }
+    },
+    "jobs": {
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ジョブID"
+        },
+        "name": {
+            "label": "名称",
+            "longlabel": "タイトル"
+        },
+        "jobstatus": {
+            "label": "ステータス",
+            "longlabel": "ジョブステータス"
+        },
+        "jobstatuslabel": {
+            "label": "ステータス",
+            "longlabel": "ジョブステータス"
+        },
+        "companyid": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "companyname": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "contactid": {
+            "label": "連絡先",
+            "longlabel": "連絡先"
+        },
+        "salarytype": {
+            "label": "給与タイプ",
+            "longlabel": "給与タイプ"
+        },
+        "currencyid": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国",
+            "longlabel": "国"
+        },
+        "collaborator": {
+            "label": "コラボレーター",
+            "longlabel": "コラボレーター"
+        },
+        "jobquestions": {
+            "label": "求人応募フォームに関する質問",
+            "longlabel": "求人応募フォームに関する質問"
+        },
+        "allowapply": {
+            "label": "求人応募フォームを有効にする",
+            "longlabel": "求人応募フォームを有効にする"
+        },
+        "description": {
+            "label": "ノート(候補者向け)",
+            "longlabel": "ノート(候補者向け)"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "学歴"
+        },
+        "qualification": {
+            "label": "資格ラベル",
+            "longlabel": "資格ラベル"
+        },
+        "specialization": {
+            "label": "専門性",
+            "longlabel": "教育の専門性"
+        },
+        "detailfilename": {
+            "label": "仕事内容(JD)",
+            "longlabel": "仕事内容(JD)"
+        },
+        "jdtext": {
+            "label": "仕事内容(JD)",
+            "longlabel": "仕事内容(JD)"
+        },
+        "jdtextdetails": {
+            "label": "仕事内容(JD)",
+            "longlabel": "仕事内容(JD)"
+        },
+        "minexperienceinyears": {
+            "label": "最低経験年数",
+            "longlabel": "最低経験年数"
+        },
+        "maxexperienceinyears": {
+            "label": "最大経験（年）",
+            "longlabel": "最大経験（年）"
+        },
+        "annualsalarymin": {
+            "label": "給与(下限)",
+            "longlabel": "給与(下限)"
+        },
+        "annualsalarymax": {
+            "label": "給与(上限)",
+            "longlabel": "給与(上限)"
+        },
+        "noofopenings": {
+            "label": "オープン",
+            "longlabel": "募集人数"
+        },
+        "contactname": {
+            "label": "連絡先氏名",
+            "longlabel": "連絡先氏名"
+        },
+        "contactemail": {
+            "label": "メール",
+            "longlabel": "メール"
+        },
+        "contactnumber": {
+            "label": "電話番号",
+            "longlabel": "電話番号"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "creatorname": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdon": {
+            "label": "追加日",
+            "longlabel": "追加日"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "slug": {
+            "label": "アクション",
+            "longlabel": "アクション"
+        },
+        "jobpostingstatus": {
+            "label": "アクション",
+            "longlabel": "求人掲載状況"
+        },
+        "note": {
+            "label": "ノート",
+            "longlabel": "ノート"
+        },
+        "contactslug": {
+            "label": "スラッグ",
+            "longlabel": "スラッグ"
+        },
+        "companyslug": {
+            "label": "スラッグ",
+            "longlabel": "スラッグ"
+        },
+        "hiring_pipeline_id": {
+            "label": "パイプライン",
+            "longlabel": "パイプライン"
+        },
+        "job_skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "job_type": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "job_category": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "secondarycontactid": {
+            "label": "二次コンタクト",
+            "longlabel": "二次コンタクト"
+        },
+        "targetcompanies": {
+            "label": "対象企業",
+            "longlabel": "対象企業"
+        },
+        "remote": {
+            "label": "勤務地タイプ",
+            "longlabel": "勤務地タイプ"
+        },
+        "rate_type": {
+            "label": "レートタイプ",
+            "longlabel": "レートタイプ"
+        },
+        "pay_rate": {
+            "label": "給与率",
+            "longlabel": "給与率"
+        },
+        "bill_rate": {
+            "label": "請求レート",
+            "longlabel": "請求レート"
+        },
+        "job_function": {
+            "label": "職能",
+            "longlabel": "職能"
+        },
+        "job_industry": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        },
+        "salaryrange": {
+            "label": "給与範囲",
+            "longlabel": "給与範囲"
+        }
+    },
+    "deals": {
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "ディール ID"
+        },
+        "name": {
+            "label": "ネーム",
+            "longlabel": "ディール名"
+        },
+        "dealstage": {
+            "label": "ステージ",
+            "longlabel": "ステージ"
+        },
+        "dealstagelabel": {
+            "label": "ステージ",
+            "longlabel": "ステージ"
+        },
+        "percentage": {
+            "label": "ステージ(ウエイト)",
+            "longlabel": "ステージ(ウエイト)"
+        },
+        "dealvalue": {
+            "label": "ディール額",
+            "longlabel": "ディール額"
+        },
+        "dealpercentagevalue": {
+            "label": "ディール額(ウエイト)",
+            "longlabel": "ディール額(ウエイト)"
+        },
+        "dealtype": {
+            "label": "ディールタイプ",
+            "longlabel": "ディールタイプ"
+        },
+        "archived": {
+            "label": "アーカイブ",
+            "longlabel": "アーカイブ"
+        },
+        "dealtypelabel": {
+            "label": "ディールタイプ",
+            "longlabel": "ディールタイプ"
+        },
+        "closedate": {
+            "label": "終了日",
+            "longlabel": "終了日"
+        },
+        "relatedcompany": {
+            "label": "会社概要",
+            "longlabel": "会社概要"
+        },
+        "relatedcontact": {
+            "label": "連絡先",
+            "longlabel": "連絡先"
+        },
+        "companyname": {
+            "label": "会社",
+            "longlabel": "会社名"
+        },
+        "website": {
+            "label": "ウェブサイト",
+            "longlabel": "ウェブサイト"
+        },
+        "relatedjob": {
+            "label": "仕事",
+            "longlabel": "仕事"
+        },
+        "jobname": {
+            "label": "ジョブ",
+            "longlabel": "ジョブ名"
+        },
+        "jobcity": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "relatedcandidate": {
+            "label": "候補者",
+            "longlabel": "候補者"
+        },
+        "candidatename": {
+            "label": "候補者名",
+            "longlabel": "候補者名"
+        },
+        "candidatetitle": {
+            "label": "タイトル",
+            "longlabel": "タイトル / ポジション"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownerslug": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "updatedby": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "createdbyname": {
+            "label": "作成者",
+            "longlabel": "作成者名"
+        },
+        "updatedbyname": {
+            "label": "更新者名",
+            "longlabel": "更新者名"
+        },
+        "slug": {
+            "label": "アクション",
+            "longlabel": "アクション"
+        },
+        "companyslug": {
+            "label": "スラッグ",
+            "longlabel": "スラッグ"
+        },
+        "jobslug": {
+            "label": "スラッグ",
+            "longlabel": "スラッグ"
+        },
+        "candidateslug": {
+            "label": "スラッグ",
+            "longlabel": "スラッグ"
+        },
+        "collaborator": {
+            "label": "協力者",
+            "longlabel": "協力者"
+        },
+        "splitdealvalue": {
+            "label": "スプリット・ディール額",
+            "longlabel": "スプリット・ディール額"
+        },
+        "weightedsplitdealvalue": {
+            "label": "加重分割取引額",
+            "longlabel": "加重分割取引額"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        }
+    },
+    "reports_assigned_candidates": {
+        "address": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "age": {
+            "label": "年齢",
+            "longlabel": "候補者の年齢"
+        },
+        "availablefrom": {
+            "label": "Available From",
+            "longlabel": "Available From"
+        },
+        "candidatedob": {
+            "label": "生年月日",
+            "longlabel": "候補者生年月日"
+        },
+        "candidateid": {
+            "label": "候補者",
+            "longlabel": "候補者"
+        },
+        "candidatename": {
+            "label": "候補者",
+            "longlabel": "候補者"
+        },
+        "candidatestatus": {
+            "label": "採用ステージ",
+            "longlabel": "候補者の現在の採用ステージをクリックすることで、採用ステージを変更し、フィードバックを送信することができます。"
+        },
+        "candidatestatusid": {
+            "label": "採用ステージ",
+            "longlabel": "候補者の現在の採用ステージをクリックすることで、採用ステージを変更し、フィードバックを送信することができます。"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "contactnumber": {
+            "label": "電話",
+            "longlabel": "電話"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "currentsalary": {
+            "label": "現在の給与",
+            "longlabel": "現在の給与"
+        },
+        "emailid": {
+            "label": "Eメール",
+            "longlabel": "Eメール"
+        },
+        "firstname": {
+            "label": "名前(名)",
+            "longlabel": "名前(名)"
+        },
+        "genderid": {
+            "label": "性別",
+            "longlabel": "性別"
+        },
+        "id": {
+            "label": "候補者への質問",
+            "longlabel": "候補者への質問"
+        },
+        "jobid": {
+            "label": "仕事",
+            "longlabel": "仕事"
+        },
+        "jobname": {
+            "label": "仕事",
+            "longlabel": "仕事"
+        },
+        "jobslug": {
+            "label": "仕事",
+            "longlabel": "Job Slug"
+        },
+        "lastname": {
+            "label": "苗字(姓)",
+            "longlabel": "苗字(姓)"
+        },
+        "lastorganisation": {
+            "label": "現在の組織",
+            "longlabel": "現在の組織"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "noticeperiod": {
+            "label": "通知期間",
+            "longlabel": "通知期間（日）"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "オーナー名",
+            "longlabel": "オーナー名"
+        },
+        "position": {
+            "label": "タイトル",
+            "longlabel": "タイトル/ポジション"
+        },
+        "profilefacebook": {
+            "label": "Facebookプロフィール",
+            "longlabel": "Facebookプロフィール"
+        },
+        "profilegithub": {
+            "label": "Githubプロフィール",
+            "longlabel": "Githubプロフィール"
+        },
+        "profilelinkedin": {
+            "label": "LinkedIn プロフィール",
+            "longlabel": "LinkedIn プロフィール"
+        },
+        "profiletwitter": {
+            "label": "Twitter プロフィール",
+            "longlabel": "Twitter プロフィール"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "資格"
+        },
+        "relevantexperience": {
+            "label": "関連する経験",
+            "longlabel": "関連する経験"
+        },
+        "remark": {
+            "label": "備考",
+            "longlabel": "備考"
+        },
+        "resume": {
+            "label": "レジュメ",
+            "longlabel": "レジュメ"
+        },
+        "resumefilename": {
+            "label": "レジュメ",
+            "longlabel": "レジュメ"
+        },
+        "resumetext": {
+            "label": "レジュメテキスト",
+            "longlabel": "レジュメテキスト"
+        },
+        "salaryexpectation": {
+            "label": "期待給与",
+            "longlabel": "期待給与"
+        },
+        "share": {
+            "label": "Visibility",
+            "longlabel": "Visibility"
+        },
+        "source": {
+            "label": "ソース",
+            "longlabel": "ソース"
+        },
+        "specialization": {
+            "label": "専門性",
+            "longlabel": "専門性"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "workexpyr": {
+            "label": "総経験(年数)",
+            "longlabel": "総経験(年数)"
+        },
+        "currenthiringstage": {
+            "label": "現在の採用段階",
+            "longlabel": "現在の採用段階"
+        },
+        "assignedby": {
+            "label": "担当者",
+            "longlabel": "担当者"
+        },
+        "stagedate": {
+            "label": "日程",
+            "longlabel": "日程"
+        },
+        "companyname": {
+            "label": "会社",
+            "longlabel": "会社名"
+        },
+        "companycontactname": {
+            "label": "担当者名",
+            "longlabel": "担当者名"
+        },
+        "jobownername": {
+            "label": "ジョブ・オーナー名",
+            "longlabel": "ジョブ・オーナー名"
+        },
+        "profilexing": {
+            "label": "プロフィール(Xing)",
+            "longlabel": "プロフィール(Xing)"
+        },
+        "email_opt_out": {
+            "label": "不参加",
+            "longlabel": "不参加"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国",
+            "longlabel": "国"
+        },
+        "job_srno": {
+            "label": "ジョブID",
+            "longlabel": "ジョブID"
+        },
+        "jobstatus": {
+            "label": "仕事の状況",
+            "longlabel": "仕事の状況"
+        },
+        "unavailable": {
+            "label": "在庫状況",
+            "longlabel": "使用不可"
+        },
+        "summary": {
+            "label": "概要",
+            "longlabel": "概要"
+        },
+        "skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "work_history": {
+            "label": "職歴",
+            "longlabel": "職歴"
+        },
+        "education_history": {
+            "label": "教育史",
+            "longlabel": "教育史"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "職務経歴書",
+            "longlabel": "職務経歴書"
+        },
+        "hotlist": {
+            "label": "ホットリスト",
+            "longlabel": "ホットリスト"
+        },
+        "assigned_job_coverletter": {
+            "label": "求人応募のカバーレター",
+            "longlabel": "求人応募のカバーレター"
+        },
+        "assigned_job_portfolio": {
+            "label": "求人応募ポートフォリオ",
+            "longlabel": "求人応募ポートフォリオ"
+        },
+        "assigned_job_other_file_1": {
+            "label": "求人応募ファイル1",
+            "longlabel": "求人応募ファイル1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "求人応募ファイル2",
+            "longlabel": "求人応募ファイル2"
+        },
+        "job_type": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "job_category": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "resumeupdatedon": {
+            "label": "プロフィール更新日",
+            "longlabel": "プロフィール更新日"
+        },
+        "requestresumelinkstatus": {
+            "label": "レジュメ・リンク・ステータスのリクエスト",
+            "longlabel": "レジュメ・リンク・ステータスのリクエスト"
+        },
+        "resumeaddedon": {
+            "label": "レジュメ追加",
+            "longlabel": "レジュメ追加"
+        },
+        "contactemail": {
+            "label": "ジョブ・コンタクトEメール",
+            "longlabel": "ジョブ・コンタクトEメール"
+        },
+        "off_limit_status": {
+            "label": "オフ・リミット・ステータス",
+            "longlabel": "オフ・リミット・ステータス"
+        },
+        "sms_opt_out": {
+            "label": "SMSオプトアウト",
+            "longlabel": "SMSオプトアウト"
+        },
+        "remote": {
+            "label": "勤務地タイプ",
+            "longlabel": "勤務地タイプ"
+        },
+        "last_calllog_created_on": {
+            "label": "ラストコールログ追加",
+            "longlabel": "ラストコールログ追加"
+        },
+        "last_sms_sent_on": {
+            "label": "最後に送信されたSMS",
+            "longlabel": "最後に送信されたSMS"
+        },
+        "last_email_sent_on": {
+            "label": "最終送信日",
+            "longlabel": "最終送信日"
+        },
+        "last_communication_timestamp": {
+            "label": "最後のコミュニケーション",
+            "longlabel": "最後のコミュニケーション"
+        },
+        "last_communication_method": {
+            "label": "最後の通信タイプ",
+            "longlabel": "最後の通信タイプ"
+        },
+        "last_meeting_created_on": {
+            "label": "前回のミーティングを追加",
+            "longlabel": "前回のミーティングを追加"
+        },
+        "last_message_sent_on": {
+            "label": "LinkedInの最終メッセージ送信日",
+            "longlabel": "LinkedInの最終メッセージ送信日"
+        },
+        "job_function": {
+            "label": "職能",
+            "longlabel": "職能"
+        },
+        "job_industry": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        }
+    },
+    "reports_pitch_candidates": {
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "accountlogo": {
+            "label": "アカウントロゴ",
+            "longlabel": "アカウントロゴ"
+        },
+        "accounttitle": {
+            "label": "Account Title",
+            "longlabel": "Account Title"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "age": {
+            "label": "年齢",
+            "longlabel": "候補者の年齢"
+        },
+        "authid": {
+            "label": "認証ID",
+            "longlabel": "認証ID"
+        },
+        "availablefrom": {
+            "label": "利用可能",
+            "longlabel": "利用可能"
+        },
+        "canaccess": {
+            "label": "アクセス",
+            "longlabel": "アクセス"
+        },
+        "candidatedob": {
+            "label": "生年月日",
+            "longlabel": "生年月日"
+        },
+        "candidatename": {
+            "label": "名称",
+            "longlabel": "候補者名"
+        },
+        "candidateterms": {
+            "label": "候補者の条件",
+            "longlabel": "候補者の条件"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "contactnumber": {
+            "label": "電話",
+            "longlabel": "電話"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdbyname": {
+            "label": "作成者名",
+            "longlabel": "作成者名"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "currencycountry": {
+            "label": "通貨 国",
+            "longlabel": "通貨 国"
+        },
+        "currencyid": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "currentsalary": {
+            "label": "現在の給与",
+            "longlabel": "現在の給与"
+        },
+        "currentstatus": {
+            "label": "雇用状況",
+            "longlabel": "現在の雇用状況"
+        },
+        "deleted": {
+            "label": "削除",
+            "longlabel": "削除"
+        },
+        "eeocompliance": {
+            "label": "EEO コンプライアンス",
+            "longlabel": "EEO コンプライアンス"
+        },
+        "emailid": {
+            "label": "Eメール",
+            "longlabel": "Eメール"
+        },
+        "firstname": {
+            "label": "名前",
+            "longlabel": "候補者の名前"
+        },
+        "gdprcompliance": {
+            "label": "GDPR コンプライアンス",
+            "longlabel": "GDPR コンプライアンス"
+        },
+        "genderid": {
+            "label": "性別",
+            "longlabel": "性別"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "jobapplicationsettings": {
+            "label": "求人応募の設定",
+            "longlabel": "求人応募の設定"
+        },
+        "languageskills": {
+            "label": "言語",
+            "longlabel": "語学力"
+        },
+        "lastname": {
+            "label": "名字",
+            "longlabel": "候補者の名字"
+        },
+        "lastorganisation": {
+            "label": "現在の組織",
+            "longlabel": "現在の組織"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "note": {
+            "label": "Note",
+            "longlabel": "Note"
+        },
+        "noticeperiod": {
+            "label": "退職通知期限",
+            "longlabel": "退職通知期限（日）"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "オーナー名",
+            "longlabel": "オーナー名"
+        },
+        "ownerslug": {
+            "label": "オーナー ",
+            "longlabel": "オーナー "
+        },
+        "position": {
+            "label": "タイトル",
+            "longlabel": "タイトル/ポジション"
+        },
+        "profilefacebook": {
+            "label": "Facebookプロフィール",
+            "longlabel": "Facebookプロフィール"
+        },
+        "profilegithub": {
+            "label": "Githubプロフィール",
+            "longlabel": "Githubプロフィール"
+        },
+        "profilelinkedin": {
+            "label": "LinkedInプロフィール",
+            "longlabel": "LinkedInプロフィール"
+        },
+        "profilepic": {
+            "label": "プロフィール写真",
+            "longlabel": "プロフィール写真"
+        },
+        "profiletwitter": {
+            "label": "Twitter プロフィール",
+            "longlabel": "Twitter プロフィール"
+        },
+        "qualification": {
+            "label": "資格ラベル",
+            "longlabel": "資格ラベル"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "学歴"
+        },
+        "relevantexperience": {
+            "label": "関連する経験",
+            "longlabel": "関連する経験"
+        },
+        "requestresumelinkstatus": {
+            "label": "レジュメ・リンク・ステータスのリクエスト",
+            "longlabel": "レジュメ・リンク・ステータスのリクエスト"
+        },
+        "resume": {
+            "label": "レジュメ",
+            "longlabel": "レジュメ"
+        },
+        "resumeaddedon": {
+            "label": "レジュメ追加",
+            "longlabel": "レジュメ追加"
+        },
+        "resumefilename": {
+            "label": "レジュメ",
+            "longlabel": "レジュメ"
+        },
+        "resumetext": {
+            "label": "レジュメテキスト",
+            "longlabel": "レジュメテキスト"
+        },
+        "resumeupdatedon": {
+            "label": "プロフィール更新日",
+            "longlabel": "プロフィール更新日"
+        },
+        "resumeupdaterequestedon": {
+            "label": "プロフィールリクエストの送信",
+            "longlabel": "プロフィールリクエストの送信"
+        },
+        "salaryexpectation": {
+            "label": "希望年収",
+            "longlabel": "希望年収"
+        },
+        "salarytype": {
+            "label": "給与タイプ",
+            "longlabel": "給与タイプ"
+        },
+        "skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "slug": {
+            "label": "アクション",
+            "longlabel": "スラッグ"
+        },
+        "source": {
+            "label": "ソース",
+            "longlabel": "ソース"
+        },
+        "specialization": {
+            "label": "専門分野",
+            "longlabel": "教育の専門性"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "候補者ID"
+        },
+        "symbol": {
+            "label": "Symbol",
+            "longlabel": "Symbol"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "willingtorelocate": {
+            "label": "転居を可能",
+            "longlabel": "転居を可能"
+        },
+        "workexpyr": {
+            "label": "経験年数(合計)",
+            "longlabel": "経験年数(合計)"
+        },
+        "stagedate": {
+            "label": "日程",
+            "longlabel": "日程"
+        },
+        "pitchedcontactname": {
+            "label": "ピッチ先",
+            "longlabel": "ピッチ先"
+        },
+        "profilexing": {
+            "label": "プロフィール(Xing)",
+            "longlabel": "プロフィール(Xing)"
+        },
+        "email_opt_out": {
+            "label": "不参加",
+            "longlabel": "不参加"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国",
+            "longlabel": "国"
+        },
+        "off_limit_status": {
+            "label": "オフ・リミット・ステータス",
+            "longlabel": "オフ・リミット・ステータス"
+        },
+        "sms_opt_out": {
+            "label": "SMSオプトアウト",
+            "longlabel": "SMSオプトアウト"
+        },
+        "last_calllog_created_on": {
+            "label": "ラストコールログ追加",
+            "longlabel": "ラストコールログ追加"
+        },
+        "last_sms_sent_on": {
+            "label": "最後に送信されたSMS",
+            "longlabel": "最後に送信されたSMS"
+        },
+        "last_email_sent_on": {
+            "label": "最終送信日",
+            "longlabel": "最終送信日"
+        },
+        "last_communication_timestamp": {
+            "label": "最後のコミュニケーション",
+            "longlabel": "最後のコミュニケーション"
+        },
+        "last_communication_method": {
+            "label": "最後の通信タイプ",
+            "longlabel": "最後の通信タイプ"
+        },
+        "last_meeting_created_on": {
+            "label": "前回のミーティングを追加",
+            "longlabel": "前回のミーティングを追加"
+        },
+        "last_message_sent_on": {
+            "label": "LinkedInの最終メッセージ送信日",
+            "longlabel": "LinkedInの最終メッセージ送信日"
+        },
+        "last_note_created_on": {
+            "label": "最後のメモを追加",
+            "longlabel": "最後のメモを追加"
+        }
+    },
+    "company_candidates": {
+        "id": {
+            "label": "アイド",
+            "longlabel": "アイド"
+        },
+        "srno": {
+            "label": "身分証明書",
+            "longlabel": "候補者ID"
+        },
+        "candidatename": {
+            "label": "名称",
+            "longlabel": "候補者名"
+        },
+        "firstname": {
+            "label": "名前",
+            "longlabel": "候補者名"
+        },
+        "lastname": {
+            "label": "ラストネーム",
+            "longlabel": "候補者の姓"
+        },
+        "emailid": {
+            "label": "電子メール",
+            "longlabel": "電子メール"
+        },
+        "genderid": {
+            "label": "性別",
+            "longlabel": "性別"
+        },
+        "contactnumber": {
+            "label": "電話",
+            "longlabel": "電話"
+        },
+        "candidatedob": {
+            "label": "生年月日",
+            "longlabel": "生年月日"
+        },
+        "age": {
+            "label": "年齢",
+            "longlabel": "候補者の年齢"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "学歴"
+        },
+        "specialization": {
+            "label": "専門性",
+            "longlabel": "教育の専門性"
+        },
+        "workexpyr": {
+            "label": "総経験",
+            "longlabel": "総経験"
+        },
+        "relevantexperience": {
+            "label": "関連する経験",
+            "longlabel": "関連する経験"
+        },
+        "resumetext": {
+            "label": "履歴書テキスト",
+            "longlabel": "履歴書テキスト"
+        },
+        "currentsalary": {
+            "label": "現在の給与",
+            "longlabel": "現在の給与"
+        },
+        "resume": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "resumefilename": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "lastorganisation": {
+            "label": "現在の組織",
+            "longlabel": "現在の組織"
+        },
+        "skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "willingtorelocate": {
+            "label": "転居を希望",
+            "longlabel": "転居を希望"
+        },
+        "salaryexpectation": {
+            "label": "期待給与",
+            "longlabel": "期待給与"
+        },
+        "position": {
+            "label": "タイトル",
+            "longlabel": "役職名 / 役職"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "currencyid": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "currencycountry": {
+            "label": "通貨 国",
+            "longlabel": "通貨 国"
+        },
+        "symbol": {
+            "label": "シンボル",
+            "longlabel": "シンボル"
+        },
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownerslug": {
+            "label": "オーナー スラッグ",
+            "longlabel": "オーナー スラッグ"
+        },
+        "ownername": {
+            "label": "オーナー名",
+            "longlabel": "オーナー名"
+        },
+        "canaccess": {
+            "label": "アクセス",
+            "longlabel": "アクセス"
+        },
+        "profilepic": {
+            "label": "プロフィール写真",
+            "longlabel": "プロフィール写真"
+        },
+        "deleted": {
+            "label": "削除",
+            "longlabel": "削除"
+        },
+        "authid": {
+            "label": "認証ID",
+            "longlabel": "認証ID"
+        },
+        "resumeupdatedon": {
+            "label": "プロフィール更新日",
+            "longlabel": "プロフィール更新日"
+        },
+        "resumeupdaterequestedon": {
+            "label": "プロフィールリクエストの送信",
+            "longlabel": "プロフィールリクエストの送信"
+        },
+        "requestresumelinkstatus": {
+            "label": "レジュメ・リンク・ステータスのリクエスト",
+            "longlabel": "レジュメ・リンク・ステータスのリクエスト"
+        },
+        "resumeaddedon": {
+            "label": "レジュメ追加",
+            "longlabel": "レジュメ追加"
+        },
+        "profilefacebook": {
+            "label": "Facebookプロフィール",
+            "longlabel": "Facebookプロフィール"
+        },
+        "profiletwitter": {
+            "label": "ツイッター・プロフィール",
+            "longlabel": "ツイッター・プロフィール"
+        },
+        "profilelinkedin": {
+            "label": "リンクトイン・プロフィール",
+            "longlabel": "リンクトイン・プロフィール"
+        },
+        "profilegithub": {
+            "label": "Githubプロフィール",
+            "longlabel": "Githubプロフィール"
+        },
+        "source": {
+            "label": "ソース",
+            "longlabel": "ソース"
+        },
+        "createdbyname": {
+            "label": "作成者名",
+            "longlabel": "作成者名"
+        },
+        "qualification": {
+            "label": "資格ラベル",
+            "longlabel": "資格ラベル"
+        },
+        "currentstatus": {
+            "label": "雇用状況",
+            "longlabel": "現在の雇用状況"
+        },
+        "noticeperiod": {
+            "label": "通知期間",
+            "longlabel": "通知期間（日）"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "availablefrom": {
+            "label": "利用可能",
+            "longlabel": "利用可能"
+        },
+        "salarytype": {
+            "label": "給与タイプ",
+            "longlabel": "給与タイプ"
+        },
+        "languageskills": {
+            "label": "言語",
+            "longlabel": "語学力"
+        },
+        "accountlogo": {
+            "label": "アカウントロゴ",
+            "longlabel": "アカウントロゴ"
+        },
+        "accounttitle": {
+            "label": "口座名義",
+            "longlabel": "口座名義"
+        },
+        "candidateterms": {
+            "label": "候補者の条件",
+            "longlabel": "候補者の条件"
+        },
+        "jobapplicationsettings": {
+            "label": "求人応募の設定",
+            "longlabel": "求人応募の設定"
+        },
+        "eeocompliance": {
+            "label": "EEOコンプライアンス",
+            "longlabel": "EEOコンプライアンス"
+        },
+        "gdprcompliance": {
+            "label": "GDPRコンプライアンス",
+            "longlabel": "GDPRコンプライアンス"
+        },
+        "slug": {
+            "label": "行動",
+            "longlabel": "行動"
+        },
+        "note": {
+            "label": "注",
+            "longlabel": "注"
+        },
+        "profilexing": {
+            "label": "興のプロフィール",
+            "longlabel": "興のプロフィール"
+        },
+        "email_opt_out": {
+            "label": "オプトアウト",
+            "longlabel": "オプトアウト"
+        },
+        "proficiency_level": {
+            "label": "熟練度",
+            "longlabel": "熟練度"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国名",
+            "longlabel": "国名"
+        },
+        "sms_opt_out": {
+            "label": "SMSオプトアウト",
+            "longlabel": "SMSオプトアウト"
+        }
+    },
+    "meetings": {
+        "meeting_date": {
+            "label": "会議日",
+            "longlabel": "会議日"
+        },
+        "meeting_time": {
+            "label": "集合時間",
+            "longlabel": "集合時間"
+        },
+        "title": {
+            "label": "タイトル",
+            "longlabel": "会議名"
+        },
+        "status": {
+            "label": "ステータス",
+            "longlabel": "ステータス"
+        },
+        "relatedto": {
+            "label": "関連記事",
+            "longlabel": "関連記事"
+        },
+        "attendees": {
+            "label": "出席者",
+            "longlabel": "出席者"
+        },
+        "notetype": {
+            "label": "会議タイプ",
+            "longlabel": "会議タイプ"
+        },
+        "address": {
+            "label": "集合場所",
+            "longlabel": "集合場所"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "enddate": {
+            "label": "期日",
+            "longlabel": "期日"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "createdby": {
+            "label": "追加",
+            "longlabel": "追加 "
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "description": {
+            "label": "説明",
+            "longlabel": "説明"
+        },
+        "collaborator": {
+            "label": "協力者",
+            "longlabel": "協力者"
+        },
+        "associations": {
+            "label": "協会",
+            "longlabel": "協会"
+        },
+        "id": {
+            "label": "行動",
+            "longlabel": "行動"
+        }
+    },
+    "tasks": {
+        "title": {
+            "label": "タイトル",
+            "longlabel": "タスク・タイトル"
+        },
+        "status": {
+            "label": "ステータス",
+            "longlabel": "ステータス"
+        },
+        "relatedto": {
+            "label": "関連記事",
+            "longlabel": "関連記事"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "enddate": {
+            "label": "期日",
+            "longlabel": "期日"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "createdby": {
+            "label": "追加",
+            "longlabel": "追加 "
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "description": {
+            "label": "説明",
+            "longlabel": "説明"
+        },
+        "collaborator": {
+            "label": "協力者",
+            "longlabel": "協力者"
+        },
+        "associations": {
+            "label": "協会",
+            "longlabel": "協会"
+        },
+        "id": {
+            "label": "行動",
+            "longlabel": "行動"
+        },
+        "notetype": {
+            "label": "タスクタイプ",
+            "longlabel": "タスクタイプ"
+        }
+    },
+    "target_reports": {
+        "id": {
+            "label": "アイド",
+            "longlabel": "アイド"
+        },
+        "title": {
+            "label": "ターゲット名",
+            "longlabel": "ターゲット名"
+        },
+        "status": {
+            "label": "ステータス",
+            "longlabel": "ステータス"
+        },
+        "assignee_id": {
+            "label": "担当者",
+            "longlabel": "担当者"
+        },
+        "frequency": {
+            "label": "頻度",
+            "longlabel": "頻度"
+        },
+        "target_period": {
+            "label": "対象期間",
+            "longlabel": "対象期間"
+        },
+        "startdate": {
+            "label": "開始日",
+            "longlabel": "開始日"
+        },
+        "enddate": {
+            "label": "終了日",
+            "longlabel": "終了日"
+        },
+        "created_on": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "created_by": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "updated_on": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "updated_by": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "action": {
+            "label": "行動",
+            "longlabel": "行動"
+        }
+    },
+    "invoices": {
+        "invoiceid": {
+            "label": "インボイスID",
+            "longlabel": "インボイスID"
+        },
+        "description": {
+            "label": "説明",
+            "longlabel": "説明"
+        },
+        "company": {
+            "label": "会社概要",
+            "longlabel": "会社概要"
+        },
+        "templateused": {
+            "label": "使用テンプレート",
+            "longlabel": "使用テンプレート"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdon": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "issuedon": {
+            "label": "発行日",
+            "longlabel": "発行日"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "totalamount": {
+            "label": "総額",
+            "longlabel": "総額"
+        },
+        "duedate": {
+            "label": "期日",
+            "longlabel": "期日"
+        },
+        "paidon": {
+            "label": "支払い済み",
+            "longlabel": "支払い済み"
+        },
+        "status": {
+            "label": "ステータス",
+            "longlabel": "ステータス"
+        },
+        "currency": {
+            "label": "請求書の通貨",
+            "longlabel": "請求書の通貨"
+        },
+        "contact": {
+            "label": "連絡先",
+            "longlabel": "連絡先"
+        },
+        "phone": {
+            "label": "連絡先電話番号",
+            "longlabel": "連絡先電話番号"
+        },
+        "associations": {
+            "label": "協会",
+            "longlabel": "協会"
+        },
+        "address": {
+            "label": "会社住所",
+            "longlabel": "会社住所"
+        },
+        "email": {
+            "label": "連絡先メールアドレス",
+            "longlabel": "連絡先メールアドレス"
+        }
+    },
+    "placements": {
+        "placementId": {
+            "label": "プレースメントID",
+            "longlabel": "プレースメントID"
+        },
+        "currency": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "associations": {
+            "label": "協会",
+            "longlabel": "協会"
+        },
+        "createdBy": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdOn": {
+            "label": "作成日",
+            "longlabel": "作成日"
+        },
+        "candidateName": {
+            "label": "候補者名",
+            "longlabel": "候補者名"
+        },
+        "contactName": {
+            "label": "連絡先",
+            "longlabel": "連絡先"
+        },
+        "dealName": {
+            "label": "ディール名",
+            "longlabel": "ディール名"
+        },
+        "jobName": {
+            "label": "役職名",
+            "longlabel": "役職名"
+        },
+        "companyName": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "joiningDate": {
+            "label": "入社日",
+            "longlabel": "入社日"
+        }
+    },
+    "candidate_assigned_job": {
+        "id": {
+            "label": "アイド",
+            "longlabel": "アイド"
+        },
+        "srno": {
+            "label": "身分証明書",
+            "longlabel": "ジョブID"
+        },
+        "name": {
+            "label": "名称",
+            "longlabel": "役職名"
+        },
+        "candidatestatus": {
+            "label": "採用ステージと歴史",
+            "longlabel": "採用ステージと歴史"
+        },
+        "interview": {
+            "label": "インタビュー",
+            "longlabel": "インタビュー"
+        },
+        "share": {
+            "label": "視認性",
+            "longlabel": "視認性"
+        },
+        "jobstatus": {
+            "label": "ステータス",
+            "longlabel": "仕事の状況"
+        },
+        "jobstatuslabel": {
+            "label": "ステータス",
+            "longlabel": "仕事の状況"
+        },
+        "companyid": {
+            "label": "会社概要",
+            "longlabel": "会社概要"
+        },
+        "companyname": {
+            "label": "会社概要",
+            "longlabel": "会社名"
+        },
+        "contactid": {
+            "label": "連絡先",
+            "longlabel": "連絡先"
+        },
+        "salarytype": {
+            "label": "給与タイプ",
+            "longlabel": "給与タイプ"
+        },
+        "currencyid": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国名",
+            "longlabel": "国名"
+        },
+        "collaborator": {
+            "label": "協力者",
+            "longlabel": "協力者"
+        },
+        "jobquestions": {
+            "label": "求人応募フォームに関する質問",
+            "longlabel": "求人応募フォームに関する質問"
+        },
+        "allowapply": {
+            "label": "求人応募フォームを有効にする",
+            "longlabel": "求人応募フォームを有効にする"
+        },
+        "description": {
+            "label": "候補者の方へ",
+            "longlabel": "候補者の方へ"
+        },
+        "address": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "学歴"
+        },
+        "qualification": {
+            "label": "資格ラベル",
+            "longlabel": "資格ラベル"
+        },
+        "specialization": {
+            "label": "専門性",
+            "longlabel": "教育の専門性"
+        },
+        "detailfilename": {
+            "label": "仕事内容",
+            "longlabel": "仕事内容"
+        },
+        "jdtext": {
+            "label": "仕事内容",
+            "longlabel": "仕事内容"
+        },
+        "jdtextdetails": {
+            "label": "仕事内容",
+            "longlabel": "仕事内容"
+        },
+        "minexperienceinyears": {
+            "label": "最低経験年数",
+            "longlabel": "最低経験年数"
+        },
+        "maxexperienceinyears": {
+            "label": "最大経験（年）",
+            "longlabel": "最大経験（年）"
+        },
+        "annualsalarymin": {
+            "label": "最低給与",
+            "longlabel": "最低給与額"
+        },
+        "annualsalarymax": {
+            "label": "マックス給与",
+            "longlabel": "最高給与額"
+        },
+        "noofopenings": {
+            "label": "オープン",
+            "longlabel": "募集人数"
+        },
+        "contactname": {
+            "label": "連絡先",
+            "longlabel": "連絡先"
+        },
+        "contactemail": {
+            "label": "連絡先メールアドレス",
+            "longlabel": "連絡先メールアドレス"
+        },
+        "contactnumber": {
+            "label": "連絡先電話番号",
+            "longlabel": "連絡先電話番号"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "オーナー名",
+            "longlabel": "オーナー名"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "creatorname": {
+            "label": "クリエイター",
+            "longlabel": "クリエイター名"
+        },
+        "createdon": {
+            "label": "追加日",
+            "longlabel": "追加日"
+        },
+        "updatedon": {
+            "label": "採用ステージ更新",
+            "longlabel": "採用ステージ更新"
+        },
+        "slug": {
+            "label": "行動",
+            "longlabel": "行動"
+        },
+        "jobpostingstatus": {
+            "label": "行動",
+            "longlabel": "求人掲載状況"
+        },
+        "note": {
+            "label": "注",
+            "longlabel": "注"
+        },
+        "contactslug": {
+            "label": "スラッグ",
+            "longlabel": "スラッグ"
+        },
+        "companyslug": {
+            "label": "スラッグ",
+            "longlabel": "スラッグ"
+        },
+        "hiring_pipeline_id": {
+            "label": "採用パイプライン",
+            "longlabel": "採用パイプライン"
+        },
+        "job_skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "job_type": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "job_category": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "secondarycontactid": {
+            "label": "二次コンタクト",
+            "longlabel": "二次コンタクト"
+        },
+        "targetcompanies": {
+            "label": "対象企業",
+            "longlabel": "対象企業"
+        },
+        "remote": {
+            "label": "勤務地タイプ",
+            "longlabel": "勤務地タイプ"
+        },
+        "assigned_job_formatted_cv": {
+            "label": "職務経歴書",
+            "longlabel": "職務経歴書"
+        },
+        "assigned_job_coverletter": {
+            "label": "求人応募のカバーレター",
+            "longlabel": "求人応募のカバーレター"
+        },
+        "assigned_job_portfolio": {
+            "label": "求人応募ポートフォリオ",
+            "longlabel": "求人応募ポートフォリオ"
+        },
+        "assigned_job_other_file_1": {
+            "label": "求人応募ファイル1",
+            "longlabel": "求人応募ファイル1"
+        },
+        "assigned_job_other_file_2": {
+            "label": "求人応募ファイル2",
+            "longlabel": "求人応募ファイル2"
+        },
+        "postal_code": {
+            "label": "郵便番号",
+            "longlabel": "郵便番号"
+        },
+        "job_function": {
+            "label": "職能",
+            "longlabel": "職能"
+        },
+        "job_industry": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "updatedby": {
+            "label": "採用ステージ 更新者",
+            "longlabel": "採用ステージ 更新者"
+        }
+    },
+    "postal_code": {
+        "label": "郵便番号",
+        "longlabel": "郵便番号"
+    },
+    "timesheet": {
+        "timesheetId": {
+            "label": "タイムシートID",
+            "longlabel": "タイムシートID"
+        },
+        "timesheetPeriod": {
+            "label": "タイムシート期間",
+            "longlabel": "タイムシート期間"
+        },
+        "contractorName": {
+            "label": "候補者名",
+            "longlabel": "候補者名"
+        },
+        "timesheetStatusId": {
+            "label": "タイムシートステータス",
+            "longlabel": "タイムシートステータス"
+        },
+        "timesheetStatus": {
+            "label": "タイムシートステータス",
+            "longlabel": "タイムシートステータス"
+        },
+        "jobName": {
+            "label": "役職名",
+            "longlabel": "役職名"
+        },
+        "dealName": {
+            "label": "ディール名",
+            "longlabel": "ディール名"
+        },
+        "jobDuration": {
+            "label": "職務期間",
+            "longlabel": "職務期間"
+        },
+        "totalWorkTime": {
+            "label": "総労働時間",
+            "longlabel": "総労働時間"
+        },
+        "totalOvertime": {
+            "label": "総残業時間",
+            "longlabel": "総残業時間"
+        },
+        "totalTime": {
+            "label": "合計時間",
+            "longlabel": "合計時間"
+        },
+        "billData": {
+            "label": "請求額",
+            "longlabel": "請求額"
+        },
+        "billAmount": {
+            "label": "請求額",
+            "longlabel": "請求書データ"
+        },
+        "payData": {
+            "label": "支払額",
+            "longlabel": "支払額"
+        },
+        "payAmount": {
+            "label": "支払額",
+            "longlabel": "給与データ"
+        },
+        "billRate": {
+            "label": "請求レート",
+            "longlabel": "請求レート"
+        },
+        "payRate": {
+            "label": "給与率",
+            "longlabel": "給与率"
+        },
+        "approvedBy": {
+            "label": "タイムシート承認者",
+            "longlabel": "タイムシート承認者"
+        },
+        "approver": {
+            "label": "タイムシート承認者",
+            "longlabel": "タイムシート承認者"
+        },
+        "approvers": {
+            "label": "タイムシート承認者",
+            "longlabel": "タイムシート承認者"
+        },
+        "billingStatusId": {
+            "label": "法案ステータス",
+            "longlabel": "法案ステータス"
+        },
+        "paymentStatusId": {
+            "label": "給与状況",
+            "longlabel": "給与状況"
+        },
+        "paymentDate": {
+            "label": "支払日",
+            "longlabel": "支払日"
+        },
+        "payoutNumber": {
+            "label": "支払い番号",
+            "longlabel": "支払い番号"
+        },
+        "billingDate": {
+            "label": "請求日",
+            "longlabel": "請求日"
+        },
+        "invoiceNumber": {
+            "label": "インボイス番号",
+            "longlabel": "インボイス番号"
+        },
+        "addedOn": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "addedBy": {
+            "label": "追加",
+            "longlabel": "追加"
+        },
+        "updatedOn": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "updatedBy": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "company": {
+            "label": "会社概要",
+            "longlabel": "会社概要"
+        },
+        "frequency": {
+            "label": "頻度",
+            "longlabel": "頻度"
+        },
+        "workDays": {
+            "label": "ワークデイズ",
+            "longlabel": "ワークデイズ"
+        },
+        "workHours": {
+            "label": "労働時間",
+            "longlabel": "労働時間"
+        },
+        "actions": {
+            "label": "行動",
+            "longlabel": "行動"
+        },
+        "action": {
+            "label": "アクション",
+            "longlabel": "アクション"
+        },
+        "billStatus": {
+            "label": "法案ステータス",
+            "longlabel": "法案ステータス"
+        },
+        "payStatus": {
+            "label": "給与状況",
+            "longlabel": "給与状況"
+        },
+        "invoiceCreatedOn": {
+            "label": "インボイス作成日",
+            "longlabel": "インボイス作成日"
+        },
+        "payoutPaidOn": {
+            "label": "支払日",
+            "longlabel": "支払日"
+        },
+        "companyname": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "country": {
+            "label": "国名",
+            "longlabel": "国名"
+        },
+        "gender": {
+            "label": "性別",
+            "longlabel": "性別"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "postalCode": {
+            "label": "郵便番号",
+            "longlabel": "郵便番号"
+        },
+        "locality": {
+            "label": "所在地",
+            "longlabel": "所在地"
+        },
+        "profilefacebook": {
+            "label": "Facebookプロフィール",
+            "longlabel": "Facebookプロフィール"
+        },
+        "title": {
+            "label": "タイトル",
+            "longlabel": "タイトル"
+        },
+        "birthDate": {
+            "label": "生年月日",
+            "longlabel": "生年月日"
+        },
+        "skills": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "profilexing": {
+            "label": "興のプロフィール",
+            "longlabel": "興のプロフィール"
+        },
+        "phone": {
+            "label": "電話",
+            "longlabel": "電話"
+        },
+        "name": {
+            "label": "名称",
+            "longlabel": "名称"
+        },
+        "fullAddress": {
+            "label": "住所",
+            "longlabel": "住所"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "currentOrganization": {
+            "label": "現在の組織",
+            "longlabel": "現在の組織"
+        },
+        "profiletwitter": {
+            "label": "ツイッター・プロフィール",
+            "longlabel": "ツイッター・プロフィール"
+        },
+        "profilelinkedin": {
+            "label": "リンクトイン・プロフィール",
+            "longlabel": "リンクトイン・プロフィール"
+        },
+        "profilegithub": {
+            "label": "Githubプロフィール",
+            "longlabel": "Githubプロフィール"
+        },
+        "source": {
+            "label": "ソース",
+            "longlabel": "ソース"
+        },
+        "id": {
+            "label": "身分証明書",
+            "longlabel": "身分証明書"
+        },
+        "email": {
+            "label": "電子メール",
+            "longlabel": "電子メール"
+        },
+        "status": {
+            "label": "ステータス",
+            "longlabel": "ステータス"
+        },
+        "companyName": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "timesheetFrequency": {
+            "label": "タイムシートの頻度",
+            "longlabel": "タイムシートの頻度"
+        },
+        "expenseClaim": {
+            "label": "経費請求",
+            "longlabel": "経費請求"
+        },
+        "payCurrency": {
+            "label": "支払通貨",
+            "longlabel": "支払通貨"
+        },
+        "billCurrency": {
+            "label": "紙幣",
+            "longlabel": "紙幣"
+        },
+        "totalRegularHours": {
+            "label": "通常の総労働時間",
+            "longlabel": "通常の総労働時間"
+        }
+    },
+    "jobs_widget": {
+        "name": {
+            "label": "役職名",
+            "longlabel": "役職名"
+        },
+        "jobstatuslabel": {
+            "label": "仕事の状況",
+            "longlabel": "仕事の状況"
+        },
+        "assignedcandidatestatuscount": {
+            "label": "候補者パイプライン",
+            "longlabel": "候補者パイプライン"
+        },
+        "joinedcandidatestatuscount": {
+            "label": "配置",
+            "longlabel": "配置"
+        },
+        "detailfilename": {
+            "label": "仕事内容",
+            "longlabel": "仕事内容"
+        },
+        "contactname": {
+            "label": "連絡先",
+            "longlabel": "連絡先"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "求人ID"
+        },
+        "archived": {
+            "label": "アーカイブ",
+            "longlabel": "アーカイブ"
+        },
+        "companyid": {
+            "label": "会社",
+            "longlabel": "会社"
+        },
+        "contactid": {
+            "label": "お問い合わせ",
+            "longlabel": "お問い合わせ"
+        },
+        "secondarycontactid": {
+            "label": "二次連絡先",
+            "longlabel": "二次連絡先"
+        },
+        "salarytype": {
+            "label": "給与形態",
+            "longlabel": "給与形態"
+        },
+        "currencyid": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "salaryrange": {
+            "label": "給与範囲",
+            "longlabel": "給与範囲"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "country": {
+            "label": "国",
+            "longlabel": "国"
+        },
+        "collaborator": {
+            "label": "協力者",
+            "longlabel": "協力者"
+        },
+        "jobquestions": {
+            "label": "採用応募フォームの質問項目",
+            "longlabel": "採用応募フォームの質問項目"
+        },
+        "allowapply": {
+            "label": "求人応募フォームを有効にする",
+            "longlabel": "求人応募フォームを有効にする"
+        },
+        "description": {
+            "label": "受験者への注意",
+            "longlabel": "受験者への注意"
+        },
+        "job_skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "address": {
+            "label": "住所（詳細）",
+            "longlabel": "住所（詳細）"
+        },
+        "locality": {
+            "label": "地域",
+            "longlabel": "地域"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "学歴"
+        },
+        "qualification": {
+            "label": "認定ラベル",
+            "longlabel": "認定ラベル"
+        },
+        "specialization": {
+            "label": "専門分野",
+            "longlabel": "教育分野"
+        },
+        "jdtext": {
+            "label": "職務内容",
+            "longlabel": "職務内容"
+        },
+        "jdtextdetails": {
+            "label": "職務内容",
+            "longlabel": "職務内容"
+        },
+        "minexperienceinyears": {
+            "label": "必要な実務経験（年数）",
+            "longlabel": "必要な実務経験（年数）"
+        },
+        "maxexperienceinyears": {
+            "label": "最大経験年数",
+            "longlabel": "最大経験年数"
+        },
+        "annualsalarymin": {
+            "label": "最低賃金",
+            "longlabel": "最低賃金"
+        },
+        "annualsalarymax": {
+            "label": "最高給与",
+            "longlabel": "最高給与額"
+        },
+        "noofopenings": {
+            "label": "求人情報",
+            "longlabel": "募集人数"
+        },
+        "contactslug": {
+            "label": "ナメクジ",
+            "longlabel": "ナメクジ"
+        },
+        "companyslug": {
+            "label": "ナメクジ",
+            "longlabel": "ナメクジ"
+        },
+        "contactemail": {
+            "label": "お問い合わせ用メールアドレス",
+            "longlabel": "お問い合わせ用メールアドレス"
+        },
+        "contactnumber": {
+            "label": "連絡先電話番号",
+            "longlabel": "連絡先電話番号"
+        },
+        "ownername": {
+            "label": "所有者名",
+            "longlabel": "所有者名"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "job_function": {
+            "label": "職務内容",
+            "longlabel": "職務内容"
+        },
+        "creatorname": {
+            "label": "制作者",
+            "longlabel": "クリエイター名"
+        },
+        "createdon": {
+            "label": "追加日",
+            "longlabel": "追加日"
+        },
+        "updatedon": {
+            "label": "最終更新日",
+            "longlabel": "最終更新日"
+        },
+        "updatedby": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "jobpostingstatus": {
+            "label": "アクション",
+            "longlabel": "求人情報のステータス"
+        },
+        "note": {
+            "label": "注",
+            "longlabel": "注"
+        },
+        "hiring_pipeline_id": {
+            "label": "採用プロセス",
+            "longlabel": "採用プロセス"
+        },
+        "hiring_pipeline_name": {
+            "label": "採用プロセス",
+            "longlabel": "採用プロセス"
+        },
+        "job_type": {
+            "label": "雇用形態",
+            "longlabel": "雇用形態"
+        },
+        "job_category": {
+            "label": "職種",
+            "longlabel": "職種"
+        },
+        "remote": {
+            "label": "勤務地タイプ",
+            "longlabel": "勤務地タイプ"
+        },
+        "hotlist": {
+            "label": "注目リスト",
+            "longlabel": "注目リスト"
+        },
+        "xml_feeds": {
+            "label": "XMLフィード",
+            "longlabel": "XMLフィード"
+        },
+        "targetcompanies": {
+            "label": "対象企業",
+            "longlabel": "対象企業"
+        },
+        "contactfirstname": {
+            "label": "お問い合わせ　お名前",
+            "longlabel": "お問い合わせ　お名前"
+        },
+        "contactlastname": {
+            "label": "連絡先（姓）",
+            "longlabel": "連絡先（姓）"
+        },
+        "postalcode": {
+            "label": "郵便番号",
+            "longlabel": "郵便番号"
+        },
+        "pay_rate": {
+            "label": "賃金",
+            "longlabel": "賃金"
+        },
+        "bill_rate": {
+            "label": "請求単価",
+            "longlabel": "請求単価"
+        },
+        "job_industry": {
+            "label": "職種・業界",
+            "longlabel": "職種・業界"
+        }
+    },
+    "list_of_candidates": {
+        "label": "候補者リスト",
+        "longlabel": "候補者リスト"
+    },
+    "job_candidate_pipeline": {
+        "candidatename": {
+            "label": "候補者名",
+            "longlabel": "候補者名"
+        },
+        "detailfilename": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "hiring_stage_remark": {
+            "label": "採用段階と備考",
+            "longlabel": "採用段階と備考"
+        },
+        "visibility": {
+            "label": "可視性",
+            "longlabel": "可視性"
+        },
+        "job_specific_details": {
+            "label": "職務の詳細",
+            "longlabel": "職務の詳細"
+        },
+        "interview": {
+            "label": "インタビュー",
+            "longlabel": "インタビュー"
+        },
+        "timesheet": {
+            "label": "タイムシート",
+            "longlabel": "タイムシート"
+        },
+        "placement": {
+            "label": "配置",
+            "longlabel": "配置"
+        },
+        "phone": {
+            "label": "電話番号",
+            "longlabel": "電話番号"
+        },
+        "email": {
+            "label": "メール",
+            "longlabel": "メール"
+        },
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "accountlogo": {
+            "label": "アカウントロゴ",
+            "longlabel": "アカウントロゴ"
+        },
+        "accounttitle": {
+            "label": "アカウント名",
+            "longlabel": "アカウント名"
+        },
+        "address": {
+            "label": "住所（詳細）",
+            "longlabel": "住所（詳細）"
+        },
+        "age": {
+            "label": "年齢",
+            "longlabel": "候補者の年齢"
+        },
+        "authid": {
+            "label": "認証ID",
+            "longlabel": "認証ID"
+        },
+        "availablefrom": {
+            "label": "販売元",
+            "longlabel": "販売元"
+        },
+        "canaccess": {
+            "label": "アクセス可能",
+            "longlabel": "アクセス可能"
+        },
+        "candidate_company_city": {
+            "label": "現在の所属 - シティ",
+            "longlabel": "現在の所属 - シティ"
+        },
+        "candidate_company_logo": {
+            "label": "現在の組織 - ロゴ",
+            "longlabel": "現在の組織 - ロゴ"
+        },
+        "candidate_company_slug": {
+            "label": "現在の組織 - スラグ",
+            "longlabel": "現在の組織 - スラグ"
+        },
+        "candidatedob": {
+            "label": "生年月日",
+            "longlabel": "生年月日"
+        },
+        "candidateterms": {
+            "label": "候補者の任期",
+            "longlabel": "候補者の任期"
+        },
+        "city": {
+            "label": "都市",
+            "longlabel": "都市"
+        },
+        "contactnumber": {
+            "label": "電話番号",
+            "longlabel": "電話番号"
+        },
+        "country": {
+            "label": "国",
+            "longlabel": "国"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdbyname": {
+            "label": "作成者名",
+            "longlabel": "作成者名"
+        },
+        "createdon": {
+            "label": "追加日",
+            "longlabel": "追加日"
+        },
+        "currencycountry": {
+            "label": "通貨 国",
+            "longlabel": "通貨 国"
+        },
+        "currencyid": {
+            "label": "通貨",
+            "longlabel": "通貨"
+        },
+        "currentsalary": {
+            "label": "現在の給与",
+            "longlabel": "現在の給与"
+        },
+        "currentstatus": {
+            "label": "雇用形態",
+            "longlabel": "現在の雇用状況"
+        },
+        "education_description": {
+            "label": "教育内容",
+            "longlabel": "教育内容"
+        },
+        "education_end_date": {
+            "label": "教育終了日",
+            "longlabel": "教育終了日"
+        },
+        "education_history": {
+            "label": "学歴",
+            "longlabel": "学歴"
+        },
+        "education_location": {
+            "label": "教育の場所",
+            "longlabel": "教育の場所"
+        },
+        "education_start_date": {
+            "label": "教育開始日",
+            "longlabel": "教育開始日"
+        },
+        "educational_qualification": {
+            "label": "学歴",
+            "longlabel": "学歴"
+        },
+        "educational_specialization": {
+            "label": "教育分野",
+            "longlabel": "教育分野"
+        },
+        "eeocompliance": {
+            "label": "EEOコンプライアンス",
+            "longlabel": "EEOコンプライアンス"
+        },
+        "email_opt_out": {
+            "label": "オプトアウト",
+            "longlabel": "オプトアウト"
+        },
+        "emailid": {
+            "label": "メール",
+            "longlabel": "メール"
+        },
+        "employment_type": {
+            "label": "雇用形態",
+            "longlabel": "雇用形態"
+        },
+        "firstname": {
+            "label": "名前",
+            "longlabel": "候補者の名"
+        },
+        "gdprcompliance": {
+            "label": "GDPRへの準拠",
+            "longlabel": "GDPRへの準拠"
+        },
+        "genderid": {
+            "label": "性別",
+            "longlabel": "性別"
+        },
+        "grade": {
+            "label": "学年",
+            "longlabel": "学年"
+        },
+        "hotlist": {
+            "label": "注目リスト",
+            "longlabel": "注目リスト"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "industry_id": {
+            "label": "業種",
+            "longlabel": "業種"
+        },
+        "institute_name": {
+            "label": "学校・大学名",
+            "longlabel": "学校・大学名"
+        },
+        "is_currently_working": {
+            "label": "現在進行中",
+            "longlabel": "現在進行中"
+        },
+        "jobapplicationsettings": {
+            "label": "求人応募の設定",
+            "longlabel": "求人応募の設定"
+        },
+        "languageskills": {
+            "label": "言語",
+            "longlabel": "語学力"
+        },
+        "last_calllog_created_on": {
+            "label": "最終通話履歴が追加されました",
+            "longlabel": "最終通話履歴が追加されました"
+        },
+        "last_communication_method": {
+            "label": "最終通信タイプ",
+            "longlabel": "最終通信タイプ"
+        },
+        "last_communication_timestamp": {
+            "label": "最後の連絡",
+            "longlabel": "最後の連絡"
+        },
+        "last_email_sent_on": {
+            "label": "最後のメール送信日",
+            "longlabel": "最後のメール送信日"
+        },
+        "last_meeting_created_on": {
+            "label": "直近の会議を追加",
+            "longlabel": "直近の会議を追加"
+        },
+        "last_message_sent_on": {
+            "label": "LinkedInでの最後のメッセージ送信日",
+            "longlabel": "LinkedInでの最後のメッセージ送信日"
+        },
+        "last_sms_sent_on": {
+            "label": "最後のSMS送信日時",
+            "longlabel": "最後のSMS送信日時"
+        },
+        "lastname": {
+            "label": "姓",
+            "longlabel": "候補者の姓"
+        },
+        "lastorganisation": {
+            "label": "現在の組織",
+            "longlabel": "現在の組織"
+        },
+        "locality": {
+            "label": "地域",
+            "longlabel": "地域"
+        },
+        "noticeperiod": {
+            "label": "予告期間",
+            "longlabel": "予告期間（日数）"
+        },
+        "off_limit_status": {
+            "label": "立入禁止",
+            "longlabel": "立入禁止"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "所有者名",
+            "longlabel": "所有者名"
+        },
+        "ownerslug": {
+            "label": "所有者スラグ",
+            "longlabel": "所有者スラグ"
+        },
+        "position": {
+            "label": "タイトル",
+            "longlabel": "役職名"
+        },
+        "postal_code": {
+            "label": "郵便番号",
+            "longlabel": "郵便番号"
+        },
+        "proficiency_level": {
+            "label": "習熟度",
+            "longlabel": "習熟度"
+        },
+        "profilefacebook": {
+            "label": "Facebookプロフィール",
+            "longlabel": "Facebookプロフィール"
+        },
+        "profilegithub": {
+            "label": "GitHubプロフィール",
+            "longlabel": "GitHubプロフィール"
+        },
+        "profilelinkedin": {
+            "label": "LinkedInプロフィール",
+            "longlabel": "LinkedInプロフィール"
+        },
+        "profilepic": {
+            "label": "プロフィール写真",
+            "longlabel": "プロフィール写真"
+        },
+        "profiletwitter": {
+            "label": "Twitterプロフィール",
+            "longlabel": "Twitterプロフィール"
+        },
+        "profilexing": {
+            "label": "Xingのプロフィール",
+            "longlabel": "Xingのプロフィール"
+        },
+        "qualification": {
+            "label": "認定ラベル",
+            "longlabel": "認定ラベル"
+        },
+        "qualificationid": {
+            "label": "資格",
+            "longlabel": "学歴"
+        },
+        "relevantexperience": {
+            "label": "関連経験",
+            "longlabel": "関連する経験"
+        },
+        "requestresumelinkstatus": {
+            "label": "履歴書のリンク状況を確認する",
+            "longlabel": "履歴書のリンク状況を確認する"
+        },
+        "resume": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "resumeaddedon": {
+            "label": "履歴書追加日",
+            "longlabel": "履歴書追加日"
+        },
+        "resumefilename": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "resumetext": {
+            "label": "履歴書の本文",
+            "longlabel": "履歴書の本文"
+        },
+        "resumeupdatedon": {
+            "label": "プロフィールは候補者によって更新されました",
+            "longlabel": "プロフィールは候補者によって更新されました"
+        },
+        "resumeupdaterequestedon": {
+            "label": "プロフィールリクエストを送信しました",
+            "longlabel": "プロフィールリクエストを送信しました"
+        },
+        "salary": {
+            "label": "給与",
+            "longlabel": "給与"
+        },
+        "salaryexpectation": {
+            "label": "希望給与",
+            "longlabel": "希望給与"
+        },
+        "salarytype": {
+            "label": "給与形態",
+            "longlabel": "給与形態"
+        },
+        "skill": {
+            "label": "スキル",
+            "longlabel": "スキル"
+        },
+        "slug": {
+            "label": "ナメクジ",
+            "longlabel": "ナメクジ"
+        },
+        "source": {
+            "label": "出典",
+            "longlabel": "出典"
+        },
+        "specialization": {
+            "label": "専門分野",
+            "longlabel": "教育分野"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "候補者ID"
+        },
+        "state": {
+            "label": "州",
+            "longlabel": "州"
+        },
+        "summary": {
+            "label": "概要",
+            "longlabel": "概要"
+        },
+        "symbol": {
+            "label": "記号",
+            "longlabel": "記号"
+        },
+        "title": {
+            "label": "勤務地",
+            "longlabel": "勤務地"
+        },
+        "unavailable": {
+            "label": "在庫状況",
+            "longlabel": "在庫状況"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "willingtorelocate": {
+            "label": "転居可能",
+            "longlabel": "転居可能"
+        },
+        "work_company_name": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "work_description": {
+            "label": "業務内容",
+            "longlabel": "業務内容"
+        },
+        "work_end_date": {
+            "label": "業務終了日",
+            "longlabel": "業務終了日"
+        },
+        "work_history": {
+            "label": "職歴",
+            "longlabel": "職歴"
+        },
+        "work_location": {
+            "label": "勤務地",
+            "longlabel": "勤務地"
+        },
+        "work_start_date": {
+            "label": "勤務開始日",
+            "longlabel": "勤務開始日"
+        },
+        "workexpyr": {
+            "label": "総合的な体験",
+            "longlabel": "総合的な体験"
+        }
+    },
+    "entity_related_deals": {
+        "accountid": {
+            "label": "アカウントID",
+            "longlabel": "アカウントID"
+        },
+        "archived": {
+            "label": "アーカイブ",
+            "longlabel": "アーカイブ"
+        },
+        "candidatename": {
+            "label": "候補者",
+            "longlabel": "候補者"
+        },
+        "candidateslug": {
+            "label": "候補者名",
+            "longlabel": "候補者名"
+        },
+        "candidatetitle": {
+            "label": "タイトル",
+            "longlabel": "役職名"
+        },
+        "closedate": {
+            "label": "締切日",
+            "longlabel": "締切日"
+        },
+        "collaborator": {
+            "label": "協力者",
+            "longlabel": "協力者"
+        },
+        "companyname": {
+            "label": "会社",
+            "longlabel": "会社名"
+        },
+        "companyslug": {
+            "label": "会社名",
+            "longlabel": "会社名"
+        },
+        "createdby": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "createdbyname": {
+            "label": "作成者名",
+            "longlabel": "作成者名"
+        },
+        "createdon": {
+            "label": "追加日",
+            "longlabel": "追加日"
+        },
+        "dealpercentagevalue": {
+            "label": "取引総額（加重平均）",
+            "longlabel": "取引総額（加重平均）"
+        },
+        "dealstage": {
+            "label": "ステージ",
+            "longlabel": "ステージ"
+        },
+        "dealstagelabel": {
+            "label": "ステージ",
+            "longlabel": "ステージ"
+        },
+        "dealtype": {
+            "label": "取引の種類",
+            "longlabel": "取引の種類"
+        },
+        "dealtypelabel": {
+            "label": "取引の種類",
+            "longlabel": "取引の種類"
+        },
+        "dealvalue": {
+            "label": "取引金額",
+            "longlabel": "取引金額"
+        },
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "jobname": {
+            "label": "求人",
+            "longlabel": "職種名"
+        },
+        "jobslug": {
+            "label": "求人ID",
+            "longlabel": "求人ID"
+        },
+        "name": {
+            "label": "名前",
+            "longlabel": "取引名"
+        },
+        "ownerid": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        },
+        "ownername": {
+            "label": "所有者名",
+            "longlabel": "所有者名"
+        },
+        "ownerslug": {
+            "label": "所有者スラグ",
+            "longlabel": "所有者スラグ"
+        },
+        "percentage": {
+            "label": "ステージ重量",
+            "longlabel": "ステージ重量"
+        },
+        "relatedcandidate": {
+            "label": "候補者ID",
+            "longlabel": "候補者ID"
+        },
+        "relatedcompany": {
+            "label": "会社ID",
+            "longlabel": "会社ID"
+        },
+        "relatedcontact": {
+            "label": "お問い合わせ",
+            "longlabel": "お問い合わせ"
+        },
+        "relatedjob": {
+            "label": "求人ID",
+            "longlabel": "求人ID"
+        },
+        "slug": {
+            "label": "アクション",
+            "longlabel": "ナメクジ"
+        },
+        "splitdealvalue": {
+            "label": "取引金額の分割",
+            "longlabel": "取引金額の分割"
+        },
+        "srno": {
+            "label": "ID",
+            "longlabel": "取引ID"
+        },
+        "updatedby": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "updatedbyname": {
+            "label": "名前で更新",
+            "longlabel": "名前で更新"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "website": {
+            "label": "ウェブサイト",
+            "longlabel": "ウェブサイト"
+        },
+        "weightedsplitdealvalue": {
+            "label": "加重分割取引額",
+            "longlabel": "加重分割取引額"
+        }
+    },
+    "hotlist_widget": {
+        "name": {
+            "label": "注目リスト名",
+            "longlabel": "注目リスト名"
+        },
+        "createdOn": {
+            "label": "作成日",
+            "longlabel": "作成日"
+        },
+        "updatedOn": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "ownerId": {
+            "label": "オーナー",
+            "longlabel": "オーナー"
+        }
+    },
+    "executive_search_report": {
+        "report_title": {
+            "label": "レポート名",
+            "longlabel": "レポート名"
+        },
+        "created_by": {
+            "label": "作成者",
+            "longlabel": "作成者"
+        },
+        "updated_by": {
+            "label": "変更者",
+            "longlabel": "変更者"
+        },
+        "updated_on": {
+            "label": "最終更新日",
+            "longlabel": "最終更新日"
+        }
+    },
+    "pitch_candidate": {
+        "name": {
+            "label": "候補者名",
+            "longlabel": "候補者名"
+        },
+        "pitchStage": {
+            "label": "ピッチステージとコメント",
+            "longlabel": "ピッチステージとコメント"
+        },
+        "phone": {
+            "label": "電話番号",
+            "longlabel": "電話番号"
+        },
+        "email": {
+            "label": "メール",
+            "longlabel": "メール"
+        },
+        "resumefilename": {
+            "label": "履歴書",
+            "longlabel": "履歴書"
+        },
+        "contactName": {
+            "label": "お問い合わせ",
+            "longlabel": "お問い合わせ"
+        },
+        "createdByName": {
+            "label": "提案者：",
+            "longlabel": "提案者："
+        },
+        "createdOn": {
+            "label": "提案された",
+            "longlabel": "提案された"
+        },
+        "candidateTitle": {
+            "label": "候補タイトル",
+            "longlabel": "候補者の役職名／職位"
+        },
+        "last_communication_timestamp": {
+            "label": "候補者との最後の連絡",
+            "longlabel": "候補者との最後の連絡"
+        }
+    },
+    "candidate_history": {
+        "id": {
+            "label": "ID",
+            "longlabel": "ID"
+        },
+        "name": {
+            "label": "名前",
+            "longlabel": "名前"
+        },
+        "updatedby": {
+            "label": "更新者",
+            "longlabel": "更新者"
+        },
+        "updatedon": {
+            "label": "更新日",
+            "longlabel": "更新日"
+        },
+        "candidatestatus": {
+            "label": "採用の段階と経緯",
+            "longlabel": "採用の段階と経緯"
+        },
+        "companycontactname": {
+            "label": "会社連絡先",
+            "longlabel": "会社連絡先"
+        }
+    },
+    "pitch_contact": {
+        "name": {
+            "label": "担当者名",
+            "longlabel": "担当者名"
+        },
+        "email": {
+            "label": "メール",
+            "longlabel": "連絡先メールアドレス"
+        },
+        "phone": {
+            "label": "電話番号",
+            "longlabel": "連絡先電話番号"
+        },
+        "pitchStage": {
+            "label": "ピッチステージとコメント",
+            "longlabel": "ピッチステージとコメント"
+        },
+        "companyName": {
+            "label": "会社",
+            "longlabel": "会社名"
+        },
+        "createdByName": {
+            "label": "提案者：",
+            "longlabel": "提案者："
+        },
+        "createdOn": {
+            "label": "提案された",
+            "longlabel": "提案された"
+        },
+        "contactTitle": {
+            "label": "お問い合わせ先",
+            "longlabel": "お問い合わせ先"
+        },
+        "last_communication_timestamp": {
+            "label": "連絡先　最終連絡日時",
+            "longlabel": "連絡先　最終連絡日時"
+        }
+    }
+}

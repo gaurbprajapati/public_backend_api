@@ -1,0 +1,40 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+
+  pre_build:
+    commands:
+      - echo "Running pre-build commands..."
+
+  build:
+    commands:
+      - echo "Generating configuration files..."
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain recruitcrm --domain-owner 004468257635 --region ap-south-1 --query authorizationToken --output text`
+      - find scripts -type f -name "*.sh" -exec chmod +x {} \;
+      - ./scripts/build-artifact.sh
+      - mkdir -p templates/processed
+      - envsubst < templates/raw/application.properties.tmpl > templates/processed/application.properties
+      - envsubst < templates/raw/nr_enabled.tmpl > templates/processed/nr_enabled.env
+      - envsubst < templates/raw/filebeat.tmpl > templates/processed/filebeat.yml
+      - envsubst < templates/raw/otel_config.tmpl > templates/processed/config.yaml
+
+      - mkdir -p templates/processed/candidate-service
+      - envsubst < templates/raw/candidate-service/candidate-service.tmpl > templates/processed/candidate-service/candidate-service.service
+      - envsubst < templates/raw/candidate-service/candidate-service-nr.tmpl > templates/processed/candidate-service/candidate-service-nr.service
+
+      - mkdir -p templates/processed/new-relic
+      - envsubst < templates/raw/new-relic/newrelic.tmpl > templates/processed/new-relic/newrelic.yml
+      - echo "Config files created successfully..."
+
+  post_build:
+    commands:
+      - echo "Running post-build commands..."
+      - cp "$(ls target/*.jar | head -n 1)" candidate-microservice.jar
+      - rm -rf target
+
+artifacts:
+  files:
+    - '**/*'

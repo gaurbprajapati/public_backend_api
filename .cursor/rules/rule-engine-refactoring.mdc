@@ -1,0 +1,14 @@
+---
+description: Rule engine refactoring guidelines and best practices for maintainability and extensibility.
+alwaysApply: false
+---
+# Rule Engine Refactoring Guidelines
+
+## Overview
+This rule engine refactoring rule is designed to help improve the performance and maintainability of the rule engine by optimizing its structure and logic.
+
+## Key Principles
+- Follow SOLID principles
+- Maintain single responsibility
+- Optimize for performance
+- Ensure extensibility

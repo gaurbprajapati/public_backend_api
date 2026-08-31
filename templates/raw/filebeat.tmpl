@@ -1,0 +1,34 @@
+filebeat.inputs:
+- type: filestream
+  id: spring-boot-logs-filestream
+  enabled: true
+  paths:
+    - ${LOGGING_FILE_PATH}/*.log.json
+  # Filebeat-only metadata; these values are resolved while rendering this template, not by Spring.
+  fields: {log_type: spring_boot_logs, log_format: ecs, service_name: ${FILEBEAT_SERVICE_NAME}}
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~
+
+output.kafka:
+  enabled: true
+  # Kafka env values are required by Filebeat to ship ECS logs to the logging pipeline.
+  hosts: [${RCRM_LOGGING_MSK_BOOTSTRAPS}]
+  username: "${RCRM_LOGGING_MSK_USERNAME}"
+  password: "${RCRM_LOGGING_MSK_PASSWORD}"
+  ssl.enabled: true
+  ssl.verification_mode: "none"
+  sasl.mechanism: "SCRAM-SHA-512"
+  required_acks: 1
+  topic: "${RECRUITCRM_LOGGING_TOPIC}"

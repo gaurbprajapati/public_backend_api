@@ -1,0 +1,222 @@
+---
+description: Comprehensive guidelines for generating Maven commands that work correctly in Windows PowerShell environment. Covers proper escaping of quotes and parameters, command formatting, and best practices for Maven operations in PowerShell.
+alwaysApply: false
+---
+# Maven Commands in Windows PowerShell
+
+## Overview
+When generating Maven commands for Windows PowerShell, proper escaping of quotes and parameters is essential. PowerShell requires backticks (`) to escape characters, especially for Maven system properties with quotes.
+
+## Command Format Rules
+
+### 1. Basic Maven Commands
+**Correct Format:**
+```powershell
+mvn clean install
+mvn compile
+mvn package
+```
+
+### 2. Maven Commands with System Properties
+**Correct Format (with backtick escaping):**
+```powershell
+mvn test "-Dtest=`"*RuleTests`"" "-DfailIfNoTests=false"
+mvn clean install "-DskipTests=true"
+mvn package "-Dmaven.test.skip=true"
+```
+
+**Incorrect Format (will not work in PowerShell):**
+```powershell
+mvn test -Dtest="*RuleTests" -DfailIfNoTests=false
+mvn clean install -DskipTests=true
+mvn package -Dmaven.test.skip=true
+```
+
+### 3. Complex Maven Commands with Multiple Properties
+**Correct Format:**
+```powershell
+mvn test "-Dtest=`"*RuleTests`"" "-DfailIfNoTests=false" "-Dmaven.test.failure.ignore=true"
+mvn clean install "-DskipTests=true" "-Dmaven.javadoc.skip=true"
+mvn package "-Dmaven.test.skip=true" "-Dmaven.source.skip=true"
+```
+
+### 4. Maven Commands with Profiles
+**Correct Format:**
+```powershell
+mvn clean install "-P`"dev`""
+mvn test "-P`"test`"" "-Dtest=`"*RuleTests`""
+mvn package "-P`"prod`"" "-Dmaven.test.skip=true"
+```
+
+### 5. Maven Commands with Goals and Phases
+**Correct Format:**
+```powershell
+mvn clean compile test package
+mvn clean install "-Dtest=`"*RuleTests`"" "-DfailIfNoTests=false"
+mvn dependency:tree "-DoutputFile=`"dependencies.txt`""
+```
+
+## Escaping Rules
+
+### 1. Quote Escaping
+- Use backticks (`) to escape double quotes within PowerShell strings
+- Outer quotes should be double quotes
+- Inner quotes (for Maven properties) should be escaped with backticks
+
+### 2. Parameter Escaping
+- System properties with values containing spaces or special characters need proper escaping
+- Use `"-Dproperty=`"value`""` format for properties with quoted values
+- Use `"-Dproperty=value"` format for simple string values
+
+### 3. Pattern Matching
+- When using wildcards in test patterns, ensure proper escaping
+- Example: `"-Dtest=`"*RuleTests`""` for running all test classes ending with "RuleTests"
+
+## Common Maven Commands for This Project
+
+### Testing Commands
+```powershell
+# Run all tests
+mvn test
+
+# Run specific test pattern
+mvn test "-Dtest=`"*RuleTests`"" "-DfailIfNoTests=false"
+
+# Run tests with coverage
+mvn test jacoco:report
+
+# Skip tests
+mvn clean install "-DskipTests=true"
+```
+
+### Build Commands
+```powershell
+# Clean and compile
+mvn clean compile
+
+# Clean and package
+mvn clean package
+
+# Clean and install
+mvn clean install
+
+# Clean, compile, test, and package
+mvn clean compile test package
+```
+
+### Dependency Commands
+```powershell
+# Show dependency tree
+mvn dependency:tree
+
+# Download dependencies
+mvn dependency:resolve
+
+# Analyze dependencies
+mvn dependency:analyze
+```
+
+### Plugin Commands
+```powershell
+# Run checkstyle
+mvn checkstyle:check
+
+# Generate JavaDoc
+mvn javadoc:javadoc
+
+# Run spotbugs
+mvn spotbugs:check
+```
+
+## Best Practices
+
+### 1. Always Use Proper Escaping
+- Never generate Maven commands without proper PowerShell escaping
+- Always test commands in PowerShell before providing them to users
+- Use backticks for escaping quotes within quoted strings
+
+### 2. Command Structure
+- Place system properties after the main Maven command
+- Group related properties together
+- Use consistent formatting for readability
+
+### 3. Error Handling
+- Include `-DfailIfNoTests=false` when running specific test patterns
+- Use `-Dmaven.test.failure.ignore=true` to continue on test failures
+- Consider using `-Dmaven.test.skip=true` for build-only operations
+
+### 4. Performance Optimization
+- Use `-T 1C` for parallel builds (one thread per CPU core)
+- Use `-o` for offline mode when dependencies are already downloaded
+- Use `-q` for quiet mode in CI/CD pipelines
+
+## Examples for This Project
+
+### Running Rule Engine Tests
+```powershell
+mvn test "-Dtest=`"*RuleEngine*`"" "-DfailIfNoTests=false"
+```
+
+### Running Timesheet Tests
+```powershell
+mvn test "-Dtest=`"*Timesheet*`"" "-DfailIfNoTests=false"
+```
+
+### Running Integration Tests
+```powershell
+mvn test "-Dtest=`"*IntegrationTest`"" "-DfailIfNoTests=false"
+```
+
+### Building for Production
+```powershell
+mvn clean package "-Dmaven.test.skip=true" "-Dmaven.javadoc.skip=true"
+```
+
+### Running with Specific Profile
+```powershell
+mvn clean install "-P`"dev`"" "-DskipTests=true"
+```
+
+## Troubleshooting
+
+### Common Issues
+1. **Quotes not properly escaped**: Results in PowerShell parsing errors
+2. **Missing backticks**: Causes parameter parsing failures
+3. **Incorrect quote nesting**: Leads to command execution failures
+
+### Debugging Commands
+```powershell
+# Echo the command before execution
+Write-Host "Executing: mvn test `"-Dtest=`"*RuleTests`"`" `"-DfailIfNoTests=false`""
+
+# Execute with verbose output
+mvn test "-Dtest=`"*RuleTests`"" "-DfailIfNoTests=false" -X
+```
+
+## Integration with CI/CD
+
+### Jenkins Pipeline Commands
+```groovy
+// In Jenkinsfile, use single quotes for Maven commands
+sh 'mvn test "-Dtest=*RuleTests" "-DfailIfNoTests=false"'
+```
+
+### GitHub Actions Commands
+```yaml
+# In GitHub Actions, use proper escaping
+- name: Run Tests
+  run: mvn test "-Dtest=`"*RuleTests`"" "-DfailIfNoTests=false"
+```
+
+## Summary
+Always remember:
+1. Use backticks (`) to escape quotes in PowerShell
+2. Format system properties as `"-Dproperty=`"value`""`
+3. Test commands in PowerShell before providing them
+4. Use consistent formatting for readability
+5. Include appropriate flags for error handling and performance
+
+2. Format system properties as `"-Dproperty=`"value`""`
+3. Test commands in PowerShell before providing them
+4. Use consistent formatting for readability
+5. Include appropriate flags for error handling and performance

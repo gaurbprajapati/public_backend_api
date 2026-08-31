@@ -1,0 +1,26 @@
+input {
+  beats {
+    port => 5044
+  }
+}
+
+filter {
+  json {
+    source => "message"
+    target => "json_message"
+    skip_on_invalid_json => true
+    remove_field => ["message"]
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["${ELASTICSEARCH_HOST}"]
+    data_stream => true
+    data_stream_type => "logs"
+    data_stream_dataset => "timesheet-microservice"
+    data_stream_namespace => "${APP_ENV}"
+    user => "${ELASTICSEARCH_USERNAME}"
+    password => "${ELASTICSEARCH_PASSWORD}"
+  }
+}

@@ -1,0 +1,24 @@
+---
+description: BigDecimal Assertion Guidelines
+globs:
+alwaysApply: false
+---
+
+# BigDecimal Assertion Guidelines
+
+When writing tests that assert on `BigDecimal` values:
+
+- Always match the scale of the expected value to the actual output (e.g., `200.0` vs `200.00`).
+- Prefer using `BigDecimal#compareTo` for equality checks if the scale may vary:
+  ```java
+  assertEquals(0, actualValue.compareTo(expectedValue));
+  ```
+- Alternatively, convert both values to string for assertion if scale is inconsistent:
+  ```java
+  assertEquals("200.0", actualValue.toString());
+  ```
+- Avoid using `assertEquals(BigDecimal, BigDecimal)` if the scale is not guaranteed to match.
+- Review the implementation to determine the scale of returned values and align test expectations accordingly.
+
+- Avoid using `assertEquals(BigDecimal, BigDecimal)` if the scale is not guaranteed to match.
+- Review the implementation to determine the scale of returned values and align test expectations accordingly.

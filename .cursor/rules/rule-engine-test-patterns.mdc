@@ -1,0 +1,380 @@
+---
+title: Rule Engine Test Patterns and Common Pitfalls
+description: This guide covers proper test patterns for rule engine components, addressing common issues with context setup, mock configuration, and assertion strategies.
+alwaysApply: false
+---
+
+# Rule Engine Test Patterns and Common Pitfalls
+
+## Overview
+This guide covers proper test patterns for rule engine components, addressing common issues with context setup, mock configuration, and assertion strategies.
+
+## Rule Evaluation Context Setup
+
+### Proper Context Creation
+```java
+// Correct context setup for rule evaluation
+private RuleEvaluationContext createValidContext() {
+    return RuleEvaluationContext.builder()
+        .timesheet(this.timesheet)
+        .timesheetSetting(this.timesheetSetting)
+        .customRule(this.customRule)
+        .timeLogs(List.of(this.timeLog))
+        .ruleTemplate(this.ruleTemplate)
+        .build();
+}
+
+// For tests that expect exceptions
+private RuleEvaluationContext createInvalidContext() {
+    return RuleEvaluationContext.builder()
+        .timesheet(this.timesheet)
+        .timesheetSetting(this.timesheetSetting)
+        .customRule(null) // Invalid: null rule
+        .timeLogs(List.of(this.timeLog))
+        .ruleTemplate(this.ruleTemplate)
+        .build();
+}
+```
+
+### Required Mock Setup
+```java
+@BeforeEach
+void setUp() {
+    // Essential mocks for rule evaluation
+    this.timesheet = mock(Timesheet.class);
+    this.timesheetSetting = mock(TimesheetSetting.class);
+    this.customRule = mock(CustomRule.class);
+    this.timeLog = mock(TimeLog.class);
+    this.ruleTemplate = mock(RuleTemplate.class);
+    
+    // Basic setup for all tests
+    given(this.timesheet.getId()).willReturn(1);
+    given(this.timesheetSetting.getPayRate()).willReturn(20.0f);
+    given(this.timesheetSetting.getBillRate()).willReturn(40.0f);
+    given(this.customRule.getChargeMethod()).willReturn(ChargeMethodType.MULTIPLIER);
+    given(this.customRule.getPayRateMultiplier()).willReturn(1.5f);
+    given(this.customRule.getBillRateMultiplier()).willReturn(1.5f);
+}
+```
+
+## Common Test Patterns
+
+### 1. Successful Rule Evaluation
+```java
+@Test
+@DisplayName("Rule evaluation - Success")
+void testRuleEvaluation_success() {
+    // Arrange
+    RuleEvaluationContext context = createValidContext();
+    given(this.customRule.getWeeklyThreshold()).willReturn(Duration.ofHours(40));
+    given(this.timeLog.getWorkTime()).willReturn(Duration.ofHours(8));
+    
+    // Act
+    RuleEvaluationResult result = this.rule.evaluate(context);
+    
+    // Assert
+    assertThat(result).isNotNull();
+    assertThat(result.getPayAmount()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(result.getBillAmount()).isGreaterThan(BigDecimal.ZERO);
+}
+```
+
+### 2. Rule Evaluation with Zero Duration
+```java
+@Test
+@DisplayName("Rule evaluation - Zero duration")
+void testRuleEvaluation_zeroDuration() {
+    // Arrange
+    RuleEvaluationContext context = createValidContext();
+    given(this.timeLog.getWorkTime()).willReturn(Duration.ZERO);
+    
+    // Act
+    RuleEvaluationResult result = this.rule.evaluate(context);
+    
+    // Assert
+    assertThat(result).isNotNull();
+    assertThat(result.getPayAmount()).isEqualTo(BigDecimal.ZERO);
+    assertThat(result.getBillAmount()).isEqualTo(BigDecimal.ZERO);
+}
+```
+
+### 3. Rule Evaluation with Null Context
+```java
+@Test
+@DisplayName("Rule evaluation - Null context")
+void testRuleEvaluation_nullContext() {
+    // Act & Assert
+    assertThatThrownBy(() -> this.rule.evaluate(null))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("Rule evaluation context cannot be null");
+}
+```
+
+### 4. Rule Evaluation with Invalid Context
+```java
+@Test
+@DisplayName("Rule evaluation - Invalid context")
+void testRuleEvaluation_invalidContext() {
+    // Arrange
+    RuleEvaluationContext context = createInvalidContext();
+    
+    // Act & Assert
+    assertThatThrownBy(() -> this.rule.evaluate(context))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("Current rule being evaluated cannot be null");
+}
+```
+
+## Time Range Resolver Test Patterns
+
+### 1. Range-Based Time Range Resolver Tests
+```java
+@Test
+@DisplayName("Resolve time range - Valid range")
+void testResolveTimeRange_validRange() {
+    // Arrange
+    TimeRangeResolverContext context = createTimeRangeResolverContext();
+    given(this.timeLog.getWorkTime()).willReturn(null); // Range-based
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+    
+    // Act
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(context);
+    
+    // Assert
+    assertThat(result.isEmpty()).isFalse();
+    assertThat(result.asRanges()).hasSize(1);
+}
+```
+
+### 2. Duration-Based Time Range Resolver Tests
+```java
+@Test
+@DisplayName("Resolve time range - Duration-based")
+void testResolveTimeRange_durationBased() {
+    // Arrange
+    TimeRangeResolverContext context = createTimeRangeResolverContext();
+    given(this.timeLog.getWorkTime()).willReturn(Duration.ofHours(8));
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+    
+    // Act
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(context);
+    
+    // Assert
+    assertThat(result.isEmpty()).isFalse();
+    assertThat(result.asRanges()).hasSize(1);
+}
+```
+
+### 3. Empty Time Range Tests
+```java
+@Test
+@DisplayName("Resolve time range - Empty result")
+void testResolveTimeRange_emptyResult() {
+    // Arrange
+    TimeRangeResolverContext context = createTimeRangeResolverContext();
+    given(this.timeLog.getWorkTime()).willReturn(null);
+    given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(17, 0)); // After work period
+    given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(18, 0));
+    
+    // Act
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(context);
+    
+    // Assert
+    assertThat(result.isEmpty()).isTrue();
+}
+```
+
+## Charge Method Testing Patterns
+
+### 1. Multiplier Charge Method
+```java
+@Test
+@DisplayName("Charge method - Multiplier")
+void testChargeMethod_multiplier() {
+    // Arrange
+    given(this.customRule.getChargeMethod()).willReturn(ChargeMethodType.MULTIPLIER);
+    given(this.customRule.getPayRateMultiplier()).willReturn(1.5f);
+    given(this.customRule.getBillRateMultiplier()).willReturn(1.5f);
+    
+    // Act
+    RuleEvaluationResult result = this.rule.evaluate(context);
+    
+    // Assert
+    // Pay = baseRate * multiplier * hours
+    // Bill = billRate * multiplier * hours
+    assertThat(result.getPayAmount()).isEqualTo(new BigDecimal("150.0")); // 20 * 1.5 * 5
+    assertThat(result.getBillAmount()).isEqualTo(new BigDecimal("300.0")); // 40 * 1.5 * 5
+}
+```
+
+### 2. Fixed Rate Charge Method
+```java
+@Test
+@DisplayName("Charge method - Fixed rate")
+void testChargeMethod_fixedRate() {
+    // Arrange
+    given(this.customRule.getChargeMethod()).willReturn(ChargeMethodType.FIXED_RATE);
+    given(this.customRule.getPayRatePerHour()).willReturn(25.0f);
+    given(this.customRule.getBillRatePerHour()).willReturn(50.0f);
+    
+    // Act
+    RuleEvaluationResult result = this.rule.evaluate(context);
+    
+    // Assert
+    // Pay = payRatePerHour * hours
+    // Bill = billRatePerHour * hours
+    assertThat(result.getPayAmount()).isEqualTo(new BigDecimal("125.0")); // 25 * 5
+    assertThat(result.getBillAmount()).isEqualTo(new BigDecimal("250.0")); // 50 * 5
+}
+```
+
+### 3. Invalid Charge Method Handling
+```java
+@Test
+@DisplayName("Charge method - Null charge method")
+void testChargeMethod_nullChargeMethod() {
+    // Arrange
+    given(this.customRule.getChargeMethod()).willReturn(null);
+    
+    // Act & Assert
+    assertThatThrownBy(() -> this.rule.evaluate(context))
+        .isInstanceOf(NullPointerException.class);
+}
+```
+
+## Common Pitfalls and Solutions
+
+### 1. Unnecessary Stubbing
+**Problem**: Setting up mocks that aren't used in the test
+```java
+// INCORRECT - Unnecessary stubs
+given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+// Test only uses getWorkTime() - other stubs are unnecessary
+```
+
+**Solution**: Only stub methods that are actually used
+```java
+// CORRECT - Only stub what's needed
+given(this.timeLog.getWorkTime()).willReturn(Duration.ofHours(8));
+// Remove unused stubs
+```
+
+### 2. Incorrect TimeLog Type Setup
+**Problem**: Not properly setting up TimeLog as range-based or duration-based
+```java
+// INCORRECT - Missing getWorkTime() setup
+given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+// Missing: given(this.timeLog.getWorkTime()).willReturn(null);
+```
+
+**Solution**: Always set up TimeLog type correctly
+```java
+// CORRECT - Always set workTime to determine type
+given(this.timeLog.getWorkTime()).willReturn(null); // Range-based
+given(this.timeLog.getWorkStartTime()).willReturn(LocalTime.of(9, 0));
+given(this.timeLog.getWorkEndTime()).willReturn(LocalTime.of(17, 0));
+```
+
+### 3. Missing Required Context Fields
+**Problem**: Not setting up all required fields in RuleEvaluationContext
+```java
+// INCORRECT - Missing required fields
+RuleEvaluationContext context = RuleEvaluationContext.builder()
+    .timesheet(this.timesheet)
+    .customRule(this.customRule)
+    // Missing: timesheetSetting, timeLogs, ruleTemplate
+    .build();
+```
+
+**Solution**: Always include all required fields
+```java
+// CORRECT - Include all required fields
+RuleEvaluationContext context = RuleEvaluationContext.builder()
+    .timesheet(this.timesheet)
+    .timesheetSetting(this.timesheetSetting)
+    .customRule(this.customRule)
+    .timeLogs(List.of(this.timeLog))
+    .ruleTemplate(this.ruleTemplate)
+    .build();
+```
+
+## Test Helper Methods
+
+### Create Reusable Test Utilities
+```java
+public class RuleEngineTestHelper {
+    
+    public static RuleEvaluationContext createValidContext(
+            Timesheet timesheet, 
+            TimesheetSetting timesheetSetting,
+            CustomRule customRule,
+            TimeLog timeLog,
+            RuleTemplate ruleTemplate) {
+        return RuleEvaluationContext.builder()
+            .timesheet(timesheet)
+            .timesheetSetting(timesheetSetting)
+            .customRule(customRule)
+            .timeLogs(List.of(timeLog))
+            .ruleTemplate(ruleTemplate)
+            .build();
+    }
+    
+    public static void setupBasicMocks(
+            TimesheetSetting timesheetSetting,
+            CustomRule customRule) {
+        given(timesheetSetting.getPayRate()).willReturn(20.0f);
+        given(timesheetSetting.getBillRate()).willReturn(40.0f);
+        given(customRule.getChargeMethod()).willReturn(ChargeMethodType.MULTIPLIER);
+        given(customRule.getPayRateMultiplier()).willReturn(1.5f);
+        given(customRule.getBillRateMultiplier()).willReturn(1.5f);
+    }
+}
+```
+
+## Best Practices
+
+### 1. Test Both Success and Failure Scenarios
+- **Success**: Test normal operation with valid inputs
+- **Failure**: Test error conditions and edge cases
+- **Validation**: Test input validation and error messages
+
+### 2. Use Descriptive Test Names
+- **Format**: `test[MethodName]_[Scenario]_[ExpectedResult]`
+- **Example**: `testEvaluate_validInput_returnsCorrectResult()`
+- **Example**: `testEvaluate_nullContext_throwsIllegalArgumentException()`
+
+### 3. Test Edge Cases
+- **Zero values**: Test with zero duration, null values
+- **Boundary conditions**: Test with minimum/maximum values
+- **Invalid inputs**: Test with invalid or missing data
+
+### 4. Avoid Test Interdependencies
+- **Isolation**: Each test should be independent
+- **Setup**: Use `@BeforeEach` for common setup
+- **Cleanup**: Avoid shared state between tests
+
+## Files Following These Patterns
+- [WeeklyOvertimeRuleTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/shifts/WeeklyOvertimeRuleTests.java)
+- [RangeBasedRuleEvaluatorTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/RangeBasedRuleEvaluatorTests.java)
+- [TimeRangeResolverContextTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/TimeRangeResolverContextTests.java)
+
+## Validation Commands
+```bash
+# Run rule engine tests
+mvn test -Dtest=*RuleTests
+
+# Run time range resolver tests
+mvn test -Dtest=*TimeRangeResolverTests
+
+# Check for test failures
+mvn test | grep -i "failure"
+
+# Check for Mockito warnings
+mvn test | grep -i "unnecessary stubbing"
+```
+
+mvn test | grep -i "unnecessary stubbing"
+```

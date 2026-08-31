@@ -1,0 +1,34 @@
+---
+description: General branch coverage requirements and test patterns for achieving 100% coverage in Java tests.
+alwaysApply: true
+---
+
+# General Branch Coverage Guide for Java Tests
+
+This rule documents the required branch coverage and test patterns for achieving 100% coverage in any Java test suite, focusing on:
+
+- All branches for null, empty, and edge-case inputs
+- All logical paths in comparators and conditionals (e.g., true/false branches, &&/|| logic)
+- Validation failure and exception branches
+- Both directions of comparator logic (e.g., a > b and b > a)
+
+## Test Patterns
+- Use mocks to simulate all type and value combinations for method arguments
+- Use reflection to invoke private methods for direct branch testing if needed
+- Ensure both directions of comparator and conditional logic are exercised
+- Cover all edge cases for null, empty, and unexpected input values
+- Test exception and error branches explicitly
+
+## Example Test Scenarios
+- Both arguments satisfy a compound condition (e.g., both true for &&)
+- Only one argument satisfies a compound condition (e.g., true/false and false/true for &&)
+- Neither argument satisfies a compound condition (both false)
+- Different values for comparator branches (e.g., a > b, a < b, a == b)
+- Inputs that trigger exception or error handling
+- Inputs that are null or empty collections
+- Inputs that are not of the expected type
+
+See your project's test files for implementation examples and adapt these patterns to your codebase for comprehensive coverage.
+
+
+See your project's test files for implementation examples and adapt these patterns to your codebase for comprehensive coverage.

@@ -1,0 +1,154 @@
+---
+description: Access control patterns and permission checking for bulk operations, individual entity checks, and multi-entity access validation.
+alwaysApply: false
+---
+# Access Control Patterns
+
+## Bulk Permission Checking
+
+### BulkPermissionChecker Usage
+- Use [BulkPermissionChecker.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/BulkPermissionChecker.java) for efficient bulk operations
+- Supports multiple entity types: timesheets, candidates, jobs
+- Optimizes data loading and permission checks
+
+### Controller Pattern for Bulk Access Control
+```java
+@Validated
+@RestController
+@RequestMapping("/v1/access-control")
+public class AccessControlController {
+    
+    @PostMapping("/bulk-check")
+    public ResponseEntity<?> bulkCheck(@Validated @RequestBody BulkPermissionCheckRequest request) {
+        BulkPermissionCheckResult result = accessControlChecker.allowsBulk(request);
+        return apiResponder.respond(result, "Bulk permission check completed");
+    }
+}
+```
+
+### Request DTO Structure
+```java
+public record BulkTestRequest(List<Integer> entityIds) {
+    public BulkTestRequest {
+        if (entityIds == null || entityIds.isEmpty()) {
+            throw new IllegalArgumentException("Entity IDs list cannot be null or empty");
+        }
+    }
+}
+```
+
+### Service Layer Pattern
+```java
+@Service
+public class AccessControlService {
+    
+    public BulkPermissionCheckResult checkBulkPermissions(List<Integer> entityIds) {
+        List<BulkPermissionCheckRequest.BulkPermissionCheckItem> items = entityIds.stream()
+            .map((entityId) -> {
+                PermissionCheckContext permissionContext = new PermissionCheckContext();
+                permissionContext.setPermission(Permission.VIEW_TIMESHEET);
+                permissionContext.setPermissionLevel(PermissionLevel.YES);
+                
+                AccessControlCheckMetadataContext metadataContext = new AccessControlCheckMetadataContext();
+                metadataContext.setTimesheetId(entityId);
+                
+                return BulkPermissionCheckRequest.BulkPermissionCheckItem.builder()
+                    .entity(Entity.TIMESHEET)
+                    .permissionCheckContext(permissionContext)
+                    .accessControlCheckMetadataContext(metadataContext)
+                    .build();
+            })
+            .toList();
+            
+        BulkPermissionCheckRequest request = BulkPermissionCheckRequest.builder().items(items).build();
+        return accessControlChecker.allowsBulk(request);
+    }
+}
+```
+
+## Individual Permission Checking
+
+### AccessControlChecker Usage
+- Use [AccessControlChecker.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/AccessControlChecker.java) for single entity checks
+- Automatically loads required candidate and job data
+- Performs permission validation with context
+
+### Permission Context Pattern
+```java
+PermissionCheckContext permissionContext = PermissionCheckContext.builder()
+    .permission(Permission.VIEW_TIMESHEET)
+    .permissionLevel(PermissionLevel.YES)
+    .build();
+
+AccessControlCheckMetadataContext metadataContext = AccessControlCheckMetadataContext.builder()
+    .timesheetId(timesheetId)
+    .build();
+
+accessControlChecker.allows(Entity.TIMESHEET, permissionContext, metadataContext);
+```
+
+## Available Permissions
+- `VIEW_TIMESHEET`: Read access to timesheet data
+- `EDIT_TIMESHEET`: Modify timesheet data
+- `DELETE_TIMESHEET`: Remove timesheet data
+- `APPROVE_TIMESHEET`: Approve timesheet submissions
+
+## Available Entities
+- `Entity.TIMESHEET`: Timesheet-related operations
+- `Entity.CANDIDATE`: Candidate-related operations
+- `Entity.JOB`: Job-related operations
+
+## Response Handling
+- Use [APIResponder.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIResponder.java) for consistent response formatting
+- Handle access denied exceptions via `GlobalExceptionHandler`
+- Return structured responses with success/error status
+
+## Example Implementation
+- [AccessControlTestController.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/controllers/access_control/AccessControlTestController.java)
+- [AccessControlCheckerExample.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/examples/AccessControlCheckerExample.java)
+
+
+## Bearer Token Identity for Agency User Endpoints [MANDATORY]
+
+### Rule
+When an endpoint is called by an **authenticated agency user** (RCRM recruiter), `account_id` must **never** be passed as a query parameter, path parameter, or request body field. It must always be resolved server-side from the JWT bearer token:
+
+```java
+Integer accountId = this.auth.getAuthenticationPrincipalOrganizationIdentifier();
+```
+
+### Why
+- Prevents tenants from querying or modifying other tenants' data by spoofing account IDs
+- Reduces API surface — callers only provide business parameters, not identity
+- Consistent with the established auth pattern used throughout the codebase
+
+### LLD Design Rule
+When writing or reviewing an LLD for an agency-user-facing endpoint:
+- **Do NOT** include `account_id` in query parameters, path parameters, or request body
+- Set the **Access control** row to: `Authenticated agency user; account_id derived from JWT bearer token`
+- Document in **Notes**: `account_id is resolved server-side via AuthHolder.getAuthenticationPrincipalOrganizationIdentifier()`
+
+### Code Pattern
+
+```java
+// ✅ CORRECT — accountId from JWT, never from the request
+@Service
+public class MyService implements IMyService {
+
+    private final AuthHolder auth;
+
+    @Override
+    public ResponseBodyDto getResource(Integer resourceId) {
+        Integer accountId = this.auth.getAuthenticationPrincipalOrganizationIdentifier();
+        return this.repository.findByIdAndAccountId(resourceId, accountId);
+    }
+}
+
+// ❌ WRONG — accountId exposed as an API parameter
+@Override
+public ResponseBodyDto getResource(Integer resourceId, Integer accountId) { ... }
+```
+
+### Does NOT Apply To
+- Internal service-to-service endpoints (where `accountId` in the body is legitimate)
+- HMP client (contractor/contact) endpoints — those use `principal.getOrganizationIdentifier()` or `principal.getEmail()`

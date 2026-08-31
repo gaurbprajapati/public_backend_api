@@ -1,0 +1,590 @@
+# SonarQube Issue Prevention Rules
+
+## Overview
+This document defines rules and best practices for preventing common SonarQube issues in the timesheet microservice codebase. Following these rules ensures code quality, maintainability, and compliance with SonarQube quality gates.
+
+## Core Principles
+1. **Clean Code**: Write code that is easy to read, understand, and maintain
+2. **Code Smell Prevention**: Avoid patterns that indicate potential issues
+3. **Best Practices**: Follow established Java and Spring Boot conventions
+4. **Performance Optimization**: Write efficient code that performs well
+5. **Security Compliance**: Ensure code follows security best practices
+
+## Common SonarQube Issues and Solutions
+
+### 1. Useless "eq(...)" Invocation in Mock Verification
+
+#### Issue Description
+**SonarQube Rule**: `java:S6068` - Remove this and every subsequent useless "eq(...)" invocation; pass the values directly.
+
+#### Problem
+When using Mockito's `eq()` matcher with constant values or literals, SonarQube considers it unnecessary overhead.
+
+#### Example of Problematic Code
+```java
+// ❌ PROBLEMATIC - Using eq() with constant values
+given(this.apiResponder.<Void>respond(eq(null),
+        eq(Messages.SUCCESS_MESSAGE),
+        eq(APIResponseType.SUCCESS), 
+        eq(HttpStatus.OK)))
+    .willReturn(expectedResponse);
+
+// ❌ PROBLEMATIC - Using eq() in verify calls with constants
+Mockito.verify(this.service).method(eq("constantValue"), eq(123));
+```
+
+#### Correct Implementation
+```java
+// ✅ CORRECT - Pass constant values directly
+given(this.apiResponder.<Void>respond(null,
+        Messages.SUCCESS_MESSAGE,
+        APIResponseType.SUCCESS, 
+        HttpStatus.OK))
+    .willReturn(expectedResponse);
+
+// ✅ CORRECT - Pass constants directly in verify calls
+Mockito.verify(this.service).method("constantValue", 123);
+```
+
+#### When to Use eq() Matcher
+Use `eq()` matcher only when:
+- Mixing argument matchers with actual values
+- Need explicit type matching
+- Working with dynamic values that require specific matching logic
+
+```java
+// ✅ CORRECT - Mixing matchers with actual values
+Mockito.when(this.service.method(eq(dynamicValue), any(Class.class)))
+    .thenReturn(result);
+
+// ✅ CORRECT - When explicit type matching is needed
+Mockito.verify(this.service).method(eq(expectedValue), argThat(customMatcher));
+```
+
+### 2. Unused Import Statements
+
+#### Issue Description
+**SonarQube Rule**: `java:S1128` - Remove this unused import.
+
+#### Solution
+- Remove all unused import statements
+- Use IDE auto-import cleanup features
+- Regularly review and clean imports
+
+```java
+// ❌ PROBLEMATIC - Unused imports
+import java.util.List; // Not used in the class
+import static org.mockito.Mockito.eq; // Not needed when not using eq()
+
+// ✅ CORRECT - Only necessary imports
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+```
+
+### 3. Raw Types Usage
+
+#### Issue Description
+**SonarQube Rule**: `java:S3740` - Provide the parametrized type for this generic.
+
+#### Solution
+Always provide generic type parameters for collections and generic classes.
+
+```java
+// ❌ PROBLEMATIC - Raw types
+List responseList = new ArrayList();
+ResponseEntity response = new ResponseEntity();
+
+// ✅ CORRECT - Parameterized types
+List<ResponseDto> responseList = new ArrayList<>();
+ResponseEntity<APINormalResponse<ResponseDto>> response = new ResponseEntity<>();
+```
+
+### 4. Magic Numbers and String Literals
+
+#### Issue Description
+**SonarQube Rule**: `java:S109` - Assign this magic number to a well-named constant.
+
+#### Solution
+Extract magic numbers and string literals to named constants.
+
+```java
+// ❌ PROBLEMATIC - Magic numbers and strings
+if (status == 200) {
+    return "Operation successful";
+}
+
+// ✅ CORRECT - Named constants
+private static final int HTTP_OK = 200;
+private static final String SUCCESS_MESSAGE = "Operation successful";
+
+if (status == HTTP_OK) {
+    return SUCCESS_MESSAGE;
+}
+```
+
+### 5. Exception Handling Best Practices
+
+#### Issue Description
+**SonarQube Rule**: `java:S1166` - Either log or rethrow this exception.
+
+#### Solution
+Always handle exceptions properly - either log them or rethrow with context.
+
+```java
+// ❌ PROBLEMATIC - Silent exception swallowing
+try {
+    riskyOperation();
+} catch (Exception e) {
+    // Silent fail
+}
+
+// ✅ CORRECT - Proper exception handling
+try {
+    riskyOperation();
+} catch (SpecificException e) {
+    logger.error("Failed to perform risky operation", e);
+    throw new ServiceException("Operation failed", e);
+}
+```
+
+### 6. Method Complexity Reduction (STRICT — CC must stay below 15)
+
+#### Issue Description
+**SonarQube Rule**: `java:S3776` - Refactor this method to reduce its Cognitive Complexity.
+
+#### Strict Requirement
+> **Every method in this codebase MUST have a Cognitive Complexity score strictly below 15.**
+> This is enforced by SonarQube quality gate. A PR that introduces or leaves a method with CC ≥ 15 **must not be merged**.
+
+Cognitive Complexity (CC) accumulates from:
+- Each control-flow construct (`if`, `else if`, `else`, `for`, `while`, `do-while`, `switch`, `catch`, `break`/`continue` with label): **+1 per occurrence plus nesting penalty**
+- Each additional boolean operator in a condition chain (`&&`, `||`): **+1 each**
+- Lambda / anonymous class nesting also increases depth penalties
+
+**Maximum allowed CC: 14** (keeping one unit of margin below the gate threshold of 15).
+
+#### Mandatory Reduction Strategies
+
+1. **Early-return / guard clause** — flip the condition and return immediately to avoid an extra nesting level.
+2. **Extract helper methods** — move inner loops or condition blocks into focused private methods; each extracted method has its own independent CC budget.
+3. **Extract predicate methods** — replace long `&&`/`||` chains with a clearly named `boolean` method.
+4. **Pre-compute flags** — evaluate compound conditions once outside the loop (e.g. `boolean isRangeBased = ...`) rather than repeating them inside.
+5. **Use streams for filter+map pipelines** — `stream().filter().map().collect()` adds zero CC.
+
+#### Example
+
+```java
+// ❌ PROBLEMATIC — CC ≥ 15 due to deep nesting + multi-&& condition
+private void process(Response response) {
+    if (response.getItems() != null) {                         // +1 (depth 1)
+        for (Item item : response.getItems()) {                // +2 (depth 2)
+            if (item.getResults() != null) {                   // +3 (depth 3)
+                for (Result r : item.getResults()) {           // +4 (depth 4)
+                    if (r.getType() != null                    // +5 +1 +1 (depth 5 + 2×&&)
+                            && VALID_TYPES.contains(r.getType())
+                            && r.getValue() != null) {
+                        total += r.getValue();
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ✅ CORRECT — every method stays well below CC 15
+private void process(Response response) {               // CC = 2
+    if (response.getItems() == null) { return; }        // guard clause
+    for (Item item : response.getItems()) {
+        collectFromItem(item, total);
+    }
+}
+
+private void collectFromItem(Item item, long[] total) { // CC = 3
+    if (item.getResults() == null) { return; }
+    for (Result r : item.getResults()) {
+        if (isValidResult(r)) { total[0] += r.getValue(); }
+    }
+}
+
+private boolean isValidResult(Result r) {               // CC = 2 (two &&)
+    return r.getType() != null
+        && VALID_TYPES.contains(r.getType())
+        && r.getValue() != null;
+}
+```
+
+### 7. Resource Management
+
+#### Issue Description
+**SonarQube Rule**: `java:S2095` - Use try-with-resources or close this resource.
+
+#### Solution
+Always use try-with-resources for resource management.
+
+```java
+// ❌ PROBLEMATIC - Manual resource management
+FileInputStream fis = new FileInputStream(file);
+// ... use fis
+fis.close();
+
+// ✅ CORRECT - Try-with-resources
+try (FileInputStream fis = new FileInputStream(file)) {
+    // ... use fis
+}
+```
+
+### 8. Stream API Best Practices
+
+#### Issue Description
+**SonarQube Rule**: `java:S3864` - Stream.peek() should be used with caution.
+
+#### Solution
+Use appropriate stream operations for their intended purpose.
+
+```java
+// ❌ PROBLEMATIC - Using peek() for side effects
+list.stream()
+    .peek(item -> processItem(item))
+    .collect(toList());
+
+// ✅ CORRECT - Use forEach for side effects
+list.forEach(this::processItem);
+
+// ✅ CORRECT - Use map for transformations
+list.stream()
+    .map(this::transformItem)
+    .collect(toList());
+```
+
+## Testing-Specific SonarQube Rules
+
+### 1. Test Method Naming
+
+#### Issue Description
+Test methods should follow naming conventions and be descriptive.
+
+#### Solution
+```java
+// ❌ PROBLEMATIC - Poor test naming
+@Test
+void test1() { }
+
+// ✅ CORRECT - Descriptive test naming
+@Test
+@DisplayName("Create timesheet successfully with valid request")
+void testCreateTimesheetValidRequestCreatesTimesheet() { }
+```
+
+### 2. Assertion Best Practices
+
+#### Issue Description
+Use appropriate assertion methods for better test readability.
+
+#### Solution
+```java
+// ❌ PROBLEMATIC - Using assertEquals for null checks
+assertEquals(null, result);
+
+// ✅ CORRECT - Use specific assertion methods
+assertThat(result).isNull();
+assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+```
+
+### 3. Integer/Boxed Type Assertions
+
+#### Issue Description
+**SonarQube Rule**: Comparing boxed types (Integer, Long, etc.) with primitive literals using `isEqualTo()` can cause SonarQube warnings.
+
+#### Problem
+When asserting on Integer/boxed types, comparing directly with primitive int literals (0, 1, etc.) triggers SonarQube issues because of potential autoboxing/unboxing problems.
+
+#### Example of Problematic Code
+```java
+// ❌ PROBLEMATIC - Comparing Integer with primitive int literal
+Integer canCreate = access.getCanCreate();
+assertThat(canCreate).isEqualTo(0);  // SonarQube issue
+assertThat(result.getCanEdit()).isEqualTo(1);  // SonarQube issue
+```
+
+#### Correct Implementation
+```java
+// ✅ CORRECT - Use Integer.valueOf() for boxed type comparison
+Integer canCreate = access.getCanCreate();
+assertThat(canCreate).isEqualTo(Integer.valueOf(0));
+assertThat(result.getCanEdit()).isEqualTo(Integer.valueOf(1));
+
+// ✅ ALTERNATIVE - Use isZero() for zero comparisons
+assertThat(canCreate).isZero();
+
+// ✅ ALTERNATIVE - Use isOne() for one comparisons (if available in newer AssertJ)
+// Or compare with explicit Integer object
+assertThat(result.getCanEdit()).isEqualTo(Integer.valueOf(1));
+```
+
+#### When to Use Each Approach
+- **Integer.valueOf()**: For any numeric comparison with boxed types
+- **isZero()**: **PREFERRED** - Specifically for checking if value equals 0
+- **isNotZero()**: For checking if value is not 0
+- **isPositive()**: For checking if value is greater than 0
+- **isNegative()**: For checking if value is less than 0
+
+```java
+// ✅ BEST PRACTICES - Use specific assertion methods when available
+assertThat(result.getCount()).isZero();  // For 0
+assertThat(result.getTotal()).isNotZero();  // For non-zero
+assertThat(result.getValue()).isPositive();  // For > 0
+assertThat(result.getBalance()).isNegative();  // For < 0
+
+// ✅ For specific values other than 0
+assertThat(result.getStatus()).isEqualTo(Integer.valueOf(1));
+assertThat(result.getType()).isEqualTo(Integer.valueOf(2));
+```
+
+### 4. Collection Size Assertions
+
+#### Issue Description
+**SonarQube Rule**: Use `hasSizeGreaterThan()` instead of `size().isGreaterThan()` for better readability and SonarQube compliance.
+
+#### Problem
+When asserting on collection sizes, using `size().isGreaterThan()` is less readable and can trigger SonarQube issues.
+
+#### Example of Problematic Code
+```java
+// ❌ PROBLEMATIC - Using size().isGreaterThan()
+List<String> items = getItems();
+assertThat(items.size()).isGreaterThan(0);  // SonarQube issue
+assertThat(items.size()).isLessThan(10);  // SonarQube issue
+assertThat(items.size()).isEqualTo(5);  // SonarQube issue
+```
+
+#### Correct Implementation
+```java
+// ✅ CORRECT - Use hasSizeGreaterThan() and related methods
+List<String> items = getItems();
+assertThat(items).hasSizeGreaterThan(0);  // PREFERRED
+assertThat(items).hasSizeLessThan(10);
+assertThat(items).hasSize(5);
+assertThat(items).hasSizeGreaterThanOrEqualTo(1);
+assertThat(items).hasSizeLessThanOrEqualTo(10);
+```
+
+#### Available AssertJ Collection Size Methods
+- **hasSize(int)**: Assert exact size
+- **hasSizeGreaterThan(int)**: Assert size is greater than
+- **hasSizeLessThan(int)**: Assert size is less than
+- **hasSizeGreaterThanOrEqualTo(int)**: Assert size is greater than or equal
+- **hasSizeLessThanOrEqualTo(int)**: Assert size is less than or equal
+- **isEmpty()**: Assert collection is empty
+- **isNotEmpty()**: Assert collection is not empty
+
+```java
+// ✅ BEST PRACTICES - Use collection size assertion methods
+assertThat(list).hasSizeGreaterThan(0);  // Instead of size().isGreaterThan(0)
+assertThat(list).hasSize(5);  // Instead of size().isEqualTo(5)
+assertThat(list).isEmpty();  // Instead of size().isEqualTo(0)
+assertThat(list).isNotEmpty();  // Instead of size().isGreaterThan(0)
+```
+
+### 5. Variable Naming Conventions
+
+#### Issue Description
+**SonarQube Rule**: Local variable names should match the regular expression `^[a-z][a-zA-Z0-9]*$` (start with lowercase letter).
+
+#### Problem
+Local variables starting with uppercase letters violate Java naming conventions and can cause SonarQube issues.
+
+#### Example of Problematic Code
+```java
+// ❌ PROBLEMATIC - Variable names starting with uppercase
+Integer JobId = 1;
+String UserName = "test";
+List<String> Items = new ArrayList<>();
+Timesheet Timesheet1 = new Timesheet();
+
+// ❌ PROBLEMATIC - Variable names with underscores (not allowed in local variables)
+Timesheet timesheet1_1 = new Timesheet();
+String user_name = "test";
+Integer job_id = 1;
+List<String> items_list = new ArrayList<>();
+```
+
+#### Correct Implementation
+```java
+// ✅ CORRECT - Variable names start with lowercase
+Integer jobId = 1;
+String userName = "test";
+List<String> items = new ArrayList<>();
+Timesheet timesheet1 = new Timesheet();
+
+// ✅ CORRECT - Use camelCase instead of underscores
+Timesheet timesheet1Range1 = new Timesheet();  // Instead of timesheet1_1
+String userName = "test";  // Instead of user_name
+Integer jobId = 1;  // Instead of job_id
+List<String> itemsList = new ArrayList<>();  // Instead of items_list
+```
+
+#### Naming Conventions
+- **Local variables**: Start with lowercase letter, use camelCase (NO underscores allowed)
+- **Class/Interface names**: Start with uppercase letter, use PascalCase
+- **Constants**: Use UPPER_SNAKE_CASE (underscores allowed only for constants)
+- **Package names**: Use lowercase with dots
+
+#### Important Notes
+- **Underscores are NOT allowed** in local variable names (only in constants)
+- The regex `^[a-z][a-zA-Z0-9]*$` means: start with lowercase, followed by letters/numbers only
+- Use camelCase to separate words: `timesheet1Range1` instead of `timesheet1_1`
+
+```java
+// ✅ BEST PRACTICES - Follow Java naming conventions
+// Local variables
+Integer jobId = 1;
+String contractorName = "John";
+List<Timesheet> timesheets = new ArrayList<>();
+
+// Class names (types)
+public class TimesheetService { }
+public interface ITimesheetRepository { }
+
+// Constants
+private static final int MAX_RETRY_COUNT = 3;
+private static final String DEFAULT_STATUS = "ACTIVE";
+```
+
+### 6. Assertion Chaining
+
+#### Issue Description
+**SonarQube Rule**: Join multiple assertions on the same subject into one assertion chain for better readability and SonarQube compliance.
+
+#### Problem
+When asserting on the same variable multiple times, using separate `assertThat()` calls is less readable and can trigger SonarQube issues.
+
+#### Example of Problematic Code
+```java
+// ❌ PROBLEMATIC - Multiple assertions on same variable
+List<TimeLog> capturedTimeLogs = timeLogsCaptor.getValue();
+assertThat(capturedTimeLogs).isNotNull();
+assertThat(capturedTimeLogs).hasSizeGreaterThan(0);
+
+// ❌ PROBLEMATIC - Multiple assertions on same variable
+assertThat(result).isNotNull();
+assertThat(result).hasSize(5);
+```
+
+#### Correct Implementation
+```java
+// ✅ CORRECT - Chain assertions on same variable
+List<TimeLog> capturedTimeLogs = timeLogsCaptor.getValue();
+assertThat(capturedTimeLogs).isNotNull().hasSizeGreaterThan(0);
+
+// ✅ CORRECT - Chain assertions on same variable
+assertThat(result).isNotNull().hasSize(5);
+```
+
+#### When to Chain Assertions
+- **Same variable**: Chain when asserting on the exact same variable/object reference
+- **Different fields**: When asserting on different fields (e.g., `result.getField1()` vs `result.getField2()`), separate assertions are acceptable
+- **Complex assertions**: For complex assertions, consider using `satisfies()` or `extracting()` for better readability
+
+```java
+// ✅ BEST PRACTICES - Chain assertions on same variable
+assertThat(list).isNotNull().hasSizeGreaterThan(0);
+assertThat(result).isNotNull().hasSize(5);
+
+// ✅ ACCEPTABLE - Different fields can be separate
+assertThat(result).isNotNull();
+assertThat(result.getTotalCount()).isEqualTo(10L);
+assertThat(result.getFilteredCount()).isEqualTo(5L);
+
+// ✅ ALTERNATIVE - Using satisfies for complex assertions
+assertThat(result)
+    .isNotNull()
+    .satisfies(r -> {
+        assertThat(r.getTotalCount()).isEqualTo(10L);
+        assertThat(r.getFilteredCount()).isEqualTo(5L);
+    });
+```
+
+### 7. Mock Setup Optimization
+
+
+
+#### Issue Description
+Avoid unnecessary mock setup and verification.
+
+#### Solution
+```java
+// ❌ PROBLEMATIC - Over-mocking
+Mockito.when(service.method(any())).thenReturn(result);
+Mockito.verify(service, times(1)).method(any());
+
+// ✅ CORRECT - Appropriate mocking
+Mockito.when(service.method(expectedParam)).thenReturn(result);
+Mockito.verify(service).method(expectedParam);
+```
+
+## Code Quality Checklist
+
+### Before Committing Code
+- [ ] Remove all unused imports
+- [ ] Eliminate magic numbers and strings
+- [ ] Use appropriate generic types
+- [ ] Handle exceptions properly
+- [ ] **Every method has Cognitive Complexity < 15** — verify with SonarQube or IDE plugin before raising a PR
+- [ ] Use try-with-resources for resource management
+- [ ] Follow naming conventions (local variables start with lowercase)
+- [ ] Write descriptive test names
+- [ ] Use appropriate assertion methods
+  - [ ] Use `isZero()` instead of `isEqualTo(0)` (PREFERRED)
+  - [ ] Use `hasSizeGreaterThan()` instead of `size().isGreaterThan()`
+  - [ ] Use collection size assertion methods (`hasSize()`, `isEmpty()`, etc.)
+  - [ ] Chain multiple assertions on the same variable (e.g., `assertThat(var).isNotNull().hasSize(5)`)
+- [ ] Avoid unnecessary `eq()` matchers in mocks
+
+### Mock Verification Guidelines
+1. **Use `eq()` only when necessary** - mixing matchers or explicit type matching
+2. **Pass constants directly** - avoid wrapping constant values in `eq()`
+3. **Be specific with parameters** - use actual expected values instead of `any()`
+4. **Verify meaningful interactions** - don't over-verify trivial calls
+
+### Performance Guidelines
+1. **Use streams appropriately** - choose the right operation for the task
+2. **Avoid unnecessary object creation** - reuse objects when possible
+3. **Close resources properly** - use try-with-resources pattern
+4. **Optimize collections usage** - choose appropriate collection types
+
+### Security Guidelines
+1. **Validate inputs** - always validate user inputs
+2. **Handle sensitive data carefully** - avoid logging sensitive information
+3. **Use secure coding practices** - follow OWASP guidelines
+4. **Sanitize outputs** - prevent injection attacks
+
+## IDE Configuration
+
+### IntelliJ IDEA Settings
+```xml
+<!-- Configure code inspections to match SonarQube rules -->
+<inspection>
+    <option name="UNUSED_IMPORT" value="true" />
+    <option name="RAW_TYPES" value="true" />
+    <option name="MAGIC_NUMBER" value="true" />
+</inspection>
+```
+
+### Eclipse Settings
+Configure similar inspections in Eclipse to catch issues early during development.
+
+## Continuous Improvement
+
+### Regular Reviews
+1. **Weekly SonarQube reports** - review and address new issues
+2. **Code review guidelines** - include SonarQube compliance in reviews
+3. **Team training** - educate team on common issues and solutions
+4. **Quality gate enforcement** - prevent merging code with SonarQube violations
+
+### Automation
+1. **Pre-commit hooks** - run static analysis before commits
+2. **CI/CD integration** - include SonarQube analysis in build pipeline
+3. **Quality gates** - enforce quality standards automatically
+4. **Notification systems** - alert team of quality issues
+
+This guide should be referenced during code reviews and before committing changes to ensure high code quality and SonarQube compliance.

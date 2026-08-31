@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CustomRulesJsonSchema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "integer" },
+      "ruleName": { "type": "string" },
+      "workDayId": {
+        "type": "array",
+        "items": { "type": "integer" }
+      },
+      "ruleType": { "type": "integer" },
+      "startTime": { "type": "integer" },
+      "endTime": { "type": "integer" },
+      "startDuration": { "type": "integer" },
+      "endDuration": { "type": "integer" },
+      "dailyThreshold": { "type": "integer" },
+      "weeklyThreshold": { "type": "integer" },
+      "chargeMethod": { "type": "integer" },
+      "payRateMultiplier": { "type": "number" },
+      "billRateMultiplier": { "type": "number" },
+      "payRatePerHour": { "type": "number" },
+      "billRatePerHour": { "type": "number" }
+    },
+    "required": [
+      "id",
+      "ruleName",
+      "workDayId",
+      "ruleType",
+      "startTime",
+      "endTime",
+      "startDuration",
+      "endDuration",
+      "dailyThreshold",
+      "weeklyThreshold",
+      "chargeMethod",
+      "payRateMultiplier",
+      "billRateMultiplier",
+      "payRatePerHour",
+      "billRatePerHour"
+    ],
+    "additionalProperties": false
+  }
+}

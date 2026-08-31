@@ -1,0 +1,96 @@
+---
+description: Timesheet microservice project overview including technology stack, architecture patterns, key modules, and development guidelines.
+alwaysApply: false
+---
+# Timesheet Microservice Project Overview
+
+## Technology Stack
+- **Framework**: Spring Boot 3.2.4 with Java 21
+- **Database**: PostgreSQL with JPA/Hibernate and JOOQ
+- **Security**: Spring Security with custom authentication
+- **Documentation**: OpenAPI 3 (Swagger)
+- **Testing**: JUnit 5, Mockito, Spring Boot Test
+- **Build Tool**: Maven
+- **Logging**: ECS Logging with Logback
+- **Monitoring**: New Relic, Sentry
+- **Feature Flags**: Flagsmith
+- **Caching**: Redis
+
+## Project Structure
+The main application entry point is [TimesheetApplication.java](mdc:src/main/java/io/recruitcrm/microservice/TimesheetApplication.java) which configures:
+- Entity scanning for `io.recruitcrm.microservice` package
+- JPA repositories for `io.recruitcrm.microservice` package
+- OpenAPI documentation
+- JOOQ configuration
+
+## Core Architecture Patterns
+
+### 1. Layered Architecture
+- **Controllers**: Handle HTTP requests/responses in `controllers/` package
+- **Services**: Business logic in `services/` package (interface + implementation)
+- **Repositories**: Data access in `repositories/` and `dao/` packages
+- **DTOs**: Data transfer objects in `dto/` package
+- **Entities**: Domain models from external entity packages
+
+### 2. Interface-First Design
+All components follow interface-first approach:
+- Controllers implement interfaces (e.g., `ITimesheetController`)
+- Services have interfaces (e.g., `ITimesheetService`) with implementations
+- Repositories have interfaces with concrete implementations
+
+### 3. Dependency Injection
+- Constructor injection is mandatory for all classes
+- `@Autowired` annotation is used for dependency injection
+- Services are injected into controllers, repositories into services
+
+### 4. Response Handling
+- Standardized API responses using [APIResponder](mdc:src/main/java/io/recruitcrm/microservice/timesheet/responses/APIResponder.java)
+- Consistent error handling with [CommonControllerAdvice](mdc:src/main/java/io/recruitcrm/microservice/timesheet/exceptions/handlers/CommonControllerAdvice.java)
+- Response types: `APINormalResponse<T>` for success, `APIErrorResponse` for errors
+
+## Key Modules
+
+### Timesheet Management
+- Core timesheet CRUD operations
+- Status management and approval workflows
+- Time log tracking and bulk operations
+
+### Rule Engine
+- Configurable business rules for timesheet validation
+- Support for daily/weekly overtime calculations
+- Template-based rule configuration
+
+### Access Control
+- Permission-based access control system
+- Bulk permission checking capabilities
+- Multi-entity access validation
+
+### Contractor Settings
+- Contractor-specific timesheet configurations
+- Time slot management and availability tracking
+
+## Development Guidelines
+
+### Code Organization
+- Package structure follows domain-driven design
+- Each domain has its own controller, service, repository, and DTO packages
+- Test classes mirror the main package structure
+
+### Naming Conventions
+- Controllers: `[Entity]Controller` implementing `I[Entity]Controller`
+- Services: `[Entity]Service` implementing `I[Entity]Service`
+- Repositories: `[Entity]Repository` implementing `I[Entity]Repository`
+- JPA Repositories: `[Entity]JpaRepository`
+- DTOs: `[Entity][Request/Response]BodyDto`
+
+### Exception Handling
+- Custom exceptions in `exceptions/` package
+- Global exception handling with `@ControllerAdvice`
+- Validation errors, resource not found, and unauthorized access handling
+
+### Testing Strategy
+- 100% test coverage requirement
+- Unit tests for all components
+- Integration tests for critical workflows
+- Mock data classes for test data generation
+

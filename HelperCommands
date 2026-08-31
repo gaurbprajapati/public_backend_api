@@ -1,0 +1,1 @@
+mvn clean test surefire-report:report-only jacoco:report -D"sentry.maven.plugin.skip=true" -D"maven.test.failure.ignore=true"

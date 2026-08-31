@@ -1,0 +1,123 @@
+---
+description: Bulk permission checking system for optimizing database queries by preloading related data for multiple permission checks.
+alwaysApply: false
+---
+# Bulk Permission Checking Patterns
+
+## Overview
+The bulk permission checking system optimizes database queries by preloading related data (candidates and jobs) for multiple permission checks. This is implemented in [BulkPermissionChecker.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/BulkPermissionChecker.java).
+
+## Core Components
+
+### BulkPermissionChecker
+- **Purpose**: Performs efficient bulk permission checking for multiple entities
+- **Key Method**: `checkBulkPermissions(BulkPermissionCheckRequest request)`
+- **Optimization**: Preloads candidate and job data using optimized queries
+- **Strategy**: Uses [BulkDataLoadingStrategy](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/BulkDataLoadingStrategy.java) to determine optimal data loading approach
+
+### BulkDataLoadingStrategy Enum
+Available strategies for data loading optimization:
+
+1. **TIMESHEET_WITH_RELATED_ENTITIES**: Load both candidate and job data via timesheet relationships
+2. **CANDIDATES_ONLY**: Load only candidate data for direct candidate permission checks
+3. **JOBS_ONLY**: Load only job data for direct job permission checks
+4. **MIXED_STRATEGY**: Load appropriate data based on entity types in the request
+
+### Request/Response DTOs
+- **Request**: [BulkPermissionCheckRequest.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/dto/BulkPermissionCheckRequest.java)
+- **Response**: [BulkPermissionCheckResult.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/dto/BulkPermissionCheckResult.java)
+- **Context**: [BulkPermissionCheckContext.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/dto/BulkPermissionCheckContext.java)
+
+## Usage Patterns
+
+### Basic Bulk Permission Check
+```java
+// Create request items
+List<BulkPermissionCheckRequest.BulkPermissionCheckItem> items = entityIds.stream()
+    .map(entityId -> {
+        PermissionCheckContext permissionContext = PermissionCheckContext.builder()
+            .permission(Permission.VIEW_TIMESHEET)
+            .permissionLevel(PermissionLevel.YES)
+            .build();
+            
+        AccessControlCheckMetadataContext metadataContext = AccessControlCheckMetadataContext.builder()
+            .timesheetId(entityId)
+            .build();
+            
+        return BulkPermissionCheckRequest.BulkPermissionCheckItem.builder()
+            .entity(Entity.TIMESHEET)
+            .permissionCheckContext(permissionContext)
+            .accessControlCheckMetadataContext(metadataContext)
+            .build();
+    })
+    .toList();
+
+// Create and execute request
+BulkPermissionCheckRequest request = BulkPermissionCheckRequest.builder()
+    .items(items)
+    .build();
+
+BulkPermissionCheckResult result = bulkPermissionChecker.checkBulkPermissions(request);
+```
+
+### Explicit Strategy Usage
+```java
+// Force specific data loading strategy
+BulkPermissionCheckRequest request = BulkPermissionCheckRequest.builder()
+    .items(items)
+    .explicitStrategy(BulkDataLoadingStrategy.CANDIDATES_ONLY)
+    .build();
+```
+
+### Mixed Entity Types
+```java
+// Handle different entity types in single request
+List<BulkPermissionCheckRequest.BulkPermissionCheckItem> items = new ArrayList<>();
+
+// Add timesheet items
+items.add(BulkPermissionCheckRequest.BulkPermissionCheckItem.builder()
+    .entity(Entity.TIMESHEET)
+    .permissionCheckContext(timesheetPermissionContext)
+    .accessControlCheckMetadataContext(AccessControlCheckMetadataContext.builder()
+        .timesheetId(timesheetId)
+        .build())
+    .build());
+
+// Add candidate items
+items.add(BulkPermissionCheckRequest.BulkPermissionCheckItem.builder()
+    .entity(Entity.CANDIDATE)
+    .permissionCheckContext(candidatePermissionContext)
+    .accessControlCheckMetadataContext(AccessControlCheckMetadataContext.builder()
+        .candidateId(candidateId)
+        .build())
+    .build());
+```
+
+## Available Permissions
+Reference [Permission.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/Permission.java) for all available permissions:
+- `VIEW_TIMESHEET`, `EDIT_TIMESHEET`, `DELETE_TIMESHEET`
+- `CREATE_TIMESHEET`, `SUBMIT_TIMESHEET`, `APPROVE_TIMESHEET`
+- `REJECT_TIMESHEET`, `EXPORT_TIMESHEET`, `EXPORT_TIMESHEET_REPORT`
+- `ADD_TIME_IN_TIMESHEET`, `VIEW_CONTRACTOR_DETAILS`
+
+## Available Entities
+Reference [Entity.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/Entity.java) for supported entities:
+- `TIMESHEET`, `TIMESHEET_SETTINGS`, `CANDIDATE`, `JOB`
+
+## Performance Optimization
+- **Data Preloading**: Uses optimized queries to load related data in bulk
+- **Strategy Selection**: Automatically determines optimal loading strategy based on entity types
+- **Fallback Handling**: Graceful degradation when data loading fails
+- **Context Reuse**: Preloaded data is shared across all permission checks in the batch
+
+## Error Handling
+- Individual permission check failures don't stop the entire batch
+- Each result includes `allowed` boolean and `errorMessage` string
+- Failed data loading falls back to empty context for individual checks
+- Comprehensive logging for debugging and monitoring
+
+## Integration Points
+- Uses [PermissionCheckerFactory](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/contract_staffing/permission/PermissionCheckerFactory.java) for permission checker instantiation
+- Integrates with [AccessControlChecker](mdc:src/main/java/io/recruitcrm/microservice/timesheet/access_control/recruitcrm/core/AccessControlChecker.java) for core permission validation
+- Leverages [TimesheetRepository](mdc:src/main/java/io/recruitcrm/microservice/timesheet/repositories/timesheet/TimesheetRepository.java) for optimized data queries
+

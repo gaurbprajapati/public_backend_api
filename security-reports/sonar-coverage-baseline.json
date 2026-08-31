@@ -1,0 +1,107 @@
+{
+  "fetchedAt": "2026-07-20T08:46:47.119937+00:00",
+  "repo": "contract-staffing-timesheet-microservice",
+  "projectKey": "Workforce-Cloud-Tech_contract-staffing-timesheet-microservice",
+  "scope": "pullRequest=1051",
+  "pullRequest": "1051",
+  "branch": "enhancement-bnp-11917-rule-engine-changes",
+  "thresholds": {
+    "minimum": 90,
+    "target": 95
+  },
+  "qualityGate": {
+    "status": "ERROR",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_reliability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_security_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_maintainability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "95",
+        "actualValue": "97.6"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_security_hotspots_reviewed",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "100",
+        "actualValue": "100.0"
+      },
+      {
+        "status": "ERROR",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "0",
+        "actualValue": "1"
+      }
+    ],
+    "periods": [],
+    "ignoredConditions": false
+  },
+  "summary": {
+    "new_coverage": 97.6470588235294,
+    "new_line_coverage": 97.76119402985074,
+    "new_lines_to_cover": 134,
+    "new_uncovered_lines": 3,
+    "overall_coverage": 96.1,
+    "meets_minimum_90": true,
+    "meets_target_95": true
+  },
+  "files": [
+    {
+      "path": "src/main/java/io/recruitcrm/microservice/timesheet/services/rule_engine/RuleEngineService.java",
+      "new_coverage": 97.40259740259741,
+      "new_lines_to_cover": 122,
+      "new_uncovered_lines": 3,
+      "coverage": 94.6
+    },
+    {
+      "path": "src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/dto/RuleEvaluationResult.java",
+      "new_coverage": 100.0,
+      "new_lines_to_cover": 4,
+      "new_uncovered_lines": 0,
+      "coverage": 100.0
+    },
+    {
+      "path": "src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/BaseRule.java",
+      "new_coverage": 100.0,
+      "new_lines_to_cover": 8,
+      "new_uncovered_lines": 0,
+      "coverage": 98.6
+    }
+  ]
+}

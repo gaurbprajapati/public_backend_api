@@ -1,0 +1,110 @@
+---
+description: Spring Boot architecture patterns and best practices for controllers, services, repositories, and DTOs. Includes dependency injection, transaction management, and testing patterns.
+alwaysApply: false
+---
+# Cursor AI Rules for API Generation  
+
+## **General Rules**  
+- **Framework:** Use Java 21 with Spring Boot.  
+- **Architecture:** Follow MVC structure with a flow: **Controller → Service → Repository → Entity Models**.  
+- **Consistency:** Maintain uniform naming conventions across controllers, services, and repositories.  
+- **Exception Handling:** Implement proper exception handling with custom exceptions where necessary.  
+- **Testing:** Ensure 100% code coverage using **Mockito** and **JUnit 5**.  
+- **Data Handling:** Use Mappers for DTO conversions.  
+- **Data Handling:** Use Mappers for DTO conversions for all get endpoints or whenever fetch data.
+- **Code Best Practices:** Follow standard annotations and structuring conventions.  
+
+## **Endpoint Specification**  
+
+### **Get TimesheetSetting by Assignment ID**  
+- **HTTP Method:** `GET`  
+- **Endpoint URL:** `/v1/timesheet-settings/assignment/{assignmentId}`  
+- **Controller Name:** `TimesheetSettingController`  
+- **Service Name:** `TimesheetSettingService`  
+- **Repository Name:** `TimesheetSettingRepository`  
+- **JPA Repository Name:** `TimesheetSettingJpaRepository`  
+- **Entity Package:** Store entity models in a dedicated package.  
+- **Mappers:** Use DTOs for request/response transformation.  
+
+### **Request & Response Details**  
+- **Request Body:** `No Body (Handled via Path Variable)`  
+- **Response Body:** `JSON Format`  return all the fields in the table
+
+## **Business Logic & Exception Handling**  
+1. Check if the assignment exists for the provided `assignmentId` in AssignCandidateJob and get the JobId and candidateId.  
+2. If found, Check if the timesheet settings exists with both jobid and candidateid.  
+3. If not found, throw a `ResourceNotFoundException`.  
+4. Implement exception handling for invalid input cases.  
+
+## **Code Generation Rules**  
+- **Strcuture:** Follow the interface-first approach.Implement Interface and implement that Interface for all the Controllers Serices Repositories. It should be inside the folder name as Model name. Create a constrcutor for all the classes created.
+- **JPA Repository Structure** If we need to use JPA then use ModelName + JpaRepository as File Name.
+- **Custom Repository Structure** If we need to use Custom then use ModelName + Repository as File Name.
+- **Controller:** If `TimesheetSettingController` does not exist, generate a new file in the appropriate package or create a new folder .  
+- **Service & Repository:** Ensure `TimesheetSettingService` and `TimesheetSettingRepository` are implemented correctly.  
+- **DTO & Mappers:** Use proper DTOs for entity transformation.  
+
+## **Testing Guidelines**  
+- **Coverage:** 100% test coverage is mandatory.  
+- **Tools:** Use `Mockito` and `JUnit 5`.  
+- **Test Cases:** Cover all possible scenarios:  
+  - Valid `assignmentId` (successful deletion).  
+  - Non-existing `assignmentId` (exception thrown).  
+  - Invalid input cases.
+
+  # Repository Testing Rules
+
+  ## General Structure
+  - Each repository test class should follow the naming pattern `[RepositoryName]Tests`
+  - Use JUnit 5 with Mockito for testing repository classes
+  - Add the `@ExtendWith(MockitoExtension.class)` annotation to test classes
+  - Create test methods with clear, descriptive names that indicate what is being tested
+  - Use `@DisplayName` annotations to provide human-readable descriptions of tests
+  - Structure tests with the Arrange-Act-Assert pattern
+  - Mock `EntityManager` and any `TypedQuery` objects needed
+  - Initialize repository in a `@BeforeEach` setup method
+
+  ## Mock Data
+  - Create a separate mock data class named `[RepositoryName]MockData` for each repository
+  - Make mock data class final with a private constructor
+  - Include static methods to generate sample entities and collections
+  - Set realistic values for all required fields in mock data
+  - Create methods that return different variants of test data when needed
+  - For ID fields, set values in mock data but use null for "new" entities
+
+  ## Testing Find Methods
+  - Test both found and not-found scenarios for each find method
+  - Verify the correct JPQL query is constructed
+  - Mock the EntityManager to return the appropriate TypedQuery
+  - Mock the TypedQuery's parameter setting and result retrieval
+  - Assert the result matches expected output
+  - Verify all interactions with mocked objects
+
+  ## Testing Create/Update Methods
+  - Use ArgumentCaptor to capture entities passed to EntityManager
+  - Verify the correct EntityManager method is called (persist/merge)
+  - Assert that all entity fields are set correctly
+  - For new entities, verify ID is null (as it should be generated)
+  - For updates, verify the existing ID is preserved
+
+  ## Testing Delete Methods
+  - Verify the correct entity or query is used for deletion
+  - Test both successful deletion and edge cases
+  - Verify interactions with EntityManager's remove method or query execution
+
+  ## Batch Operations
+  - For methods that process multiple entities, test with various collection sizes
+  - Verify the correct operation is performed for each item in the collection
+  - Use verification with times() to confirm the expected number of calls
+
+  ## Error Handling
+  - Test exception scenarios when applicable
+  - Verify that repository methods handle errors appropriately
+  - Mock EntityManager to throw exceptions when testing error paths
+
+By following these structured rules, the **Cursor AI Rules File** ensures the automated generation of standardized, well-tested, and maintainable API endpoints in Java. 🚀  
+
+  - Verify that repository methods handle errors appropriately
+  - Mock EntityManager to throw exceptions when testing error paths
+
+By following these structured rules, the **Cursor AI Rules File** ensures the automated generation of standardized, well-tested, and maintainable API endpoints in Java. 🚀  

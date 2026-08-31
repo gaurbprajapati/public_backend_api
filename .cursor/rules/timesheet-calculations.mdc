@@ -1,0 +1,197 @@
+---
+description: This guide covers the patterns for timesheet calculations, common issues with weekly overtime, and how to debug calculation discrepancies between expected and actual results.
+alwaysApply: false
+---
+# Timesheet Calculation Patterns and Debugging
+
+## Overview
+This guide covers the patterns for timesheet calculations, common issues with weekly overtime, and how to debug calculation discrepancies between expected and actual results.
+
+## Calculation Components
+
+### Pay vs Bill Amounts
+- **Pay Amount**: Employee compensation (lower hourly rate)
+- **Bill Amount**: Client billing (higher hourly rate)
+- **Multipliers**: Applied to base rates for overtime/premium periods
+
+### Rate Structure
+```java
+// Example rates
+double payRate = 27.25;    // Employee pay rate
+double billRate = 43.75;   // Client bill rate
+double overtimeMultiplier = 1.5;  // Overtime premium
+```
+
+## Rule Evaluation Patterns
+
+### Range-Based Rules
+Rules that apply to specific time ranges within a day:
+
+1. **Regular Hours**: Standard pay rate for scheduled work hours
+2. **Before Shift**: Premium rate for early arrival (e.g., 1.5x)
+3. **After Shift**: Premium rate for late departure (e.g., 1.5x)
+4. **Daily Overtime**: Premium rate for hours exceeding daily threshold
+5. **Weekly Overtime**: Premium rate for hours exceeding weekly threshold
+
+### Calculation Example
+```java
+// Monday: 8:27-17:03 (8.6 hours total)
+// Regular Hours: 8:30-17:00 (8.5 hours)
+// Before Shift: 8:27-8:30 (3 minutes)
+// After Shift: 17:00-17:03 (3 minutes)
+
+// Regular Pay: 8.5 × $27.25 = $231.63
+// Before Shift Pay: 0.05 × $27.25 × 1.5 = $2.04
+// After Shift Pay: 0.05 × $27.25 × 1.5 = $2.04
+// Total Pay: $235.71
+```
+
+## Weekly Overtime Issues
+
+### Common Problem: Weekly Overtime Shows Zero
+**Scenario**: Total weekly hours exceed threshold (e.g., 44.97 > 42.5) but weekly overtime calculates as zero.
+
+### Root Causes
+
+#### 1. Time Range Occupation by Daily Overtime
+**Problem**: Daily Overtime rules occupy time ranges before Weekly Overtime evaluation
+**Solution**: Check rule precedence order in [RulePrecedenceConfig.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/constants/RulePrecedenceConfig.java)
+
+```java
+// Rule precedence order (range-based):
+// 1. RANGE_BASED_REGULAR_HOURS
+// 2. RANGE_BASED_BEFORE_SHIFT  
+// 3. RANGE_BASED_AFTER_SHIFT
+// 4. RANGE_BASED_BREAK
+// 5. RANGE_BASED_DAILY_OVERTIME  // ← Occupies time ranges
+// 6. RANGE_BASED_WEEKLY_OVERTIME // ← No time ranges left
+```
+
+#### 2. Weekly Overtime Rule Not Configured
+**Problem**: Weekly overtime rule not added to timesheet custom rules
+**Solution**: Ensure `RANGE_BASED_WEEKLY_OVERTIME` is in the `customRule` list
+
+#### 3. Incorrect Weekly Threshold
+**Problem**: Weekly threshold not set or set incorrectly
+**Solution**: Verify `weeklyThreshold` configuration in rule settings
+
+### Debugging Weekly Overtime
+
+#### Step 1: Check Rule Configuration
+```json
+{
+  "customRule": [
+    {
+      "ruleType": "RANGE_BASED_WEEKLY_OVERTIME",
+      "weeklyThreshold": "PT42H30M",  // 42.5 hours
+      "multiplier": 1.75
+    }
+  ]
+}
+```
+
+#### Step 2: Verify Rule Evaluation Response
+Look for weekly overtime in the response:
+```json
+{
+  "ruleType": "RANGE_BASED_WEEKLY_OVERTIME",
+  "ruleName": "Weekly Overtime",
+  "billAmount": 0.0,  // ← Should be > 0 if working
+  "payAmount": 0.0,   // ← Should be > 0 if working
+  "successful": true
+}
+```
+
+#### Step 3: Check Time Range Occupation
+Review `occupiedTimeRanges` in evaluation state to see if daily overtime is blocking weekly overtime.
+
+## Calculation Verification
+
+### Manual Calculation vs System Response
+When discrepancies occur, verify each component:
+
+#### 1. Regular Hours Calculation
+```java
+// Expected: 42.5 × $27.25 = $1,157.81
+// Actual: Sum of daily regular hours
+```
+
+#### 2. Before/After Shift Calculation
+```java
+// Expected: 2.5 × $27.25 × 1.5 = $102.19
+// Actual: Sum of daily before/after shift hours
+```
+
+#### 3. Weekly Overtime Calculation
+```java
+// Expected: (44.97 - 42.5) × $27.25 × 1.75 = $94.19
+// Actual: Weekly overtime amount from response
+```
+
+### Common Discrepancies
+
+#### Small Rounding Differences
+- **Cause**: Time precision (seconds vs hours)
+- **Solution**: Accept small differences (< $0.10)
+
+#### Missing Weekly Overtime
+- **Cause**: Time range occupation or rule configuration
+- **Solution**: Check rule precedence and configuration
+
+#### Incorrect Daily Totals
+- **Cause**: Rule evaluation order or time range conflicts
+- **Solution**: Review individual day calculations
+
+## Testing Strategies
+
+### 1. Single Day Testing
+Test individual days to isolate issues:
+```json
+{
+  "date": "2026-01-26",
+  "startTime": "08:27:00",
+  "endTime": "17:03:00"
+}
+```
+
+### 2. Weekly Testing
+Test full weeks to verify weekly overtime:
+```json
+{
+  "weekStartDate": "2026-01-26",
+  "weekEndDate": "2026-01-30"
+}
+```
+
+### 3. Rule Combination Testing
+Test different rule combinations to identify conflicts:
+- Regular Hours + Before/After Shift
+- Regular Hours + Daily Overtime
+- Regular Hours + Weekly Overtime
+- All rules together
+
+## Best Practices
+
+### 1. Rule Configuration
+- Always include necessary custom rules
+- Set appropriate thresholds
+- Test rule combinations
+- Document rule precedence
+
+### 2. Calculation Verification
+- Verify daily calculations first
+- Sum daily totals for weekly verification
+- Check for time range conflicts
+- Validate rate and multiplier configurations
+
+### 3. Debugging Approach
+- Start with single day analysis
+- Check rule evaluation response
+- Verify time range occupation
+- Compare manual vs system calculations
+
+## Related Files
+- **Rule Engine**: [RuleEngine.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/RuleEngine.java)
+- **Weekly Overtime**: [WeeklyOvertimeRule.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/shifts/WeeklyOvertimeRule.java)
+- **Time Helper**: [TimeHelper.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/utils/TimeHelper.java)
+- **Rule Precedence**: [RulePrecedenceConfig.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/constants/RulePrecedenceConfig.java)

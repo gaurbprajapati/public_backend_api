@@ -1,0 +1,175 @@
+---
+description: Troubleshooting guide for the Recruitcrm Timesheet Rule Engine.
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Rule Engine Troubleshooting Guide
+
+## Common Issues and Solutions
+
+### 1. Rule Index Mismatch in Daily Overtime Rules
+
+#### Problem Description
+Daily overtime rule resolvers fail to correctly identify the next rule in the sequence, causing incorrect threshold calculations.
+
+#### Symptoms
+- Daily overtime rules assign maximum threshold (24 hours) even when next rule exists
+- Index out of bounds errors in rule resolvers
+- Incorrect overtime calculations
+
+#### Root Cause
+The `ruleIndex` in `TimeRangeResolverContext` was based on the unified rules list (including system rules) but compared against only custom rules list size.
+
+#### Solution
+Use the `calculateCustomRuleIndex()` method in [BaseRuleEvaluator.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/BaseRuleEvaluator.java):
+
+```java
+// Correct implementation
+private int calculateCustomRuleIndex(IEvaluatableRule currentRule, List<IEvaluatableRule> unifiedRules) {
+    if (currentRule instanceof CustomRule customRule) {
+        List<CustomRule> customRules = unifiedRules.stream()
+            .filter(CustomRule.class::isInstance)
+            .map(CustomRule.class::cast)
+            .toList();
+            
+        for (int i = 0; i < customRules.size(); i++) {
+            if (customRules.get(i).equals(customRule)) {
+                return i;
+            }
+        }
+    }
+    
+    return -1; // System rules don't have a custom rule index
+}
+```
+
+#### Files Affected
+- [BaseRuleEvaluator.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/BaseRuleEvaluator.java)
+- [RangeBasedDailyOvertimeRuleRangeResolver.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/range_based/RangeBasedDailyOvertimeRuleRangeResolver.java)
+- [DurationBasedDailyOvertimeRuleTimeRangeResolver.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/duration_based/DurationBasedDailyOvertimeRuleTimeRangeResolver.java)
+
+### 2. System Rules vs Custom Rules Confusion
+
+#### Problem Description
+System rules (Regular Hours, Break) are treated as custom rules, causing index calculation errors.
+
+#### Solution
+Always check rule type before processing:
+
+```java
+// In resolvers, check if current rule is a custom rule
+CustomRule currentRule = timeRangeResolverContext.getCurrentCustomRuleBeingEvaluated();
+if (currentRule == null) {
+    // Handle system rule case
+    return TreeRangeSet.create();
+}
+```
+
+### 3. Rule Precedence Issues
+
+#### Problem Description
+Rules are evaluated in wrong order, causing incorrect time range calculations.
+
+#### Solution
+Use [UnifiedRuleManager.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/utils/UnifiedRuleManager.java) for creating rule lists:
+
+```java
+List<IEvaluatableRule> unifiedRules = UnifiedRuleManager.createUnifiedRuleListWithSystemRules(
+    customRules, getRegularHoursRuleType(), getBreakRuleType(), timesheet);
+```
+
+## Debugging Techniques
+
+### 1. Rule Index Debugging
+Add logging to verify correct rule index calculation:
+
+```java
+logger.logDebug("Unified rule index: " + ruleIndex);
+logger.logDebug("Custom rule index: " + customRuleIndex);
+logger.logDebug("Custom rules size: " + customRules.size());
+```
+
+### 2. Context Validation
+Verify context creation in resolvers:
+
+```java
+// In resolver methods
+if (timeRangeResolverContext.getCurrentRuleIndex() < 0) {
+    logger.logWarn("Invalid rule index for custom rule");
+    return TreeRangeSet.create();
+}
+```
+
+### 3. Rule Type Verification
+Check rule types during evaluation:
+
+```java
+if (currentRule != null) {
+    logger.logDebug("Evaluating rule: " + currentRule.getRuleType() + 
+                   ", isSystemRule: " + currentRule.isSystemRule());
+}
+```
+
+## Testing Strategies
+
+### 1. Unit Tests for Rule Index Calculation
+```java
+@Test
+void testCalculateCustomRuleIndex() {
+    // Test with custom rule
+    // Test with system rule
+    // Test with null rule
+    // Test with multiple custom rules
+}
+```
+
+### 2. Integration Tests for Daily Overtime Rules
+```java
+@Test
+void testDailyOvertimeRuleSequence() {
+    // Test with single daily overtime rule
+    // Test with multiple daily overtime rules
+    // Test with mixed rule types
+}
+```
+
+### 3. Edge Case Testing
+- Empty rule lists
+- Null rules
+- System rules only
+- Custom rules only
+- Mixed rule types
+
+## Prevention Guidelines
+
+### 1. Always Use Context Creation Methods
+Don't manually create `TimeRangeResolverContext` - use the factory method in `BaseRuleEvaluator`.
+
+### 2. Validate Rule Types
+Always check if a rule is a custom rule before accessing custom rule-specific properties.
+
+### 3. Use Unified Rule Manager
+Always use `UnifiedRuleManager` for creating rule lists to ensure proper precedence ordering.
+
+### 4. Test Rule Sequences
+Test with various rule combinations to ensure correct evaluation order.
+
+## Performance Considerations
+
+### 1. Rule Index Calculation
+The `calculateCustomRuleIndex()` method iterates through the custom rules list. For large rule sets, consider caching or optimizing.
+
+### 2. Context Creation
+Context creation happens for each rule evaluation. Ensure efficient object creation and reuse where possible.
+
+### 3. Rule Filtering
+Use efficient stream operations for filtering custom rules from unified rules list.
+
+
+
+### 3. Rule Filtering
+Use efficient stream operations for filtering custom rules from unified rules list.
+
+

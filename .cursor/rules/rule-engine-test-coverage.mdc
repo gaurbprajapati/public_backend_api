@@ -1,0 +1,157 @@
+---
+description: Rule engine test coverage patterns and branch coverage requirements for time range resolvers
+alwaysApply: false
+---
+
+# Rule Engine Test Coverage Guidelines
+
+## Branch Coverage Requirements
+
+### BaseBreakRuleTimeRangeResolver Branches
+All branches in [BaseBreakRuleTimeRangeResolver.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/BaseBreakRuleTimeRangeResolver.java) must be covered:
+
+1. **resolveTimeRange method branches:**
+   - `if (dayType == WorkDayType.DAY_OFF)` - Test with DAY_OFF work day type
+   - `if (breakDuration == null || breakDuration.isZero())` - Test with null and zero break duration
+   - `if (workRange == null)` - Test with null work range
+
+2. **allocateBreakTime method branches:**
+   - `if (availableRanges.isEmpty() || remainingMinutes <= 0)` - Test empty ranges and zero/negative duration
+   - `if (remainingMinutes <= 0)` in loop - Test when remaining minutes becomes zero after allocation
+   - `if (allocateMinutes > 0)` - Test with zero available minutes in range
+   - `if (remainingMinutes > 0)` at end - Test incomplete allocation scenarios
+
+### BaseDailyOvertimeRuleTimeRangeResolver Branches
+All branches in [BaseDailyOvertimeRuleTimeRangeResolver.java](mdc:src/main/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/BaseDailyOvertimeRuleTimeRangeResolver.java) must be covered:
+
+1. **resolveTimeRange method branches:**
+   - `if (effectiveStartTime == null || effectiveEndTime == null || !effectiveStartTime.isBefore(effectiveEndTime))` - Test null times and invalid ranges
+   - `if (dailyOvertimeDuration.isZero())` - Test zero overtime scenarios
+   - `if (!doThresholdTime.isBefore(effectiveEndTime))` - Test threshold after/equal to end time
+   - `if (!doRangeEndTime.isAfter(doThresholdTime))` - Test range end equal to threshold
+   - `if (availableDuration.isZero())` - Test no available time scenarios
+   - `if (!range.isEmpty())` in loop - Test empty claimed ranges
+
+2. **getDailyOvertimeDuration method branches:**
+   - Next rule exists and is DO rule
+   - Next rule exists but is not DO rule
+   - No next rule (last DO rule with 24-hour threshold)
+
+3. **calculateDORangeEndTime method branches:**
+   - Next DO rule with threshold within work period
+   - Next DO rule with threshold exceeding work period
+   - Next non-DO rule
+   - Last DO rule (no next rule)
+
+## Test Implementation Patterns
+
+### Test Class Structure
+```java
+@ExtendWith(MockitoExtension.class)
+class BaseResolverTests {
+    @Mock private Logger logger;
+    @Mock private TimeLog timeLog;
+    @Mock private TimeRangeResolverContext context;
+    
+    private TestResolver resolver;
+    
+    @BeforeEach
+    void setUp() {
+        this.resolver = new TestResolver(this.logger);
+    }
+}
+```
+
+### Test Implementation Strategy
+1. **Create test implementation** that extends the base class
+2. **Override abstract methods** to return controlled values for testing
+3. **Use comprehensive mocking** to create realistic scenarios
+4. **Test both positive and negative paths** for each branch
+5. **Include edge cases** and boundary conditions
+
+### Branch Coverage Test Examples
+
+#### Null/Invalid Input Tests
+```java
+@Test
+void testResolveTimeRangeWithNullInput() {
+    // Given
+    given(this.context.getCurrentTimeLogBeingEvaluated()).willReturn(null);
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isTrue();
+}
+```
+
+#### Edge Case Tests
+```java
+@Test
+void testResolveTimeRangeWithZeroDuration() {
+    // Given
+    given(this.timeLog.getBreakTime()).willReturn(Duration.ZERO);
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isTrue();
+}
+```
+
+#### Complex Scenario Tests
+```java
+@Test
+void testResolveTimeRangeWithMultipleRules() {
+    // Given
+    CustomRule nextRule = mock(CustomRule.class);
+    given(nextRule.getRuleType()).willReturn(RuleType.RANGE_BASED_DAILY_OVERTIME);
+    
+    ArrayList<CustomRule> customRules = new ArrayList<>();
+    customRules.add(this.mockCustomRule);
+    customRules.add(nextRule);
+    given(this.mockRuleTemplate.getCustomRules()).willReturn(customRules);
+    
+    // When
+    RangeSet<LocalTime> result = this.resolver.resolveTimeRange(this.context);
+    
+    // Then
+    assertThat(result).isNotNull();
+    assertThat(result.isEmpty()).isFalse();
+}
+```
+
+## Coverage Validation
+
+### Required Test Scenarios
+1. **Null safety tests** - All null input scenarios
+2. **Boundary condition tests** - Zero, negative, and maximum values
+3. **Edge case tests** - Invalid ranges, empty collections
+4. **Complex logic tests** - Multiple rules, overlapping scenarios
+5. **Error condition tests** - Invalid state combinations
+
+### Coverage Verification
+- Run tests with coverage tool
+- Ensure 100% branch coverage for all resolver classes
+- Verify all conditional statements are tested
+- Check that both true and false branches are covered
+
+## Best Practices
+
+1. **Test naming** - Use descriptive names that indicate the scenario being tested
+2. **Mock setup** - Create realistic test data that exercises the target branches
+3. **Assertions** - Use specific assertions to verify expected behavior
+4. **Documentation** - Include comments explaining complex test scenarios
+5. **Maintenance** - Update tests when new branches are added to the code
+
+## Reference Test Files
+- [BaseBreakRuleTimeRangeResolverTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/BaseBreakRuleTimeRangeResolverTests.java)
+- [BaseDailyOvertimeRuleTimeRangeResolverTests.java](mdc:src/test/java/io/recruitcrm/microservice/timesheet/rule_engine/rules/timerange_resolver/BaseDailyOvertimeRuleTimeRangeResolverTests.java)
+description:
+globs:
+alwaysApply: false
+---

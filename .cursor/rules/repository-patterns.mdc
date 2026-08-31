@@ -1,0 +1,397 @@
+---
+description: Repository patterns and data access including JPA repositories, custom repositories, JOOQ integration, query optimization, and permission data loading.
+alwaysApply: false
+---
+# Repository Patterns and Data Access
+
+## Overview
+The repository layer handles all data access operations using JPA repositories, custom repositories, and JOOQ for complex queries. This layer provides a clean abstraction over the database and implements optimized query patterns.
+
+## Repository Types
+
+### 1. JPA Repositories
+Located in `repositories/` package, extend `JpaRepository` for basic CRUD operations:
+
+```java
+@Repository
+public interface TimesheetRepository extends JpaRepository<Timesheet, Integer> {
+    
+    // Basic query methods
+    List<Timesheet> findByCandidateId(Integer candidateId);
+    List<Timesheet> findByJobIdAndStatus(Integer jobId, String status);
+    Optional<Timesheet> findByIdAndAccountId(Integer id, Integer accountId);
+    
+    // Custom queries with @Query
+    @Query("SELECT t FROM Timesheet t WHERE t.candidateId = :candidateId AND t.status = :status")
+    List<Timesheet> findTimesheetsByCandidateAndStatus(@Param("candidateId") Integer candidateId, 
+                                                      @Param("status") String status);
+    
+    // Entity graph to avoid N+1 problems
+    @EntityGraph(attributePaths = {"candidate", "job"})
+    @Query("SELECT t FROM Timesheet t WHERE t.id IN :ids")
+    List<Timesheet> findByIdsWithRelatedEntities(@Param("ids") List<Integer> ids);
+}
+```
+
+### 2. Custom Repositories
+Located in `dao/` package, implement complex business logic:
+
+```java
+@Repository
+public class TimesheetDao {
+    
+    private final JooqDslContextTarget jooqDslContextTarget;
+    private final TimesheetRepository timesheetRepository;
+    
+    public TimesheetDao(JooqDslContextTarget jooqDslContextTarget, 
+                       TimesheetRepository timesheetRepository) {
+        this.jooqDslContextTarget = jooqDslContextTarget;
+        this.timesheetRepository = timesheetRepository;
+    }
+    
+    // Complex queries using JOOQ
+    public List<TimesheetPermissionDataDto> findTimesheetPermissionData(List<Integer> timesheetIds, 
+                                                                       Integer accountId) {
+        return jooqDslContextTarget.getDslContext()
+            .select(Tables.TIMESHEET.ID, Tables.TIMESHEET.CANDIDATE_ID, Tables.TIMESHEET.JOB_ID)
+            .from(Tables.TIMESHEET)
+            .where(Tables.TIMESHEET.ID.in(timesheetIds))
+            .and(Tables.TIMESHEET.ACCOUNT_ID.eq(accountId))
+            .fetchInto(TimesheetPermissionDataDto.class);
+    }
+}
+```
+
+### 3. JOOQ Integration
+For complex SQL queries and dynamic query building:
+
+```java
+@Component
+public class SortingQueryBuilder {
+    
+    public SelectConditionStep<Record> buildSearchQuery(SearchRequestBodyDto searchRequest) {
+        SelectConditionStep<Record> query = jooqDslContextTarget.getDslContext()
+            .select()
+            .from(Tables.TIMESHEET)
+            .where(Tables.TIMESHEET.ACCOUNT_ID.eq(accountId));
+            
+        // Add search conditions
+        if (searchRequest.getName() != null) {
+            query = query.and(Tables.TIMESHEET.NAME.like("%" + searchRequest.getName() + "%"));
+        }
+        
+        // Add sorting
+        if (searchRequest.getSortBy() != null) {
+            query = query.orderBy(buildSortField(searchRequest.getSortBy(), searchRequest.getSortDirection()));
+        }
+        
+        return query;
+    }
+}
+```
+
+## Query Optimization Patterns
+
+### 1. Entity Graph for Eager Loading
+```java
+@Repository
+public interface TimesheetRepository extends JpaRepository<Timesheet, Integer> {
+    
+    // Use EntityGraph to load related entities in single query
+    @EntityGraph(attributePaths = {"candidate", "job", "timeLogs"})
+    @Query("SELECT t FROM Timesheet t WHERE t.id = :id")
+    Optional<Timesheet> findByIdWithRelatedEntities(@Param("id") Integer id);
+    
+    // Load multiple entities with relationships
+    @EntityGraph(attributePaths = {"candidate", "job"})
+    @Query("SELECT t FROM Timesheet t WHERE t.id IN :ids")
+    List<Timesheet> findByIdsWithRelatedEntities(@Param("ids") List<Integer> ids);
+}
+```
+
+### 2. Bulk Operations
+```java
+@Repository
+public interface TimesheetRepository extends JpaRepository<Timesheet, Integer> {
+    
+    // Batch save for performance
+    @Transactional
+    default List<Timesheet> saveAllBatch(List<Timesheet> timesheets) {
+        List<Timesheet> saved = new ArrayList<>();
+        for (int i = 0; i < timesheets.size(); i++) {
+            saved.add(save(timesheets.get(i)));
+            if (i % 50 == 0) {
+                flush(); // Flush every 50 entities
+            }
+        }
+        return saved;
+    }
+    
+    // Bulk update
+    @Modifying
+    @Query("UPDATE Timesheet t SET t.status = :status WHERE t.id IN :ids")
+    int updateStatusByIds(@Param("status") String status, @Param("ids") List<Integer> ids);
+}
+```
+
+### 3. Projection Queries
+```java
+@Repository
+public interface TimesheetRepository extends JpaRepository<Timesheet, Integer> {
+    
+    // Use projections to select only needed fields
+    @Query("SELECT new io.recruitcrm.microservice.timesheet.dto.timesheet.TimesheetSummaryDto(" +
+           "t.id, t.name, t.status, t.candidateId, t.jobId) " +
+           "FROM Timesheet t WHERE t.candidateId = :candidateId")
+    List<TimesheetSummaryDto> findSummariesByCandidateId(@Param("candidateId") Integer candidateId);
+}
+```
+
+## Permission Data Loading
+
+### 1. Optimized Permission Data Queries
+```java
+@Repository
+public class TimesheetRepository {
+    
+    // Load timesheet data with related candidates and jobs for permission checking
+    public List<TimesheetPermissionDataDto> findTimesheetPermissionData(List<Integer> timesheetIds, 
+                                                                       Integer accountId) {
+        return jooqDslContextTarget.getDslContext()
+            .select(
+                Tables.TIMESHEET.ID.as("timesheetId"),
+                Tables.TIMESHEET.CANDIDATE_ID.as("candidateId"),
+                Tables.TIMESHEET.JOB_ID.as("jobId"),
+                Tables.CANDIDATE.ID.as("candidateEntityId"),
+                Tables.CANDIDATE.NAME.as("candidateName"),
+                Tables.JOB.ID.as("jobEntityId"),
+                Tables.JOB.TITLE.as("jobTitle")
+            )
+            .from(Tables.TIMESHEET)
+            .leftJoin(Tables.CANDIDATE).on(Tables.TIMESHEET.CANDIDATE_ID.eq(Tables.CANDIDATE.ID))
+            .leftJoin(Tables.JOB).on(Tables.TIMESHEET.JOB_ID.eq(Tables.JOB.ID))
+            .where(Tables.TIMESHEET.ID.in(timesheetIds))
+            .and(Tables.TIMESHEET.ACCOUNT_ID.eq(accountId))
+            .fetchInto(TimesheetPermissionDataDto.class);
+    }
+}
+```
+
+### 2. Candidate-Only Data Loading
+```java
+@Repository
+public class CandidateRepository {
+    
+    // Load candidate data independently for direct candidate permission checks
+    public List<Candidate> findCandidatesByIds(List<Integer> candidateIds, Integer accountId) {
+        return jooqDslContextTarget.getDslContext()
+            .selectFrom(Tables.CANDIDATE)
+            .where(Tables.CANDIDATE.ID.in(candidateIds))
+            .and(Tables.CANDIDATE.ACCOUNT_ID.eq(accountId))
+            .fetchInto(Candidate.class);
+    }
+}
+```
+
+### 3. Job-Only Data Loading
+```java
+@Repository
+public class JobRepository {
+    
+    // Load job data independently for direct job permission checks
+    public List<Job> findJobsByIds(List<Integer> jobIds, Integer accountId) {
+        return jooqDslContextTarget.getDslContext()
+            .selectFrom(Tables.JOB)
+            .where(Tables.JOB.ID.in(jobIds))
+            .and(Tables.JOB.ACCOUNT_ID.eq(accountId))
+            .fetchInto(Job.class);
+    }
+}
+```
+
+## Search and Filtering
+
+### 1. Dynamic Search Queries
+```java
+@Component
+public class TimesheetSearchRepository {
+    
+    public Page<Timesheet> searchTimesheets(SearchRequestBodyDto searchRequest, 
+                                          PaginationRequestBodyDto pagination,
+                                          Integer accountId) {
+        
+        SelectConditionStep<Record> query = jooqDslContextTarget.getDslContext()
+            .selectFrom(Tables.TIMESHEET)
+            .where(Tables.TIMESHEET.ACCOUNT_ID.eq(accountId));
+            
+        // Add search filters
+        if (searchRequest.getName() != null) {
+            query = query.and(Tables.TIMESHEET.NAME.like("%" + searchRequest.getName() + "%"));
+        }
+        
+        if (searchRequest.getStatus() != null) {
+            query = query.and(Tables.TIMESHEET.STATUS.eq(searchRequest.getStatus()));
+        }
+        
+        if (searchRequest.getCandidateId() != null) {
+            query = query.and(Tables.TIMESHEET.CANDIDATE_ID.eq(searchRequest.getCandidateId()));
+        }
+        
+        if (searchRequest.getJobId() != null) {
+            query = query.and(Tables.TIMESHEET.JOB_ID.eq(searchRequest.getJobId()));
+        }
+        
+        // Add date range filters
+        if (searchRequest.getDateFrom() != null) {
+            query = query.and(Tables.TIMESHEET.DATE.goe(searchRequest.getDateFrom()));
+        }
+        
+        if (searchRequest.getDateTo() != null) {
+            query = query.and(Tables.TIMESHEET.DATE.loe(searchRequest.getDateTo()));
+        }
+        
+        // Add sorting
+        if (pagination.getSortBy() != null) {
+            query = query.orderBy(buildSortField(pagination.getSortBy(), pagination.getSortDirection()));
+        }
+        
+        // Add pagination
+        int offset = (pagination.getPage() - 1) * pagination.getSize();
+        query = query.limit(pagination.getSize()).offset(offset);
+        
+        return executeQueryWithPagination(query, pagination);
+    }
+}
+```
+
+### 2. Sorting Query Builder
+```java
+@Component
+public class SortingQueryBuilder {
+    
+    private SortField<?> buildSortField(String sortBy, String sortDirection) {
+        Field<?> field = getFieldByName(sortBy);
+        return sortDirection.equalsIgnoreCase("DESC") ? field.desc() : field.asc();
+    }
+    
+    private Field<?> getFieldByName(String fieldName) {
+        switch (fieldName.toLowerCase()) {
+            case "name": return Tables.TIMESHEET.NAME;
+            case "status": return Tables.TIMESHEET.STATUS;
+            case "date": return Tables.TIMESHEET.DATE;
+            case "created_at": return Tables.TIMESHEET.CREATED_AT;
+            default: return Tables.TIMESHEET.ID;
+        }
+    }
+}
+```
+
+## Transaction Management
+
+### 1. Service-Level Transactions
+```java
+@Service
+@Transactional
+public class TimesheetService {
+    
+    @Transactional(readOnly = true)
+    public List<Timesheet> findTimesheetsByCandidate(Integer candidateId) {
+        return timesheetRepository.findByCandidateId(candidateId);
+    }
+    
+    @Transactional
+    public Timesheet createTimesheet(TimesheetRequestDto request) {
+        // Create timesheet
+        Timesheet timesheet = new Timesheet();
+        timesheet.setName(request.name());
+        timesheet.setCandidateId(request.candidateId());
+        timesheet.setJobId(request.jobId());
+        
+        Timesheet savedTimesheet = timesheetRepository.save(timesheet);
+        
+        // Create related time logs
+        if (request.timeLogs() != null) {
+            List<TimeLog> timeLogs = request.timeLogs().stream()
+                .map(this::createTimeLog)
+                .toList();
+            timeLogRepository.saveAll(timeLogs);
+        }
+        
+        return savedTimesheet;
+    }
+}
+```
+
+### 2. Repository-Level Transactions
+```java
+@Repository
+public class TimesheetDao {
+    
+    @Transactional
+    public void bulkUpdateStatus(List<Integer> timesheetIds, String status) {
+        // Use JOOQ for bulk update
+        jooqDslContextTarget.getDslContext()
+            .update(Tables.TIMESHEET)
+            .set(Tables.TIMESHEET.STATUS, status)
+            .set(Tables.TIMESHEET.UPDATED_AT, LocalDateTime.now())
+            .where(Tables.TIMESHEET.ID.in(timesheetIds))
+            .execute();
+    }
+}
+```
+
+## Error Handling
+
+### 1. Repository Exception Handling
+```java
+@Repository
+public class TimesheetRepository {
+    
+    public Optional<Timesheet> findByIdSafely(Integer id) {
+        try {
+            return findById(id);
+        } catch (DataAccessException ex) {
+            logger.error("Database error while finding timesheet with id: " + id, ex);
+            throw new RepositoryException("Failed to find timesheet", ex);
+        }
+    }
+    
+    public List<Timesheet> saveAllSafely(List<Timesheet> timesheets) {
+        try {
+            return saveAll(timesheets);
+        } catch (DataAccessException ex) {
+            logger.error("Database error while saving timesheets", ex);
+            throw new RepositoryException("Failed to save timesheets", ex);
+        }
+    }
+}
+```
+
+## Best Practices
+
+### 1. Query Optimization
+- Use `@EntityGraph` to avoid N+1 problems
+- Use projections to select only needed fields
+- Use bulk operations for multiple records
+- Use indexes on frequently queried fields
+
+### 2. Transaction Management
+- Use `@Transactional(readOnly = true)` for read operations
+- Use `@Transactional` for write operations
+- Keep transactions as short as possible
+- Use appropriate isolation levels
+
+### 3. Error Handling
+- Catch and log database exceptions
+- Throw custom exceptions with meaningful messages
+- Use safe methods for critical operations
+- Implement retry logic for transient failures
+
+### 4. Performance
+- Use pagination for large result sets
+- Use caching for frequently accessed data
+- Use batch operations for bulk updates
+- Monitor query performance with logging
+
+
+
